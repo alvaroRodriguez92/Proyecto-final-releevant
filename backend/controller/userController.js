@@ -1,4 +1,4 @@
-const dao = require("../service/dao");
+const dao = require("../service/dao/userDao");
 const { SignJWT, jwtVerify } = require("jose");
 const md5 = require("md5");
 const path = require("path");

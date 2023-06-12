@@ -1,5 +1,5 @@
-const userQueries = require("./mysqlQueries/userQueries");
-const productQueries = require("./mysqlQueries/productQueries");
+const userQueries = require("../mysqlQueries/userQueries");
+const productQueries = require("../mysqlQueries/productQueries");
 
 const dao = {};
 
