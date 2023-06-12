@@ -15,6 +15,7 @@ userController.addUser = async (req, res) => {
     URL,
     DESCRIPCION,
     PASSWORD,
+    CATEGORIA,
     LONGITUD,
     LATITUD,
     TIPO_VIA,
@@ -57,6 +58,7 @@ userController.addUser = async (req, res) => {
       URL: URL,
       DESCRIPCION: DESCRIPCION,
       PASSWORD: PASSWORD,
+      CATEGORIA: CATEGORIA,
     };
 
     const addUser = await dao.addUser(newUser);
