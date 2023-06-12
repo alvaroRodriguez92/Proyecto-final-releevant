@@ -1,0 +1,108 @@
+.leaflet-container{
+  width: 100vw;
+  height: 100vh;
+}
+
+.leaflet-control {
+  float: right;
+  clear: both;
+}
+
+.leaflet-left {
+  right: 0;
+}
+
+.leaflet-top {
+  bottom: 0;
+  top: 85%;
+}
+
+.leaflet-left .leaflet-control {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+.classLink{
+  text-decoration: none;
+}
+
+Layout{
+  position: absolute;
+  top: 0;
+}
+
+
+.error {
+  color: #fc8181;
+  font-size: 0.75rem;
+  text-align: left;
+  margin-top: 0.25rem;
+}
+form {
+  width: 95%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+form label {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  text-align: left;
+  margin: 1rem 0 0.2rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.65rem 0.5rem;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  border: 2px solid;
+  border-color: #65a0d0;
+  background-color: #ffffff;
+  border-radius: 10px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: #4299e1;
+}
+
+input::placeholder,
+select::placeholder {
+  color: #a0aec0;
+}
+
+/* input[type="checkbox"] {
+  width: fit-content;
+  margin-right: 0.5rem;
+  transform: scale(1.25);
+} */
+
+button {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.35rem 0.5rem;
+  background-color: #ffffff;
+  color: #1a202c;
+  border: 1px solid;
+  border-color: #65a0d0;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input.input-error,
+select.input-error {
+  border-color: #fc8181;
+}
+
+button:disabled {
+  opacity: 0.35;
+}
+
+
+
+
