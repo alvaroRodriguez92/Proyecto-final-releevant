@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 //import { c } from "../../common/api";
 
-export default function Home() {
+export default function Map() {
   const [coordenadas, setCoordenadas] = useState([]);
   useEffect(() => {
     async function getLocations() {
