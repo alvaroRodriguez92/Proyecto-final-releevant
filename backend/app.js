@@ -4,6 +4,7 @@ const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const userRouter = require("./routes/userRoutes");
+const sectorRouter = require("./routes/sectorRoutes");
 const productRouter = require("./routes/productRoutes");
 const expressFileUpload = require("express-fileupload");
 const cors = require("cors");
@@ -29,6 +30,8 @@ app.use(
 );
 
 app.use("/user", userRouter);
+app.use("/sector", sectorRouter);
+
 app.use("/product", productRouter);
 
 module.exports = app;
