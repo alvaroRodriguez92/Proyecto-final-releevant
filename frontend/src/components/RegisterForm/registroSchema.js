@@ -3,39 +3,29 @@ const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 
 
 export const registroSchema= Yup.object().shape({
-    firstname: Yup
+    nombre: Yup
     .string()
     .min(2, "Too short!")
     .max(50, "Too long!")
     .required("Required"),
-    lastname: Yup
-    .string()
-    .min(2, "Too short!")
-    .max(100, "Too long!")
-    .required("Required"),
-    address: Yup
-    .string()
-    .min(2, "Too short!")
-    .max(150, "Too long!")
-    .required("Required"),
-    city: Yup
-    .string()
-    .min(2, "Too short!")
-    .max(50, "Too long!")
-    .required("Required"),
-    postalcode: Yup
-    .number("Must be a valid postalcode")
-    .min(2,"Too short!")
-    .max(100000,"Too long!")
-    .required("Required"),
-    birthdate: Yup
-    .date(),
     email: Yup
     .string("Must be a string")
     .email("Enter a valid email")
     .min(2, "Too short!")
     .max(50, "Too long!")
     .required("Required"),
+    tfn: Yup
+    .number("Must be a valid number")
+    .min(99999,"Too short!")
+    .max(999999999999,"Too long!")
+    .required("Required"),
+    url: Yup
+    .string()
+    .min(2, "Too short!")
+    .max(50, "Too long!"),
+    descripcion: Yup
+    .string()
+    .max(200, "Too long!"),
     password: Yup
     .string()
     .matches(passwordRules, {
@@ -43,10 +33,17 @@ export const registroSchema= Yup.object().shape({
           "Must contain at least 5 characters, 1 uppercase, 1 lowercase and 1 number"
       })
       .required("Requerido"),
-      repeatPassword: Yup
+      repetirPassword: Yup
       .string()
       .oneOf([Yup.ref("password"), null], "The password must be the same")
+      .required("Required"),
+      sector: Yup
+      .string()
+      .required("Required"),
+      categoria: Yup
+      .string()
       .required("Required")
+    
 
       
 

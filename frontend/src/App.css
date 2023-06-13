@@ -103,6 +103,22 @@ button:disabled {
   opacity: 0.35;
 }
 
+.form-register{
+  max-width: 100%;
+}
 
+form label{
+  margin:0;
+}
 
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+  border-radius: 10px!important;
+  box-shadow: 0 0 15px 4px
+  rgba(0,0,0,0.1);
+}
 
+.css-1qxw4jt-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 10px!important;
+  box-shadow: 0 0 15px 4px
+  rgba(0,0,0,0.1);
+}

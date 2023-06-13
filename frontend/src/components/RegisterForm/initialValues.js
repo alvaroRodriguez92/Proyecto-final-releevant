@@ -1,11 +1,11 @@
 export const initialValues={
-    firstname:"",
-    lastname:"",
-    address:"",
-    city:"",
-    postalcode:"",
-    birthdate:"",
+    nombre:"",
     email:"",
+    tfn:"",
+    url:"",
+    descripcion:"",
     password:"",
-    passwordRepeat:""
+    repetirPassword:"",
+    sector:"",
+    categoria:""
 }
