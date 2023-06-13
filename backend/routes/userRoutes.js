@@ -9,6 +9,7 @@ userRuoter.post("/addlogo", userController.addLogo);
 userRuoter.post("/addImagen", userController.addImagen); //Ruta para agregar logo
 userRuoter.post("/login", userController.loginUser);
 userRuoter.get("/categoria/:id", userController.getUsersByCategoria);
+userRuoter.get("/sector/:id", userController.getUsersBySector);
 
 //aun sin tratar
 

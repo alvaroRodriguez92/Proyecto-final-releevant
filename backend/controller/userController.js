@@ -102,6 +102,25 @@ userController.getLocations = async (req, res) => {
     throw new Error(e.message);
   }
 };
+//controlador para obtener usuarios por sector
+userController.getUsersBySector = async (req, res) => {
+  const users = [];
+  try {
+    const categorias = await dao.getUserBySector(req.params.id);
+    if (categorias.length <= 0)
+      return res.status(409).send("No hay Categorias que mostrar");
+    console.log(categorias);
+    categorias.map(async (categoria) => {
+      const usercat = await dao.getUsersByCategorias(categoria.ID);
+      console.log(usercat);
+      if (usercat.length > 0) users.push(usercat);
+    });
+    return res.status(200).send(users);
+  } catch (e) {
+    throw new Error(e.message);
+  }
+};
+
 //controlador para filtrar usuarios por categorias
 userController.getUsersByCategoria = async (req, res) => {
   try {
