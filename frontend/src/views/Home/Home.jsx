@@ -14,7 +14,7 @@ export default function Home() {
           <main>
               <Caroussel/>
       </main>
-      <Grid item xs={6} sx={{ pl: 20, pt: 10, pb: 10 }}>
+      <Grid item xs={6} sx={{ pl: 20, pt: 10, pb: 10}}>
         <Footer />
       </Grid>
     </>
