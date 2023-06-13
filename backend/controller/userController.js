@@ -102,6 +102,18 @@ userController.getLocations = async (req, res) => {
     throw new Error(e.message);
   }
 };
+//controlador para filtrar usuarios por categorias
+userController.getUsersByCategoria = async (req, res) => {
+  try {
+    const users = await dao.getUsersByCategorias(req.params.id);
+    if (users.length <= 0)
+      return res.status(409).send("No hay usuarios que mostrar");
+    return res.status(200).send(users);
+  } catch (e) {
+    throw new Error(e.message);
+  }
+};
+//controlador para filtrar ususarios por categoria
 userController.getPopup = async (req, res) => {
   try {
     const popup = await dao.getPopup(req.params.id);

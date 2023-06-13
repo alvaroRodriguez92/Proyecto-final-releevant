@@ -3,6 +3,9 @@ const productQueries = require("../mysqlQueries/productQueries");
 
 const dao = {};
 
+//filtrar usuarios
+dao.getUsersByCategorias = async (id) =>
+  await userQueries.getUsersByCategorias(id);
 // Buscar un usuario por el email
 dao.getUserByEmail = async (email) => await userQueries.getUserByEmail(email);
 // Añadir un nuevo usuario

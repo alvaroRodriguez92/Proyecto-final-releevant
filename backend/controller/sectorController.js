@@ -1,7 +1,7 @@
 const dao = require("../service/dao/sectorDao");
 
 const sectorController = {};
-
+//Controlador para obtener todos los sectores
 sectorController.getAllSectors = async (req, res) => {
   try {
     const sectors = await dao.getAllSectors();
@@ -12,7 +12,7 @@ sectorController.getAllSectors = async (req, res) => {
     throw new Error(e.message);
   }
 };
-
+//Controlador para obtener todas las categorias de un sector
 sectorController.getCategoriasSector = async (req, res) => {
   try {
     const categorias = await dao.getCatogriasSector(req.params.id);
@@ -22,14 +22,6 @@ sectorController.getCategoriasSector = async (req, res) => {
   } catch (e) {
     throw new Error(e.message);
   }
-  // try {
-  //   const popup = await dao.getPopup(req.params.id);
-  //   if (popup.length <= 0)
-  //     return res.status(409).send("No hay localizaciones que mostrar");
-  //   return res.status(200).send(popup);
-  // } catch (e) {
-  //   throw new Error(e.message);
-  // }
 };
 
 module.exports = sectorController;
