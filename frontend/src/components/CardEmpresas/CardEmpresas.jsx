@@ -12,11 +12,11 @@ export default function CardEmpresas() {
       <CardMedia
         sx={{ height: 140 }}
         image="../../src/assets/logonuevamente.png"
-        title="nuevamente"
+        title="nuevamente psicologos"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-        psicologos
+          nuevamente
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000

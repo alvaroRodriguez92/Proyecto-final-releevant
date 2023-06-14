@@ -1,6 +1,7 @@
 import Buscador from '../../components/Buscador/Buscador'
 
-import {Grid,Avatar,Box} from '@mui/material'
+import {Grid,Box} from '@mui/material'
+import ToggleButtons from '../ToggleButtons/ToggleButtons'
 
 export default function Layout() {
     return (
@@ -12,8 +13,8 @@ export default function Layout() {
                     <Grid item xs={8} sx={{ display: "flex", alignItems: "center", a: { width: "100%" } }}>
                         <Buscador />
                     </Grid>
-                    <Grid>
-                        <Avatar>H</Avatar>
+                    <Grid item xs={2}>
+                        <ToggleButtons/>
                     </Grid>
                 </Grid>
         </Box>

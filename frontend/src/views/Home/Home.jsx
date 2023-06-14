@@ -1,7 +1,6 @@
 import NavMain from "../../components/NavMain/NavMain";
 import NavSectores from '../../components/NavSectores/NavSectores'
 import Footer from "../../components/Footer/Footer";
-import Card from '../../components/Card/CardEmpresas'
 import CardEmpresas from "../../components/CardEmpresas/CardEmpresas";
 import { Grid,Box,Avatar } from "@mui/material";
 
