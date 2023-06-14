@@ -8,9 +8,10 @@ import Typography from '@mui/material/Typography';
 
 export default function CardEmpresas() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card 
+    sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 140,".title": {  textAlign: "center" } }}
         image="../../src/assets/logonuevamente.png"
         title="nuevamente psicologos"
       />
@@ -27,5 +28,6 @@ export default function CardEmpresas() {
         <Button size="small">Ver mas</Button>
       </CardActions>
     </Card>
+    
   );
 }
