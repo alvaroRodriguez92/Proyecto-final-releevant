@@ -1,11 +1,11 @@
 import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 import AdbIcon from "@mui/icons-material/Adb";
-
+import SignLanguageIcon from '@mui/icons-material/SignLanguage';
 export default function Privacidad() {
   return (
     <>
       <Grid container sx={{ m: 2 }}>
-        <AdbIcon fontSize="medium" sx={{ color: "white" }} />
+        <SignLanguageIcon fontSize="medium"  />
         <Typography
           variant="h5"
           sx={{
@@ -17,7 +17,7 @@ export default function Privacidad() {
             textAlign: "center",
           }}
         >
-          Blue-Magic
+          Optimus solutions
         </Typography>
       </Grid>
       <Grid container>
