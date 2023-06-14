@@ -16,7 +16,7 @@ export default function CardEmpresas() {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          nuevamente
+          nuevamente psicólogos
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -24,8 +24,7 @@ export default function CardEmpresas() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Ver mas</Button>
       </CardActions>
     </Card>
   );
