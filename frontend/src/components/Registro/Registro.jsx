@@ -1,13 +1,25 @@
 import * as React from 'react';
 import {Stepper, Step, StepButton, Button, Typography, Box} from "@mui/material"
 import IntroduccionDatos from '../RegisterForm/IntroduccionDatos';
+import Localizacion from '../RegisterForm/Localizacion';
+import LogoFotos from '../RegisterForm/LogoFotos';
+import {useState} from "react"
+
+
+
 
 
 const steps = ['Introducción de datos', 'Localización', 'Logo/Fotos', "Confirmar datos"];
 
 export default function Registro() {
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
+  const [adding, setAdding] = useState(false)
+
+  function isAdding(){
+    setAdding(true)
+  }
 
   const totalSteps = () => {
     return steps.length;
@@ -81,8 +93,16 @@ export default function Registro() {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            
-              <IntroduccionDatos/> {activeStep + 1}
+              {
+                activeStep==0?(<IntroduccionDatos/>): activeStep==1?
+                (<>
+                <Localizacion/>
+                {adding?<Localizacion/>:""}
+                <Button onClick={isAdding} sx={{mt:5}}>Añadir otra localización</Button>
+                </>
+                ):activeStep==2?<LogoFotos/>:""
+              }
+              
             
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button

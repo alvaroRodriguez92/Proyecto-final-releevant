@@ -111,14 +111,33 @@ form label{
   margin:0;
 }
 
+/* FORM NORMALES */
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
   border-radius: 10px!important;
   box-shadow: 0 0 15px 4px
   rgba(0,0,0,0.1);
 }
 
+/* FORM DE DESCRIPCION */
 .css-1qxw4jt-MuiInputBase-root-MuiOutlinedInput-root {
   border-radius: 10px!important;
   box-shadow: 0 0 15px 4px
   rgba(0,0,0,0.1);
+}
+
+/* FORM DE SELECTS */
+.css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+  border-radius: 10px!important;
+  box-shadow: 0 0 15px 4px
+  rgba(0,0,0,0.1);
+}
+
+/* ESTILIZANDO EL INPUT FILE */
+
+.css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 10px!important;
+  box-shadow: 0 0 15px 4px
+  rgba(0,0,0,0.1);
+  
+
 }
