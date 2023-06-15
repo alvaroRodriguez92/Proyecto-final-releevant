@@ -16,19 +16,7 @@ userController.addUser = async (req, res) => {
     DESCRIPCION,
     PASSWORD,
     CATEGORIA,
-    LONGITUD,
-    LATITUD,
-    TIPO_VIA,
-    NOMBRE_VIA,
-    NUMERO,
-    PISO,
-    PUERTA,
-    URBANIZACION,
-    BLOQUE,
-    CP,
-    LOCALIDAD,
-    PROVINCIA,
-    PAIS,
+    DIRECCION,
   } = req.body;
   const newUser = {
     NOMBRE: NOMBRE,
@@ -48,45 +36,63 @@ userController.addUser = async (req, res) => {
     const addUser = await dao.addUser(newUser);
     if (addUser){
       if(!CATEGORIA){
-        return res.send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
+        return res.status(201).send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
       }      
-      const newAddress = {
-        ID_USER: addUser,
-        LONGITUD: LONGITUD,
-        LATITUD: LATITUD,
-        TIPO_VIA: TIPO_VIA,
-        NOMBRE_VIA: NOMBRE_VIA,
-        NUMERO: NUMERO,
-        URBANIZACION: URBANIZACION,
-        BLOQUE: BLOQUE,
-        PISO: PISO,
-        PUERTA: PUERTA,
-        CP: CP,
-        LOCALIDAD: LOCALIDAD,
-        PROVINCIA: PROVINCIA,
-        PAIS: PAIS,
-      };
-      if(!ID_USER || !LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !!NUMERO_VIA){
-        res.status(408).send("Error en la direccion")
-      }
+      DIRECCION.map( async (D) =>{
+        const { 
+          LONGITUD,
+          LATITUD,
+          TIPO_VIA,
+          NOMBRE_VIA,
+          NUMERO,
+          PISO,
+          PUERTA,
+          URBANIZACION,
+          BLOQUE,
+          CP,
+          LOCALIDAD,
+          PROVINCIA,
+          PAIS,} = D
+          
+          if(!ID_USER || !LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !!NUMERO_VIA){
+            res.status(408).send("Error en la direccion")
+          }
+          const newAddress = {
+            ID_USER: addUser,
+            LONGITUD: LONGITUD,
+            LATITUD: LATITUD,
+            TIPO_VIA: TIPO_VIA,
+            NOMBRE_VIA: NOMBRE_VIA,
+            NUMERO: NUMERO,
+            URBANIZACION: URBANIZACION,
+            BLOQUE: BLOQUE,
+            PISO: PISO,
+            PUERTA: PUERTA,
+            CP: CP,
+            LOCALIDAD: LOCALIDAD,
+            PROVINCIA: PROVINCIA,
+            PAIS: PAIS,
+          };
+          const addAddress = await dao.addAddress(newAddress);
+          if (!addAddress)
+            return res.send(
+              `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la DIRECCION`
+            );
+      })
+        
       const newOfertante = {
         ID_USER: addUser,
         ID_CATEGORIA: CATEGORIA,
       }
-      const addAddress = await dao.addAddress(newAddress);
-      if (!addAddress)
-        return res.send(
-          `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la DIRECCION`
-        );
+      
       const addOfertante = await dao.addOfertante(newOfertante)
       if (!addOfertante)
         return res.send(
           `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la CATEGORIA`
         );
-      
+      return res.status(200).send("Usuario registrado con exito")
     }
-
-    
+   
   } catch (e) {
     throw new Error(e.message);
   }
