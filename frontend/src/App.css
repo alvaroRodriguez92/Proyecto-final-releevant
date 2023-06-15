@@ -111,5 +111,8 @@ button:disabled {
 	font-size: 1.4em;
 	margin:0.5em;
 }
-
+.imagenView{
+  width: 25px;
+  height: 25px;
+}
 
