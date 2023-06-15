@@ -80,25 +80,22 @@ userQueries.addAddress = async (newAddress) => {
     conn && (await conn.end());
   }
 };
-//Query para agregar logo de usuario
-userQueries.addLogo = async (imageData) => {
-  let conn = null;
-  try {
-    conn = await db.createConnection();
-    let imageObj = {
-      ID: null,
-      ID_USER: imageData.ID_USER,
-      PATH: imageData.PATH,
-      LOGO_NOMBRE: imageData.LOGO_NOMBRE,
-      ESTADO: imageData.ESTADO,
+//Query para insertar en OFERTANTE
+userQueries.addOfertante = async(newOfertante) => {
+  let conn = null
+  try{
+    conn = await db.createConnection()
+    let ofertante = {
+      ID_USER: newOfertante.ID_USER,
+      ID_CATEGORIA: newOfertante.ID_CATEGORIA
     };
-    return await db.query("INSERT INTO LOGO SET ?", imageObj, "insert", conn);
-  } catch (e) {
-    throw new Error(e);
-  } finally {
+    return await db.query("INSERT INTO OFERTANTE SET ?", ofertante, "insert", conn);
+  }catch(e){
+    throw new Error(e)
+  }finally{
     conn && (await conn.end());
   }
-};
+}
 //Query para agregar fotos al perfil
 userQueries.addImagen = async (imageData) => {
   let conn = null;
@@ -109,6 +106,7 @@ userQueries.addImagen = async (imageData) => {
       ID_USER: imageData.ID_USER,
       PATH: imageData.PATH,
       NOMBRE: imageData.NOMBRE,
+      TIPO: imageData.TIPO,
     };
     return await db.query(
       "INSERT INTO IMAGENES SET ?",
@@ -122,6 +120,26 @@ userQueries.addImagen = async (imageData) => {
     conn && (await conn.end());
   }
 };
+//Query para agregar logo de usuario
+// userQueries.addLogo = async (imageData) => {
+//   let conn = null;
+//   try {
+//     conn = await db.createConnection();
+//     let imageObj = {
+//       ID: null,
+//       ID_USER: imageData.ID_USER,
+//       PATH: imageData.PATH,
+//       LOGO_NOMBRE: imageData.LOGO_NOMBRE,
+//       ESTADO: imageData.ESTADO,
+//     };
+//     return await db.query("INSERT INTO LOGO SET ?", imageObj, "insert", conn);
+//   } catch (e) {
+//     throw new Error(e);
+//   } finally {
+//     conn && (await conn.end());
+//   }
+// };
+
 
 userQueries.getPopup = async (id) => {
   let conn = null;
@@ -140,7 +158,23 @@ userQueries.getUsersByCategorias = async (id) => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM USERS WHERE ID_CATEGORIA = ?",
+      queries.usersByCategoria,
+      id,
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+userQueries.getUsersBySector = async (id) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      queries.usersBySector,
       id,
       "select",
       conn
@@ -156,7 +190,7 @@ userQueries.getUserLogo = async (ID_USER) => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM LOGO WHERE ESTADO = ? AND ID_USER = ? ",
+      "SELECT * FROM IMAGENES WHERE TIPO = ? AND ID_USER = ? ",
       [1, ID_USER],
       "select",
       conn
