@@ -1,4 +1,4 @@
-const dao = require("../service/dao");
+const dao = require("../service/dao/userDao");
 const { SignJWT, jwtVerify } = require("jose");
 const md5 = require("md5");
 const path = require("path");
@@ -15,6 +15,7 @@ userController.addUser = async (req, res) => {
     URL,
     DESCRIPCION,
     PASSWORD,
+    CATEGORIA,
     LONGITUD,
     LATITUD,
     TIPO_VIA,
@@ -57,6 +58,7 @@ userController.addUser = async (req, res) => {
       URL: URL,
       DESCRIPCION: DESCRIPCION,
       PASSWORD: PASSWORD,
+      CATEGORIA: CATEGORIA,
     };
 
     const addUser = await dao.addUser(newUser);
@@ -100,6 +102,41 @@ userController.getLocations = async (req, res) => {
     throw new Error(e.message);
   }
 };
+//controlador para obtener usuarios por sector
+userController.getUsersBySector = async (req, res) => {
+  try {
+    let users = [];
+    const categorias = await dao.getUserBySector(req.params.id);
+    if (categorias.length <= 0)
+      return res.status(409).send("No hay Categorias que mostrar");
+
+    categorias.map(async (categoria) => {
+      const usercat = await dao.getUsersByCategorias(categoria.ID);
+      //console.log(usercat);
+      if (usercat.length > 0) {
+        usercat.map((u) => {
+          users.push(u);
+        });
+      }
+      return res.status(200).send(users);
+    });
+  } catch (e) {
+    throw new Error(e.message);
+  }
+};
+
+//controlador para filtrar usuarios por categorias
+userController.getUsersByCategoria = async (req, res) => {
+  try {
+    const users = await dao.getUsersByCategorias(req.params.id);
+    if (users.length <= 0)
+      return res.status(409).send("No hay usuarios que mostrar");
+    return res.status(200).send(users);
+  } catch (e) {
+    throw new Error(e.message);
+  }
+};
+//controlador para filtrar ususarios por categoria
 userController.getPopup = async (req, res) => {
   try {
     const popup = await dao.getPopup(req.params.id);

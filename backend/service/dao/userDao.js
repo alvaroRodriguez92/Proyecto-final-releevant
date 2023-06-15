@@ -1,8 +1,14 @@
-const userQueries = require("./mysqlQueries/userQueries");
-const productQueries = require("./mysqlQueries/productQueries");
+const userQueries = require("../mysqlQueries/userQueries");
+const sectorQueries = require("../mysqlQueries/sectorQueries");
+const productQueries = require("../mysqlQueries/productQueries");
 
 const dao = {};
 
+//filtrar usuarios
+//obtener usuarios que pertecen a un sector
+dao.getUserBySector = async (id) => await sectorQueries.getCategoriasSector(id);
+dao.getUsersByCategorias = async (id) =>
+  await userQueries.getUsersByCategorias(id);
 // Buscar un usuario por el email
 dao.getUserByEmail = async (email) => await userQueries.getUserByEmail(email);
 // Añadir un nuevo usuario

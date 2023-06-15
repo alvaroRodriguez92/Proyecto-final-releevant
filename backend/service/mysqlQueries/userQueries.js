@@ -134,6 +134,23 @@ userQueries.getPopup = async (id) => {
     conn && (await conn.end());
   }
 };
+
+userQueries.getUsersByCategorias = async (id) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM USERS WHERE ID_CATEGORIA = ?",
+      id,
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 userQueries.getUserLogo = async (ID_USER) => {
   let conn = null;
   try {
