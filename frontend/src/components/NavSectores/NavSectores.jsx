@@ -18,60 +18,61 @@ import { useUserContext } from "../../context/UserContext";
 export default function NavIconos() {
 
     const { section, setSection } = useUserContext();
+    const sectionContainer= { display: "flex", flexDirection: "column", alignItems: "center", svg:{height: "60px", fontSize: "2.5rem"} }
     const arrayCategorias = { salud: [{ nombre: "dentista" }, { nombre: "dentista" }], construccion: [{ nombre: "albañil" },{nombre:"fontanero"}], agroalimentario:[{nombre:"ganaderia"},{nombre:"pesca"},{nombre:"agricultura"}],legal:[{nombre:"abogados"},{nombre:"notarios"}]}
     return (
         <>
-        <Box sx={{ display: "flex", columnGap: "1rem", p: "0.5rem", div: { ">p": { margin: "0 !important" } } }}>
-                <Box onClick={() => {section==="salud"?setSection(""): setSection("salud")}} sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem", }}>
-                <LocalHospitalOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+        <Box sx={{ display: "flex", columnGap: "1rem",width:"100%",justifyContent:"space-evenly", div: { ">p": { margin: "0 !important" } } }}>
+                <Box onClick={() => {section==="salud"?setSection(""): setSection("salud")}} sx={sectionContainer}>
+                <LocalHospitalOutlinedIcon />
                 <p>Salud</p>
             </Box>
-            <Box onClick={()=>{section==="construccion"?setSection(""): setSection("construccion")}} sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <ConstructionOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box onClick={()=>{section==="construccion"?setSection(""): setSection("construccion")}} sx={sectionContainer}>
+                <ConstructionOutlinedIcon />
                 <p>Construccion</p>
             </Box>
-            <Box onClick={()=>{section==="agroalimentario"?setSection(""): setSection("agroalimentario")}} sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
+            <Box onClick={()=>{section==="agroalimentario"?setSection(""): setSection("agroalimentario")}} sx={sectionContainer}>
                 <AgricultureOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
                 <p>Agroalimentario</p>
             </Box>
-            <Box onClick={()=>{section==="legal"?setSection(""): setSection("legal")}} sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <AccountBalanceOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box onClick={()=>{section==="legal"?setSection(""): setSection("legal")}} sx={sectionContainer}>
+                <AccountBalanceOutlinedIcon/>
                 <p>Legal</p>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <FactoryOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box sx={sectionContainer}>
+                <FactoryOutlinedIcon/>
                 <p>Industria</p>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <MenuBookOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box sx={sectionContainer}>
+                <MenuBookOutlinedIcon/>
                 <p>Educacion</p>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <SportsFootballOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box sx={sectionContainer}>
+                <SportsFootballOutlinedIcon/>
                 <p>Deporte</p>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <NightShelterOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box sx={sectionContainer}>
+                <NightShelterOutlinedIcon/>
                 <p>Hosteleria</p>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <GiteOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box sx={sectionContainer}>
+                <GiteOutlinedIcon/>
                 <p>Hogar</p>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <DevicesOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box sx={sectionContainer}>
+                <DevicesOutlinedIcon/>
                 <p>Tecnologia</p>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <DirectionsCarOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box sx={sectionContainer}>
+                <DirectionsCarOutlinedIcon/>
                 <p>Automocion</p>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <HomeWorkOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box sx={sectionContainer}>
+                <HomeWorkOutlinedIcon/>
                 <p>Inmobiliaria</p>
             </Box>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ml: "1.4rem", mr: "2rem" }}>
-                <SchoolOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+            <Box sx={sectionContainer}>
+                <SchoolOutlinedIcon/>
                 <p>Cultura</p>
             </Box>
         </Box>

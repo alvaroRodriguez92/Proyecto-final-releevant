@@ -20,7 +20,7 @@ export default function ToggleButtons() {
   };
  
   return (
-    <>
+    <Box sx={{display:"flex", width:"100%", height:"100%", justifyContent:"center", alignItems:"center"}}>
     <Button sx={{border:"1px solid black", borderRadius:"30px", backgroundColor:"#ffd7006e"}} onClick={handleClick}
     size="small"
     aria-controls={open ? 'account-menu' : undefined}
@@ -98,7 +98,7 @@ export default function ToggleButtons() {
           Logout
         </MenuItem>
       </Menu>
-    </>
+    </Box>
   );
 
 }

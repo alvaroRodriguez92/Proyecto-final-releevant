@@ -19,12 +19,12 @@ export default function Buscador() {
             color="white"
             variant="filled"
             size="small"
-            sx={{ width: "70%", border: "1px solid black", height: "3.5rem", div: { height: "100%" }, borderRadius: "15px" }}
+            sx={{ width: "70%", height: "3.5rem", ">div": { borderBottom:"unset" ,height: "100%",border: "1px solid black", borderRadius: "15px",":before":{content:"none"}} }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
                   <Button >
-                    <SearchIcon sx={{ m: "0 auto", color: "black", borderRadius: "60px", backgroundColor: "#ffd7006e" }} />
+                    <SearchIcon sx={{ m: "0 auto", color: "black", borderRadius: "60px", backgroundColor: "#ffd7006e",p:"0.5rem" }} />
                   </Button>
                 </InputAdornment>
               )
