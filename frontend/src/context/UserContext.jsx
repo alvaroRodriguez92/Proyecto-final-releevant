@@ -5,6 +5,8 @@ const UserContext = createContext({
   logout: () => {},
   user: null,
   errorMessage: "",
+  section: "",
+  setSection: ()=>{}
 });
 
 export default function UserContextProvider({ children }) {
@@ -12,6 +14,9 @@ export default function UserContextProvider({ children }) {
     () => JSON.parse(localStorage.getItem("user")) ?? null
   );
   const [errorMessage, setErrorMessage] = useState(null);
+  const [section, setSection] = useState("");
+
+  
 
   async function login(values, actions) {
     const response = await fetch(`http://127.0.0.1:3000/user/login`, {
@@ -43,6 +48,8 @@ export default function UserContextProvider({ children }) {
     login,
     logout,
     errorMessage,
+    section,
+    setSection,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }

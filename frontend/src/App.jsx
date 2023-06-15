@@ -3,6 +3,7 @@ import "./App.css";
 import UserContextProvider from "./context/UserContext";
 import Home from "./views/Home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Perfil from "./views/Perfil/Perfil";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <UserContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/perfil" element={<Perfil />} />
         </Routes>
       </UserContextProvider>
     </BrowserRouter>
