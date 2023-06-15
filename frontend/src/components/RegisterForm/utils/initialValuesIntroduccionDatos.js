@@ -1,0 +1,23 @@
+export const initialValues={
+    nombre:"",
+    email:"",
+    tfn:"",
+    url:"",
+    descripcion:"",
+    password:"",
+    repetirPassword:"",
+    sector:"",
+    categoria:"",
+    tipoVia:"",
+    nombreVia:"",
+    numero:"",
+    piso:"",
+    puerta:"",
+    bloque:"",
+    CP:"",
+    localidad:"",
+    provincia:"",
+    pais:"",
+    longitud:"",
+    latitud:""
+}
