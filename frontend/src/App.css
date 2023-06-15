@@ -102,7 +102,17 @@ select.input-error {
 button:disabled {
   opacity: 0.35;
 }
-
-
-
+.contenedorHover{
+  transform: translateY(-3px);
+	box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.6);
+}
+.contenedorTitle{
+  font-weight: bolder;
+	font-size: 1.4em;
+	margin:0.5em;
+}
+.imagenView{
+  width: 25px;
+  height: 25px;
+}
 
