@@ -24,7 +24,6 @@ export default function Localizacion() {
     onSubmit: register,
   });
 
-  const [age, setAge] = useState("");
 
   const [mensajeRegistro, setMensajeRegistro] = useState(null);
 
@@ -46,7 +45,7 @@ export default function Localizacion() {
 
   return (
     <>
-      <form className="form-register" onSubmit={handleSubmit}>
+      {/* <form className="form-register" onSubmit={handleSubmit}> */}
         <Box
           sx={{
             display: "flex",
@@ -268,8 +267,8 @@ export default function Localizacion() {
           </Grid>
           </Grid>
         </Box>
-          <Button type="submit">REGISTER</Button>
-      </form>
+          {/* <Button type="submit">REGISTER</Button> */}
+      {/* </form> */}
     </>
   );
 }

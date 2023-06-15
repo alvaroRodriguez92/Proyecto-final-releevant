@@ -50,7 +50,7 @@ export default function IntroduccionDatos() {
 
   return (
     <>
-      <form className="form-register" onSubmit={handleSubmit}>
+      {/* <form className="form-register" onSubmit={handleSubmit}> */}
         <Box
           sx={{
             display: "flex",
@@ -224,9 +224,9 @@ export default function IntroduccionDatos() {
             </Grid>
           </Grid>
           </Grid>
-        <Button type="submit">REGISTER</Button>
+        {/* <Button type="submit">REGISTER</Button> */}
         </Box>
-      </form>
+      {/* </form> */}
     </>
   );
 }
