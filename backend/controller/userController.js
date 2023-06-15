@@ -30,39 +30,26 @@ userController.addUser = async (req, res) => {
     PROVINCIA,
     PAIS,
   } = req.body;
-  // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
-  if (
-    !NOMBRE ||
-    !EMAIL ||
-    !PASSWORD ||
-    !LONGITUD ||
-    !LATITUD ||
-    !TIPO_VIA ||
-    !NOMBRE_VIA ||
-    !NUMERO ||
-    !PISO ||
-    !PUERTA
-  )
-    return res.status(400).send("Error al recibir el body");
-
+  const newUser = {
+    NOMBRE: NOMBRE,
+    EMAIL: EMAIL,
+    TLF: TLF,
+    URL: URL,
+    DESCRIPCION: DESCRIPCION,
+    PASSWORD: PASSWORD,
+  };
+  
   // Buscamos el usuario en la base de datos
   try {
     const user = await dao.getUserByEmail(EMAIL);
     // Si existe el usuario respondemos con un 409 (conflict)
     if (user.length > 0) return res.status(409).send("usuario ya registrado");
     // Si no existe lo registramos
-    const newUser = {
-      NOMBRE: NOMBRE,
-      EMAIL: EMAIL,
-      TLF: TLF,
-      URL: URL,
-      DESCRIPCION: DESCRIPCION,
-      PASSWORD: PASSWORD,
-      CATEGORIA: CATEGORIA,
-    };
-
     const addUser = await dao.addUser(newUser);
-    if (addUser) {
+    if (addUser){
+      if(!CATEGORIA){
+        return res.send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
+      }      
       const newAddress = {
         ID_USER: addUser,
         LONGITUD: LONGITUD,
@@ -79,14 +66,27 @@ userController.addUser = async (req, res) => {
         PROVINCIA: PROVINCIA,
         PAIS: PAIS,
       };
+      if(!ID_USER || !LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !!NUMERO_VIA){
+        res.status(408).send("Error en la direccion")
+      }
+      const newOfertante = {
+        ID_USER: addUser,
+        ID_CATEGORIA: CATEGORIA,
+      }
       const addAddress = await dao.addAddress(newAddress);
       if (!addAddress)
         return res.send(
-          `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la direccion`
+          `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la DIRECCION`
         );
+      const addOfertante = await dao.addOfertante(newOfertante)
+      if (!addOfertante)
+        return res.send(
+          `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la CATEGORIA`
+        );
+      
     }
 
-    return res.send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
+    
   } catch (e) {
     throw new Error(e.message);
   }
@@ -148,33 +148,33 @@ userController.getPopup = async (req, res) => {
   }
 };
 //controlador para subir logo FALTA PASAR EL ID DE USUARIO POR BODY
-userController.addLogo = async (req, res) => {
-  try {
-    if (!req.files || req.files === null) {
-      return res.status(400).send("No se ha cargado ningun archivo");
-    }
+// userController.addLogo = async (req, res) => {
+//   try {
+//     if (!req.files || req.files === null) {
+//       return res.status(400).send("No se ha cargado ningun archivo");
+//     }
 
-    const logos = !req.files.logo.length ? [req.files.logo] : req.files.logo;
+//     const logos = !req.files.logo.length ? [req.files.logo] : req.files.logo;
 
-    logos.forEach(async (logo) => {
-      console.log(logo.name);
-      let uploadPath = path.join(__dirname, "../public/logo/" + logo.name);
-      logo.mv(uploadPath, (err) => {
-        if (err) return res.status(500).send(err);
-      });
-      await dao.addLogo({
-        ID_USER: 14,
-        PATH: uploadPath,
-        NOMBRE: logo.name,
-        ESTADO: 1,
-      });
-    });
-    res.send("Logo subido");
-  } catch (e) {
-    console.log(e.error);
-    return res.status(400).send(e.message);
-  }
-};
+//     logos.forEach(async (logo) => {
+//       console.log(logo.name);
+//       let uploadPath = path.join(__dirname, "../public/logo/" + logo.name);
+//       logo.mv(uploadPath, (err) => {
+//         if (err) return res.status(500).send(err);
+//       });
+//       await dao.addLogo({
+//         ID_USER: 14,
+//         PATH: uploadPath,
+//         NOMBRE: logo.name,
+//         ESTADO: 1,
+//       });
+//     });
+//     res.send("Logo subido");
+//   } catch (e) {
+//     console.log(e.error);
+//     return res.status(400).send(e.message);
+//   }
+// };
 //controlador para subir imagenes para perfil FALTA PASAR EL ID DE USUARIO POR BODY
 userController.addImagen = async (req, res) => {
   try {
@@ -196,10 +196,10 @@ userController.addImagen = async (req, res) => {
         if (err) return res.status(500).send(err);
       });
       await dao.addImagen({
-        ID_USER: 14,
+        ID_USER: imagen.ID_USER,
         PATH: uploadPath,
         NOMBRE: imagen.name,
-        ESTADO: 1,
+        ESTADO: imagen.TIPO,
       });
     });
     res.send("Imagen subido");
