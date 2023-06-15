@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for macos13 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.33, for macos13 (x86_64)
 --
 -- Host: localhost    Database: prueba_mapas
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.33
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -92,7 +92,8 @@ CREATE TABLE `IMAGENES` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `ID_USER` int NOT NULL,
   `PATH` varchar(200) NOT NULL,
-  `NOMBRE` varchar(100) NOT NULL,
+  `IMG_NOMBRE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `TIPO` int NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `IMAGENES_FK` (`ID_USER`),
   CONSTRAINT `IMAGENES_FK` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID`)
@@ -105,37 +106,37 @@ CREATE TABLE `IMAGENES` (
 
 LOCK TABLES `IMAGENES` WRITE;
 /*!40000 ALTER TABLE `IMAGENES` DISABLE KEYS */;
-INSERT INTO `IMAGENES` VALUES (19,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/logonuevamente.png','logonuevamente.png'),(20,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente001.png','nuevamente001.png'),(21,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente002.png','nuevamente002.png'),(22,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente003.png','nuevamente003.png'),(23,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente005.png','nuevamente005.png'),(24,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente004.png','nuevamente004.png'),(25,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente006.png','nuevamente006.png'),(26,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente007.png','nuevamente007.png'),(27,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente009.jpeg','nuevamente009.jpeg'),(28,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente008.jpeg','nuevamente008.jpeg');
+INSERT INTO `IMAGENES` VALUES (19,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/logonuevamente.png','logonuevamente.png',1),(20,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente001.png','nuevamente001.png',0),(21,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente002.png','nuevamente002.png',0),(22,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente003.png','nuevamente003.png',0),(23,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente005.png','nuevamente005.png',0),(24,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente004.png','nuevamente004.png',0),(25,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente006.png','nuevamente006.png',0),(26,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente007.png','nuevamente007.png',0),(27,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente009.jpeg','nuevamente009.jpeg',0),(28,14,'/Users/Francis-Mac/Desktop/mapas/api/public/imagenes/nuevamente008.jpeg','nuevamente008.jpeg',0);
 /*!40000 ALTER TABLE `IMAGENES` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `LOGO`
+-- Table structure for table `OFERTANTE`
 --
 
-DROP TABLE IF EXISTS `LOGO`;
+DROP TABLE IF EXISTS `OFERTANTE`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `LOGO` (
+CREATE TABLE `OFERTANTE` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `ID_USER` int NOT NULL,
-  `PATH` varchar(200) NOT NULL,
-  `LOGO_NOMBRE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `ESTADO` int NOT NULL DEFAULT '1',
+  `ID_CATEGORIA` int unsigned NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `LOGO_FK` (`ID_USER`),
-  CONSTRAINT `LOGO_FK` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID`)
+  KEY `OFERTANTE_FK` (`ID_USER`),
+  KEY `OFERTANTE_FK_1` (`ID_CATEGORIA`),
+  CONSTRAINT `OFERTANTE_FK` FOREIGN KEY (`ID_USER`) REFERENCES `USERS` (`ID`),
+  CONSTRAINT `OFERTANTE_FK_1` FOREIGN KEY (`ID_CATEGORIA`) REFERENCES `CATEGORIA` (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `LOGO`
+-- Dumping data for table `OFERTANTE`
 --
 
-LOCK TABLES `LOGO` WRITE;
-/*!40000 ALTER TABLE `LOGO` DISABLE KEYS */;
-INSERT INTO `LOGO` VALUES (1,14,'/Users/Francis-Mac/Desktop/mapas/api/public/logo/logonuevamente.png','logonuevamente.png',1);
-/*!40000 ALTER TABLE `LOGO` ENABLE KEYS */;
+LOCK TABLES `OFERTANTE` WRITE;
+/*!40000 ALTER TABLE `OFERTANTE` DISABLE KEYS */;
+INSERT INTO `OFERTANTE` VALUES (1,14,2);
+/*!40000 ALTER TABLE `OFERTANTE` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -163,6 +164,33 @@ CREATE TABLE `REDES` (
 LOCK TABLES `REDES` WRITE;
 /*!40000 ALTER TABLE `REDES` DISABLE KEYS */;
 /*!40000 ALTER TABLE `REDES` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `RESPUESTAS`
+--
+
+DROP TABLE IF EXISTS `RESPUESTAS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `RESPUESTAS` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `ID_VALORACION` int NOT NULL,
+  `ID_COMENTADOR` int NOT NULL,
+  `RESPUESTA` text NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `RESPUESTAS_FK` (`ID_VALORACION`),
+  CONSTRAINT `RESPUESTAS_FK` FOREIGN KEY (`ID_VALORACION`) REFERENCES `VALORACIONES` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `RESPUESTAS`
+--
+
+LOCK TABLES `RESPUESTAS` WRITE;
+/*!40000 ALTER TABLE `RESPUESTAS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `RESPUESTAS` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -206,11 +234,7 @@ CREATE TABLE `USERS` (
   `PASSWORD` varchar(100) NOT NULL,
   `FECHA_REG` datetime NOT NULL,
   `ESTADO` int NOT NULL DEFAULT '1',
-  `TIPO` int NOT NULL DEFAULT '0',
-  `ID_CATEGORIA` int unsigned NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `USERCATE_idx` (`ID_CATEGORIA`),
-  CONSTRAINT `USERCATE` FOREIGN KEY (`ID_CATEGORIA`) REFERENCES `CATEGORIA` (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -220,7 +244,7 @@ CREATE TABLE `USERS` (
 
 LOCK TABLES `USERS` WRITE;
 /*!40000 ALTER TABLE `USERS` DISABLE KEYS */;
-INSERT INTO `USERS` VALUES (14,'NUEVA MENTE PSICOLOGOS','info@nuevamentepsicologos.com','951325269','nuevamentepsicologos.com','Gabinete Psicológico','81dc9bdb52d04dc20036dbd8313ed055','2023-05-31 12:15:58',1,0,2),(15,'FRANCISCO JOSE DEL RIO VELARDE','f.delrio.velarde@gmail.com','625376988',NULL,'ADMINISTRADOR','f813c705499c56d8cbce9349879dc048','2023-06-07 19:50:00',1,1,1);
+INSERT INTO `USERS` VALUES (14,'NUEVA MENTE PSICOLOGOS','info@nuevamentepsicologos.com','951325269','nuevamentepsicologos.com','Gabinete Psicológico','81dc9bdb52d04dc20036dbd8313ed055','2023-05-31 12:15:58',1),(15,'FRANCISCO JOSE DEL RIO VELARDE','f.delrio.velarde@gmail.com','625376988',NULL,'ADMINISTRADOR','f813c705499c56d8cbce9349879dc048','2023-06-07 19:50:00',1);
 /*!40000 ALTER TABLE `USERS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,4 +291,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-12 19:06:36
+-- Dump completed on 2023-06-15 15:55:26
