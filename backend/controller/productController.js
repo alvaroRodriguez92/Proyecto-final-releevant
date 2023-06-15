@@ -1,4 +1,4 @@
-const dao = require("../service/dao.js");
+const dao = require("../service/dao/userDao.js");
 const path = require("path");
 
 const productController = {};
