@@ -19,7 +19,7 @@ export default function Categorias({idCategoria}) {
         
         <Box sx={{ display: "flex",columnGap:"1rem",p:"1rem" }}>
             {resultCategorias.map((item, i) => 
-                <button className="button" key={i}>{item.NOMBRE_CATEGORIA}</button>
+                <button className="button" key={i}>{item.NOMBRE_CATEGORIA.toLowerCase()}</button>
             )}
         </Box>
     )

@@ -15,7 +15,7 @@ import Categorias from "../Categorias/Categorias";
 import { InputAdornment, Box } from "@mui/material";
 import { useUserContext } from "../../context/UserContext";
 
-export default function NavIconos() {
+export default function NavSectores() {
 
     const { section, setSection } = useUserContext();
     const sectionContainer= { display: "flex", flexDirection: "column", alignItems: "center", svg:{height: "60px", fontSize: "2.5rem"} }
@@ -31,7 +31,7 @@ export default function NavIconos() {
                 <p>Construccion</p>
             </Box>
             <Box onClick={()=>{section==="agroalimentario"?setSection(""): setSection("agroalimentario")}} sx={sectionContainer}>
-                <AgricultureOutlinedIcon sx={{ height: "60px", fontSize: "2.5rem", ml: "1rem" }} />
+                <AgricultureOutlinedIcon />
                 <p>Agroalimentario</p>
             </Box>
             <Box onClick={()=>{section==="legal"?setSection(""): setSection("legal")}} sx={sectionContainer}>

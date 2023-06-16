@@ -9,7 +9,7 @@ import Box from '@mui/material/Box'
 
 export default function CardEmpresas() {
   return (
-    <Box sx={{ display: "flex", p: "1rem", m: "2rem",justifyContent: "space-around" }} >
+    <Box  sx={{ display: "flex", p: "1rem", m: "2rem",justifyContent: "space-around" }} >
       
     <Card className="contenedorHover" 
     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
