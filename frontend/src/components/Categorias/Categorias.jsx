@@ -1,19 +1,26 @@
 import { Box } from '@mui/material';
+import { useState, useEffect } from 'react';
 
 
 
+export default function Categorias({idCategoria}) {
+    const [resultCategorias, setResultCategorias] = useState([]);
 
-export default function Categorias({array}) {
-
-console.log(array);
+    useEffect(()=>{
+    async function categoriaFetch(){
+        const response = await fetch(`http://127.0.0.1:3000/sector/${idCategoria}`)
+        const data = await response.json()
+            setResultCategorias(data)
+    }
+    categoriaFetch()
+},[])
+    console.log(resultCategorias);
     return (
         
         <Box sx={{ display: "flex",columnGap:"1rem",p:"1rem" }}>
-            {array.map((item, i) => 
-                <button className="button" key={i}>{item.nombre}</button>
+            {resultCategorias.map((item, i) => 
+                <button className="button" key={i}>{item.NOMBRE_CATEGORIA}</button>
             )}
         </Box>
     )
 }
-
-// sx={{ border: "0.1rem solid black", borderRadius: "2rem", color: "black", textTransform: "unset !important" }}

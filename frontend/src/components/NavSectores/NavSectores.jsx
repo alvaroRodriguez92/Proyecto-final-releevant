@@ -19,7 +19,6 @@ export default function NavIconos() {
 
     const { section, setSection } = useUserContext();
     const sectionContainer= { display: "flex", flexDirection: "column", alignItems: "center", svg:{height: "60px", fontSize: "2.5rem"} }
-    const arrayCategorias = { salud: [{ nombre: "dentista" }, { nombre: "dentista" }], construccion: [{ nombre: "albañil" },{nombre:"fontanero"}], agroalimentario:[{nombre:"ganaderia"},{nombre:"pesca"},{nombre:"agricultura"}],legal:[{nombre:"abogados"},{nombre:"notarios"}]}
     return (
         <>
         <Box sx={{ display: "flex", columnGap: "1rem",width:"100%",justifyContent:"space-evenly", div: { ">p": { margin: "0 !important" } } }}>
@@ -39,46 +38,55 @@ export default function NavIconos() {
                 <AccountBalanceOutlinedIcon/>
                 <p>Legal</p>
             </Box>
-            <Box sx={sectionContainer}>
+            <Box onClick={()=>{section==="industria"?setSection(""): setSection("industria")}} sx={sectionContainer}>
                 <FactoryOutlinedIcon/>
                 <p>Industria</p>
             </Box>
-            <Box sx={sectionContainer}>
+            <Box onClick={()=>{section==="educacion"?setSection(""): setSection("educacion")}} sx={sectionContainer}>
                 <MenuBookOutlinedIcon/>
                 <p>Educacion</p>
             </Box>
-            <Box sx={sectionContainer}>
+            <Box onClick={()=>{section==="deporte"?setSection(""): setSection("deporte")}} sx={sectionContainer}>
                 <SportsFootballOutlinedIcon/>
                 <p>Deporte</p>
             </Box>
-            <Box sx={sectionContainer}>
+            <Box onClick={()=>{section==="hosteleria"?setSection(""): setSection("hosteleria")}} sx={sectionContainer}>
                 <NightShelterOutlinedIcon/>
                 <p>Hosteleria</p>
             </Box>
-            <Box sx={sectionContainer}>
+            <Box onClick={()=>{section==="hogar"?setSection(""): setSection("hogar")}} sx={sectionContainer}>
                 <GiteOutlinedIcon/>
                 <p>Hogar</p>
             </Box>
-            <Box sx={sectionContainer}>
+            <Box onClick={()=>{section==="tecnologia"?setSection(""): setSection("tecnologia")}} sx={sectionContainer}>
                 <DevicesOutlinedIcon/>
                 <p>Tecnologia</p>
             </Box>
-            <Box sx={sectionContainer}>
+            <Box onClick={()=>{section==="automocion"?setSection(""): setSection("automocion")}} sx={sectionContainer}>
                 <DirectionsCarOutlinedIcon/>
                 <p>Automocion</p>
             </Box>
-            <Box sx={sectionContainer}>
+            <Box onClick={()=>{section==="inmobiliaria"?setSection(""): setSection("inmobiliaria")}} sx={sectionContainer}>
                 <HomeWorkOutlinedIcon/>
                 <p>Inmobiliaria</p>
             </Box>
-            <Box sx={sectionContainer}>
+            <Box onClick={()=>{section==="cultura"?setSection(""): setSection("cultura")}} sx={sectionContainer}>
                 <SchoolOutlinedIcon/>
                 <p>Cultura</p>
             </Box>
         </Box>
-            {section === "salud" && <Categorias array={arrayCategorias.salud} />}
-            {section === "construccion" && <Categorias array={arrayCategorias.construccion} />}
-            {section === "agroalimentario" && <Categorias array={arrayCategorias.agroalimentario} />}
-            {section === "legal" && <Categorias array={arrayCategorias.legal} />}</>
+            {section === "salud" && <Categorias idCategoria={8}/>}
+            {section === "construccion" && <Categorias idCategoria={9} />}
+            {section === "agroalimentario" && <Categorias idCategoria={10} />}
+            {section === "legal" && <Categorias idCategoria={11}/>}
+            {section === "industria" && <Categorias idCategoria={12}/>}
+            {section === "educacion" && <Categorias idCategoria={13}/>}
+            {section === "deporte" && <Categorias idCategoria={14}/>}
+            {section === "tecnologia" && <Categorias idCategoria={15}/>}
+            {section === "hogar" && <Categorias idCategoria={16}/>}
+            {section === "automocion" && <Categorias idCategoria={17}/>}
+            {section === "inmobiliaria" && <Categorias idCategoria={18}/>}
+            {section === "cultura" && <Categorias idCategoria={19}/>}
+            {section === "hosteleria" && <Categorias idCategoria={20}/>}</>
     );
 }

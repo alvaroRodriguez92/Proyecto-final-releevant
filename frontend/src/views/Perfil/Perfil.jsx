@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import Footer from '../../components/Footer/Footer';
-import CardPerfilView from '../../components/CardPerfilView/CardPerfilView';
+import PerfilView from '../../components/PerfilView/PerfilView';
 
 
 export default function Perfil() {
@@ -12,7 +12,7 @@ export default function Perfil() {
                 <img className="imagenLogoView" src="../../src/assets/logonuevamente.png" />
             </Box>
                 <Box >
-                   <CardPerfilView/> 
+                   <PerfilView/> 
                 </Box>
             <Footer />
         </>
