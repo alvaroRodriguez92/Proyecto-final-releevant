@@ -5,12 +5,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box'
+import {Box, Grid} from '@mui/material'
 
 export default function CardEmpresas() {
   return (
-    <Box  sx={{ display: "flex", p: "1rem", m: "2rem",justifyContent: "space-around" }} >
-      
+
+    <Box width="100%" sx={{ display: "flex", p: "1rem", m: "2rem" }}>
+
+     <Grid container spacing={3}>
+      <Grid item xs={6}>
     <Card className="contenedorHover" 
     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
       <CardMedia
@@ -28,9 +31,11 @@ export default function CardEmpresas() {
         </Typography>
       </CardContent>
       <CardActions sx={{justifyContent:"end"}}>
-        <Button size="small">Ver mas</Button>
+        <Button  sx={{borderRadius:"10px", mr:1}}variant="contained" size="small">Ver mas</Button>
       </CardActions>
         </Card>
+        </Grid>
+      <Grid item xs={6}>
         
      <Card className="contenedorHover"
      sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
@@ -52,6 +57,10 @@ export default function CardEmpresas() {
          <Button size="small">Ver mas</Button>
        </CardActions>
       </Card>
+      </Grid>
+
+      <Grid item xs={6}>
+
       <Card className="contenedorHover"
      sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
        <CardMedia
@@ -72,6 +81,9 @@ export default function CardEmpresas() {
          <Button size="small">Ver mas</Button>
        </CardActions>
       </Card>
+    </Grid>
+    
+    <Grid item xs={6}>
       <Card className="contenedorHover"
      sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
        <CardMedia
@@ -92,6 +104,8 @@ export default function CardEmpresas() {
          <Button size="small">Ver mas</Button>
        </CardActions>
       </Card>
+      </Grid>
+      </Grid> 
     </Box>
   );
 }
