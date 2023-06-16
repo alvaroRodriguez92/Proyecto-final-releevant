@@ -7,8 +7,8 @@ export default function Layout() {
     return (
         <Box >
                 <Grid container spacing={2}>
-                    <Grid item xs={2} sx={{ img: { width: "50%" } }} >
-                        <img src="../../src/assets/logowebsinfondo.png" />
+                    <Grid item xs={2} sx={{ img: { width: "75%",p:"2rem" } }} >
+                        <img src="../../src/assets/Solventum (1).png" />
                     </Grid>
                     <Grid item xs={8} sx={{ display: "flex", alignItems: "center", a: { width: "100%" } }}>
                         <Buscador />

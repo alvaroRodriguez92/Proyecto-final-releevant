@@ -5,7 +5,7 @@ import Privacidad from "../Privacidad/Privacidad";
 
 export default function Footer() {
     return (
-      <Grid container sx={{ backgroundColor: "#4c4d4e"}}>
+      <Grid container sx={{ backgroundColor: "#4B4844"}}>
         <Grid item xs={6} sx={{ pl: 20, pt: 10, pb: 10 }}>
           <Privacidad size={28} />
         </Grid>

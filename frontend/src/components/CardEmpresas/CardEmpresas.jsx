@@ -10,7 +10,6 @@ import {Box, Grid} from '@mui/material'
 export default function CardEmpresas() {
   return (
 
-
     <Box width="100%" sx={{ display: "flex", p: "1rem", m: "2rem" }}>
 
      <Grid container spacing={3}>

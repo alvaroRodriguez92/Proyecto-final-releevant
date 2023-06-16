@@ -98,9 +98,13 @@ userController.addUser = async (req, res) => {
   }
 };
 //controlador para obtener las localizaciones de todos los usuarios
-userController.getLocations = async (req, res) => {
+//PROBADO EN POSTMAN
+userController.getLocationsBySector = async (req, res) => {
+  const id = req.params.id
+  console.log(id)
   try {
-    const locations = await dao.getLocations();
+    const locations = await dao.getLocationsBySector(id);
+   
     if (locations.length <= 0)
       return res.status(409).send("No hay localizaciones que mostrar");
     return res.status(200).send(locations);
@@ -109,32 +113,24 @@ userController.getLocations = async (req, res) => {
   }
 };
 //controlador para obtener usuarios por sector
+//Probado en POSTMAN
 userController.getUsersBySector = async (req, res) => {
   try {
-    let users = [];
-    const categorias = await dao.getUserBySector(req.params.id);
-    if (categorias.length <= 0)
+    const users = await dao.getUserBySector(req.params.id);
+    if (users.length <= 0)
       return res.status(409).send("No hay Categorias que mostrar");
-
-    categorias.map(async (categoria) => {
-      const usercat = await dao.getUsersByCategorias(categoria.ID);
-      //console.log(usercat);
-      if (usercat.length > 0) {
-        usercat.map((u) => {
-          users.push(u);
-        });
-      }
-      return res.status(200).send(users);
-    });
+    return res.status(200).send(users);
   } catch (e) {
     throw new Error(e.message);
   }
 };
 
 //controlador para filtrar usuarios por categorias
+//Pobado en POSTMAN
 userController.getUsersByCategoria = async (req, res) => {
   try {
-    const users = await dao.getUsersByCategorias(req.params.id);
+    const users = await dao.getUsersByCategoria(req.params.id);
+    console.log(users)
     if (users.length <= 0)
       return res.status(409).send("No hay usuarios que mostrar");
     return res.status(200).send(users);
@@ -153,35 +149,7 @@ userController.getPopup = async (req, res) => {
     throw new Error(e.message);
   }
 };
-//controlador para subir logo FALTA PASAR EL ID DE USUARIO POR BODY
-// userController.addLogo = async (req, res) => {
-//   try {
-//     if (!req.files || req.files === null) {
-//       return res.status(400).send("No se ha cargado ningun archivo");
-//     }
-
-//     const logos = !req.files.logo.length ? [req.files.logo] : req.files.logo;
-
-//     logos.forEach(async (logo) => {
-//       console.log(logo.name);
-//       let uploadPath = path.join(__dirname, "../public/logo/" + logo.name);
-//       logo.mv(uploadPath, (err) => {
-//         if (err) return res.status(500).send(err);
-//       });
-//       await dao.addLogo({
-//         ID_USER: 14,
-//         PATH: uploadPath,
-//         NOMBRE: logo.name,
-//         ESTADO: 1,
-//       });
-//     });
-//     res.send("Logo subido");
-//   } catch (e) {
-//     console.log(e.error);
-//     return res.status(400).send(e.message);
-//   }
-// };
-//controlador para subir imagenes para perfil FALTA PASAR EL ID DE USUARIO POR BODY
+//Controlador pr subir imagenes
 userController.addImagen = async (req, res) => {
   try {
     if (!req.files || req.files === null) {
@@ -215,9 +183,11 @@ userController.addImagen = async (req, res) => {
   }
 };
 //controlador de login de usuario
+//Probado en POSTMAN
 userController.loginUser = async (req, res) => {
+  console.log(req.body)
   const { email, password } = req.body;
-
+  
   if (!email || !password) {
     return res.status(400).send("Error al recibir el body");
   }
@@ -261,27 +231,28 @@ userController.loginUser = async (req, res) => {
 userController.deleteUser = async (req, res) => {
   // OBTENER CABECERA Y COMPROBAR SU AUTENTICIDAD Y CADUCIDAD
   const { authorization } = req.headers;
-  // Si no existe el token enviamos un 401 (unauthorized)
+  // // Si no existe el token enviamos un 401 (unauthorized)
   if (!authorization) return res.sendStatus(401);
   const token = authorization.split(" ")[1];
 
   try {
     // codificamos la clave secreta
     const encoder = new TextEncoder();
-    // verificamos el token con la función jwtVerify. Le pasamos el token y la clave secreta codificada
+    // // verificamos el token con la función jwtVerify. Le pasamos el token y la clave secreta codificada
     const { payload } = await jwtVerify(
       token,
       encoder.encode(process.env.JWT_SECRET)
     );
-    // Verificamos que seamos usuario administrador
-    if (!payload.role)
-      return res.status(409).send("no tiene permiso de administrador");
-    // Buscamos si el id del usuario existe en la base de datos
-    const user = await dao.getUserbyId(req.params.id);
+    // // Verificamos que seamos usuario administrador
+    // if (!payload.role)
+    //   return res.status(409).send("no tiene permiso de administrador");
+    // // // Buscamos si el id del usuario existe en la base de datos
+    const user = await dao.getUserById(req.params.id);
     // Si no existe devolvemos un 404 (not found)
     if (user.length === 0) return res.status(404).send("el usuario no existe");
     // Si existe, eliminamos el usuario por el id
-    await dao.deleteUser(req.params.id);
+    //await dao.deleteUser(req.params.id);
+    await dao.deleteUser(req.params.id,user);
     // Devolvemos la respuesta
     return res.send(`Usuario con id ${req.params.id} eliminado`);
   } catch (e) {
