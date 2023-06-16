@@ -6,7 +6,7 @@ const dao = {};
 
 //filtrar usuarios
 //obtener usuarios que pertecen a un sector
-dao.getUserBySector = async (id) => await sectorQueries.getUserBySector(id);
+dao.getUserBySector = async (id) => await userQueries.getUsersBySector(id);
 dao.getUsersByCategorias = async (id) =>
   await userQueries.getUsersByCategorias(id);
 // Buscar un usuario por el email
@@ -14,7 +14,7 @@ dao.getUserByEmail = async (email) => await userQueries.getUserByEmail(email);
 // Añadir un nuevo usuario
 dao.addUser = async (newUser) => await userQueries.addUser(newUser);
 dao.addAddress = async (newAddress) => await userQueries.addAddress(newAddress);
-dao.getLocations = async () => await userQueries.getLocations();
+dao.getLocationsBySector = async (id) => await userQueries.getLocationsBySector(id);
 dao.addOfertante = async (newOfertante)=> await userQueries.addOfertante(newOfertante)
 //Añadir y buscar imagen
 dao.addLogo = async (imageData) => await userQueries.addLogo(imageData);

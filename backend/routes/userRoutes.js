@@ -2,7 +2,7 @@ const express = require("express");
 const userController = require("../controller/userController");
 
 const userRuoter = express.Router();
-userRuoter.get("/", userController.getLocations); //Ruta para opteer las geolocalizaciones de todos los usuarios
+userRuoter.get("/:id", userController.getUsersBySector); //Ruta para opteer las geolocalizaciones de todos los usuarios
 userRuoter.get("/popup/:id", userController.getPopup);
 userRuoter.post("/", userController.addUser); //Ruta para registro de usuarios
 userRuoter.post("/addlogo", userController.addImagen);

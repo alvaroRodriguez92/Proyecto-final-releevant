@@ -262,13 +262,13 @@ userQueries.updateUser = async (id, userData) => {
   }
 };
 
-userQueries.getLocations = async () => {
+userQueries.getLocationsBySector = async (id) => {
   let conn = null;
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT ID_USER, LATITUD, LONGITUD FROM DIRECCIONES",
-      null,
+      queries.getUseresLocationsBySector,
+      id,
       "select",
       conn
     );

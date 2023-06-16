@@ -98,9 +98,10 @@ userController.addUser = async (req, res) => {
   }
 };
 //controlador para obtener las localizaciones de todos los usuarios
-userController.getLocations = async (req, res) => {
+userController.getLocationsBySector = async (req, res) => {
+  const id = req.params.id
   try {
-    const locations = await dao.getLocations();
+    const locations = await dao.getLocationsBySector(id);
     if (locations.length <= 0)
       return res.status(409).send("No hay localizaciones que mostrar");
     return res.status(200).send(locations);
