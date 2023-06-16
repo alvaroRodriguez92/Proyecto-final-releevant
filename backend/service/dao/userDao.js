@@ -6,7 +6,7 @@ const dao = {};
 
 //filtrar usuarios
 //obtener usuarios que pertecen a un sector
-dao.getUserBySector = async (id) => await sectorQueries.getUserBySector(id);
+dao.getUserBySector = async (id) => await userQueries.getUsersBySector(id);
 dao.getUsersByCategorias = async (id) =>
   await userQueries.getUsersByCategorias(id);
 // Buscar un usuario por el email
