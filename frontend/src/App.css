@@ -1,6 +1,25 @@
+body{
+  background-color: #efefef;
+  font-family: 'Alice', serif!important;
+  margin:0;
+}
+.MuiTypography-root{
+  font-family: 'Alice', serif!important;
+
+}
+
+
+  
 .leaflet-container{
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
+  height:715px;
+  width:100%;
+  margin-top: 3rem;
+  margin-left:5rem;
+  padding:1rem;
+  border: 2px solid black;
+  border-radius: 20px;
 }
 
 .leaflet-control {
@@ -103,6 +122,84 @@ button:disabled {
   opacity: 0.35;
 }
 
+.form-register{
+  max-width: 100%;
+}
 
+form label{
+  margin:0;
+}
 
+/* FORM NORMALES */
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+  border-radius: 10px!important;
+  box-shadow: 0 0 15px 4px
+  rgba(0,0,0,0.1);
+}
 
+/* FORM DE DESCRIPCION */
+.css-1qxw4jt-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 10px!important;
+  box-shadow: 0 0 15px 4px
+  rgba(0,0,0,0.1);
+}
+
+/* FORM DE SELECTS */
+.css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+  border-radius: 10px!important;
+  box-shadow: 0 0 15px 4px
+  rgba(0,0,0,0.1);
+}
+
+/* ESTILIZANDO EL INPUT FILE */
+
+.css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 10px!important;
+  box-shadow: 0 0 15px 4px
+  rgba(0,0,0,0.1);
+}
+
+.contenedorHover:hover{
+  transform: translateY(-3px);
+	box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.6);
+}
+.contenedorTitle{
+  font-weight: bolder;
+	font-size: 1.4em;
+	margin:0.5em;
+}
+.headerImageView{
+  width: 100%;
+  height: 20rem;
+}
+.imagenLogoView{
+  width: 10%;
+  height: 10%;
+  position:absolute;
+  top:16rem;
+  border-radius: 100px;
+  padding: 1rem;
+}
+.button {
+  display: inline-block;
+  padding: 14px 19px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: #4B4844;
+  background-color: #FFEE8C;
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 9px black;
+  padding: 1rem;
+  text-transform: capitalize;
+}
+.button:hover {background-color: #FFEE8C}
+
+.button:active {
+  background-color: #FFEE8C;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

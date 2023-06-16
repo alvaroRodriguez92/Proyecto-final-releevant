@@ -31,7 +31,6 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import ToolsIcon from "../../assets/toolsicon.avif";
 import { DRAWER_WIDTH } from "../../const/drawerWidth";
 import LoginForm from "../../components/LoginForm/LoginForm";
-import RegisterForm from "../RegisterForm/RegisterForm";
 //import { userMenu } from "../../const/userMenu";
 //import Link from "../ui/Link";
 //import { styleModal } from "../../theme/theme";
