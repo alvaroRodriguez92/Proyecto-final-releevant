@@ -17,7 +17,7 @@ export default function Privacidad() {
             textAlign: "center",
           }}
         >
-          Optimus solutions
+          Solventum
         </Typography>
       </Grid>
       <Grid container>

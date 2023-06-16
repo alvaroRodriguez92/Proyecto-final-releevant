@@ -1,4 +1,4 @@
-import { Button,Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 
 
@@ -8,10 +8,12 @@ export default function Categorias({array}) {
 console.log(array);
     return (
         
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex",columnGap:"1rem",p:"1rem" }}>
             {array.map((item, i) => 
-                <Button key={i} sx={{ border: "0.1rem solid black", borderRadius: "2rem", color: "black", textTransform: "unset !important" }}>{item.nombre}</Button>
+                <button className="button" key={i}>{item.nombre}</button>
             )}
         </Box>
     )
 }
+
+// sx={{ border: "0.1rem solid black", borderRadius: "2rem", color: "black", textTransform: "unset !important" }}

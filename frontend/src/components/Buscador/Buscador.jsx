@@ -24,7 +24,7 @@ export default function Buscador() {
               endAdornment: (
                 <InputAdornment position="end">
                   <Button >
-                    <SearchIcon sx={{ m: "0 auto", color: "black", borderRadius: "60px", backgroundColor: "#ffd7006e",p:"0.5rem" }} />
+                    <SearchIcon sx={{ m: "0 auto", color: "black", borderRadius: "60px", backgroundColor: "#FFEE8C",p:"0.5rem" }} />
                   </Button>
                 </InputAdornment>
               )

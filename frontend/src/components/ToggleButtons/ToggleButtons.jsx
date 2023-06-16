@@ -21,7 +21,7 @@ export default function ToggleButtons() {
  
   return (
     <Box sx={{display:"flex", width:"100%", height:"100%", justifyContent:"center", alignItems:"center"}}>
-    <Button sx={{border:"1px solid black", borderRadius:"30px", backgroundColor:"#ffd7006e"}} onClick={handleClick}
+    <Button sx={{border:"1px solid black", borderRadius:"30px", backgroundColor:"#FFEE8C"}} onClick={handleClick}
     size="small"
     aria-controls={open ? 'account-menu' : undefined}
     aria-haspopup="true"
