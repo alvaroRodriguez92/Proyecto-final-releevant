@@ -22,6 +22,22 @@ userQueries.getUserByEmail = async (email) => {
     conn && (await conn.end());
   }
 };
+userQueries.getUserById = async (id) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM USERS WHERE ID = ?",
+      id,
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 //Query para registrar usuario nuevo
 userQueries.addUser = async (newUser) => {
   let conn = null;
@@ -153,7 +169,7 @@ userQueries.getPopup = async (id) => {
   }
 };
 
-userQueries.getUsersByCategorias = async (id) => {
+userQueries.getUsersByCategoria = async (id) => {
   let conn = null;
   try {
     conn = await db.createConnection();
@@ -202,26 +218,58 @@ userQueries.getUserLogo = async (ID_USER) => {
   }
 };
 
-userQueries.deleteUser = async (id) => {
+// userQueries.deleteUser = async (id) => {
+//   let conn = null;
+//   try {
+//     conn = await db.createConnection();
+//     return await db.query("DELETE FROM users WHERE id =?", id, "delete", conn);
+//   } catch (e) {
+//     throw new Error(e);
+//   } finally {
+//     conn && (await conn.end());
+//   }
+// };
+// //obtener usuario por el id
+// userQueries.getUserbyId = async (id) => {
+//   let conn = null;
+//   try {
+//     conn = await db.createConnection();
+//     return await db.query(
+//       "SELECT * FROM users WHERE id = ?",
+//       id,
+//       "select",
+//       conn
+//     );
+//   } catch (e) {
+//     throw new Error(e);
+//   } finally {
+//     conn && (await conn.end());
+//   }
+// };
+
+userQueries.deleteUser = async (id, userData) => {
+  // Conectamos con la base de datos y añadimos el usuario.
   let conn = null;
   try {
     conn = await db.createConnection();
-    return await db.query("DELETE FROM users WHERE id =?", id, "delete", conn);
-  } catch (e) {
-    throw new Error(e);
-  } finally {
-    conn && (await conn.end());
-  }
-};
-//obtener usuario por el id
-userQueries.getUserbyId = async (id) => {
-  let conn = null;
-  try {
-    conn = await db.createConnection();
+    // Creamos un objeto con los datos que nos puede llegar del usuario a modificar en la base de datos.
+    // Encriptamos la password con md5 si nos llega por el body, sino la declaramos como undefined
+    // y usamos la libreria momentjs para actualizar la fecha.
+    let userObj = {
+      NOMBRE: userData.NOMBRE,
+      EMAIL: userData.EMAIL,
+      TLF: userData.TLF,
+      PASSWORD: userData.PASSWORD,
+      FECHA_REG: userData.FECHA_REG,
+      ESTADO: 0,
+    };
+    // Eliminamos los campos que no se van a modificar (no llegan por el body)
+    userObj = await utils.removeUndefinedKeys(userObj);
+
     return await db.query(
-      "SELECT * FROM users WHERE id = ?",
-      id,
-      "select",
+      "UPDATE users SET ? WHERE id = ?",
+      [userObj, id],
+      "update",
       conn
     );
   } catch (e) {
@@ -280,3 +328,4 @@ userQueries.getLocationsBySector = async (id) => {
 };
 
 module.exports = userQueries;
+
