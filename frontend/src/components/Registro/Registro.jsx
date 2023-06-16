@@ -20,7 +20,7 @@ import LogoFotos from "../RegisterForm/LogoFotos";
 import { useState } from "react";
 import { initialValues } from "../RegisterForm/utils/initialValuesIntroduccionDatos";
 import { registroSchema } from "../RegisterForm/utils/introduccionDatosSchema";
-import { useFormik } from "formik";
+import { useFormik, FieldArray } from "formik";
 
 const steps = ["Introducción de datos", "Localización", "Logo/Fotos"];
 
@@ -357,7 +357,14 @@ export default function Registro() {
                     </Grid>
                   </Box>
                 ) : activeStep == 1 ? (
+                  <FieldArray name="direcciones">
+                    {({push, remove})=>(
+
+                    
                   <>
+                  {values.direcciones.map((_, index)=>(
+
+                  
                     <Box
                       sx={{
                         display: "flex",
@@ -376,15 +383,16 @@ export default function Registro() {
                         width="100%"
                         sx={{ width: "100%" }}
                       >
+
                         <Grid item xs={6}>
                           <TextField
-                            id="tipoVia"
-                            error={errors.tipoVia && touched.tipoVia}
-                            name="tipoVia"
+                            id={`direcciones[${index}].tipoVia`}
+                            error={errors.direcciones[index].tipoVia && touched.direcciones[index].tipoVia}
+                            name={`direcciones[${index}].tipoVia`}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={values.tipoVia}
-                            helperText={errors.tipoVia}
+                            value={values.direcciones[index].tipoVia}
+                            helperText={errors?.direcciones[index].tipoVia}
                             label="Tipo de via"
                             size="small"
                             sx={{ m: 1, width: "100%" }}
@@ -395,7 +403,7 @@ export default function Registro() {
                           <TextField
                             id="nombreVia"
                             error={errors.nombreVia && touched.nombreVia}
-                            name="nombreVia"
+                            name="direcciones[0].nombreVia"
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.nombreVia}
@@ -609,9 +617,10 @@ export default function Registro() {
                         </Grid>
                       </Grid>
                     </Box>
-                    {/* {adding?<Localizacion/>:""}
-                <Button onClick={isAdding} sx={{mt:5}}>Añadir otra localización</Button> */}
+                    ))}
                   </>
+                  )}
+                  </FieldArray>
                 ) : activeStep == 2 ? (
                   <LogoFotos />
                 ) : (
@@ -623,6 +632,7 @@ export default function Registro() {
                 <Grid container sx={{margin: "0 auto"}}>
                   <Grid item xs={4}>
                     <Button
+                    variant="contained"
                     //   color="inherit"
                       disabled={activeStep === 0}
                       onClick={handleBack}
@@ -632,7 +642,7 @@ export default function Registro() {
                     </Button>
                   </Grid>
                   <Grid item xs={4}>
-                    <Button onClick={handleNext} sx={{ mr: 1 }}>
+                    <Button variant="contained" onClick={handleNext} sx={{ mr: 1 }}>
                       Siguiente
                     </Button>
                   </Grid>
@@ -649,10 +659,11 @@ export default function Registro() {
                   ) : (
                     
                       completedSteps() === totalSteps() - 1
-                        ? (<Button type="submit" sx={{ml:"77%"}} onClick={handleComplete}>"Finalizar"</Button>)
-                        : (<Button sx={{ml:"77%"}} onClick={handleComplete}>"Confirmar paso"</Button>)
+                        ? (<Button variant="contained" type="submit" sx={{ml:"77%", mb:5}} onClick={handleComplete}>"Finalizar"</Button>)
+                        : (<Button variant="contained"sx={{ml:"77%", mb:5}} onClick={handleComplete}>"Confirmar paso"</Button>)
                     
                   ))}
+                  <pre>{JSON.stringify({values,errors}, null,4)}</pre>
             </form>
             </React.Fragment>
           )}

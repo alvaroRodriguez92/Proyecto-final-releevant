@@ -8,7 +8,7 @@ export const initialValues={
     repetirPassword:"",
     sector:"",
     categoria:"",
-    tipoVia:"",
+    direcciones:[{tipoVia:"",
     nombreVia:"",
     numero:"",
     piso:"",
@@ -19,5 +19,6 @@ export const initialValues={
     provincia:"",
     pais:"",
     longitud:"",
-    latitud:""
+    latitud:""}],
+    
 }
