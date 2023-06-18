@@ -39,7 +39,7 @@ export default function CardValoraciones() {
               </Typography>
             </CardContent>
             <CardActions>
-                    <StarBorderIcon></StarBorderIcon>
+                    <StarBorderIcon sx={{color:"yellow"}}></StarBorderIcon>
                     <StarBorderIcon></StarBorderIcon>
                     <StarBorderIcon></StarBorderIcon>
                     <StarBorderIcon></StarBorderIcon>
