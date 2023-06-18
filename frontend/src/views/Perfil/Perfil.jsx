@@ -13,6 +13,7 @@ export default function Perfil() {
             </Box>
                 <Box >
                    <PerfilView/> 
+                   
                 </Box>
             <Footer />
         </>

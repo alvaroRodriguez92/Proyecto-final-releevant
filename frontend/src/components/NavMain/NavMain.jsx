@@ -3,7 +3,7 @@ import Buscador from '../../components/Buscador/Buscador'
 import {Grid,Box} from '@mui/material'
 import ToggleButtons from '../ToggleButtons/ToggleButtons'
 
-export default function Layout() {
+export default function NavMain() {
     return (
         <Box >
                 <Grid container spacing={2}>
