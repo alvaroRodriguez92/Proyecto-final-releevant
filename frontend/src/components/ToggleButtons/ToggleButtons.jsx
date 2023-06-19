@@ -65,7 +65,7 @@ export default function ToggleButtons() {
               height: 10,
               bgcolor: 'background.paper',
               transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
+             
             },
           },
         }}

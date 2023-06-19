@@ -9,7 +9,7 @@ import Caroussel from '../Caroussel/Caroussel';
 import CardValoraciones from '../CardValoraciones/CardValoraciones';
 
 
-export default function PerfilView() {
+export default function Perfil() {
   return (
         <Box sx={{width:"50%", height:"50%", display:"flex",flexDirection:"column", p:"4rem"}}>
         <Typography sx={{p:"1rem"}} variant="h5" component="div" >
@@ -40,9 +40,14 @@ export default function PerfilView() {
           Valoraciones clientes
       </Typography>
       <CardValoraciones/>
+   
+          <Box sx={{display:"flex"}}>
+        <Typography >
+          Contacto
+        </Typography>
+          </Box>
       </Box>
           
-      
     
   );
 }

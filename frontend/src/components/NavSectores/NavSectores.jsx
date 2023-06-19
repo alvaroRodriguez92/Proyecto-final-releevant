@@ -18,60 +18,60 @@ import { useUserContext } from "../../context/UserContext";
 export default function NavSectores() {
 
     const { section, setSection } = useUserContext();
-    const sectionContainer = { display: "flex", flexDirection: "column", alignItems: "center", svg: { height: "60px", fontSize: "2.5rem" } }
+    const sectionContainer = { display: "flex", flexDirection: "column", alignItems: "center",width:"8rem", svg: { height: "60px", fontSize: "2.5rem" } }
     return (
 
         <>
-            <Box sx={{ display: "flex", columnGap: "1rem", width: "100%", justifyContent: "space-evenly", div: { ">p": { margin: "0 !important" } } }}>
-                <Box onClick={() => { section === "salud" ? setSection("") : setSection("salud") }} sx={sectionContainer}>
+            <Box sx={{display: "flex", columnGap: "1rem", width: "100%", justifyContent: "space-evenly", div: { ">p": { margin: "0 !important" } } }}>
+                <Box onClick={() => { section === "salud" ? setSection("") : setSection("salud") }} sx={sectionContainer} className={`${section==="salud"?'active':""}`} >
                     <LocalHospitalOutlinedIcon />
                     <p>Salud</p>
                 </Box>
-                <Box onClick={() => { section === "construccion" ? setSection("") : setSection("construccion") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "construccion" ? setSection("") : setSection("construccion") }} sx={sectionContainer} className={`${section==="construccion"?'active':""}`}>
                     <ConstructionOutlinedIcon />
                     <p>Construccion</p>
                 </Box>
-                <Box onClick={() => { section === "agroalimentario" ? setSection("") : setSection("agroalimentario") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "agroalimentario" ? setSection("") : setSection("agroalimentario") }} sx={sectionContainer} className={`${section==="agroalimentario"?'active':""}`}>
                     <AgricultureOutlinedIcon />
                     <p>Agroalimentario</p>
                 </Box>
-                <Box onClick={() => { section === "legal" ? setSection("") : setSection("legal") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "legal" ? setSection("") : setSection("legal") }} sx={sectionContainer} className={`${section==="legal"?'active':""}`}>
                     <AccountBalanceOutlinedIcon />
                     <p>Legal</p>
                 </Box>
-                <Box onClick={() => { section === "industria" ? setSection("") : setSection("industria") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "industria" ? setSection("") : setSection("industria") }} sx={sectionContainer} className={`${section==="industria"?'active':""}`}>
                     <FactoryOutlinedIcon />
                     <p>Industria</p>
                 </Box>
-                <Box onClick={() => { section === "educacion" ? setSection("") : setSection("educacion") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "educacion" ? setSection("") : setSection("educacion") }} sx={sectionContainer} className={`${section==="educacion"?'active':""}`}>
                     <MenuBookOutlinedIcon />
                     <p>Educacion</p>
                 </Box>
-                <Box onClick={() => { section === "deporte" ? setSection("") : setSection("deporte") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "deporte" ? setSection("") : setSection("deporte") }} sx={sectionContainer} className={`${section==="deporte"?'active':""}`}>
                     <SportsFootballOutlinedIcon />
                     <p>Deporte</p>
                 </Box>
-                <Box onClick={() => { section === "hosteleria" ? setSection("") : setSection("hosteleria") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "hosteleria" ? setSection("") : setSection("hosteleria") }} sx={sectionContainer} className={`${section==="hosteleria"?'active':""}`}>
                     <NightShelterOutlinedIcon />
                     <p>Hosteleria</p>
                 </Box>
-                <Box onClick={() => { section === "hogar" ? setSection("") : setSection("hogar") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "hogar" ? setSection("") : setSection("hogar") }} sx={sectionContainer} className={`${section==="hogar"?'active':""}`}>
                     <GiteOutlinedIcon />
                     <p>Hogar</p>
                 </Box>
-                <Box onClick={() => { section === "tecnologia" ? setSection("") : setSection("tecnologia") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "tecnologia" ? setSection("") : setSection("tecnologia") }} sx={sectionContainer} className={`${section==="tecnologia"?'active':""}`}>
                     <DevicesOutlinedIcon />
                     <p>Tecnologia</p>
                 </Box>
-                <Box onClick={() => { section === "automocion" ? setSection("") : setSection("automocion") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "automocion" ? setSection("") : setSection("automocion") }} sx={sectionContainer} className={`${section==="automocion"?'active':""}`}>
                     <DirectionsCarOutlinedIcon />
                     <p>Automocion</p>
                 </Box>
-                <Box onClick={() => { section === "inmobiliaria" ? setSection("") : setSection("inmobiliaria") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "inmobiliaria" ? setSection("") : setSection("inmobiliaria") }} sx={sectionContainer} className={`${section==="inmobiliaria"?'active':""}`}>
                     <HomeWorkOutlinedIcon />
                     <p>Inmobiliaria</p>
                 </Box>
-                <Box onClick={() => { section === "cultura" ? setSection("") : setSection("cultura") }} sx={sectionContainer}>
+                <Box onClick={() => { section === "cultura" ? setSection("") : setSection("cultura") }} sx={sectionContainer} className={`${section==="cultura"?'active':""}`}>
                     <SchoolOutlinedIcon />
                     <p>Cultura</p>
                 </Box>

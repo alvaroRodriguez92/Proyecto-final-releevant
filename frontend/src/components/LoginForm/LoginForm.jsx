@@ -2,6 +2,7 @@ import { useUserContext } from "../../context/UserContext";
 import { useFormik } from "formik";
 import { LoginFormSchema } from "./LoginFormSchema";
 import { initialValues } from "./utils/form";
+import { Box } from '@mui/material';
 
 async function onSubmit(values, actions) {
   console.log(values);
@@ -29,13 +30,16 @@ export default function BasicForm() {
     // }
   });
   return (
+   
+    <Box sx={{ input: {borderColor:"black", borderRadius: "10px" }, button: {borderColor:"black", borderRadius: "10px", mt: "1rem",":hover":{backgroundColor:"black",color:"white"} }, ".label-contraseña": { mt:"1rem"}}}>
     <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email</label>
       <input
+        
         id="email"
         name="email"
         type="email"
-        placeholder="Enter your email"
+        placeholder="Introduce tu email"
         value={values.email}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -43,12 +47,12 @@ export default function BasicForm() {
       />
       {errors.email && touched.email && <p className="error">{errors.email}</p>}
 
-      <label htmlFor="password">password</label>
+      <label className="label-contraseña" htmlFor="password">Contraseña</label>
       <input
         id="password"
         name="password"
         type="password"
-        placeholder="Enter your password"
+        placeholder="Introduce tu contraseña"
         value={values.password}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -60,6 +64,8 @@ export default function BasicForm() {
       <button disabled={isSubmitting} type="submit">
         Login
       </button>
-    </form>
+      </form>
+      </Box>
+     
   );
 }
