@@ -1,4 +1,9 @@
 const queries = {};
+
+/////////////////////////
+//CONSULTAS DE USUARIOS//
+/////////////////////////
+
 //esta query extrae todos los usuarios que tengan direccion (empresas)
 queries.infoPopup = `SELECT NOMBRE, EMAIL, TLF, URL, DIR.TIPO_VIA, DIR.NOMBRE_VIA, DIR.NUMERO, L.FOTO  FROM USERS
 JOIN (SELECT ID_USER,TIPO_VIA, NOMBRE_VIA, NUMERO FROM DIRECCIONES) AS DIR ON USERS.ID = DIR.ID_USER 
@@ -21,4 +26,28 @@ JOIN (SELECT IMG_NOMBRE, ID_USER AS IMG_USER FROM IMAGENES WHERE TIPO = 1)
 AS IMG ON US.ID = IMG.IMG_USER JOIN (SELECT ID_USER AS USUARIO, ID_CATEGORIA FROM OFERTANTE) 
 AS OFER ON US.ID = OFER.USUARIO JOIN (SELECT ID, ID_SECTOR FROM CATEGORIA WHERE ID_SECTOR = ?) 
 AS CAT ON OFER.ID_CATEGORIA = CAT.ID;`
+
+
+/////////////////////////////
+//CONSULTAS DE VALORACIONES//
+/////////////////////////////
+
+
+
+////////////////////////////////////
+//CONSULTAS DE SECTORES-CATEGORIAS//
+////////////////////////////////////
+
+//Consulta para obtener todas las valoraciones de un usuario y las respuestas
+queries.getValorByUser = `SELECT * FROM VALORACIONES LEFT JOIN (SELECT ID_VALORACION, RESPUESTA FROM RESPUESTAS) 
+AS R ON VALORACIONES.ID = R.ID_VALORACION 
+WHERE ID_COMENTADO = ?`
+//Query para registrar valoraciones
+queries.addValor = `INSERT INTO VALORACIONES SET ?`
+//Query para registrar respuesta a valoraciones
+queries.addRes = `INSERT INTO RESPUESTAS SET ?`
+//Consulta para optener respuesta a una valoracion
+//queries.getResByIdValor = `SELECT * FROM RESPUESTAS WHERE ID_VALORACION = ?`
+
+
 module.exports = queries;
