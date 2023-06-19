@@ -8,6 +8,8 @@ const sectorRouter = require("./routes/sectorRoutes");
 const productRouter = require("./routes/productRoutes");
 const expressFileUpload = require("express-fileupload");
 const cors = require("cors");
+//para chatbot:
+const ejs = require('ejs')
 
 dotenv.config();
 
@@ -33,5 +35,11 @@ app.use("/user", userRouter);
 app.use("/sector", sectorRouter);
 
 app.use("/product", productRouter);
+
+//---------CHATBOT------
+
+app.get('/', function (req,res){
+res.render('../frontend/src/components/ChatBot/ChatBot')
+})
 
 module.exports = app;

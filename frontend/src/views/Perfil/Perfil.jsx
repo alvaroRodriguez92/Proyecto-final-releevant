@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 import Footer from '../../components/Footer/Footer';
 import PerfilView from '../../components/PerfilView/PerfilView';
+import ChatBot from '../../components/ChatBot/ChatBot';
 
 
 export default function Perfil() {
@@ -14,6 +15,7 @@ export default function Perfil() {
                 <Box >
                    <PerfilView/> 
                 </Box>
+                <ChatBot/>
             <Footer />
         </>
     )
