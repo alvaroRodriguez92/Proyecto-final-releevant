@@ -31,11 +31,12 @@ export default function BasicForm() {
   });
   return (
    
-    <Box sx={{ input: {borderColor:"black", borderRadius: "10px" }, button: {borderColor:"black", borderRadius: "10px", mt: "1rem",":hover":{backgroundColor:"black",color:"white"} }, ".label-contraseña": { mt:"1rem"}}}>
+    <Box sx={{ p:"3rem" ,input: {borderColor:"black", borderRadius: "10px" }, button: {borderColor:"black", borderRadius: "10px", mt: "1rem",":hover":{backgroundColor:"black",color:"white"} }, ".label-contraseña": { mt:"1rem"}}}>
     <form onSubmit={handleSubmit}>
+      
+      <h2 >Iniciar Sesion</h2>
       <label htmlFor="email">Email</label>
       <input
-        
         id="email"
         name="email"
         type="email"

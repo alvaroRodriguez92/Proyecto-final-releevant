@@ -61,43 +61,10 @@ const styleLogin = {
                 aria-describedby="child-modal-description"
             >
                 <Box sx={{ ...styleLogin, width: "30rem" }}> 
-                 
-                 
+           
                             <LoginForm />
-                      
-                     {/* <Button onClick={handleClose}>Cerrar Login</Button>  */}
                  </Box> 
             </Modal>
         </React.Fragment>
     );
 }
-//  <ChildModal /> 
-
-// export default function NestedModal() {
-//     const [open, setOpen] = React.useState(false);
-//     const handleOpen = () => {
-//         setOpen(true);
-//     };
-//     const handleClose = () => {
-//         setOpen(false);
-//     };
-
-//     return (
-//         <div>
-//             <Button onClick={handleOpen}>Iniciar Sesion</Button>
-//             <Modal
-//                 open={open}
-//                 // onClose={handleClose}
-//                 aria-labelledby="parent-modal-title"
-//                 aria-describedby="parent-modal-description"
-//             >
-//                 <Box sx={{ ...styleLogin, width: 400 }}>
-//                     <h2 id="parent-modal-title">Iniciar sesion</h2>
-//                     <p id="parent-modal-description">
-//                     </p>
-                    
-//                 </Box>
-//             </Modal>
-//        </div>
-//     );
-//  }
