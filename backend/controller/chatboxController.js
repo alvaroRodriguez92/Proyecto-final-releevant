@@ -15,7 +15,7 @@ chatboxController.getPreguntas = async (req,res) => {
     }
 }
 chatboxController.getRespuesta = async (req,res) => {
-    const { id } = req.body;
+    const { id } = req.params;
     try {
       const respuesta = await dao.getRespuesta(id);
       if (respuesta.length <= 0)
@@ -43,9 +43,9 @@ chatboxController.addPreguntaRespuesta = async (req,res) => {
 
 }
 chatboxController.deletePreguntaRespuesta = async (req,res) => {
-    const { id } = req.body;
+    const { ID } = req.body;
     try {
-      const item = await dao.getRespuesta(id);
+      const item = await dao.deletePreguntaRespuesta(ID);
       if (!item)
         return res.status(409).send("Registro no se ha borrado correctamente"); 
       return res.status(200).send("Registro borrado");
@@ -63,8 +63,10 @@ chatboxController.udatePreguntaRespuesta = async (req,res) => {
             PREGUNTA: PREGUNTA,
             RESPUESTA: RESPUESTA,
         }
-        const updateChat = await dao.updatePreguntaRespuesta(ID, chatDAata);
-        if (updateChatr) return res.send(`Chat actualizado`);
+        const updateChat = await dao.updatePreguntaRespuesta(ID, chatData);
+        console.log(updateChat)
+        if (updateChat) return res.send(`Chat actualizado`);
+        
       } catch (e) {
         console.log(e.message);
       }

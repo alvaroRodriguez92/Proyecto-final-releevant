@@ -25,7 +25,7 @@ chatboxQueries.getRespuesta = async (id) => {
     try {
         conn = await db.createConnection();
         return await db.query(
-        queries.getRespuesta,
+          queries.getRespuesta,
           id,
           "select",
           conn
@@ -56,7 +56,7 @@ chatboxQueries.deletePreguntaRespuesta = async(id) => {
     try {
         conn = await db.createConnection();
         return await db.query(
-        queries.deletePreguntaRespuesta,
+          queries.deletePreguntaRespuesta,
           id,
           "delete",
           conn
@@ -74,7 +74,7 @@ chatboxQueries.updatePreguntaRespuessta = async(id, chatData) => {
     conn = await db.createConnection();
    
     let chatObj = {
-      ID_USER: chaatData.ID_USER,
+      ID_USER: chatData.ID_USER,
       PREGUNTA: chatData.PREGUNTA,
       RESPUESTA: chatData.RESPUESTA,
     };

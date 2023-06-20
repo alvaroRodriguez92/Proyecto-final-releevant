@@ -47,11 +47,11 @@ queries.addRes = `INSERT INTO RESPUESTAS SET ?`
 //Consulta para obtener todas las preguntas de chatbox de un usuario
 queries.getPreguntas = `select ID, PREGUNTA from CHATBOX where ID_USER = ?`
 //Consulta para obtener la respuesta correspondiente a una pregunta
-queries.getRespuesta = `SELECT RESPUESTA FROM chatbox WHERE ID = ?`
+queries.getRespuesta = `SELECT RESPUESTA FROM CHATBOX WHERE ID = ?`
 //Consulta de insercion en chatbox
 queries.addPreguntaRespuesta = `INSERT INTO chatbox SET ?`
 //Consulta de borrado de pregunta y respuesta en chatbox
-queries.deletePreguntaRespuesta = `DELETE FROM chatbox WHERE ID = ?`
+queries.deletePreguntaRespuesta = `DELETE FROM CHATBOX WHERE ID = ?`
 //Consulta de actualizado de preguntas y respuesta
 queries.updatePreguntaRespuesta = `UPDATE chatbox SET ? WHERE id = ?`
 
