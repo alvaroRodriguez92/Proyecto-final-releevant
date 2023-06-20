@@ -218,7 +218,7 @@ userQueries.deleteUser = async (id, userData) => {
     userObj = await utils.removeUndefinedKeys(userObj);
 
     return await db.query(
-      "UPDATE users SET ? WHERE id = ?",
+      "UPDATE USERS SET ? WHERE id = ?",
       [userObj, id],
       "update",
       conn

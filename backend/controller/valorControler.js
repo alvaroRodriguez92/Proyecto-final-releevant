@@ -8,26 +8,7 @@ valorController.getValorByUser = async (req, res) => {
     try {
       const valoraciones = await dao.getValorByUser(ID_COMENTADO);
       if (valoraciones.length <= 0)
-        return res.status(409).send("No hay comentarios de clientes");
-      console.log(valoraciones)
-    //   valoraciones.map(async (v)=>{
-    //     const respuesta = await dao.getResByIdValor(v.ID)
-        
-    //     const r = {
-    //         COMENTADO: v.ID_COMENTADO,
-    //         COMENTADOR: v.ID_COMENTADOR,
-    //         PUNTUACION: v.PUNTUACION,
-    //         COMENTARIO: v.COMENTARIO,
-    //         RESPUESTA: {
-    //             ID: respuesta[0].ID_VALORACION,
-    //             RESPUESTA: respuesta[0].RESPUESTA
-    //         }
-    //     }
-    //     //console.log(r)
-    //     valorRes.push(r)
-    //     console.log(valorRes)
-    //   })
-      
+        return res.status(409).send("No hay comentarios de clientes"); 
       return res.status(200).send(valoraciones);
     } catch (e) {
       throw new Error(e.message);
