@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "f8a5bd7f-80e0-4e7a-ab49-ffdaa8562e11",
+		"name": "APIproyecto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27455724"
+	},
+	"item": [
+		{
+			"name": "USUARIOS POR SECTOR",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/user/8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIOS POR SECTOR 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/user/sector/8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"sector",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIOS POR CATEGORIA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "HTTP://127.0.0.1:3000/user/categoria/2",
+					"protocol": "HTTP",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"categoria",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BAJA USER",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsImVtYWlsIjoiaW5mb0BudWV2YW1lbnRlcHNpY29sb2dvcy5jb20iLCJub21icmUiOiJOVUVWQSBNRU5URSBQU0lDT0xPR09TIiwiaWF0IjoxNjg2OTMzNjEzLCJleHAiOjE2ODY5MzcyMTN9.uysLyLyVp0qN2puKzKVQl91imxhYgjMOVOH_Hv9ygb8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"info@nuevamentepsicologos.com\",\n    \"password\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/chatbox/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"chatbox",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:3000/user/15",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/user/15",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OPTENES VALORACIONES",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID_COMENTADO\": 14\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/valoraciones/coment/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"valoraciones",
+						"coment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NUEVA VALORACION",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID_COMENTADO\": 14,\n    \"PUNTUACION\": 5,\n    \"COMENTARIO\": \"Maravillosas!!!\",\n    \"ID_COMENTADOR\": 15\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/valoraciones/coment/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"valoraciones",
+						"coment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NUEVA RESPUESTA",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ID_VALORACION\": 2,\n    \"ID_COMENTADOR\": 15,\n    \"RESPUESTA\": \"Muchas gracias por su comentario\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/valoraciones/respuesta/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"valoraciones",
+						"respuesta",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TODOS LOS SECTORES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/sector/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"sector",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CATEGORIAS POR SECTOR",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/sector/8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"sector",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CHAT ADD CHAT BOX",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID_USER\": 14,\r\n    \"PREGUNTA\": \"¿Teneis terapia específica pra tratar el Trauma?\",\r\n    \"RESPUESTA\": \"Si, tenemos espacialiestas en terapia EMDR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/chatbox/addpreguntarespuesta/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"chatbox",
+						"addpreguntarespuesta",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CHAT OBTENER LAS PREGUNTAS DEL CHAT DE UN USUARIO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3000/chatbox/preguntas/14",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"chatbox",
+						"preguntas",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CHAT OBTENER RESPUESTA A UNA PREGUNTA CONCRETA",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/chatbox/respuestas/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"chatbox",
+						"respuestas",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CHAT ELIMINAR PREGUNTA Y RESPUESTA",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/chatbox/deletepreguntarespuesta",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"chatbox",
+						"deletepreguntarespuesta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CHAT ACTUALIZAR PREGUNTAS Y RESPUESTAS",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 1,\r\n    \"ID_USER\": 14,\r\n    \"PREGUNTA\": \"¿Cuanto cuestan las sesiones?\",\r\n    \"RESPUESTA\": \"75€\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/chatbox/updatepreguntarespuesta",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"chatbox",
+						"updatepreguntarespuesta"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
