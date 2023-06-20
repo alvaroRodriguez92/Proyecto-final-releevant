@@ -14,12 +14,14 @@ export default function NavMain() {
                     <Grid item xs={2} sx={{ img: { width: "80%",p:"2rem" } }} >
                         <img src="../../src/assets/solventumsinfondo.png" />
                     </Grid>
-                    <Grid item xs={8} sx={{ display: "flex", alignItems: "center", a: { width: "100%" } }}>
+                    <Grid item xs={8} sx={{ display: "flex", alignItems: "center",justifyContent:"center" }}>
                         <Buscador />
                     </Grid>
-                    <Grid item xs={2} sx={{display:"flex", alignItems:"center"}}>
+                    <Grid item xs={2} sx={{display:"flex", alignItems:"center", justifyContent: "space-around"}}>
                     <ModalLogin />
-                    {!user && <ToggleButtons />}
+                    <Grid sx={{pl:"0.5rem"}}>
+                        {!user && <ToggleButtons />}
+                        </Grid>
                     </Grid>
                 </Grid>
         </Box>

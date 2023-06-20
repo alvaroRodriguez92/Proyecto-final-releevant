@@ -10,7 +10,7 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 
 const styleLogin = {
     position: 'absolute',
-    top: '30%',
+    top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
@@ -22,7 +22,7 @@ const styleLogin = {
     pb: 3,
 };
 
- export default function ChildModal() {
+export default function ChildModal() {
     const [open, setOpen] = React.useState(false);
     const { user, logout } = useUserContext();
     const [activar, setActivar] = useState();
@@ -45,7 +45,7 @@ const styleLogin = {
 
     const handleOpen = () => {
         setOpen(true);
-        
+
     };
     const handleClose = () => {
         setOpen(false);
@@ -60,10 +60,9 @@ const styleLogin = {
                 aria-labelledby="child-modal-title"
                 aria-describedby="child-modal-description"
             >
-                <Box sx={{ ...styleLogin, width: "30rem" }}> 
-           
-                            <LoginForm />
-                 </Box> 
+                <Box sx={{ ...styleLogin, width: "40rem" }}>
+                    <LoginForm />
+                </Box>
             </Modal>
         </React.Fragment>
     );
