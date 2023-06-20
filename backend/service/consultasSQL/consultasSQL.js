@@ -27,16 +27,9 @@ AS IMG ON US.ID = IMG.IMG_USER JOIN (SELECT ID_USER AS USUARIO, ID_CATEGORIA FRO
 AS OFER ON US.ID = OFER.USUARIO JOIN (SELECT ID, ID_SECTOR FROM CATEGORIA WHERE ID_SECTOR = ?) 
 AS CAT ON OFER.ID_CATEGORIA = CAT.ID;`
 
-
 /////////////////////////////
 //CONSULTAS DE VALORACIONES//
 /////////////////////////////
-
-
-
-////////////////////////////////////
-//CONSULTAS DE SECTORES-CATEGORIAS//
-////////////////////////////////////
 
 //Consulta para obtener todas las valoraciones de un usuario y las respuestas
 queries.getValorByUser = `SELECT * FROM VALORACIONES LEFT JOIN (SELECT ID_VALORACION, RESPUESTA FROM RESPUESTAS) 
@@ -46,8 +39,20 @@ WHERE ID_COMENTADO = ?`
 queries.addValor = `INSERT INTO VALORACIONES SET ?`
 //Query para registrar respuesta a valoraciones
 queries.addRes = `INSERT INTO RESPUESTAS SET ?`
-//Consulta para optener respuesta a una valoracion
-//queries.getResByIdValor = `SELECT * FROM RESPUESTAS WHERE ID_VALORACION = ?`
 
+////////////////////////
+//CONSULTAS DE CHATBOX//
+////////////////////////
+
+//Consulta para obtener todas las preguntas de chatbox de un usuario
+queries.getPreguntas = `select ID, PREGUNTA from CHATBOX where ID_USER = ?`
+//Consulta para obtener la respuesta correspondiente a una pregunta
+queries.getRespuesta = `SELECT RESPUESTA FROM chatbox WHERE ID = ?`
+//Consulta de insercion en chatbox
+queries.addPreguntaRespuesta = `INSERT INTO chatbox SET ?`
+//Consulta de borrado de pregunta y respuesta en chatbox
+queries.deletePreguntaRespuesta = `DELETE FROM chatbox WHERE ID = ?`
+//Consulta de actualizado de preguntas y respuesta
+queries.updatePreguntaRespuesta = `UPDATE chatbox SET ? WHERE id = ?`
 
 module.exports = queries;
