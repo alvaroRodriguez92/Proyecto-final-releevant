@@ -16,8 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/registro" element={<RegistroView />} />
-            <Route path="/perfilView" element={<PerfilView />} />
-            <Route path="/registroView" element={<RegistroView />} />
+            <Route path="/perfil" element={<PerfilView />} />
           </Routes>
         </ThemeProvider>
       </UserContextProvider>

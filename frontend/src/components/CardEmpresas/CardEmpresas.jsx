@@ -31,7 +31,7 @@ export default function CardEmpresas() {
         </Typography>
       </CardContent>
       <CardActions sx={{justifyContent:"end"}}>
-      <Link to="/perfilView">  <Button  sx={{borderRadius:"10px", mr:1}}variant="contained" size="small">Ver mas</Button></Link>
+      <Link to="/perfil">  <Button  sx={{borderRadius:"10px", mr:1}}variant="contained" size="small">Ver mas</Button></Link>
       </CardActions>
         </Card>
         </Grid>
