@@ -392,7 +392,7 @@ export default function Registro() {
                             onChange={handleChange}
                             onBlur={handleBlur}
                             value={values.direcciones[index].tipoVia}
-                            helperText={errors?.direcciones[index].tipoVia}
+                            helperText={errors.direcciones[index].tipoVia}
                             label="Tipo de via"
                             size="small"
                             sx={{ m: 1, width: "100%" }}
