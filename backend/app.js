@@ -6,10 +6,12 @@ const path = require("path");
 const userRouter = require("./routes/userRoutes");
 const sectorRouter = require("./routes/sectorRoutes");
 const productRouter = require("./routes/productRoutes");
+const valorRoute = require("./routes/valorRoute")
+const chatboxRoutes = require("./routes/chatboxRoutes")
 const expressFileUpload = require("express-fileupload");
 const cors = require("cors");
-//para chatbot:
-const ejs = require('ejs')
+
+const valorRoutes = require("./routes/valorRoute");
 
 dotenv.config();
 
@@ -33,13 +35,9 @@ app.use(
 
 app.use("/user", userRouter);
 app.use("/sector", sectorRouter);
+app.use("/valoraciones", valorRoute)
+app.use("/chatbox",chatboxRoutes)
 
 app.use("/product", productRouter);
-
-//---------CHATBOT------
-
-app.get('/', function (req,res){
-res.render('../frontend/src/components/ChatBot/ChatBot')
-})
 
 module.exports = app;

@@ -28,6 +28,7 @@ export default function Home() {
       <Box sx={{ marginTop: "auto" }} >
         <Footer />
       </Box>
+      
     </Box>
   );
 }

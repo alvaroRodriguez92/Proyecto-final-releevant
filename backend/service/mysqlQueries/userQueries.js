@@ -136,26 +136,6 @@ userQueries.addImagen = async (imageData) => {
     conn && (await conn.end());
   }
 };
-//Query para agregar logo de usuario
-// userQueries.addLogo = async (imageData) => {
-//   let conn = null;
-//   try {
-//     conn = await db.createConnection();
-//     let imageObj = {
-//       ID: null,
-//       ID_USER: imageData.ID_USER,
-//       PATH: imageData.PATH,
-//       LOGO_NOMBRE: imageData.LOGO_NOMBRE,
-//       ESTADO: imageData.ESTADO,
-//     };
-//     return await db.query("INSERT INTO LOGO SET ?", imageObj, "insert", conn);
-//   } catch (e) {
-//     throw new Error(e);
-//   } finally {
-//     conn && (await conn.end());
-//   }
-// };
-
 
 userQueries.getPopup = async (id) => {
   let conn = null;
@@ -218,35 +198,6 @@ userQueries.getUserLogo = async (ID_USER) => {
   }
 };
 
-// userQueries.deleteUser = async (id) => {
-//   let conn = null;
-//   try {
-//     conn = await db.createConnection();
-//     return await db.query("DELETE FROM users WHERE id =?", id, "delete", conn);
-//   } catch (e) {
-//     throw new Error(e);
-//   } finally {
-//     conn && (await conn.end());
-//   }
-// };
-// //obtener usuario por el id
-// userQueries.getUserbyId = async (id) => {
-//   let conn = null;
-//   try {
-//     conn = await db.createConnection();
-//     return await db.query(
-//       "SELECT * FROM users WHERE id = ?",
-//       id,
-//       "select",
-//       conn
-//     );
-//   } catch (e) {
-//     throw new Error(e);
-//   } finally {
-//     conn && (await conn.end());
-//   }
-// };
-
 userQueries.deleteUser = async (id, userData) => {
   // Conectamos con la base de datos y añadimos el usuario.
   let conn = null;
@@ -267,7 +218,7 @@ userQueries.deleteUser = async (id, userData) => {
     userObj = await utils.removeUndefinedKeys(userObj);
 
     return await db.query(
-      "UPDATE users SET ? WHERE id = ?",
+      "UPDATE USERS SET ? WHERE id = ?",
       [userObj, id],
       "update",
       conn
