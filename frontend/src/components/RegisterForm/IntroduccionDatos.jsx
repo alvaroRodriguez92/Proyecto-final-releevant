@@ -10,69 +10,56 @@ import {
   FormControl, 
   InputLabel
 } from "@mui/material";
-import { useFormik } from "formik";
-import { registroSchema } from "./utils/introduccionDatosSchema";
-import { initialValues } from "./utils/initialValuesIntroduccionDatos";
-import { useState } from "react";
+import {useState, useEffect} from "react"
 
-export default function IntroduccionDatos() {
-  const {
-    values,
-    touched,
-    errors,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    isSubmitting,
-  } = useFormik({
-    initialValues,
-    validationSchema: registroSchema,
-    onSubmit: register,
-  });
 
-  const [mensajeRegistro, setMensajeRegistro] = useState(null);
+export default function IntroduccionDatos({formik}) {
+  
+    const [sectores, setSectores] = useState([])
+    const [categorias, setCategorias] = useState(null)
 
-  async function register(values) {
-    console.log("Hola", values);
-  }
+    useEffect(() => {
+      async function getSectores() {
+          const api = await fetch(`http://127.0.0.1:3000/sector`);
+          const data=await api.json();
 
-  //   async function register(values, actions) {
-  //     const response = await fetch("http://localhost:3001/user/", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(values),
-  //     });
-  //     if (response.status === 200) {
-  //       await new Promise((resolve) => setTimeout(resolve, 2000));
-  //       actions.resetForm();
-  //     }
-  //   }
+          setSectores(data)
+      }
+      getSectores();
+  }, []);
+
+  useEffect(()=>{
+  async function categoriaFetch(){
+    const response = await fetch(`http://127.0.0.1:3000/sector/${formik.values.sector}`)
+    const data = await response.json()
+    setCategorias(data)
+  };
+      categoriaFetch();
+  },[formik.values.sector])
 
   return (
     <>
-      {/* <form className="form-register" onSubmit={handleSubmit}> */}
+    
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-
-            // border: "1px solid grey",
             borderRadius: 2,
             width: "90%",
-            p: 10,
+            p: 5,
             margin: "0 auto",
           }}
         >
           <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
             <Grid item xs={6}>
               <TextField
-                id="nombre"
-                error={errors.nombre && touched.nombre}
-                name="nombre"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.nombre}
-                helperText={errors.nombre}
+                id="NOMBRE"
+                error={formik.errors.NOMBRE && formik.touched.NOMBRE}
+                name="NOMBRE"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.NOMBRE}
+                helperText={formik.errors.NOMBRE}
                 label="Nombre completo"
                 size="small"
                 sx={{ m: 1, width: "100%" }}
@@ -81,13 +68,13 @@ export default function IntroduccionDatos() {
             </Grid>
             <Grid item xs={6}>
               <TextField
-                id="email"
-                error={errors.email && touched.email}
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                helperText={errors.email}
+                id="EMAIL"
+                error={formik.errors.EMAIL && formik.touched.EMAIL}
+                name="EMAIL"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.EMAIL}
+                helperText={formik.errors.EMAIL}
                 label="Email"
                 size="small"
                 sx={{ m: 1, width: "100%" }}
@@ -97,14 +84,14 @@ export default function IntroduccionDatos() {
           <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
             <Grid item xs={6}>
               <TextField
-                id="tfn"
-                error={errors.tfn && touched.tfn}
+                id="TLF"
+                error={formik.errors.TLF && formik.touched.TLF}
                 type="tel"
-                name="tfn"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.tfn}
-                helperText={errors.tfn}
+                name="TLF"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.TLF}
+                helperText={formik.errors.TLF}
                 label="Telefono"
                 size="small"
                 sx={{ m: 1, width: "100%" }}
@@ -112,13 +99,13 @@ export default function IntroduccionDatos() {
             </Grid>
             <Grid item xs={6}>
               <TextField
-                id="url"
-                error={errors.url && touched.url}
-                name="url"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.url}
-                helperText={errors.url}
+                id="URL"
+                error={formik.errors.URL && formik.touched.URL}
+                name="URL"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.URL}
+                helperText={formik.errors.URL}
                 label="Url"
                 size="small"
                 sx={{ m: 1, width: "100%" }}
@@ -128,14 +115,14 @@ export default function IntroduccionDatos() {
           <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
             <Grid item xs={6}>
               <TextField
-                id="password"
+                id="PASSWORD"
                 type="password"
-                error={errors.password && touched.password}
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-                helperText={errors.password}
+                error={formik.errors.PASSWORD && formik.touched.PASSWORD}
+                name="PASSWORD"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.PASSWORD}
+                helperText={formik.errors.PASSWORD}
                 label="Password"
                 size="small"
                 sx={{ m: 1, width: "100%" }}
@@ -145,12 +132,12 @@ export default function IntroduccionDatos() {
               <TextField
                 id="repetirPassword"
                 type="password"
-                error={errors.repetirPassword && touched.repetirPassword}
+                error={formik.errors.repetirPassword && formik.touched.repetirPassword}
                 name="repetirPassword"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.repetirPassword}
-                helperText={errors.repetirPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.repetirPassword}
+                helperText={formik.errors.repetirPassword}
                 label="Repetir password"
                 size="small"
                 sx={{ m: 1, width: "100%" }}
@@ -161,15 +148,15 @@ export default function IntroduccionDatos() {
           <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
             <Grid item xs={6}>
               <TextField
-                id="descripcion"
+                id="DESCRIPCION"
                 multiline
                 rows={4}
-                error={errors.descripcion && touched.descripcion}
-                name="descripcion"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.descripcion}
-                helperText={errors.descripcion}
+                error={formik.errors.DESCRIPCION && formik.touched.DESCRIPCION}
+                name="DESCRIPCION"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.DESCRIPCION}
+                helperText={formik.errors.DESCRIPCION}
                 label="Descripcion"
                 size="small"
                 sx={{ m: 1, width: "100%" }}
@@ -185,17 +172,22 @@ export default function IntroduccionDatos() {
                   labelId="demo-select-small-label"
                   id="sector"
                   name="sector"
-                  value={values.sector}
+                  value={formik.values.sector}
                   label="Sector"
-                  onChange={handleChange}
+                  onChange={formik.handleChange}
                   fullWidth
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  
+                  {sectores?.map((item, index)=>{
+                    const sector= item.NOMBRE_SECTOR.toLowerCase()
+                    const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+
+                    return(
+
+                    <MenuItem key={index} value={item.ID}>{capitalize(sector)}</MenuItem>
+                    )
+                  })}
+                  
                 </Select>
                 </FormControl>
               </Grid>
@@ -205,28 +197,33 @@ export default function IntroduccionDatos() {
               <InputLabel id="demo-select-small-label">Categoría</InputLabel>
                 <Select
                   labelId="demo-select-small-label"
-                  id="categoria"
-                  name="categoria"
-                  value={values.categoria}
+                  id="CATEGORIA"
+                  name="CATEGORIA"
+                  value={formik.values.CATEGORIA}
                   label="Categoria"
-                  onChange={handleChange}
+                  onChange={formik.handleChange}
                   fullWidth
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                 {categorias?.map((item)=>{
+                  const categoria= item.NOMBRE_CATEGORIA?.toLowerCase()
+                  const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+                  return(
+                  <MenuItem value={item.ID}>{capitalize(categoria)}</MenuItem>
+                  )
+                 })}
+
                 </Select>
                 </FormControl>
               </Grid>
             </Grid>
+            
           </Grid>
           </Grid>
-        {/* <Button type="submit">REGISTER</Button> */}
         </Box>
+        
       {/* </form> */}
+      <pre>{JSON.stringify(formik.values)}</pre>
+
     </>
   );
 }
