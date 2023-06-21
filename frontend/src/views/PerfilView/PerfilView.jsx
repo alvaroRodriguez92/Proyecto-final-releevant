@@ -1,9 +1,8 @@
 import { Box } from '@mui/material';
 import Footer from '../../components/Footer/Footer';
-import PerfilView from '../../components/PerfilView/PerfilView';
+import Perfil from '../../components/Perfil/Perfil';
 
-
-export default function Perfil() {
+export default function PerfilView() {
 
     return (
         <>
@@ -12,7 +11,7 @@ export default function Perfil() {
                 <img className="imagenLogoView" src="../../src/assets/logonuevamente.png" />
             </Box>
                 <Box >
-                   <PerfilView/> 
+                   <Perfil/> 
                 </Box>
             <Footer />
         </>

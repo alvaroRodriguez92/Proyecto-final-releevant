@@ -11,25 +11,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const items = [
   {
-    src: '../../src/assets/agroalimentario.jpg',
+    src: '../../src/assets/foto1.jpg',
     altText: 'imagen1',
-    caption: 'agroalimentario'
+    caption: 'mente'
   },
   {
-    src: '../../src/assets/industria.jpg',
-    altText: 'Slide 2',
-    caption: 'Slide 2'
+    src: '../../src/assets/foto1.jpg',
+    altText: 'imagen1',
+    caption: 'mente'
   },
   {
-    src: '../../src/assets/hosteleria.jpg',
-    altText: 'Slide 3',
-    caption: 'Slide 3'
+    src: '../../src/assets/foto1.jpg',
+    altText: 'imagen1',
+    caption: 'mente'
   },
-  {
-    src: '../../src/assets/hogar.jpg',
-    altText: 'Slide 3',
-    caption: 'Slide 3'
-  }
+ 
 ];
 
 class Caroussel extends Component {
@@ -78,7 +74,7 @@ class Caroussel extends Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <img src={item.src} alt={item.altText} />
+          <img width="100%" src={item.src} alt={item.altText} />
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
