@@ -12,46 +12,25 @@ export default function Buscador() {
   return (
     <>
       <Link >
-          <TextField
-            hiddenLabel
-            id="filled-hidden-label-small"
-            placeholder="Inicia tu busqueda..."
-            color="white"
-            variant="filled"
-            size="small"
-            sx={{ width: "70%", height: "3.5rem", ">div": { borderBottom:"unset" ,height: "100%",border: "1px solid black", borderRadius: "15px",":before":{content:"none"}} }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <Button >
-                    <SearchIcon sx={{ m: "0 auto", color: "black", borderRadius: "60px", backgroundColor: "#FFEE8C",p:"0.5rem" }} />
-                  </Button>
-                </InputAdornment>
-              )
-            }}
-          />
-      </Link>
-      {/* <Link >
         <TextField
-          placeholder="Busca por sector"
           hiddenLabel
           id="filled-hidden-label-small"
+          placeholder="Inicia tu busqueda..."
           color="white"
           variant="filled"
           size="small"
-          select
-          defaultValue={""}
-          sx={{ width: "50%", border: "1px solid black", height: "3.5rem", div: { height: "100%" }, borderRadius: "15px" }}
-        >
-          {sectores.map((sector) => {
-            return (
-              <>
-                <MenuItem value={sector.nombre}>{sector.nombre}</MenuItem>
-              </>
+          sx={{ width: "40rem", height: "3.5rem", ">div": { borderBottom: "unset", height: "100%", border: "1px solid black", borderRadius: "15px", ":before": { content: "none" } } }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <Button >
+                  <SearchIcon sx={{ m: "0 auto", color: "black", borderRadius: "60px", backgroundColor: "#FFEE8C", p: "0.5rem" }} />
+                </Button>
+              </InputAdornment>
             )
-          })}
-        </TextField>
-    </Link > */}
+          }}
+        />
+      </Link>
     </>
   );
 }

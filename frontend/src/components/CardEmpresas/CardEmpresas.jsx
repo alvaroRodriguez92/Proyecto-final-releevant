@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {Box, Grid} from '@mui/material'
-
+import {Link} from 'react-router-dom'
 export default function CardEmpresas() {
   return (
 
@@ -31,7 +31,7 @@ export default function CardEmpresas() {
         </Typography>
       </CardContent>
       <CardActions sx={{justifyContent:"end"}}>
-        <Button  sx={{borderRadius:"10px", mr:1}}variant="contained" size="small">Ver mas</Button>
+      <Link to="/perfil">  <Button  sx={{borderRadius:"10px", mr:1}}variant="contained" size="small">Ver mas</Button></Link>
       </CardActions>
         </Card>
         </Grid>

@@ -28,7 +28,10 @@ export const registroSchema = Yup.object().shape({
     .required("Required"),
   sector: Yup.string().required("Required"),
   categoria: Yup.string().required("Required"),
-direcciones: Yup.array()
+direcciones: Yup.array(Yup.object({  tipoVia: Yup.string()
+  .min(2, "Too short!")
+  .max(40, "Too long!")
+  .required("Required")}))
 
   // tipoVia: Yup.string()
   //   .min(2, "Too short!")
