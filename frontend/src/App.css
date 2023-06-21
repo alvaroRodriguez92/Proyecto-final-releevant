@@ -1,7 +1,12 @@
 body{
-  background-color: #efefef;
+  background-color: #efefef !important;
   font-family: 'Alice', serif!important;
-  margin:0;
+  margin:0 auto;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* flex-wrap: wrap; */
+
 }
 .MuiTypography-root{
   font-family: 'Alice', serif!important;
@@ -182,7 +187,7 @@ form label{
 }
 .button {
   display: inline-block;
-  padding: 14px 19px;
+  padding: 8px 19px !;
   font-size: 14px;
   cursor: pointer;
   text-align: center;	
@@ -196,10 +201,20 @@ form label{
   padding: 1rem;
   text-transform: capitalize;
 }
-.button:hover {background-color: #FFEE8C}
 
 .button:active {
   background-color: #FFEE8C;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+.active{
+  /* background-color: rgb(201, 199, 199); */
+  border:0.1rem solid rgba(0,0,0,0.2) ;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1px 0 black;
+}
+
+main{
+  margin-top: 2rem;
 }

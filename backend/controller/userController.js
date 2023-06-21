@@ -16,7 +16,7 @@ userController.addUser = async (req, res) => {
     DESCRIPCION,
     PASSWORD,
     CATEGORIA,
-    DIRECCION,
+    DIRECCIONES,
   } = req.body;
   console.log(req.body)
   const newUser = {
@@ -30,16 +30,19 @@ userController.addUser = async (req, res) => {
   
   // Buscamos el usuario en la base de datos
   try {
+    
     const user = await dao.getUserByEmail(EMAIL);
     // Si existe el usuario respondemos con un 409 (conflict)
     if (user.length > 0) return res.status(409).send("usuario ya registrado");
     // Si no existe lo registramos
     const addUser = await dao.addUser(newUser);
+  
     if (addUser){
-      if(!CATEGORIA){
+      if(!CATEGORIA){ 
         return res.status(201).send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
       }      
-      DIRECCION.map( async (D) =>{
+      DIRECCIONES.map( async (D) =>{
+      
         const { 
           LONGITUD,
           LATITUD,
@@ -55,7 +58,7 @@ userController.addUser = async (req, res) => {
           PROVINCIA,
           PAIS,} = D
           
-          if(!ID_USER || !LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !!NUMERO_VIA){
+          if(!addUser || !LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !NUMERO){
             res.status(408).send("Error en la direccion")
           }
           const newAddress = {
@@ -156,7 +159,7 @@ userController.addImagen = async (req, res) => {
     if (!req.files || req.files === null) {
       return res.status(400).send("No se ha cargado ningun archivo");
     }
-
+    console.log("estamos aqui")
     const imagenes = !req.files.imagen.length
       ? [req.files.imagen]
       : req.files.imagen;
@@ -170,6 +173,7 @@ userController.addImagen = async (req, res) => {
       imagen.mv(uploadPath, (err) => {
         if (err) return res.status(500).send(err);
       });
+      
       await dao.addImagen({
         ID_USER: imagen.ID_USER,
         PATH: uploadPath,

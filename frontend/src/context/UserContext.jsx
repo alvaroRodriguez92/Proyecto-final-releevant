@@ -5,7 +5,10 @@ const UserContext = createContext({
   logout: () => {},
   user: null,
   errorMessage: "",
-  section: "",
+  section: {
+    "ID": 8,
+    "NOMBRE_SECTOR": "SALUD"
+  },
   setSection: ()=>{}
 });
 
@@ -14,7 +17,10 @@ export default function UserContextProvider({ children }) {
     () => JSON.parse(localStorage.getItem("user")) ?? null
   );
   const [errorMessage, setErrorMessage] = useState(null);
-  const [section, setSection] = useState("");
+  const [section, setSection] = useState({
+    "ID": 8,
+    "NOMBRE_SECTOR": "SALUD"
+  });
 
   
 
