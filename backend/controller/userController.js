@@ -18,6 +18,7 @@ userController.addUser = async (req, res) => {
     CATEGORIA,
     DIRECCION,
   } = req.body;
+  console.log(req.body)
   const newUser = {
     NOMBRE: NOMBRE,
     EMAIL: EMAIL,

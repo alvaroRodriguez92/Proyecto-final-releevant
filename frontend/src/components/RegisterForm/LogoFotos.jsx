@@ -20,7 +20,7 @@ export default function LogoFotos() {
 
 
   return (
-    <>
+    <Box container width="100%" sx={{display: "flex",justifyContent:"center"}}>
     <MuiFileInput
       className="fileInput"
       sx={{ mt: 8, ml: 10 }}
@@ -37,6 +37,6 @@ export default function LogoFotos() {
       value={multifile}
       onChange={handleImages}
     />
-    </>
+    </Box>
   );
 }

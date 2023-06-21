@@ -9,9 +9,10 @@ const userQueries = {};
 userQueries.getUserByEmail = async (email) => {
   let conn = null;
   try {
+    console.log(email)
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM USERS WHERE EMAIL = ?",
+      "SELECT * FROM users WHERE EMAIL = ?",
       email,
       "select",
       conn
