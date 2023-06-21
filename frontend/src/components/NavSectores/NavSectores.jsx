@@ -17,6 +17,9 @@ import { useUserContext } from "../../context/UserContext";
 
 export default function NavSectores() {
 
+    function handleSector(sector){
+        setSection(sector)
+    }
     const { section, setSection } = useUserContext();
     const sectionContainer= { display: "flex", flexDirection: "column", alignItems: "center", svg:{height: "60px", fontSize: "2.5rem"} }
     return (
@@ -66,11 +69,11 @@ export default function NavSectores() {
                 <DirectionsCarOutlinedIcon/>
                 <p>Automocion</p>
             </Box>
-            <Box onClick={()=>{section==="inmobiliaria"?setSection(""): setSection("inmobiliaria")}} sx={sectionContainer}>
+            <Box onClick={() => handleSector("inmobiliaria")} sx={sectionContainer}>
                 <HomeWorkOutlinedIcon/>
                 <p>Inmobiliaria</p>
             </Box>
-            <Box onClick={()=>{section==="cultura"?setSection(""): setSection("cultura")}} sx={sectionContainer}>
+            <Box onClick={() => handleSector("cultura")} sx={sectionContainer}>
                 <SchoolOutlinedIcon/>
                 <p>Cultura</p>
             </Box>
