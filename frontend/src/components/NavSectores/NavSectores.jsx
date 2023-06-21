@@ -36,6 +36,7 @@ const ICONOS = {
     SIN_SECTOR: <SchoolOutlinedIcon/>,
 };
 
+export default function NavSectores(){
 
     const { section, setSection } = useUserContext();
     const [sectores, setSectores] = useState([]);
@@ -52,7 +53,18 @@ const ICONOS = {
     
     return (
         <>
-
+        <Box sx={{textTransform: "capitalize",display: "flex", columnGap: "1rem", width: "100%", justifyContent: "space-evenly", div: { ">p": { margin: "0 !important" } } }}>
+                {sectores.map((sector) => {
+                   if (sector.NOMBRE_SECTOR !== "SIN SECTOR" ){
+                        return (
+                            <Box onClick={()=>handleClick(sector)} className={`${section.NOMBRE_SECTOR===sector.NOMBRE_SECTOR? 'active':""}`} key={sector.ID} sx={sectionContainer}>
+                                  {ICONOS[sector.NOMBRE_SECTOR]}
+                                <Box><p>{sector.NOMBRE_SECTOR.toLowerCase()}</p></Box>
+                            </Box>
+                        );
+                    }
+            }
+            )}
         </Box>
         <Box sx={{ display: "flex", columnGap: "1rem", p: "1rem", minHeight:"86px" }}>
                 <Categorias/>
