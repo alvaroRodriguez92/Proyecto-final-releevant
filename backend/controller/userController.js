@@ -16,7 +16,7 @@ userController.addUser = async (req, res) => {
     DESCRIPCION,
     PASSWORD,
     CATEGORIA,
-    DIRECCION,
+    DIRECCIONES,
   } = req.body;
   const newUser = {
     NOMBRE: NOMBRE,
@@ -40,7 +40,7 @@ userController.addUser = async (req, res) => {
       if(!CATEGORIA){ 
         return res.status(201).send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
       }      
-      DIRECCION.map( async (D) =>{
+      DIRECCIONES.map( async (D) =>{
       
         const { 
           LONGITUD,
