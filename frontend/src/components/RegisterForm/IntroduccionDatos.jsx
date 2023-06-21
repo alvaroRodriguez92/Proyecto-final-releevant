@@ -179,9 +179,10 @@ export default function IntroduccionDatos({formik}) {
                 >
                   
                   {sectores?.map((item, index)=>{
+                    console.log(sectores, "sectores")
                     const sector= item.NOMBRE_SECTOR.toLowerCase()
                     const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
-
+                    
                     return(
 
                     <MenuItem key={index} value={item.ID}>{capitalize(sector)}</MenuItem>
@@ -205,7 +206,11 @@ export default function IntroduccionDatos({formik}) {
                   fullWidth
                 >
                  {categorias?.map((item)=>{
-                  const categoria= item.NOMBRE_CATEGORIA?.toLowerCase()
+                  console.log(categorias, "categorias")
+                  let categoria=""
+                  {if(item.NOMBRE_CATEGORIA) {
+                  categoria= item.NOMBRE_CATEGORIA.toLowerCase()}
+                  }
                   const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
                   return(
                   <MenuItem value={item.ID}>{capitalize(categoria)}</MenuItem>

@@ -15,7 +15,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/registroView" element={<RegistroView />} />
+            <Route path="/registro" element={<RegistroView />} />
             <Route path="/perfil" element={<PerfilView />} />
           </Routes>
         </ThemeProvider>
