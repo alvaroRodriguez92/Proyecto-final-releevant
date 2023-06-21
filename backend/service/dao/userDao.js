@@ -14,8 +14,8 @@ dao.getUserByEmail = async (email) => await userQueries.getUserByEmail(email);
 // Añadir un nuevo usuario
 dao.addUser = async (newUser) => await userQueries.addUser(newUser);
 dao.addAddress = async (newAddress) => await userQueries.addAddress(newAddress);
+dao.addOfertante = async (newOfer) => await userQueries.addOfertante(newOfer);
 dao.getLocationsBySector = async (id) => await userQueries.getLocationsBySector(id);
-dao.addOfertante = async (newOfertante)=> await userQueries.addOfertante(newOfertante)
 //Añadir y buscar imagen
 dao.addLogo = async (imageData) => await userQueries.addLogo(imageData);
 dao.getUserLogo = async (ID_USER) => await userQueries.getUserLogo(ID_USER);
