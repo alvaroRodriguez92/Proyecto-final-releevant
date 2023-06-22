@@ -12,7 +12,7 @@ userQueries.getUserByEmail = async (email) => {
     console.log(email)
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM users WHERE EMAIL = ?",
+      "SELECT * FROM USERS WHERE EMAIL = ?",
       email,
       "select",
       conn
@@ -168,6 +168,7 @@ userQueries.getUsersByCategoria = async (id) => {
 };
 userQueries.getUsersBySector = async (id) => {
   let conn = null;
+  console.log(id)
   try {
     conn = await db.createConnection();
     return await db.query(
@@ -240,11 +241,11 @@ userQueries.updateUser = async (id, userData) => {
     // Encriptamos la password con md5 si nos llega por el body, sino la declaramos como undefined
     // y usamos la libreria momentjs para actualizar la fecha.
     let userObj = {
-      name: userData.name,
-      surname: userData.surname,
-      email: userData.email,
-      password: userData.password ? md5(userData.password) : undefined,
-      update_date: moment().format("YYYY-MM-DD HH:mm:ss"),
+      NOMBRE: userData.NOMBRE,
+      EMAIL: userData.EMAIL,
+      TLF: userData.TLF,
+      URL: userData.URL,
+      DESCRIPCION: userData.DESCRIPCION
     };
     // Eliminamos los campos que no se van a modificar (no llegan por el body)
     userObj = await utils.removeUndefinedKeys(userObj);

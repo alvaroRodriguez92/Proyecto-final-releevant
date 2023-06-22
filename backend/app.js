@@ -8,6 +8,7 @@ const sectorRouter = require("./routes/sectorRoutes");
 const productRouter = require("./routes/productRoutes");
 const valorRoute = require("./routes/valorRoute")
 const chatboxRoutes = require("./routes/chatboxRoutes")
+const addressRoutes = require("./routes/addressRoutes")
 const expressFileUpload = require("express-fileupload");
 const cors = require("cors");
 
@@ -37,6 +38,7 @@ app.use("/user", userRouter);
 app.use("/sector", sectorRouter);
 app.use("/valoraciones", valorRoute)
 app.use("/chatbox",chatboxRoutes)
+app.use("/address",addressRoutes)
 
 app.use("/product", productRouter);
 
