@@ -46,22 +46,28 @@ queries.addRes = `INSERT INTO RESPUESTAS SET ?`
 //CONSULTAS DE CHATBOX//
 ////////////////////////
 
-//Consulta para obtener todas las preguntas de chatbox de un usuario
+//Query para obtener todas las preguntas de chatbox de un usuario
 queries.getPreguntas = `select ID, PREGUNTA from CHATBOX where ID_USER = ?`
-//Consulta para obtener la respuesta correspondiente a una pregunta
+//Query para obtener la respuesta correspondiente a una pregunta
 queries.getRespuesta = `SELECT RESPUESTA FROM CHATBOX WHERE ID = ?`
-//Consulta de insercion en chatbox
+//Query de insercion en chatbox
 queries.addPreguntaRespuesta = `INSERT INTO chatbox SET ?`
-//Consulta de borrado de pregunta y respuesta en chatbox
+//Query de borrado de pregunta y respuesta en chatbox
 queries.deletePreguntaRespuesta = `DELETE FROM CHATBOX WHERE ID = ?`
-//Consulta de actualizado de preguntas y respuesta
+//Query de actualizado de preguntas y respuesta
 queries.updatePreguntaRespuesta = `UPDATE chatbox SET ? WHERE id = ?`
 
 ////////////////////////////
 //CONSULTAS DE DIRECCIONES//
 ////////////////////////////
 
-//Consulta de insercion en direcciones
+//Query de insercion en direcciones
 queries.addAddress = `INSERT INTO DIRECCIONES SET ?`
+//Query para extraer direcciones por usuario
+queries.addressByUser = `SELECT * FROM DIRECCIONES WHERE ID_USER = ?`
+//Query para actualizar una direccion
+queries.editAddress = `UPDATE DIRECCIONES SET ? WHERE id = ?`
+//Query par eliminar direccion
+queries.deleteAddress = `DELETE FROM DIRECCIONES WHERE ID = ?`
 
 module.exports = queries;
