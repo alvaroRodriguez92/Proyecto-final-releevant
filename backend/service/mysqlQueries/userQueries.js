@@ -122,7 +122,7 @@ userQueries.addImagen = async (imageData) => {
       ID: null,
       ID_USER: imageData.ID_USER,
       PATH: imageData.PATH,
-      NOMBRE: imageData.NOMBRE,
+      IMG_NOMBRE: imageData.NOMBRE,
       TIPO: imageData.TIPO,
     };
     return await db.query(
