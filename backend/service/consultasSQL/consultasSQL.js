@@ -70,4 +70,13 @@ queries.editAddress = `UPDATE DIRECCIONES SET ? WHERE id = ?`
 //Query par eliminar direccion
 queries.deleteAddress = `DELETE FROM DIRECCIONES WHERE ID = ?`
 
+/////////////////////////
+//CONSULTAS DE IMAGENES//
+/////////////////////////
+
+//Query para eliminar fotos de la DB
+queries.deleteImg = `DELETE FROM IMAGENES WHERE ID = ?`
+//Query para insertar imagenes
+queries.addImg = `INSERT INTO IMAGENES SET ?`
+
 module.exports = queries;
