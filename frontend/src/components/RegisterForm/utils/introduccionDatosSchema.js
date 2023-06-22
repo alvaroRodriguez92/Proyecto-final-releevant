@@ -16,7 +16,7 @@ export const registroSchema = Yup.object().shape({
     .max(999999999999, "Too long!")
     .required("Required"),
   URL: Yup.string().min(2, "Too short!").max(50, "Too long!"),
-  DESCRIPCION: Yup.string().max(200, "Too long!"),
+  DESCRIPCION: Yup.string().max(1000, "Too long!"),
   PASSWORD: Yup.string()
     .matches(passwordRules, {
       message:
