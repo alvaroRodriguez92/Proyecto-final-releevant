@@ -1,60 +1,57 @@
 import { Formik } from "formik";
-import { initialValues } from "../RegisterForm/utils/initialValuesIntroduccionDatos"
+import { initialValues } from "../RegisterForm/utils/initialValuesIntroduccionDatos";
 import { registroSchema } from "../RegisterForm/utils/introduccionDatosSchema";
 import Stepper from "../Stepper/Stepper";
 import StepContainer from "../RegisterForm/utils/StepContainer";
 import IntroduccionDatos from "../RegisterForm/IntroduccionDatos";
+import IntroduccionDatosUser from "../RegisterForm/IntroduccionDatosUser";
 import Localizacion from "../RegisterForm/Localizacion";
 import LogoFotos from "../RegisterForm/LogoFotos";
-
-const steps = ["Introducción de datos", "Localización", "Logo/Fotos"];
-
-async function onSubmit(values, actions) {
-  const response = await fetch("http://127.0.0.1:3000/user/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(values),
-  });
-  if (response.status === 200) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    alert("Registro realizado con éxito")
-    actions.resetForm();
-  }
-}
+import { initialValuesUser } from "../RegisterForm/utils/initialValuesUser";
+import { schemaUser } from "../RegisterForm/utils/schemaUser";
+import RegistroProfesional from "./RegistroProfesional";
+import RegistroUser from "./RegistroUser";
+import { useState } from "react";
+import { Select, MenuItem, FormControl, InputLabel, Box } from "@mui/material";
 
 export default function Registro() {
+  const [isOfertante, setIsOfertante] = useState(true);
+
+  async function registrandoUsuario(e) {
+    setIsOfertante(e.target.value);
+  }
+
+  console.log(isOfertante);
+
   return (
     <>
-      <h1>Register View</h1>
-      <Formik
-
-        validationSchema={registroSchema}
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-      >
-        {(props) => (
-          <form className="form-register" onSubmit={props.handleSubmit}>
-            <StepContainer >
-              <Stepper
-                steps={steps}
-                renderStep={(step) => {
-                  switch (step) {
-                    case 0:
-                      return <IntroduccionDatos formik={props} />;
-                    case 1:
-                      return <Localizacion formik={props} />;
-                    case 2:
-                      return <LogoFotos/>;
-
-                    default:
-                      return <UserDataForm formik={props} />;
-                  }
-                }}
-              />
-            </StepContainer>
-          </form>
-        )}
-      </Formik>
+      <h1>Indique su perfil</h1>
+      <Box container sx={{ width: "30%", m: 5, ml: "12%" }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Perfil</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={isOfertante}
+            label="Perfil usuario"
+            onChange={registrandoUsuario}
+          >
+            <MenuItem value={true}>Profesional</MenuItem>
+            <MenuItem value={false}>Usuario</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      {isOfertante ? (
+        <>
+          <h1 className="titulo-registro">Registro de profesional</h1>
+          <RegistroProfesional />
+        </>
+      ) : (
+        <>
+          <h1 className="titulo-registro">Registro de usuario</h1>
+          <RegistroUser />
+        </>
+      )}
     </>
   );
 }

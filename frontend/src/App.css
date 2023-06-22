@@ -136,21 +136,21 @@ form label{
 }
 
 /* FORM NORMALES */
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+.css-1chamcn-MuiInputBase-root-MuiOutlinedInput-root{
   border-radius: 10px!important;
   box-shadow: 0 0 15px 4px
   rgba(0,0,0,0.1);
 }
 
 /* FORM DE DESCRIPCION */
-.css-1qxw4jt-MuiInputBase-root-MuiOutlinedInput-root {
+.css-d067fc-MuiInputBase-root-MuiOutlinedInput-root {
   border-radius: 10px!important;
   box-shadow: 0 0 15px 4px
   rgba(0,0,0,0.1);
 }
 
 /* FORM DE SELECTS */
-.css-1ualgfl-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+.css-fn1odq-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
   border-radius: 10px!important;
   box-shadow: 0 0 15px 4px
   rgba(0,0,0,0.1);
@@ -217,4 +217,29 @@ form label{
 
 main{
   margin-top: 2rem;
+}
+
+.titulo-registro{
+  margin-left:12%;
+}
+
+.pregunta-bot{
+  margin: 8px; 
+  border:1px solid grey;
+  padding:8px;
+  border-radius: 10px;
+  background-color:#FFEE8C;
+  display: inline-block;
+}
+
+.respuesta-bot{
+  margin: 8px; 
+  border:1px solid grey;
+  padding:8px;
+  border-radius: 10px;
+  background-color:#fc8181;
+  display: block;
+  justify-content: end;
+  align-items: end;
+  float: right;
 }
