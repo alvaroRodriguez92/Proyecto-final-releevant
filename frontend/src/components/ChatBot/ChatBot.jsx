@@ -1,6 +1,6 @@
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -13,6 +13,34 @@ import Button from '@mui/material/Button';
 export default function ChatBot() {
     const [pregunta, setPregunta] = useState({pregunta:"", respuesta:""})
     const [preguntaChat, setPreguntaChat] = useState([])
+    const [resultFetchPregunta, setResultFetchPregunta] = useState([])
+    const [resultFetchRespuesta, setResultFetchRespuesta] = useState([])
+
+    const ID_PREGUNTA=14;
+    // http://localhost:3000/chatbox/respuestas/1
+
+    useEffect(()=>{
+      async function fetchChatbot(){
+        const response = await fetch("http://localhost:3000/chatbox/preguntas/"+ID_PREGUNTA)
+        const data = await response.json()
+        setResultFetchPregunta(data)
+      }
+      fetchChatbot();
+      console.log(resultFetchPregunta,"fetcheandoo PREGUNTA")
+    }, [])
+
+    console.log(pregunta)
+
+    useEffect(()=>{
+      async function fetchRespuestaChatbot(){
+        const response = await fetch("http://localhost:3000/chatbox/respuesta/"+pregunta.ID)
+        const data = await response.json()
+        setResultFetchRespuesta(data)
+      }
+      fetchRespuestaChatbot();
+      console.log(resultFetchRespuesta,"fetcheandoo RESPUESTA")
+    }, [pregunta.ID])
+
 
    
   console.log(pregunta, "pregunta normal")
@@ -56,7 +84,7 @@ export default function ChatBot() {
     {preguntaChat.map((item, index)=>{
         return(
           <>
-            <h6 className="pregunta-bot" key={index}>{item.pregunta}</h6>
+            <h6 className="pregunta-bot" key={index}>{item.PREGUNTA}</h6>
             <h6 className="respuesta-bot" key={index}>{item.respuesta}</h6>
             
             </>
@@ -76,9 +104,9 @@ export default function ChatBot() {
     value={pregunta}
     label="Preguntas"
     onChange={handlePregunta}
-  >{arrayPreguntas.map((item, id)=>{
+  >{resultFetchPregunta?.map((item, id)=>{
     return(
-    <MenuItem key ={id} value={item}>{item.pregunta}</MenuItem>
+    <MenuItem key ={id} value={item}>{item.PREGUNTA}</MenuItem>
     )
 
   })}

@@ -9,101 +9,101 @@ const userController = {};
 //controlador de registro de usuario
 userController.addUser = async (req, res) => {
 
+  // console.log(req.body)
+  // console.log(req.files)
+  // res.status(200).send("mu bieen")
+  const {
+    NOMBRE,
+    EMAIL,
+    TLF,
+    URL,
+    DESCRIPCION,
+    PASSWORD,
+    CATEGORIA,
+    DIRECCIONES
+  } = req.body;
   console.log(req.body)
-  console.log(req.files)
-  res.status(200).send("mu bieen")
-//   const {
-//     NOMBRE,
-//     EMAIL,
-//     TLF,
-//     URL,
-//     DESCRIPCION,
-//     PASSWORD,
-//     CATEGORIA,
-//     DIRECCIONES
-//   } = req.body;
-//   console.log(req.body)
-//   const newUser = {
-//     NOMBRE: NOMBRE,
-//     EMAIL: EMAIL,
-//     TLF: TLF,
-//     URL: URL,
-//     DESCRIPCION: DESCRIPCION,
-//     PASSWORD: PASSWORD,
-//   };
+  const newUser = {
+    NOMBRE: NOMBRE,
+    EMAIL: EMAIL,
+    TLF: TLF,
+    URL: URL,
+    DESCRIPCION: DESCRIPCION,
+    PASSWORD: PASSWORD,
+  };
   
-//   // Buscamos el usuario en la base de datos
-//   try {
+  // Buscamos el usuario en la base de datos
+  try {
     
-//     const user = await dao.getUserByEmail(EMAIL);
-//     // Si existe el usuario respondemos con un 409 (conflict)
-//     if (user.length > 0) return res.status(409).send("usuario ya registrado");
-//     // Si no existe lo registramos
-//     const addUser = await dao.addUser(newUser);
+    const user = await dao.getUserByEmail(EMAIL);
+    // Si existe el usuario respondemos con un 409 (conflict)
+    if (user.length > 0) return res.status(409).send("usuario ya registrado");
+    // Si no existe lo registramos
+    const addUser = await dao.addUser(newUser);
   
-//     if (addUser){
-//       if(!CATEGORIA){ 
-//         return res.status(201).send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
-//       }      
-//       DIRECCIONES.map( async (D) =>{
+    if (addUser){
+      if(!CATEGORIA){ 
+        return res.status(201).send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
+      }      
+      DIRECCIONES.map( async (D) =>{
       
-//         const { 
-//           LONGITUD,
-//           LATITUD,
-//           TIPO_VIA,
-//           NOMBRE_VIA,
-//           NUMERO,
-//           PISO,
-//           PUERTA,
-//           URBANIZACION,
-//           BLOQUE,
-//           CP,
-//           LOCALIDAD,
-//           PROVINCIA,
-//           PAIS,} = D
+        const { 
+          LONGITUD,
+          LATITUD,
+          TIPO_VIA,
+          NOMBRE_VIA,
+          NUMERO,
+          PISO,
+          PUERTA,
+          URBANIZACION,
+          BLOQUE,
+          CP,
+          LOCALIDAD,
+          PROVINCIA,
+          PAIS,} = D
           
-//           if(!addUser || !LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !NUMERO){
-//             res.status(408).send("Error en la direccion")
-//           }
-//           const newAddress = {
-//             ID_USER: addUser,
-//             LONGITUD: LONGITUD,
-//             LATITUD: LATITUD,
-//             TIPO_VIA: TIPO_VIA,
-//             NOMBRE_VIA: NOMBRE_VIA,
-//             NUMERO: NUMERO,
-//             URBANIZACION: URBANIZACION,
-//             BLOQUE: BLOQUE,
-//             PISO: PISO,
-//             PUERTA: PUERTA,
-//             CP: CP,
-//             LOCALIDAD: LOCALIDAD,
-//             PROVINCIA: PROVINCIA,
-//             PAIS: PAIS,
-//           };
-//           const addAddress = await dao.addAddress(newAddress);
-//           if (!addAddress)
-//             return res.send(
-//               `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la DIRECCION`
-//             );
-//       })
+          if(!addUser || !LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !NUMERO){
+            res.status(408).send("Error en la direccion")
+          }
+          const newAddress = {
+            ID_USER: addUser,
+            LONGITUD: LONGITUD,
+            LATITUD: LATITUD,
+            TIPO_VIA: TIPO_VIA,
+            NOMBRE_VIA: NOMBRE_VIA,
+            NUMERO: NUMERO,
+            URBANIZACION: URBANIZACION,
+            BLOQUE: BLOQUE,
+            PISO: PISO,
+            PUERTA: PUERTA,
+            CP: CP,
+            LOCALIDAD: LOCALIDAD,
+            PROVINCIA: PROVINCIA,
+            PAIS: PAIS,
+          };
+          const addAddress = await dao.addAddress(newAddress);
+          if (!addAddress)
+            return res.send(
+              `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la DIRECCION`
+            );
+      })
         
-//       const newOfertante = {
-//         ID_USER: addUser,
-//         ID_CATEGORIA: CATEGORIA,
-//       }
+      const newOfertante = {
+        ID_USER: addUser,
+        ID_CATEGORIA: CATEGORIA,
+      }
       
-//       const addOfertante = await dao.addOfertante(newOfertante)
-//       if (!addOfertante)
-//         return res.send(
-//           `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la CATEGORIA`
-//         );
-//       return res.status(200).send("Usuario registrado con exito")
-//     }
+      const addOfertante = await dao.addOfertante(newOfertante)
+      if (!addOfertante)
+        return res.send(
+          `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la CATEGORIA`
+        );
+      return res.status(200).send("Usuario registrado con exito")
+    }
    
-//   } catch (e) {
-//     throw new Error(e.message);
-//   }
+  } catch (e) {
+    throw new Error(e.message);
+  }
  };
 //controlador para obtener las localizaciones de todos los usuarios
 //PROBADO EN POSTMAN
