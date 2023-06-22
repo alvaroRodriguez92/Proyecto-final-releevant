@@ -1,6 +1,15 @@
 import * as Yup from "yup";
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 
+const MAX_FILE_SIZE = 102400000;
+
+const validFileExtensions = { image: ['jpg', 'gif', 'png', 'jpeg', 'svg', 'webp'] };
+
+
+function isValidFileType(fileName, fileType) {
+  return fileName && validFileExtensions[fileType].indexOf(fileName.split('.').pop()) > -1;
+}
+
 export const registroSchema = Yup.object().shape({
   NOMBRE: Yup.string()
     .min(2, "Too short!")
@@ -51,6 +60,21 @@ export const registroSchema = Yup.object().shape({
       PAIS: Yup.string().max(100, "Too long!"),
       LONGITUD: Yup.number("Must be a valid postalcode").required("Required"),
       LATITUD: Yup.number("Must be a valid postalcode").required("Required"),
+      
+        
     })
   ),
+  LOGO: Yup
+      .mixed(),
+      // .required("Required")
+      // .test("is-valid-type", "Not a valid image type",
+      //   value => isValidFileType(value && value.name.toLowerCase(), "image"))
+      // .test("is-valid-size", "Max allowed size is 1000KB",
+      //   value => value && value.size <= MAX_FILE_SIZE),
+      IMAGEN: Yup
+      .mixed()
+      // .test("is-valid-type", "Not a valid image type",
+      //   value => isValidFileType(value && value.name.toLowerCase(), "image"))
+      // .test("is-valid-size", "Max allowed size is 1000KB",
+      //   value => value && value.size <= MAX_FILE_SIZE)
 });

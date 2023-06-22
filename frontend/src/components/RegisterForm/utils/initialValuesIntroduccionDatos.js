@@ -20,5 +20,7 @@ export const initialValues={
     PAIS:"",
     LONGITUD:"",
     LATITUD:""}],
+    LOGO:"",
+    IMAGEN:""
     
 }

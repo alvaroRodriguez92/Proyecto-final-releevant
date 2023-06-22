@@ -8,6 +8,7 @@ const userController = {};
 
 //controlador de registro de usuario
 userController.addUser = async (req, res) => {
+
   const { LOGO, IMAGEN } = req.files
   const {
     NOMBRE,
@@ -17,7 +18,7 @@ userController.addUser = async (req, res) => {
     DESCRIPCION,
     PASSWORD,
     CATEGORIA,
-    DIRECCIONES,
+    DIRECCIONES
   } = req.body;
   console.log(req.body)
   const newUser = {
@@ -136,6 +137,7 @@ userController.addUser = async (req, res) => {
   } catch (e) {
     throw new Error(e.message);
   }
+
 };
 //controlador para obtener user por email
 userController.getUserByEmail = async (req,res) => {
@@ -149,6 +151,7 @@ userController.getUserByEmail = async (req,res) => {
     throw new Error(e.message);
   }
 }
+
 //controlador para obtener las localizaciones de todos los usuarios
 //PROBADO EN POSTMAN
 userController.getLocationsBySector = async (req, res) => {
