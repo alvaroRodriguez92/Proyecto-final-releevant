@@ -38,7 +38,7 @@ app.use("/user", userRouter);
 app.use("/sector", sectorRouter);
 app.use("/valoraciones", valorRoute)
 app.use("/chatbox",chatboxRoutes)
-app.use("/adress",addressRoutes)
+app.use("/address",addressRoutes)
 
 app.use("/product", productRouter);
 
