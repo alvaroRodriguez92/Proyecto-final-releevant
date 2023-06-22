@@ -73,7 +73,7 @@ export default function BasicForm() {
           </Box>
       </form>
       <Box sx={{mt:"3rem", textAlign:"center"}}>
-        <span>Si aun no estás registrado pincha <Link to="/registroView">aquí</Link></span>
+        <span>Si aun no estás registrado pincha <Link to="/registro">aquí</Link></span>
         
       </Box>
     </Box>
