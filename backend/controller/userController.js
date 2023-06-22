@@ -8,6 +8,7 @@ const userController = {};
 
 //controlador de registro de usuario
 userController.addUser = async (req, res) => {
+  const { LOGO, IMAGEN } = req.files
   const {
     NOMBRE,
     EMAIL,
@@ -83,6 +84,41 @@ userController.addUser = async (req, res) => {
               `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la DIRECCION`
             );
       })
+
+      if(LOGO){
+        let uploadPath = path.join(
+          __dirname,
+          "../public/imagenes/" + LOGO.name
+        );
+        LOGO.mv(uploadPath, (err) => {
+          if (err) return res.status(500).send(err);
+        });
+        await dao.addImagen({
+          ID_USER: addUser,
+          PATH: uploadPath,
+          NOMBRE: LOGO.name,
+          TIPO: 1,
+        });
+      }
+
+      if(IMAGEN){
+        IMAGEN.map(async(i)=>{
+
+          let uploadPath = path.join(
+            __dirname,
+            "../public/imagenes/" + i.name
+          );
+          LOGO.mv(uploadPath, (err) => {
+            if (err) return res.status(500).send(err);
+          });
+          await dao.addImagen({
+            ID_USER: addUser,
+            PATH: uploadPath,
+            NOMBRE: i.name,
+            TIPO: 0,
+          });
+        })
+      }
         
       const newOfertante = {
         ID_USER: addUser,
@@ -101,11 +137,23 @@ userController.addUser = async (req, res) => {
     throw new Error(e.message);
   }
 };
+//controlador para obtener user por email
+userController.getUserByEmail = async (req,res) => {
+  const { email } = req.body
+  
+  try {
+    const user = await dao.getUserByEmail(email)
+    if(!user) return res.status(410).send("Usuario no registrado");
+    return res.status(200).send(user)
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
 //controlador para obtener las localizaciones de todos los usuarios
 //PROBADO EN POSTMAN
 userController.getLocationsBySector = async (req, res) => {
+  console.log("estoy desde bay email")
   const id = req.params.id
-  console.log(id)
   try {
     const locations = await dao.getLocationsBySector(id);
    
@@ -123,6 +171,7 @@ userController.getUsersBySector = async (req, res) => {
     const users = await dao.getUserBySector(req.params.id);
     if (users.length <= 0)
       return res.status(409).send("No hay Categorias que mostrar");
+    console.log(users)
     return res.status(200).send(users);
   } catch (e) {
     throw new Error(e.message);
@@ -134,7 +183,7 @@ userController.getUsersBySector = async (req, res) => {
 userController.getUsersByCategoria = async (req, res) => {
   try {
     const users = await dao.getUsersByCategoria(req.params.id);
-    console.log(users)
+    
     if (users.length <= 0)
       return res.status(409).send("No hay usuarios que mostrar");
     return res.status(200).send(users);
@@ -279,7 +328,7 @@ userController.updateUser = async (req, res) => {
     const updateUser = await dao.updateUser(req.params.id, req.body);
     if (updateUser) return res.send(`usuario ${req.params.id} actualizado`);
     // Devolvemos la respuesta
-    //return res.send(`Usuario con id ${req.params.id} modificado`);
+    return res.send(`Usuario con id ${req.params.id} modificado`);
   } catch (e) {
     console.log(e.message);
   }
