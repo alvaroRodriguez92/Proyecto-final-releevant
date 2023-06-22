@@ -11,7 +11,7 @@ import CardValoraciones from '../CardValoraciones/CardValoraciones';
 
 export default function Perfil() {
   return (
-        <Box sx={{width:"50%", height:"50%", display:"flex",flexDirection:"column", p:"4rem"}}>
+        <Box sx={{width:"80%", height:"80%", display:"flex",flexDirection:"column", p:"4rem"}}>
         <Typography sx={{p:"1rem"}} variant="h5" component="div" >
           nuevamente psicólogos
         </Typography>
