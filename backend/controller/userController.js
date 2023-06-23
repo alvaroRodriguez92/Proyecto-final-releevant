@@ -8,7 +8,7 @@ const userController = {};
 
 //controlador de registro de usuario
 userController.addUser = async (req, res) => {
-  console.log(req.boy)
+  console.log(req.body)
   const { LOGO, IMAGEN } = req.files
   const {
     NOMBRE,
