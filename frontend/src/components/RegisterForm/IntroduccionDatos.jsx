@@ -177,7 +177,6 @@ export default function IntroduccionDatos({formik}) {
                 >
                   
                   {sectores?.map((item, index)=>{
-                    console.log(sectores, "sectores")
                     const sector= item.NOMBRE_SECTOR.toLowerCase()
                     const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
                     
@@ -204,7 +203,6 @@ export default function IntroduccionDatos({formik}) {
                   fullWidth
                 >
                  {categorias?.map((item)=>{
-                  console.log(categorias, "categorias")
                   let categoria=""
                   {if(item.NOMBRE_CATEGORIA) {
                   categoria= item.NOMBRE_CATEGORIA.toLowerCase()}

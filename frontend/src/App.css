@@ -13,7 +13,16 @@ body{
 
 }
 
+#chatContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start
 
+}
+
+.bienvenida-bot{
+  margin-top:8px;
+}
   
 .leaflet-container{
   /* width: 100vw;
@@ -215,6 +224,7 @@ form label{
   box-shadow: 0 0 1px 0 black;
 }
 
+
 main{
   margin-top: 2rem;
 }
@@ -224,21 +234,21 @@ main{
 }
 
 .pregunta-bot{
-  margin: 8px; 
+  margin-left: 8px; 
   border:1px solid grey;
   padding:8px;
   border-radius: 10px;
-  background-color:#FFEE8C;
+  background-color:#00bb2d;
   display: inline-block;
 }
 
 .respuesta-bot{
-  margin: 8px; 
+  margin-left: 8px;
   border:1px solid grey;
   padding:8px;
   border-radius: 10px;
-  background-color:#fc8181;
-  display: block;
+  background-color:#c1eaba;
+  display: inline;
   justify-content: end;
   align-items: end;
   float: right;
