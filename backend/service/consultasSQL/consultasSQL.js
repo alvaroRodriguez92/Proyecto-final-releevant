@@ -45,7 +45,7 @@ queries.addRes = `INSERT INTO RESPUESTAS SET ?`
 ////////////////////////
 
 //Consulta para obtener todas las preguntas de chatbox de un usuario
-queries.getPreguntas = `select ID, PREGUNTA from CHATBOX where ID_USER = ?`
+queries.getPreguntas = `select ID, PREGUNTA, RESPUESTA from CHATBOX where ID_USER = ?`
 //Consulta para obtener la respuesta correspondiente a una pregunta
 queries.getRespuesta = `SELECT RESPUESTA FROM CHATBOX WHERE ID = ?`
 //Consulta de insercion en chatbox
