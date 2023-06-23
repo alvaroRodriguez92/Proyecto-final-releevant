@@ -65,7 +65,8 @@ export const registroSchema = Yup.object().shape({
     })
   ),
   LOGO: Yup
-      .mixed(),
+    .mixed(),
+    
       // .required("Required")
       // .test("is-valid-type", "Not a valid image type",
       //   value => isValidFileType(value && value.name.toLowerCase(), "image"))
@@ -73,7 +74,6 @@ export const registroSchema = Yup.object().shape({
       //   value => value && value.size <= MAX_FILE_SIZE),
       IMAGEN: Yup
       .mixed()
-      .nullable()
       // .test("is-valid-type", "Not a valid image type",
       //   value => isValidFileType(value && value.name.toLowerCase(), "image"))
       // .test("is-valid-size", "Max allowed size is 1000KB",
