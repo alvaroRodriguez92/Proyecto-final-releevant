@@ -7,7 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Caroussel from '../Caroussel/Caroussel';
 import CardValoraciones from '../CardValoraciones/CardValoraciones';
-
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export default function Perfil() {
   return (
@@ -45,6 +47,9 @@ export default function Perfil() {
         <Typography >
           Contacto
         </Typography>
+        <FacebookIcon/>
+        <LinkedInIcon/>
+        <WhatsAppIcon/>
           </Box>
       </Box>
           

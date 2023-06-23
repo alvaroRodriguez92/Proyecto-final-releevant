@@ -36,8 +36,9 @@ const ICONOS = {
     SIN_SECTOR: <SchoolOutlinedIcon/>,
 };
 
-export default function NavSectores(){
 
+
+export default function NavSectores() {
     const { section, setSection } = useUserContext();
     const [sectores, setSectores] = useState([]);
     

@@ -5,9 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import {Box, Grid} from '@mui/material'
-import {Link} from 'react-router-dom'
+import { Box, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+
 export default function CardEmpresas() {
+
   return (
 
     <Box width="100%" sx={{ display: "flex", p: "1rem", m: "2rem" }}>
