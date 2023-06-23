@@ -47,17 +47,22 @@ async function onSubmit(values, actions) {
     formData.append("LATITUD", item.LATITUD)
 })
   formData.append("LOGO", values.LOGO)
-  
-  values.IMAGEN.map((item)=>{
+  if(values.IMAGEN !==""){
+
+    values.IMAGEN.map((item)=>{
+      formData.append("IMAGEN", item)
+    })
+  }else{
+    formData.append("IMAGEN",values.IMAGEN)
+  }
     
-    formData.append("IMAGEN", item)
-  })
+  console.log(formData);
   const response = await fetch("http://127.0.0.1:3000/user/", {
     method: "POST",
     body: formData
   });
   if (response.status === 200) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
     alert("Registro realizado con éxito")
     actions.resetForm();
   }
