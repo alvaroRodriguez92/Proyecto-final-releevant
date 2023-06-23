@@ -9,10 +9,12 @@ queries.infoPopup = `SELECT NOMBRE, EMAIL, TLF, URL, DIR.TIPO_VIA, DIR.NOMBRE_VI
 JOIN (SELECT ID_USER,TIPO_VIA, NOMBRE_VIA, NUMERO FROM DIRECCIONES) AS DIR ON USERS.ID = DIR.ID_USER 
 JOIN (SELECT ID_USER, IMG_NOMBRE AS FOTO FROM IMAGENES WHERE TIPO = 1) AS L ON USERS.ID = L.ID_USER WHERE USERS.ID  = ?`;
 //query para extraer todas las empresas por categoria
-queries.usersByCategoria = `SELECT NOMBRE, EMAIL, TLF, URL, DIR.TIPO_VIA, DIR.NOMBRE_VIA, DIR.NUMERO, L.FOTO  FROM USERS
-JOIN (SELECT ID_USER,TIPO_VIA, NOMBRE_VIA, NUMERO FROM DIRECCIONES) AS DIR ON USERS.ID = DIR.ID_USER 
-JOIN (SELECT ID_USER, IMG_NOMBRE AS FOTO FROM IMAGENES WHERE TIPO = 1) AS L ON USERS.ID = L.ID_USER 
-WHERE USERS.ESTADO = 1 AND USERS.ID  = (SELECT ID_USER FROM OFERTANTE WHERE ID_CATEGORIA = ?)`
+queries.usersByCategoria = `select NOMBRE_CATEGORIA, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.DESCRIPCION from categoria
+left join ofertante on ofertante.ID_CATEGORIA = categoria.ID
+left join (select ID, NOMBRE, EMAIL, TLF, URL, DESCRIPCION from users where ESTADO = 1) as USR on ofertante.ID_user = USR.ID 
+left join (select ID_USER, PATH as p,IMG_NOMBRE from IMAGENES where TIPO = 1) as IMG on USR.ID = IMG.ID_USER
+left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO from direcciones) as DIR on DIR.ID_USER = USR.ID
+where categoria.ID = ?`
 //query para extraer todas las empresas por sector
 queries.usersBySector = `select sectores.ID, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.URL, USR.DESCRIPCION, categoria.NOMBRE_CATEGORIA, IMG.IMG_NOMBRE
 from SECTORES left join categoria on categoria.ID_SECTOR  = sectores.id
