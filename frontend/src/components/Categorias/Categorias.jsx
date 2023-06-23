@@ -8,7 +8,8 @@ import NavSectores from '../NavSectores/NavSectores';
 
 export default function Categorias() {
     const [resultCategorias, setResultCategorias] = useState([]);
-    const { section, setSection } = useUserContext();
+    const { section, setSection,setTipoServicio } = useUserContext();
+
 
     useEffect(()=>{
     async function categoriaFetch(){
@@ -19,14 +20,18 @@ export default function Categorias() {
         if (section?.ID) {
             categoriaFetch()
         } else {
-            setResultCategorias([])
+            setResultCategorias();
         }
-},[section])
-   
+    }, [section])
+    
+    function handleClick(id){
+        setTipoServicio(id); 
+    }
+    console.log(resultCategorias);
     return (
         <>
             {resultCategorias.map((item, i) => 
-                <button className="button" key={i}>{item.NOMBRE_CATEGORIA.toLowerCase()}</button>
+                <button onClick={()=>handleClick(item.ID)} className="button" key={i}>{item.NOMBRE_CATEGORIA.toLowerCase()}</button>
             )}
            </> 
     )

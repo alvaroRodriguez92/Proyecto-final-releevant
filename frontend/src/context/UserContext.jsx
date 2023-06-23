@@ -9,7 +9,9 @@ const UserContext = createContext({
     "ID": 8,
     "NOMBRE_SECTOR": "SALUD"
   },
-  setSection: ()=>{}
+  setSection: () => { },
+  tipoServicio: 8,
+  setTipoServicio:()=>{},
 });
 
 export default function UserContextProvider({ children }) {
@@ -21,8 +23,7 @@ export default function UserContextProvider({ children }) {
     "ID": 8,
     "NOMBRE_SECTOR": "SALUD"
   });
-
-  
+  const [tipoServicio, setTipoServicio] = useState(8)
 
   async function login(values, actions) {
     const response = await fetch(`http://127.0.0.1:3000/user/login`, {
@@ -56,6 +57,9 @@ export default function UserContextProvider({ children }) {
     errorMessage,
     section,
     setSection,
+    tipoServicio,
+    setTipoServicio
+
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
