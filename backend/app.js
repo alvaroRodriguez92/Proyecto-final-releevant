@@ -10,6 +10,7 @@ const valorRoute = require("./routes/valorRoute")
 const chatboxRoutes = require("./routes/chatboxRoutes")
 const addressRoutes = require("./routes/addressRoutes")
 const imgRoutes = require("./routes/imgRoutes")
+const perfilRoutes = require("./routes/perfilRoutes")
 
 const expressFileUpload = require("express-fileupload");
 const cors = require("cors");
@@ -43,6 +44,7 @@ app.use("/valoraciones", valorRoute)
 app.use("/chatbox",chatboxRoutes)
 app.use("/address",addressRoutes)
 app.use("/img", imgRoutes)
+app.use("/perfil",perfilRoutes)
 
 
 app.use("/product", productRouter);
