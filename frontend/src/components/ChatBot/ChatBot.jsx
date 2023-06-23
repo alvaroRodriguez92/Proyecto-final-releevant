@@ -1,6 +1,6 @@
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -9,15 +9,19 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function ChatBot() {
     const [pregunta, setPregunta] = useState({pregunta:"", respuesta:""})
     const [preguntaChat, setPreguntaChat] = useState([])
     const [resultFetchPregunta, setResultFetchPregunta] = useState([])
-    const [resultFetchRespuesta, setResultFetchRespuesta] = useState([])
+    const mensajeFinal = useRef(null)
 
     const ID_PREGUNTA=14;
     // http://localhost:3000/chatbox/respuestas/1
+
+    console.log(pregunta, "PREGUNTAA")
 
     useEffect(()=>{
       async function fetchChatbot(){
@@ -32,28 +36,21 @@ export default function ChatBot() {
     console.log(pregunta)
 
     useEffect(()=>{
-      async function fetchRespuestaChatbot(){
-        const response = await fetch("http://localhost:3000/chatbox/respuesta/"+pregunta.ID)
-        const data = await response.json()
-        setResultFetchRespuesta(data)
-      }
-      fetchRespuestaChatbot();
-      console.log(resultFetchRespuesta,"fetcheandoo RESPUESTA")
-    }, [pregunta.ID])
-
+      mensajeFinal.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }, [preguntaChat])
 
    
   console.log(pregunta, "pregunta normal")
   console.log(preguntaChat, "preguntaChat")
 
-    const arrayPreguntas = [{pregunta:"¿Cuanto cuesta una consulta?", respuesta:"yo k se tio xd"}, {pregunta: "¿Que tipo de terapias ofrecéis?", respuesta:"Muchas"}, {pregunta:"¿Que tipo de pago aceptáis?", respuesta:"Criptomonedas solo"}]
+    // const arrayPreguntas = [{pregunta:"¿Cuanto cuesta una consulta?", respuesta:"yo k se tio xd"}, {pregunta: "¿Que tipo de terapias ofrecéis?", respuesta:"Muchas"}, {pregunta:"¿Que tipo de pago aceptáis?", respuesta:"Criptomonedas solo"}]
     
 
     async function enviarPregunta(){
         
         const newPreguntaChat={
-            pregunta:pregunta.pregunta,
-            respuesta:pregunta.respuesta
+            pregunta:pregunta.PREGUNTA,
+            respuesta:pregunta.RESPUESTA
         }
         const auxPregunta=[...preguntaChat]
         auxPregunta.push(newPreguntaChat)
@@ -62,8 +59,8 @@ export default function ChatBot() {
         console.log(preguntaChat)
     }
 
-    async function handlePregunta(e){
-        await setPregunta(e.target.value)
+     function handlePregunta(e){
+         setPregunta(e.target.value)
     }
 
 
@@ -79,17 +76,18 @@ export default function ChatBot() {
       </div>
 
     <div id="chatContainer" className="container border overflow-auto" style={{height:"300px"}}>
-    <h6>Bienvenido a nuestro ChatBot! ¿En que podemos ayudarte?</h6>
+    <h6 className="bienvenida-bot">Bienvenido a nuestro ChatBot! ¿En que podemos ayudarte?</h6>
     <br></br>
     {preguntaChat.map((item, index)=>{
         return(
           <>
-            <h6 className="pregunta-bot" key={index}>{item.PREGUNTA}</h6>
-            <h6 className="respuesta-bot" key={index}>{item.respuesta}</h6>
-            
+            <Box container sx={{display: "flex", flexDirection:"row", m:1}}><Avatar ><AccountCircleIcon sx={{width:"2em", height:"2em"}}/></Avatar><h6 className="pregunta-bot" key={index}>{item.pregunta}</h6></Box>
+            <Box container sx={{display: "flex", flexDirection:"row", m:1}}><Avatar><img width="80em" height="50em" src="http://127.0.0.1:3000/imagenes/logonuevamente.png"/></Avatar><h6 className="respuesta-bot" key={index}>{item.respuesta}</h6></Box>
             </>
         )
-    })}
+      })}
+      <div ref={mensajeFinal}/>
+      
     </div>
     <div className="input-group" >
 

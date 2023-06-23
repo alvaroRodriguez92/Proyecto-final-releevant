@@ -14,10 +14,10 @@ JOIN (SELECT ID_USER,TIPO_VIA, NOMBRE_VIA, NUMERO FROM DIRECCIONES) AS DIR ON US
 JOIN (SELECT ID_USER, IMG_NOMBRE AS FOTO FROM IMAGENES WHERE TIPO = 1) AS L ON USERS.ID = L.ID_USER 
 WHERE USERS.ESTADO = 1 AND USERS.ID  = (SELECT ID_USER FROM OFERTANTE WHERE ID_CATEGORIA = ?)`
 //query para extraer todas las empresas por sector
-queries.usersBySector = `select sectores.ID, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.URL, categoria.NOMBRE_CATEGORIA, IMG.IMG_NOMBRE
+queries.usersBySector = `select sectores.ID, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.URL, USR.DESCRIPCION, categoria.NOMBRE_CATEGORIA, IMG.IMG_NOMBRE
 from SECTORES left join categoria on categoria.ID_SECTOR  = sectores.id
 left join OFERTANTE on ofertante.ID_CATEGORIA = categoria.id 
-left join (select ID, NOMBRE, EMAIL, TLF, URL from users where ESTADO = 1) as USR on ofertante.ID_USER = USR.ID
+left join (select ID, NOMBRE, EMAIL, TLF, URL, DESCRIPCION from users where ESTADO = 1) as USR on ofertante.ID_USER = USR.ID
 left join (select ID_USER, PATH as p,IMG_NOMBRE from IMAGENES where TIPO = 1) as IMG on USR.ID = IMG.ID_USER
 left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO from direcciones) as DIR on DIR.ID_USER = USR.ID
 where sectores.ID = ?`
@@ -46,9 +46,9 @@ queries.addRes = `INSERT INTO RESPUESTAS SET ?`
 //CONSULTAS DE CHATBOX//
 ////////////////////////
 
-//Query para obtener todas las preguntas de chatbox de un usuario
-queries.getPreguntas = `select ID, PREGUNTA from CHATBOX where ID_USER = ?`
-//Query para obtener la respuesta correspondiente a una pregunta
+//Consulta para obtener todas las preguntas y respuestasde chatbox de un usuario
+queries.getPreguntas = `select ID, PREGUNTA, RESPUESTA from CHATBOX where ID_USER = ?`
+//Consulta para obtener la respuesta correspondiente a una pregunta
 queries.getRespuesta = `SELECT RESPUESTA FROM CHATBOX WHERE ID = ?`
 //Query de insercion en chatbox
 queries.addPreguntaRespuesta = `INSERT INTO chatbox SET ?`
