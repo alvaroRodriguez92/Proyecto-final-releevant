@@ -8,7 +8,7 @@ const userController = {};
 
 //controlador de registro de usuario
 userController.addUser = async (req, res) => {
-
+  console.log(req.boy)
   const { LOGO, IMAGEN } = req.files
   const {
     NOMBRE,
@@ -31,7 +31,7 @@ userController.addUser = async (req, res) => {
     PROVINCIA,
     PAIS,
   } = req.body;
-  console.log(req.body)
+ 
   const newUser = {
     NOMBRE: NOMBRE,
     EMAIL: EMAIL,
@@ -53,36 +53,60 @@ userController.addUser = async (req, res) => {
     if (addUser){
       if(!CATEGORIA){ 
         return res.status(201).send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
-      }      
+      } 
+      let cat = Number(CATEGORIA)
+      if(!LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !NUMERO){
+        res.status(408).send("Error en la direccion")
+      }
+      let num = Number(NUMERO)
+      let p = Number(PISO)
       
-      for(i = 0;i < LONGITUD.length; i++){
-       
-          
-          if(!addUser || !LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !NUMERO){
-            res.status(408).send("Error en la direccion")
-          }
-          const newAddress = {
-            ID_USER: addUser,
-            LONGITUD: LONGITUD[i],
-            LATITUD: LATITUD[i],
-            TIPO_VIA: TIPO_VIA[i],
-            NOMBRE_VIA: NOMBRE_VIA[i],
-            NUMERO: Number(NUMERO[i]),
-            BLOQUE: BLOQUE[i],
-            PISO: Number(PISO[i]),
-            PUERTA: PUERTA[i],
-            CP: CP[i],
-            LOCALIDAD: LOCALIDAD[i],
-            PROVINCIA: PROVINCIA[i],
-            PAIS: PAIS[i],
-          };
-          const addAddress = await dao.addAddress(newAddress);
+      if(typeof(LONGITUD) === 'string'){
+        const newAddress = {
+          ID_USER: addUser,
+          LONGITUD: LONGITUD,
+          LATITUD: LATITUD,
+          TIPO_VIA: TIPO_VIA,
+          NOMBRE_VIA: NOMBRE_VIA,
+          NUMERO: num,
+          BLOQUE: BLOQUE,
+          PISO: p,
+          PUERTA: PUERTA,
+          CP: CP,
+          LOCALIDAD: LOCALIDAD,
+          PROVINCIA: PROVINCIA,
+          PAIS: PAIS,
+        };
+      
+        const addAddress = await dao.addAddress(newAddress);
           if (!addAddress)
             return res.send(
               `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la DIRECCION`
             );
-        }
-
+      }else{     
+        for(i = 0;i < LONGITUD.length; i++){
+            const newAddress = {
+              ID_USER: addUser,
+              LONGITUD: LONGITUD[i],
+              LATITUD: LATITUD[i],
+              TIPO_VIA: TIPO_VIA[i],
+              NOMBRE_VIA: NOMBRE_VIA[i],
+              NUMERO: Number(NUMERO[i]),
+              BLOQUE: BLOQUE[i],
+              PISO: Number(PISO[i]),
+              PUERTA: PUERTA[i],
+              CP: CP[i],
+              LOCALIDAD: LOCALIDAD[i],
+              PROVINCIA: PROVINCIA[i],
+              PAIS: PAIS[i],
+            };
+            const addAddress = await dao.addAddress(newAddress);
+            if (!addAddress)
+              return res.send(
+                `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la DIRECCION`
+              );
+          }
+      }
       if(LOGO){
         console.log(LOGO)
         let uploadPath = path.join(
@@ -101,12 +125,27 @@ userController.addUser = async (req, res) => {
       }
 
       if(IMAGEN){
-        console.log(IMAGEN)
-        IMAGEN.map(async(i)=>{
+        if(IMAGEN.length){
+          IMAGEN.map(async(i)=>{
 
+            let uploadPath = path.join(
+              __dirname,
+              "../public/imagenes/" + i.name
+            );
+            LOGO.mv(uploadPath, (err) => {
+              if (err) return res.status(500).send(err);
+            });
+            await dao.addImagen({
+              ID_USER: addUser,
+              PATH: uploadPath,
+              NOMBRE: i.name,
+              TIPO: 0,
+            });
+          })
+        }else{
           let uploadPath = path.join(
             __dirname,
-            "../public/imagenes/" + i.name
+            "../public/imagenes/" + IMAGEN.name
           );
           LOGO.mv(uploadPath, (err) => {
             if (err) return res.status(500).send(err);
@@ -114,15 +153,15 @@ userController.addUser = async (req, res) => {
           await dao.addImagen({
             ID_USER: addUser,
             PATH: uploadPath,
-            NOMBRE: i.name,
+            NOMBRE: IMAGEN.name,
             TIPO: 0,
           });
-        })
+        }
       }
         
       const newOfertante = {
         ID_USER: addUser,
-        ID_CATEGORIA: CATEGORIA,
+        ID_CATEGORIA: cat,
       }
       
       const addOfertante = await dao.addOfertante(newOfertante)
