@@ -32,7 +32,7 @@ export default function ChildModal() {
 
 
     useEffect(() => {
-        console.log(user);
+        // console.log(user);
         if (!user) {
             setActivar(false);
             logo = ToolsIcon;
