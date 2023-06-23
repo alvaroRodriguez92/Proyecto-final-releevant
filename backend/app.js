@@ -9,10 +9,13 @@ const productRouter = require("./routes/productRoutes");
 const valorRoute = require("./routes/valorRoute")
 const chatboxRoutes = require("./routes/chatboxRoutes")
 const addressRoutes = require("./routes/addressRoutes")
+const imgRoutes = require("./routes/imgRoutes")
+
 const expressFileUpload = require("express-fileupload");
 const cors = require("cors");
 
 const valorRoutes = require("./routes/valorRoute");
+
 
 dotenv.config();
 
@@ -20,7 +23,7 @@ const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
@@ -34,11 +37,13 @@ app.use(
   })
 );
 
-app.use("/user", userRouter);
-app.use("/sector", sectorRouter);
+app.use("/user", userRouter)
+app.use("/sector", sectorRouter)
 app.use("/valoraciones", valorRoute)
 app.use("/chatbox",chatboxRoutes)
 app.use("/address",addressRoutes)
+app.use("/img", imgRoutes)
+
 
 app.use("/product", productRouter);
 

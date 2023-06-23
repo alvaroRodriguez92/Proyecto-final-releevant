@@ -8,6 +8,7 @@ const userController = {};
 
 //controlador de registro de usuario
 userController.addUser = async (req, res) => {
+
   const { LOGO, IMAGEN } = req.files
   const {
     NOMBRE,
@@ -17,7 +18,18 @@ userController.addUser = async (req, res) => {
     DESCRIPCION,
     PASSWORD,
     CATEGORIA,
-    DIRECCIONES,
+    LONGITUD,
+    LATITUD,
+    TIPO_VIA,
+    NOMBRE_VIA,
+    NUMERO,
+    PISO,
+    PUERTA,
+    BLOQUE,
+    CP,
+    LOCALIDAD,
+    PROVINCIA,
+    PAIS,
   } = req.body;
   console.log(req.body)
   const newUser = {
@@ -42,50 +54,37 @@ userController.addUser = async (req, res) => {
       if(!CATEGORIA){ 
         return res.status(201).send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
       }      
-      DIRECCIONES.map( async (D) =>{
       
-        const { 
-          LONGITUD,
-          LATITUD,
-          TIPO_VIA,
-          NOMBRE_VIA,
-          NUMERO,
-          PISO,
-          PUERTA,
-          URBANIZACION,
-          BLOQUE,
-          CP,
-          LOCALIDAD,
-          PROVINCIA,
-          PAIS,} = D
+      for(i = 0;i < LONGITUD.length; i++){
+       
           
           if(!addUser || !LATITUD || !LONGITUD || !TIPO_VIA || !NOMBRE_VIA || !NUMERO){
             res.status(408).send("Error en la direccion")
           }
           const newAddress = {
             ID_USER: addUser,
-            LONGITUD: LONGITUD,
-            LATITUD: LATITUD,
-            TIPO_VIA: TIPO_VIA,
-            NOMBRE_VIA: NOMBRE_VIA,
-            NUMERO: NUMERO,
-            URBANIZACION: URBANIZACION,
-            BLOQUE: BLOQUE,
-            PISO: PISO,
-            PUERTA: PUERTA,
-            CP: CP,
-            LOCALIDAD: LOCALIDAD,
-            PROVINCIA: PROVINCIA,
-            PAIS: PAIS,
+            LONGITUD: LONGITUD[i],
+            LATITUD: LATITUD[i],
+            TIPO_VIA: TIPO_VIA[i],
+            NOMBRE_VIA: NOMBRE_VIA[i],
+            NUMERO: Number(NUMERO[i]),
+            BLOQUE: BLOQUE[i],
+            PISO: Number(PISO[i]),
+            PUERTA: PUERTA[i],
+            CP: CP[i],
+            LOCALIDAD: LOCALIDAD[i],
+            PROVINCIA: PROVINCIA[i],
+            PAIS: PAIS[i],
           };
           const addAddress = await dao.addAddress(newAddress);
           if (!addAddress)
             return res.send(
               `Usuario ${NOMBRE} con id: ${addUser} registrado, pero ha habido problemas con la DIRECCION`
             );
-      })
+        }
 
       if(LOGO){
+        console.log(LOGO)
         let uploadPath = path.join(
           __dirname,
           "../public/imagenes/" + LOGO.name
@@ -102,6 +101,7 @@ userController.addUser = async (req, res) => {
       }
 
       if(IMAGEN){
+        console.log(IMAGEN)
         IMAGEN.map(async(i)=>{
 
           let uploadPath = path.join(
@@ -136,6 +136,7 @@ userController.addUser = async (req, res) => {
   } catch (e) {
     throw new Error(e.message);
   }
+
 };
 //controlador para obtener user por email
 userController.getUserByEmail = async (req,res) => {
@@ -149,6 +150,7 @@ userController.getUserByEmail = async (req,res) => {
     throw new Error(e.message);
   }
 }
+
 //controlador para obtener las localizaciones de todos los usuarios
 //PROBADO EN POSTMAN
 userController.getLocationsBySector = async (req, res) => {

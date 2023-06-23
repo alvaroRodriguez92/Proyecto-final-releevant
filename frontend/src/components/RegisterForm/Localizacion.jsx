@@ -18,7 +18,7 @@ export default function Localizacion({ formik }) {
   //   }
 
   return (
-    <FieldArray name="direcciones">
+    <FieldArray name="DIRECCIONES">
       {({ push, remove }) => (
         <>
           {formik.values.DIRECCIONES.map((_, index) => (
@@ -29,7 +29,7 @@ export default function Localizacion({ formik }) {
 
                 // border: "1px solid grey",
                 borderRadius: 2,
-                width: "90%",
+                width: "80%",
                 pt:4,
                 margin: "0 auto",
               }}

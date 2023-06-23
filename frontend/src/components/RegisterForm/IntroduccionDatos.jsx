@@ -1,10 +1,7 @@
 import {
   TextField,
   Box,
-  Button,
-  Typography,
   Grid,
-  Link,
   Select,
   MenuItem,
   FormControl, 
@@ -45,7 +42,7 @@ export default function IntroduccionDatos({formik}) {
             display: "flex",
             flexDirection: "column",
             borderRadius: 2,
-            width: "90%",
+            width: "80%",
             p: 5,
             margin: "0 auto",
           }}
@@ -53,6 +50,7 @@ export default function IntroduccionDatos({formik}) {
           <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
             <Grid item xs={6}>
               <TextField
+              className="input-form-normal"
                 id="NOMBRE"
                 error={formik.errors.NOMBRE && formik.touched.NOMBRE}
                 name="NOMBRE"
@@ -227,7 +225,7 @@ export default function IntroduccionDatos({formik}) {
         </Box>
         
       {/* </form> */}
-      <pre>{JSON.stringify(formik.values)}</pre>
+      {/* <pre>{JSON.stringify(formik.values, null,1)}</pre> */}
 
     </>
   );

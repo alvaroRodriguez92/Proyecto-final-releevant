@@ -1,6 +1,6 @@
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -11,19 +11,49 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 
 export default function ChatBot() {
-    const [pregunta, setPregunta] = useState("")
+    const [pregunta, setPregunta] = useState({pregunta:"", respuesta:""})
     const [preguntaChat, setPreguntaChat] = useState([])
+    const [resultFetchPregunta, setResultFetchPregunta] = useState([])
+    const [resultFetchRespuesta, setResultFetchRespuesta] = useState([])
+
+    const ID_PREGUNTA=14;
+    // http://localhost:3000/chatbox/respuestas/1
+
+    useEffect(()=>{
+      async function fetchChatbot(){
+        const response = await fetch("http://localhost:3000/chatbox/preguntas/"+ID_PREGUNTA)
+        const data = await response.json()
+        setResultFetchPregunta(data)
+      }
+      fetchChatbot();
+      console.log(resultFetchPregunta,"fetcheandoo PREGUNTA")
+    }, [])
+
+    console.log(pregunta)
+
+    useEffect(()=>{
+      async function fetchRespuestaChatbot(){
+        const response = await fetch("http://localhost:3000/chatbox/respuesta/"+pregunta.ID)
+        const data = await response.json()
+        setResultFetchRespuesta(data)
+      }
+      fetchRespuestaChatbot();
+      console.log(resultFetchRespuesta,"fetcheandoo RESPUESTA")
+    }, [pregunta.ID])
+
 
    
+  console.log(pregunta, "pregunta normal")
+  console.log(preguntaChat, "preguntaChat")
 
-
-    const arrayPreguntas = ["¿Cuanto cuesta una consulta?", "¿Que tipo de terapias ofrecéis?", "¿Que tipo de pago aceptáis?"]
+    const arrayPreguntas = [{pregunta:"¿Cuanto cuesta una consulta?", respuesta:"yo k se tio xd"}, {pregunta: "¿Que tipo de terapias ofrecéis?", respuesta:"Muchas"}, {pregunta:"¿Que tipo de pago aceptáis?", respuesta:"Criptomonedas solo"}]
     
 
     async function enviarPregunta(){
         
         const newPreguntaChat={
-            pregunta:pregunta
+            pregunta:pregunta.pregunta,
+            respuesta:pregunta.respuesta
         }
         const auxPregunta=[...preguntaChat]
         auxPregunta.push(newPreguntaChat)
@@ -38,8 +68,8 @@ export default function ChatBot() {
 
 
   return (
-    <div className="container" style={{marginBottom: "20px", width:"30%"}}>
-      <h4 className="text-center">ChatBot app</h4>
+    <div className="container" style={{marginBottom: "20px",marginTop: "20px", width:"80%"}}>
+      {/* <h4 className="text-center">ChatBot app</h4> */}
       <div className="media" style={{backgroundColor: "whitesmoke", height:"100px"}}>
         <img src="../../src/assets/chatboticon.png" style={{float:"left",margin: "10px"}} className="rounded-circle float-left img-thumbnail" width="72px" alt="..."/>
         <div className="media-body" style={{float:"left"}}>
@@ -49,9 +79,15 @@ export default function ChatBot() {
       </div>
 
     <div id="chatContainer" className="container border overflow-auto" style={{height:"300px"}}>
+    <h6>Bienvenido a nuestro ChatBot! ¿En que podemos ayudarte?</h6>
+    <br></br>
     {preguntaChat.map((item, index)=>{
         return(
-            <h6 style={{margin: "8px"}} key={index}>{item.pregunta}</h6>
+          <>
+            <h6 className="pregunta-bot" key={index}>{item.PREGUNTA}</h6>
+            <h6 className="respuesta-bot" key={index}>{item.respuesta}</h6>
+            
+            </>
         )
     })}
     </div>
@@ -68,9 +104,9 @@ export default function ChatBot() {
     value={pregunta}
     label="Preguntas"
     onChange={handlePregunta}
-  >{arrayPreguntas.map((item, id)=>{
+  >{resultFetchPregunta?.map((item, id)=>{
     return(
-    <MenuItem key ={id} value={item}>{item}</MenuItem>
+    <MenuItem key ={id} value={item}>{item.PREGUNTA}</MenuItem>
     )
 
   })}
