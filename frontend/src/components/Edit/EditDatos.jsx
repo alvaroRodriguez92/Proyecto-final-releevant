@@ -9,10 +9,13 @@ import {
 } from "@mui/material";
 import { useState, useEffect } from "react";
 
-export default function IntroduccionDatos() {
+export default function IntroduccionDatos({user}) {
+
+  console.log(user)
   return (
     <>
-    
+    {user?.map((item)=>{
+      return(
       <Box
         sx={{
           display: "flex",
@@ -27,7 +30,7 @@ export default function IntroduccionDatos() {
           borderRight: " 2px solid #000",
           borderBottom: " 2px solid #000",
           boxShadow: "1px 1px 3px 1px black",
-          position:"relative"
+          position: "relative",
         }}
       >
         <h3 className="titulos-form">Datos de usuario</h3>
@@ -36,13 +39,15 @@ export default function IntroduccionDatos() {
             <TextField
               className="input-form-normal"
               id="NOMBRE"
+              disabled
+              value={item.NOMBRE}
               //   error={formik.errors.NOMBRE && formik.touched.NOMBRE}
               name="NOMBRE"
               //   onChange={formik.handleChange}
               //   onBlur={formik.handleBlur}
               //   value={formik.values.NOMBRE}
               //   helperText={formik.errors.NOMBRE}
-              label="Nombre completo"
+              // label="Nombre completo"
               size="small"
               sx={{ m: 1, width: "100%" }}
               variant="outlined"
@@ -53,11 +58,12 @@ export default function IntroduccionDatos() {
               id="EMAIL"
               //   error={formik.errors.EMAIL && formik.touched.EMAIL}
               name="EMAIL"
+              disabled
+              value={item.EMAIL}
               //   onChange={formik.handleChange}
               //   onBlur={formik.handleBlur}
               //   value={formik.values.EMAIL}
               //   helperText={formik.errors.EMAIL}
-              label="Email"
               size="small"
               sx={{ m: 1, width: "100%" }}
             />
@@ -74,7 +80,8 @@ export default function IntroduccionDatos() {
               //   onBlur={formik.handleBlur}
               //   value={formik.values.TLF}
               //   helperText={formik.errors.TLF}
-              label="Telefono"
+              disabled
+              value={item.TLF}
               size="small"
               sx={{ m: 1, width: "100%" }}
             />
@@ -88,7 +95,8 @@ export default function IntroduccionDatos() {
               //   onBlur={formik.handleBlur}
               //   value={formik.values.URL}
               //   helperText={formik.errors.URL}
-              label="Url"
+              disabled
+              value={item.URL}
               size="small"
               sx={{ m: 1, width: "100%" }}
             />
@@ -105,7 +113,8 @@ export default function IntroduccionDatos() {
               //   onBlur={formik.handleBlur}
               //   value={formik.values.PASSWORD}
               //   helperText={formik.errors.PASSWORD}
-              label="Password"
+              disabled
+              value={item.PASSWORD}
               size="small"
               sx={{ m: 1, width: "100%" }}
             />
@@ -120,7 +129,8 @@ export default function IntroduccionDatos() {
               //   onBlur={formik.handleBlur}
               //   value={formik.values.repetirPassword}
               //   helperText={formik.errors.repetirPassword}
-              label="Repetir password"
+              disabled
+              value={item.PASSWORD}
               size="small"
               sx={{ m: 1, width: "100%" }}
             />
@@ -139,15 +149,18 @@ export default function IntroduccionDatos() {
               //   onBlur={formik.handleBlur}
               //   value={formik.values.DESCRIPCION}
               //   helperText={formik.errors.DESCRIPCION}
-              label="Descripcion"
+              disabled
+              value={item.DESCRIPCION}
               size="small"
               sx={{ m: 1, width: "100%" }}
             />
           </Grid>
         </Grid>
       </Box>
+      )
       {/* </form> */}
       {/* <pre>{JSON.stringify(formik.values, null,1)}</pre> */}
+    })}
     </>
   );
 }

@@ -5,7 +5,25 @@ import EditIcon from '@mui/icons-material/Edit';
 import EditDatos from "./EditDatos"
 import EditDireccion from "./EditDireccion";
 
+import {useState, useEffect} from "react";
+
 export default function Edit() {
+
+  const [infoUser, setInfoUser] = useState([])
+
+  const ID=14;
+
+  useEffect(()=>{
+    async function fetchUser(){
+      const response = await fetch("http://localhost:3000/perfil/"+ID)
+      const data = await response.json()
+      setInfoUser(data)
+    }
+    fetchUser();
+    console.log(infoUser,"fetcheandoo usuario")
+  }, [])
+
+
   return (
     <Grid container sx={{height:"100vh"}}>
         <Grid item xs={3}>
@@ -27,8 +45,8 @@ export default function Edit() {
     </Grid>
     <Grid item xs={8}>
     <Box container sx={{display: "flex", flexDirection:"column"}}>
-    <EditDatos/>
-    <EditDireccion/>
+    <EditDatos user={infoUser.user}/>
+    <EditDireccion address={infoUser.address}/>
     </Box>
     </Grid>
     </Grid>
