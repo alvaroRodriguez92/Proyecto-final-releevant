@@ -130,7 +130,7 @@ userController.addUser = async (req, res) => {
       if(IMAGEN){
         if(IMAGEN.length){
           IMAGEN.map(async(i)=>{
-            //await utils.addimagen(i,addUser,0)
+            // await utils.addimagen(i,addUser,0)
             let uploadPath = path.join(
               __dirname,
               "../public/imagenes/" + i.name

@@ -20,6 +20,16 @@ utils.removeUndefinedKeys = async (obj) => {
   }
 };
 
+utils.busqueda = (user,array) =>{
+  if(array.length <= 0){
+    return true
+  }else{
+    const u = array.find((r) => user.ID == r.ID)
+    if(!u) return true
+    else return false
+  }
+}
+
 utils.addimagen = async (img,id,t) => {
   console.log(img, "entrando")
   let uploadPath = path.join(
