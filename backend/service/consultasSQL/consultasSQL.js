@@ -14,7 +14,7 @@ IMG.p, IMG.IMG_NOMBRE, IMG.TIPO from categoria left join ofertante on ofertante.
 left join (select ID, NOMBRE, EMAIL, TLF, URL, DESCRIPCION from users where ESTADO = 1) as USR on ofertante.ID_user = USR.ID 
 left join (select ID_USER, PATH as p,IMG_NOMBRE, TIPO from IMAGENES) as IMG on USR.ID = IMG.ID_USER
 left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO, LATITUD, LONGITUD from direcciones) as DIR on DIR.ID_USER = USR.ID
-where categoria.ID = 2`
+where categoria.ID = ?`
 //query para extraer todas las empresas por sector
 queries.usersBySector = `select sectores.ID, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.URL, USR.DESCRIPCION, categoria.NOMBRE_CATEGORIA, IMG.IMG_NOMBRE, DIR.LATITUD, DIR.LONGITUD,
 IMG.p, IMG.IMG_NOMBRE, IMG.TIPO from SECTORES left join categoria on categoria.ID_SECTOR  = sectores.id
