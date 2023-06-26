@@ -11,7 +11,11 @@ const UserContext = createContext({
   },
   setSection: () => { },
   tipoServicio: 8,
-  setTipoServicio:()=>{},
+  setTipoServicio: () => { },
+  perfil: "",
+  setPerfil: () => {},
+  perfilCompleto: null,
+  setPerfilCompleto: ()=>{}
 });
 
 export default function UserContextProvider({ children }) {
@@ -24,6 +28,8 @@ export default function UserContextProvider({ children }) {
     "NOMBRE_SECTOR": "SALUD"
   });
   const [tipoServicio, setTipoServicio] = useState(8)
+  const [perfil, setPerfil] = useState([])
+  const [perfilCompleto, setPerfilCompleto] = useState(null)
 
   async function login(values, actions) {
     const response = await fetch(`http://127.0.0.1:3000/user/login`, {
@@ -32,9 +38,11 @@ export default function UserContextProvider({ children }) {
       headers: {
         "Content-Type": "application/json",
       },
+      // if(res.status === 200){
+      //   alert("login exitoso");
+      // }
     });
     const data = await response.json();
-
     //Aqui estaria la llamada a mi API
     if (response.ok) {
       localStorage.setItem("user", JSON.stringify({ ...data }));
@@ -48,6 +56,7 @@ export default function UserContextProvider({ children }) {
   function logout() {
     localStorage.removeItem(user);
     setUser(null);
+    
   }
 
   const value = {
@@ -58,7 +67,11 @@ export default function UserContextProvider({ children }) {
     section,
     setSection,
     tipoServicio,
-    setTipoServicio
+    setTipoServicio, 
+    perfil,
+    setPerfil,
+    perfilCompleto,
+    setPerfilCompleto
 
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

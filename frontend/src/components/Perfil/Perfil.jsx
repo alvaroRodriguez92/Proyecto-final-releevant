@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useUserContext } from "../../context/UserContext";
+import {useEffect, useState} from 'react'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -12,26 +14,45 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 export default function Perfil() {
+  const { perfil, setPerfil, perfilCompleto } = useUserContext();
+
+  useEffect(()=>{
+    async function fetchPerfil(){
+      const response = await fetch(`http://localhost:3000/perfil/${perfilCompleto}`)
+      const data = await response.json()
+      setPerfil(data)
+    }
+    fetchPerfil();
+  }, [perfilCompleto])
+
+console.log(perfilCompleto,"perfilcompleto");
+console.log(perfil,"perfil");
+
+ 
+
   return (
-        <Box sx={{width:"80%", height:"80%", display:"flex",flexDirection:"column", p:"4rem"}}>
+  
+      <Box sx={{width:"80%", height:"80%", display:"flex",flexDirection:"column", p:"4rem"}}>
+        {perfil[0][0]?.NOMBRE}
         <Typography sx={{p:"1rem"}} variant="h5" component="div" >
-          nuevamente psicólogos
+         { perfil[0][0]?.NOMBRE }
         </Typography>
-        <Typography sx={{ mb: 1.5,p:"1rem" }} >
-          ¿Estás pasando por una situación difícil y necesitas ayuda para superarla? Somos el gabinete de psicología de Málaga experto en tratar los
-          diferentes problemas y trastornos presentes en la actualidad. Nos encontramos en pleno centro de Málaga (frente a El Corte Inglés).
-          El tratamiento psicológico que llevamos a cabo es especializado.
+        <Typography sx={{ mb:1.5, p:"1rem" }} >
+          {perfil[0][0]?.DESCRIPCION}
         </Typography>
         <Typography >
           <ul>
             <li>
-          ofrecer a cada paciente una atención psicológica “a medida”, efectiva y adaptada a su problema
+          {/* {perfil[1][0].DIRECCION} */}
          </li> 
          <li>
-          ofrecer a cada paciente una atención psicológica “a medida”, efectiva y adaptada a su problema
+          {perfil[0][0]?.EMAIL}
           </li> 
           <li>
-          ofrecer a cada paciente una atención psicológica “a medida”, efectiva y adaptada a su problema
+          {perfil[0][0]?.TLF}
+          </li> 
+          <li>
+          {perfil[0][0]?.URL}
           </li> 
           </ul>
         </Typography>
@@ -42,7 +63,6 @@ export default function Perfil() {
           Valoraciones clientes
       </Typography>
       <CardValoraciones/>
-   
           <Box sx={{display:"flex"}}>
         <Typography >
           Contacto
@@ -52,6 +72,8 @@ export default function Perfil() {
         <WhatsAppIcon/>
           </Box>
       </Box>
+      
+        
           
     
   );

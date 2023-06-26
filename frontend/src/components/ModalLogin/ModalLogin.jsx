@@ -32,7 +32,6 @@ export default function ChildModal() {
 
 
     useEffect(() => {
-        // console.log(user);
         if (!user) {
             setActivar(false);
             logo = ToolsIcon;
@@ -61,7 +60,7 @@ export default function ChildModal() {
                 aria-describedby="child-modal-description"
             >
                 <Box sx={{ ...styleLogin, width: "40rem" }}>
-                    <LoginForm />
+                    <LoginForm/>
                 </Box>
             </Modal>
         </React.Fragment>

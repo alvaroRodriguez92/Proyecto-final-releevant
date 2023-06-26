@@ -3,16 +3,18 @@ import { useFormik } from "formik";
 import { LoginFormSchema } from "./LoginFormSchema";
 import { initialValues } from "./utils/form";
 import { Box, Button } from '@mui/material';
-import { Link } from 'react-router-dom'
-async function onSubmit(values, actions) {
-  console.log(values);
-  console.log(actions);
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  actions.resetForm();
-}
+import { Link } from 'react-router-dom';
 
-export default function BasicForm() {
-  const { login } = useUserContext();
+
+// async function onSubmit(values, actions) {
+//   console.log(values,"valores");
+//   console.log(actions);
+//   await new Promise((resolve) => setTimeout(resolve, 2000));
+//   actions.resetForm();
+// }
+
+export default function BasicForm({closeModal=()=>{}}) {
+  const { login, user } = useUserContext();
   const {
     values,
     touched,
@@ -28,6 +30,7 @@ export default function BasicForm() {
     //   login(values);
     //   actions.resetForm();
     // }
+  
   });
   return (
 
@@ -66,8 +69,8 @@ export default function BasicForm() {
             <p className="error">{errors.password}</p>
           )}
         </Box>
-        <Box sx={{p:"0.5rem"}}>
-        <Button variant="contained" disabled={isSubmitting} type="submit">
+        <Box sx={{ p: "0.5rem" }}>
+          <Button variant="contained" disabled={isSubmitting} type="submit">
           Login
           </Button>
           </Box>

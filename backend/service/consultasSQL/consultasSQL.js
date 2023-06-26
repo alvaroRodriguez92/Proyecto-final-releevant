@@ -12,7 +12,7 @@ JOIN (SELECT ID_USER, IMG_NOMBRE AS FOTO FROM IMAGENES WHERE TIPO = 1) AS L ON U
 queries.usersByCategoria = `select NOMBRE_CATEGORIA, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.DESCRIPCION , IMG.IMG_NOMBRE, DIR.LATITUD, DIR.LONGITUD, 
 IMG.p, IMG.IMG_NOMBRE, IMG.TIPO from categoria left join ofertante on ofertante.ID_CATEGORIA = categoria.ID
 left join (select ID, NOMBRE, EMAIL, TLF, URL, DESCRIPCION from users where ESTADO = 1) as USR on ofertante.ID_user = USR.ID 
-left join (select ID_USER, PATH as p,IMG_NOMBRE, TIPO from IMAGENES) as IMG on USR.ID = IMG.ID_USER
+left join (select ID_USER, PATH as p,IMG_NOMBRE, TIPO from IMAGENES where TIPO=1) as IMG on USR.ID = IMG.ID_USER
 left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO, LATITUD, LONGITUD from direcciones) as DIR on DIR.ID_USER = USR.ID
 where categoria.ID = ?`
 //query para extraer todas las empresas por sector
