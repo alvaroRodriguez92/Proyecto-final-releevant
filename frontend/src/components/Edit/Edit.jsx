@@ -8,6 +8,9 @@ import EditImagenes from "./EditImagenes";
 
 import {useState, useEffect} from "react";
 
+//Pasar el INFOUSER AL HIJO CON EL SETTER, Y DESPUÉS SETEAR EN EL PATCH EL NEW USER AL INFO USER Y 
+//IMPRIMIRLO EN LA PARTE DE BLOQUEOS
+
 export default function Edit() {
 
   const [infoUser, setInfoUser] = useState([])
@@ -21,22 +24,25 @@ export default function Edit() {
       setInfoUser(data)
     }
     fetchUser();
-    console.log(infoUser,"fetcheandoo usuario")
+    //  console.log(infoUser.images[0].IMG_NOMBRE,"COSITAASSS")
   }, [])
 
-  
+
 
   return (
     <Grid container sx={{height:"100vh"}}>
         <Grid item xs={3}>
     <Box container sx={{ display:"flex" ,alignItems: "flex-end", m: 5 }}>
-      <img
-        className="edit-logo"
-        width="70%"
-        height="70%"
-        src=""
-        // {infoUser.images[0].PATH}
-      />
+      {infoUser.images ? (
+        <img
+          className="edit-logo"
+          width="70%"
+          height="70%"
+          src={`http://localhost:3000/imagenes/${infoUser.images[0].IMG_NOMBRE}`}
+          
+        />
+
+      ): null}
       <Button variant="contained" component="label">
         <input type="file" hidden />
         <EditIcon />

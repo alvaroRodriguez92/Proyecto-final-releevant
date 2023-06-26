@@ -17,7 +17,7 @@ perfilController.getPerfil = async (req,res) => {
         data.images= images
         // data.push(user,address,images)
         console.log(data)
-        return res.status(200).send(data)
+        return res.status(200).json(data)
     } catch (e) {
         throw new Error(e.message);
     }

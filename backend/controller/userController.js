@@ -361,9 +361,10 @@ userController.updateUser = async (req, res) => {
       return res.status(400).send("Error al recibir el body");
     
     const updateUser = await dao.updateUser(req.params.id, req.body);
-    if (updateUser) return res.send(`usuario ${req.params.id} actualizado`);
-    
-    return res.send(`Usuario con id ${req.params.id} modificado`);
+    if (updateUser){
+      const newUser = await dao.getUserById(req.params.id)
+      return res.send(newUser[0]);
+    }
   } catch (e) {
     console.log(e.message);
   }
