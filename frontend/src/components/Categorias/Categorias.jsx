@@ -27,11 +27,13 @@ export default function Categorias() {
     function handleClick(id){
         setTipoServicio(id); 
     }
-    console.log(resultCategorias);
+    if(!resultCategorias)return <></>
     return (
         <>
             {resultCategorias.map((item, i) => 
-                <button onClick={()=>handleClick(item.ID)} className="button" key={i}>{item.NOMBRE_CATEGORIA.toLowerCase()}</button>
+            
+              <button onClick={()=>handleClick(item.ID)} className="button" key={i}>{item.NOMBRE_CATEGORIA.toLowerCase()}</button>
+          
             )}
            </> 
     )

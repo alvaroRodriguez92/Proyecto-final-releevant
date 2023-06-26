@@ -173,14 +173,27 @@ form label{
   rgba(0,0,0,0.1);
 }
 
+
+.contenedorHover{
+  height: 100%;
+  padding:1rem;
+}
+
 .contenedorHover:hover{
   transform: translateY(-3px);
 	box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.6);
 }
+.imagenCard{
+  height: 35% !important;
+}
 .contenedorTitle{
   font-weight: bolder;
 	font-size: 1.4em;
-	margin:0.5em;
+  height: 45%;
+  margin-top: 1rem;
+}
+.buttonAction{
+  height:20% ;
 }
 .headerImageView{
   width: 100%;
