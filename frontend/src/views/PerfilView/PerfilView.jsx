@@ -7,14 +7,7 @@ export default function PerfilView() {
   return (
     <>
       <Box sx={{ display: "flex" }}>
-        <img
-          className="headerImageView"
-          src="../../src/assets/enelpsicologo.jpeg"
-        />
-        <img
-          className="imagenLogoView"
-          src="../../src/assets/logonuevamente.png"
-        />
+        
       </Box>
       <Grid container >
         <Grid item xs={9}>
