@@ -20,6 +20,7 @@ export default function EditDireccion({address}) {
         borderRadius: 2,
         width: "80%",
         p: 5,
+        alignItems:"center",
         margin: "0 auto",
         mt: 20,
         borderLeft: "2px solid #000",
