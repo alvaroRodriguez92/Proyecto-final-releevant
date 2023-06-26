@@ -3,6 +3,7 @@ const { SignJWT, jwtVerify } = require("jose");
 const md5 = require("md5");
 const path = require("path");
 const mv = require("mv");
+const utils = require("../utils/utils")
 
 const userController = {};
 
@@ -10,6 +11,7 @@ const userController = {};
 userController.addUser = async (req, res) => {
   console.log(req.body)
   const { LOGO, IMAGEN } = req.files
+  
   const {
     NOMBRE,
     EMAIL,
@@ -108,7 +110,8 @@ userController.addUser = async (req, res) => {
           }
       }
       if(LOGO){
-        console.log(LOGO)
+
+        //await utils.addimagen(LOGO, addUser, 1)
         let uploadPath = path.join(
           __dirname,
           "../public/imagenes/" + LOGO.name
@@ -127,7 +130,7 @@ userController.addUser = async (req, res) => {
       if(IMAGEN){
         if(IMAGEN.length){
           IMAGEN.map(async(i)=>{
-
+            // await utils.addimagen(i,addUser,0)
             let uploadPath = path.join(
               __dirname,
               "../public/imagenes/" + i.name
@@ -143,6 +146,7 @@ userController.addUser = async (req, res) => {
             });
           })
         }else{
+          //await utils.addimagen(IMAGEN,addUser,0)
           let uploadPath = path.join(
             __dirname,
             "../public/imagenes/" + IMAGEN.name
