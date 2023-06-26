@@ -1,37 +1,34 @@
-body{
+body {
   background-color: #efefef !important;
-  font-family: 'Alice', serif!important;
-  margin:0 auto;
+  font-family: "Alice", serif !important;
+  margin: 0 auto;
   /* display: flex;
   justify-content: center;
   align-items: center; */
   /* flex-wrap: wrap; */
-
 }
-.MuiTypography-root{
-  font-family: 'Alice', serif!important;
-
+.MuiTypography-root {
+  font-family: "Alice", serif !important;
 }
 
-#chatContainer{
+#chatContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start
-
+  align-items: flex-start;
 }
 
-.bienvenida-bot{
-  margin-top:8px;
+.bienvenida-bot {
+  margin-top: 8px;
 }
-  
-.leaflet-container{
+
+.leaflet-container {
   /* width: 100vw;
   height: 100vh; */
-  height:715px;
-  width:100%;
+  height: 715px;
+  width: 100%;
   margin-top: 3rem;
-  margin-left:5rem;
-  padding:1rem;
+  margin-left: 5rem;
+  padding: 1rem;
   border: 2px solid black;
   border-radius: 20px;
 }
@@ -54,15 +51,14 @@ body{
   margin-right: 10px;
   margin-bottom: 20px;
 }
-.classLink{
+.classLink {
   text-decoration: none;
 }
 
-Layout{
+Layout {
   position: absolute;
   top: 0;
 }
-
 
 .error {
   color: #fc8181;
@@ -136,74 +132,77 @@ button:disabled {
   opacity: 0.35;
 }
 
-.form-register{
+.form-register {
   max-width: 100%;
 }
 
-form label{
-  margin:0;
+form label {
+  margin: 0;
 }
 
 /* FORM NORMALES */
-.css-1chamcn-MuiInputBase-root-MuiOutlinedInput-root{
-  border-radius: 10px!important;
-  box-shadow: 0 0 15px 4px
-  rgba(0,0,0,0.1);
+.css-1chamcn-MuiInputBase-root-MuiOutlinedInput-root {
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* FORM DE DESCRIPCION */
 .css-d067fc-MuiInputBase-root-MuiOutlinedInput-root {
-  border-radius: 10px!important;
-  box-shadow: 0 0 15px 4px
-  rgba(0,0,0,0.1);
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* FORM DE SELECTS */
-.css-fn1odq-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
-  border-radius: 10px!important;
-  box-shadow: 0 0 15px 4px
-  rgba(0,0,0,0.1);
+.css-fn1odq-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* ESTILIZANDO EL INPUT FILE */
 
 .css-2ehmn7-MuiInputBase-root-MuiOutlinedInput-root {
-  border-radius: 10px!important;
-  box-shadow: 0 0 15px 4px
-  rgba(0,0,0,0.1);
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.1);
 }
 
-
-.contenedorHover{
+.contenedorHover {
   height: 100%;
-  padding:1rem;
+  padding: 1rem;
 }
 
-.contenedorHover:hover{
+.contenedorHover:hover {
   transform: translateY(-3px);
-	box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.6);
 }
-.imagenCard{
+.imagenCardContainer {
   height: 35% !important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-.contenedorTitle{
+.imagenCard {
+ max-width: 100%;
+  height: 100%;
+  scale: 85%;
+}
+.contenedorTitle {
   font-weight: bolder;
-	font-size: 1.4em;
+  font-size: 1.4em;
   height: 45%;
   margin-top: 1rem;
 }
-.buttonAction{
-  height:20% ;
+.buttonAction {
+  height: 20%;
 }
-.headerImageView{
+.headerImageView {
   width: 100%;
   height: 20rem;
 }
-.imagenLogoView{
+.imagenLogoView {
   width: 10%;
   height: 10%;
-  position:absolute;
-  top:16rem;
+  position: absolute;
+  top: 16rem;
   border-radius: 100px;
   padding: 1rem;
 }
@@ -212,11 +211,11 @@ form label{
   padding: 8px 19px !;
   font-size: 14px;
   cursor: pointer;
-  text-align: center;	
+  text-align: center;
   text-decoration: none;
   outline: none;
-  color: #4B4844;
-  background-color: #FFEE8C;
+  color: #4b4844;
+  background-color: #ffee8c;
   border: none;
   border-radius: 14px;
   box-shadow: 0 9px black;
@@ -225,42 +224,41 @@ form label{
 }
 
 .button:active {
-  background-color: #FFEE8C;
+  background-color: #ffee8c;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
-.active{
+.active {
   /* background-color: rgb(201, 199, 199); */
-  border:0.1rem solid rgba(0,0,0,0.2) ;
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   box-shadow: 0 0 1px 0 black;
 }
 
-
-main{
+main {
   margin-top: 2rem;
 }
 
-.titulo-registro{
-  margin-left:12%;
+.titulo-registro {
+  margin-left: 12%;
 }
 
-.pregunta-bot{
-  margin-left: 8px; 
-  border:1px solid grey;
-  padding:8px;
+.pregunta-bot {
+  margin-left: 8px;
+  border: 1px solid grey;
+  padding: 8px;
   border-radius: 10px;
-  background-color:#00bb2d;
+  background-color: #00bb2d;
   display: inline-block;
 }
 
-.respuesta-bot{
+.respuesta-bot {
   margin-left: 8px;
-  border:1px solid grey;
-  padding:8px;
+  border: 1px solid grey;
+  padding: 8px;
   border-radius: 10px;
-  background-color:#c1eaba;
+  background-color: #c1eaba;
   display: inline;
   justify-content: end;
   align-items: end;

@@ -12,7 +12,7 @@ import { useUserContext } from "../../context/UserContext";
 
 export default function CardEmpresas() {
   const [resultEmpresa, setResultEmpresa] = useState([]);
-  const { tipoServicio } = useUserContext();
+  const { tipoServicio,setPerfilCompleto } = useUserContext();
 
   useEffect(() => {
     async function datosEmpresa() {
@@ -23,14 +23,20 @@ export default function CardEmpresas() {
     datosEmpresa();
   }, [tipoServicio]);
 
+  function handleClick(id){
+    console.log(id);
+    setPerfilCompleto(id)
+  }
   if (!resultEmpresa.length) return <></>;
   return (
     <Box width="100%" sx={{ display: "flex", p: "1rem", m: "2rem" }}>
       <Grid container spacing={3}>
         {resultEmpresa.map((item, i) => (
           <Grid sx={{ height: "30rem" }} key={i} item xs={6}>
-            <Card className="contenedorHover" sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px" }}>
-              <CardMedia className="imagenCard" sx={{ height: 180 }} image="../../src/assets/logonuevamente.png" />
+            <Card className="contenedorHover" sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#ffee8c" }}>
+              <Box className="imagenCardContainer">
+                <img className="imagenCard"  src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
+                </Box>
               <CardContent className="contenedorTitle">
                 <Typography gutterBottom variant="h5" component="div">
                   {item.NOMBRE}
@@ -42,7 +48,7 @@ export default function CardEmpresas() {
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
                 <Link to="/perfil">
                   {" "}
-                  <Button sx={{ borderRadius: "10px", mr: 1 }} variant="contained" size="small">
+                  <Button onClick={()=>handleClick(item.ID)} sx={{ borderRadius: "10px", mr: 1 }} variant="contained" size="small">
                     Ver mas
                   </Button>
                 </Link>

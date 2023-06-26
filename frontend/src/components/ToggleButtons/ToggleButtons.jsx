@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useUserContext } from "../../context/UserContext";
 import { Avatar, Button,Box,Tooltip,Menu } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,8 +10,10 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
+
 export default function ToggleButtons() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { logout } = useUserContext();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -76,7 +79,7 @@ export default function ToggleButtons() {
           <Avatar /> Perfil
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={logout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

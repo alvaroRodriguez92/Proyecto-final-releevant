@@ -21,7 +21,6 @@ export default function ChatBot() {
     const ID_PREGUNTA=14;
     // http://localhost:3000/chatbox/respuestas/1
 
-    console.log(pregunta, "PREGUNTAA")
 
     useEffect(()=>{
       async function fetchChatbot(){
@@ -30,19 +29,14 @@ export default function ChatBot() {
         setResultFetchPregunta(data)
       }
       fetchChatbot();
-      console.log(resultFetchPregunta,"fetcheandoo PREGUNTA")
     }, [])
 
-    console.log(pregunta)
 
     useEffect(()=>{
       mensajeFinal.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }, [preguntaChat])
 
    
-  console.log(pregunta, "pregunta normal")
-  console.log(preguntaChat, "preguntaChat")
-
     // const arrayPreguntas = [{pregunta:"¿Cuanto cuesta una consulta?", respuesta:"yo k se tio xd"}, {pregunta: "¿Que tipo de terapias ofrecéis?", respuesta:"Muchas"}, {pregunta:"¿Que tipo de pago aceptáis?", respuesta:"Criptomonedas solo"}]
     
 
