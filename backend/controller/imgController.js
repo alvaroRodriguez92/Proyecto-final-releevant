@@ -37,7 +37,7 @@ imgController.addImg = async (req, res) => {
   };
 
 
-
+  
 imgController.deleteimg = async (req,res) => {
     const { ID } = req.body;
     try {

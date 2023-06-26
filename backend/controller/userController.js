@@ -358,7 +358,6 @@ userController.deleteUser = async (req, res) => {
 
 userController.updateUser = async (req, res) => {
  
-
   try {
     
     if (Object.entries(req.body).length === 0)
