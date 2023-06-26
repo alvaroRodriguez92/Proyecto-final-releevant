@@ -4,6 +4,7 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import EditDatos from "./EditDatos"
 import EditDireccion from "./EditDireccion";
+import EditImagenes from "./EditImagenes";
 
 import {useState, useEffect} from "react";
 
@@ -23,6 +24,7 @@ export default function Edit() {
     console.log(infoUser,"fetcheandoo usuario")
   }, [])
 
+  
 
   return (
     <Grid container sx={{height:"100vh"}}>
@@ -32,7 +34,8 @@ export default function Edit() {
         className="edit-logo"
         width="70%"
         height="70%"
-        src="http://127.0.0.1:3000/imagenes/logonuevamente.png"
+        src=""
+        // {infoUser.images[0].PATH}
       />
       <Button variant="contained" component="label">
         <input type="file" hidden />
@@ -47,6 +50,7 @@ export default function Edit() {
     <Box container sx={{display: "flex", flexDirection:"column"}}>
     <EditDatos user={infoUser.user}/>
     <EditDireccion address={infoUser.address}/>
+    <EditImagenes/>
     </Box>
     </Grid>
     </Grid>
