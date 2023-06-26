@@ -1,18 +1,27 @@
 import Markers from "../../components/Markers/Markers";
 import Layout from "../../components/Layout/Layout";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useState, useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 //import { c } from "../../common/api";
 
 export default function Map() {
   const [coordenadas, setCoordenadas] = useState([]);
+  const [currentCords, setCurentCords] = useState([]);
   useEffect(() => {
     async function getLocations() {
-      const api = await fetch(`http://127.0.0.1:3000/user`);
+      const api = await fetch(`http://127.0.0.1:3000/user/sector/8`);
       setCoordenadas(await api.json());
     }
     getLocations();
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setCurentCords([pos.coords.latitude, pos.coords.longitude]);
+      },
+      (err) => {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      }
+    );
   }, []);
   // const options = {
   //   enableHighAccuracy: true,
@@ -59,6 +68,9 @@ export default function Map() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
+      {currentCords.length > 0 && (
+        <Marker position={currentCords} />
+      )}
       {currentPosition ? (
         <Markers coordenadas={currentPosition} />
       ) : (
