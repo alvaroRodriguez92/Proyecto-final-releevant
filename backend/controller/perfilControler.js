@@ -7,12 +7,15 @@ const perfilController = {}
 
 perfilController.getPerfil = async (req,res) => {
     const id = req.params.id
-    let data = []
+    let data = {}
     try{
         const user = await userDao.getUserById(id)
         const address = await addressDao.getAllAddress(id)
         const images = await imgDao.getImdByUser(id)
-        data.push(user,address,images)
+        //data.push(user,address,images)
+        data.user = user
+        data.address = address
+        data.images = images
         console.log(data)
         return res.status(200).send(data)
     } catch (e) {
@@ -20,5 +23,7 @@ perfilController.getPerfil = async (req,res) => {
     }
 
 }
+
+
 
 module.exports = perfilController
