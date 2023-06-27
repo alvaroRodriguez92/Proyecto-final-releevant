@@ -8,6 +8,7 @@ import "leaflet/dist/leaflet.css";
 export default function Map() {
   const { empresas } = useCardContext();
   const { currentPosition, currentCords, raton } = useUserContext();
+  let emp = []
   
   useEffect(() => {
   
@@ -15,6 +16,8 @@ export default function Map() {
     
   }, []);
   
+ 
+
   const cPosition = [36.7272624, -4.4437597];
   
   function convertir(empresa) {
@@ -47,20 +50,8 @@ export default function Map() {
       )}
       
       {empresas.map((empresa) => (
-        <Markers coordenadas={convertir(empresa)} key={empresa.ID}/>
+        <Markers coordenadas={convertir(empresa)} key={empresa.ID} raton={empresa.hover}/>
       ))}
-      {/* <Marker position={polo} icon={miIco}>
-            <Popup>
-              <Tooltip direction="top" opacity={1}>
-                <span> Polo Digital Málaga</span>
-              </Tooltip>
-              Wellcome to
-              <br /> Polo Digital <br /> MALAGA
-            </Popup>
-          </Marker> */}
-      {/* {coordenadas.map((coordenada) => {
-        <Markers coordenadas={convertir(coordenada)} />;
-      })} */}
     </MapContainer>
   );
 }
