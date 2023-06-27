@@ -1,4 +1,5 @@
 const dao = require("../service/dao/imgDao")
+const mv = require("mv");
 
 const imgController = {}
 

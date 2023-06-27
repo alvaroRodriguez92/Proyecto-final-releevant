@@ -15,7 +15,10 @@ const UserContext = createContext({
   perfil: "",
   setPerfil: () => {},
   perfilCompleto: null,
-  setPerfilCompleto: ()=>{}
+  setPerfilCompleto: ()=>{},
+  currentPosition: ()=>{},
+  currentCords: [],
+  setCurrentCords: ()=>{}
 });
 
 export default function UserContextProvider({ children }) {
@@ -30,6 +33,18 @@ export default function UserContextProvider({ children }) {
   const [tipoServicio, setTipoServicio] = useState(8)
   const [perfil, setPerfil] = useState([])
   const [perfilCompleto, setPerfilCompleto] = useState(null)
+  const [currentCords, setCurrentCords] = useState([]);
+
+  function currentPosition(){
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setCurrentCords([pos.coords.latitude, pos.coords.longitude]);
+      },
+      (err) => {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      }
+    );
+  }
 
   async function login(values, actions) {
     const response = await fetch(`http://127.0.0.1:3000/user/login`, {
@@ -43,7 +58,7 @@ export default function UserContextProvider({ children }) {
       // }
     });
     const data = await response.json();
-    //Aqui estaria la llamada a mi API
+    
     if (response.ok) {
       localStorage.setItem("user", JSON.stringify({ ...data }));
       setUser({ ...data });
@@ -71,8 +86,10 @@ export default function UserContextProvider({ children }) {
     perfil,
     setPerfil,
     perfilCompleto,
-    setPerfilCompleto
-
+    setPerfilCompleto,
+    currentPosition,
+    currentCords,
+    setCurrentCords
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
