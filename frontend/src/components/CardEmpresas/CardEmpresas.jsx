@@ -10,12 +10,21 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
 import { useCardContext } from "../../context/CardContext";
+
+
 export default function CardEmpresas() {
+  
   const { tipoServicio,setPerfilCompleto, currentCords } = useUserContext();
   const { datosEmpresa, empresas, raton, ratonOver, ratonOut } = useCardContext();
+
   useEffect(() => {
+   
     datosEmpresa(tipoServicio);
+    
+    
   }, [tipoServicio]);
+
+
   function distancia(userPos,empPos){
     console.log(userPos, empPos)
     const R = 6371; //Radio de la tierra en KM
@@ -41,8 +50,11 @@ export default function CardEmpresas() {
       <Grid container spacing={3}>
         {empresas.map((item, i) => (
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6} >
-            <Card className="contenedorHover"
-              sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#FFEE8C" }}
+
+            <Card className="contenedorHover" 
+              sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#ffee8c" }} 
+
+    
               onMouseOver={ratonOver} onMouseOut={ratonOut}>
               <Box className="imagenCardContainer">
                 <img className="imagenCard"  src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
