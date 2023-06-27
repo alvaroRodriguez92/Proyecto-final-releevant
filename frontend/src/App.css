@@ -178,13 +178,10 @@ form label {
   box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.6);
 }
 .imagenCardContainer {
-  height: 100% !important;
+  height: 35% !important;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-
-
 }
 .imagenCard {
  max-width: 100%;
@@ -194,14 +191,13 @@ form label {
 .contenedorTitle {
   font-weight: bolder;
   font-size: 1.4em;
-  height: 100%;
-  padding:0;
+  height: 50%;
+  /* margin-top: 0.5rem; */
  
 }
 .buttonAction {
-  height: 100%;
-  display: flex !important;
-  align-content: flex-end !important;
+  height: 20%;
+  
 
 }
 .headerImageView {
@@ -302,4 +298,7 @@ main {
   margin: 0 auto;
   z-index: 10;
   background-color: #efefef;
+}
+.css-hhnrze-MuiTypography-root {
+  font-family: 'Times New Roman', Times, serif !important;
 }
