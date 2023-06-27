@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import RegistroView from "./views/RegistroView/RegistroView";
 import Home from "./views/Home/Home";
 import PerfilView from "./views/PerfilView/PerfilView";
+import EditView from "./views/EditView/EditView";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./theme/theme"
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/registro" element={<RegistroView />} />
             <Route path="/perfil" element={<PerfilView />} />
+            <Route path="/perfil/edit" element={<EditView />} />
           </Routes>
         </ThemeProvider>
       </UserContextProvider>
