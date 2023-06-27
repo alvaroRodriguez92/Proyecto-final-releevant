@@ -9,31 +9,41 @@ import { Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
-
+import { useCardContext } from "../../context/CardContext";
 export default function CardEmpresas() {
-  const [resultEmpresa, setResultEmpresa] = useState([]);
-  const { tipoServicio,setPerfilCompleto } = useUserContext();
-
+  const { tipoServicio,setPerfilCompleto, currentCords } = useUserContext();
+  const { datosEmpresa, empresas, raton, ratonOver, ratonOut } = useCardContext();
   useEffect(() => {
-    async function datosEmpresa() {
-      const response = await fetch(`http://127.0.0.1:3000/user/categoria/${tipoServicio}`);
-      const data = await response.json();
-      setResultEmpresa(data);
-    }
-    datosEmpresa();
+    datosEmpresa(tipoServicio);
   }, [tipoServicio]);
-
+  function distancia(userPos,empPos){
+    console.log(userPos, empPos)
+    const R = 6371; //Radio de la tierra en KM
+    const lat1 = userPos[0]
+    const lng1 = userPos[1]
+    const lat2 = Number(empPos.LATITUD)
+    const lng2 = Number(empPos.LONGITUD)
+    const distLat = (lat2 - lat1) * Math.PI/180
+    const distLng = (lng2 - lng1) * Math.PI/180
+    const a = Math.sin(distLat/2) * Math.sin(distLat/2) +
+          Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) *
+          Math.sin(distLng/2) * Math.sin(distLng/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+    return R * c
+  }
   function handleClick(id){
     console.log(id);
     setPerfilCompleto(id)
   }
-  if (!resultEmpresa.length) return <></>;
+  if (!empresas.length) return <></>;
   return (
     <Box width="100%" sx={{ display: "flex", p: "1rem", m: "2rem" }}>
       <Grid container spacing={3}>
-        {resultEmpresa.map((item, i) => (
-          <Grid sx={{ height: "30rem" }} key={i} item xs={6}>
-            <Card className="contenedorHover" sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#ffee8c" }}>
+        {empresas.map((item, i) => (
+          <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6} >
+            <Card className="contenedorHover"
+              sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#FFEE8C" }}
+              onMouseOver={ratonOver} onMouseOut={ratonOut}>
               <Box className="imagenCardContainer">
                 <img className="imagenCard"  src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
                 </Box>
@@ -43,6 +53,9 @@ export default function CardEmpresas() {
                 </Typography>
                 <Typography sx={{ p: { height: "6rem", overflowY: "auto" } }} variant="body2" color="text.secondary">
                   {item.DESCRIPCION}
+                </Typography>
+                <Typography gutterBottom variant="h5" component="div">
+                  {distancia(currentCords,item)}
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
@@ -59,76 +72,4 @@ export default function CardEmpresas() {
       </Grid>
     </Box>
   );
-}
-
-{
-  /* <Card className="contenedorHover"
-     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
-       <CardMedia
-         sx={{ height: 180,".title": {  textAlign: "center" } }}
-         image="../../src/assets/logonuevamente.png"
-         title="nuevamente psicologos"
-       />
-       <CardContent className="contenedorTitle">
-         <Typography gutterBottom variant="h5" component="div">
-           nuevamente psicólogos
-         </Typography>
-         <Typography variant="body2" color="text.secondary">
-           Lizards are a widespread group of squamate reptiles, with over 6,000
-           species, ranging across all continents except Antarctica
-         </Typography>
-       </CardContent>
-       <CardActions sx={{justifyContent:"end"}}>
-         <Button size="small">Ver mas</Button>
-       </CardActions>
-      </Card>
-      </Grid>
-
-      <Grid item xs={6}>
-
-      <Card className="contenedorHover"
-     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
-       <CardMedia
-         sx={{ height: 180,".title": {  textAlign: "center" } }}
-         image="../../src/assets/logonuevamente.png"
-         title="nuevamente psicologos"
-       />
-       <CardContent className="contenedorTitle">
-         <Typography gutterBottom variant="h5" component="div">
-           nuevamente psicólogos
-         </Typography>
-         <Typography variant="body2" color="text.secondary">
-           Lizards are a widespread group of squamate reptiles, with over 6,000
-           species, ranging across all continents except Antarctica
-         </Typography>
-       </CardContent>
-       <CardActions sx={{justifyContent:"end"}}>
-         <Button size="small">Ver mas</Button>
-       </CardActions>
-      </Card>
-    </Grid>
-    
-    <Grid item xs={6}>
-      <Card className="contenedorHover"
-     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
-       <CardMedia
-         sx={{ height: 180,".title": {  textAlign: "center" } }}
-         image="../../src/assets/logonuevamente.png"
-         title="nuevamente psicologos"
-       />
-       <CardContent className="contenedorTitle">
-         <Typography gutterBottom variant="h5" component="div">
-           nuevamente psicólogos
-         </Typography>
-         <Typography variant="body2" color="text.secondary">
-           Lizards are a widespread group of squamate reptiles, with over 6,000
-           species, ranging across all continents except Antarctica
-         </Typography>
-       </CardContent>
-       <CardActions sx={{justifyContent:"end"}}>
-         <Button size="small">Ver mas</Button>
-       </CardActions>
-      </Card>
-      </Grid>
-      </Grid>  */
 }

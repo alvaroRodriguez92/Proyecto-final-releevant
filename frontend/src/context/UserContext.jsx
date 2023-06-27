@@ -12,9 +12,9 @@ const UserContext = createContext({
   setSection: () => { },
   tipoServicio: 8,
   setTipoServicio: () => { },
-  perfil: "",
+  perfil: {},
   setPerfil: () => {},
-  perfilCompleto: null,
+  perfilCompleto: 14,
   setPerfilCompleto: ()=>{}
 });
 
@@ -28,7 +28,7 @@ export default function UserContextProvider({ children }) {
     "NOMBRE_SECTOR": "SALUD"
   });
   const [tipoServicio, setTipoServicio] = useState(8)
-  const [perfil, setPerfil] = useState([])
+  const [perfil, setPerfil] = useState({})
   const [perfilCompleto, setPerfilCompleto] = useState(null)
 
   async function login(values, actions) {

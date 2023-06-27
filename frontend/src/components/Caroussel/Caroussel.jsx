@@ -6,7 +6,8 @@ import {
   CarouselIndicators,
   CarouselCaption
 } from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 const items = [
@@ -65,14 +66,16 @@ class Caroussel extends Component {
   }
 
   render() {
+  
     const { activeIndex } = this.state;
 
-    const slides = items.map((item) => {
+    const slides = items.map((item, i) => {
+      console.log(item)
       return (
         <CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
-          key={item.src}
+          key={i}
         >
           <img width="100%" src={item.src} alt={item.altText} />
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
