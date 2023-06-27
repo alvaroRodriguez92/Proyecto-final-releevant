@@ -11,7 +11,6 @@ import { useState, useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
 import { useCardContext } from "../../context/CardContext";
 
-
 export default function CardEmpresas() {
   
   const { tipoServicio,setPerfilCompleto, currentCords } = useUserContext();
@@ -23,7 +22,6 @@ export default function CardEmpresas() {
     
     
   }, [tipoServicio]);
-
 
   function distancia(userPos,empPos){
     console.log(userPos, empPos)
@@ -38,7 +36,9 @@ export default function CardEmpresas() {
           Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) *
           Math.sin(distLng/2) * Math.sin(distLng/2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
-    return R * c
+    const d = R * c
+    const distancia = d.toFixed(2) 
+    return distancia
   }
   function handleClick(id){
     console.log(id);
@@ -50,14 +50,11 @@ export default function CardEmpresas() {
       <Grid container spacing={3}>
         {empresas.map((item, i) => (
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6} >
-
             <Card className="contenedorHover" 
               sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#ffee8c" }} 
-
-    
               onMouseOver={ratonOver} onMouseOut={ratonOut}>
               <Box className="imagenCardContainer">
-                <img className="imagenCard"  src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
+                <img className="imagenCard" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
                 </Box>
               <CardContent className="contenedorTitle">
                 <Typography gutterBottom variant="h5" component="div">
@@ -66,8 +63,8 @@ export default function CardEmpresas() {
                 <Typography sx={{ p: { height: "6rem", overflowY: "auto" } }} variant="body2" color="text.secondary">
                   {item.DESCRIPCION}
                 </Typography>
-                <Typography gutterBottom variant="h5" component="div">
-                  {distancia(currentCords,item)}
+                <Typography gutterBottom variant="h6" component="div" sx={{ pt: "1.5rem"}}>
+                  {distancia(currentCords,item)} Km de distancia
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
