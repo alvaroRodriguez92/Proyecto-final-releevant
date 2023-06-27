@@ -9,19 +9,19 @@ queries.infoPopup = `SELECT NOMBRE, EMAIL, TLF, URL, DIR.TIPO_VIA, DIR.NOMBRE_VI
 JOIN (SELECT ID_USER,TIPO_VIA, NOMBRE_VIA, NUMERO FROM DIRECCIONES) AS DIR ON USERS.ID = DIR.ID_USER 
 JOIN (SELECT ID_USER, IMG_NOMBRE AS FOTO FROM IMAGENES WHERE TIPO = 1) AS L ON USERS.ID = L.ID_USER WHERE USERS.ID  = ?`;
 //query para extraer todas las empresas por categoria
-queries.usersByCategoria = `select NOMBRE_CATEGORIA, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.DESCRIPCION from categoria
-left join ofertante on ofertante.ID_CATEGORIA = categoria.ID
+queries.usersByCategoria = `select NOMBRE_CATEGORIA, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.DESCRIPCION , IMG.IMG_NOMBRE, DIR.LATITUD, DIR.LONGITUD, 
+IMG.p, IMG.IMG_NOMBRE, IMG.TIPO from categoria left join ofertante on ofertante.ID_CATEGORIA = categoria.ID
 left join (select ID, NOMBRE, EMAIL, TLF, URL, DESCRIPCION from users where ESTADO = 1) as USR on ofertante.ID_user = USR.ID 
-left join (select ID_USER, PATH as p,IMG_NOMBRE from IMAGENES where TIPO = 1) as IMG on USR.ID = IMG.ID_USER
-left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO from direcciones) as DIR on DIR.ID_USER = USR.ID
+left join (select ID_USER, PATH as p,IMG_NOMBRE, TIPO from IMAGENES where TIPO=1) as IMG on USR.ID = IMG.ID_USER
+left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO, LATITUD, LONGITUD from direcciones) as DIR on DIR.ID_USER = USR.ID
 where categoria.ID = ?`
 //query para extraer todas las empresas por sector
-queries.usersBySector = `select sectores.ID, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.URL, USR.DESCRIPCION, categoria.NOMBRE_CATEGORIA, IMG.IMG_NOMBRE
-from SECTORES left join categoria on categoria.ID_SECTOR  = sectores.id
+queries.usersBySector = `select sectores.ID, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.URL, USR.DESCRIPCION, categoria.NOMBRE_CATEGORIA, IMG.IMG_NOMBRE, DIR.LATITUD, DIR.LONGITUD,
+IMG.p, IMG.IMG_NOMBRE, IMG.TIPO from SECTORES left join categoria on categoria.ID_SECTOR  = sectores.id
 left join OFERTANTE on ofertante.ID_CATEGORIA = categoria.id 
 left join (select ID, NOMBRE, EMAIL, TLF, URL, DESCRIPCION from users where ESTADO = 1) as USR on ofertante.ID_USER = USR.ID
-left join (select ID_USER, PATH as p,IMG_NOMBRE from IMAGENES where TIPO = 1) as IMG on USR.ID = IMG.ID_USER
-left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO from direcciones) as DIR on DIR.ID_USER = USR.ID
+left join (select ID_USER, PATH as p,IMG_NOMBRE, TIPO from IMAGENES where TIPO = 1) as IMG on USR.ID = IMG.ID_USER
+left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO, LATITUD, LONGITUD from direcciones) as DIR on DIR.ID_USER = USR.ID
 where sectores.ID = ?`
 //query para extraer usuarios por sector para obtener informacion del main
 queries.getUseresLocationsBySector = `SELECT ID_USER, LATITUD, LONGITUD, US.NOMBRE, US.EMAIL, US.TLF, US.URL, US.DESCRIPCION, IMG.IMG_NOMBRE
@@ -80,5 +80,29 @@ queries.deleteAddress = `DELETE FROM DIRECCIONES WHERE ID = ?`
 queries.deleteImg = `DELETE FROM IMAGENES WHERE ID = ?`
 //Query para insertar imagenes
 queries.addImg = `INSERT INTO IMAGENES SET ?`
+
+///////////////////////
+//CONSULTAS DE BUSCAR//
+///////////////////////
+
+queries.buscarByNombre = `select ID, NOMBRE, EMAIL, TLF, DESCRIPCION , IMG.IMG_NOMBRE, DIR.LATITUD, DIR.LONGITUD, IMG.p, IMG.IMG_NOMBRE, IMG.TIPO from users
+left join (select ID_USER, PATH as p,IMG_NOMBRE, TIPO from IMAGENES) as IMG on ID = IMG.ID_USER
+left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO, LATITUD, LONGITUD from direcciones) as DIR on DIR.ID_USER = ID
+where NOMBRE LIKE ?`
+
+queries.buscarByCategoria = `select NOMBRE_CATEGORIA, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.DESCRIPCION, IMG.IMG_NOMBRE, DIR.LATITUD, DIR.LONGITUD, 
+IMG.p, IMG.IMG_NOMBRE, IMG.TIPO from categoria left join ofertante on ofertante.ID_CATEGORIA = categoria.ID
+left join (select ID, NOMBRE, EMAIL, TLF, URL, DESCRIPCION from users where ESTADO = 1) as USR on ofertante.ID_user = USR.ID 
+left join (select ID_USER, PATH as p,IMG_NOMBRE, TIPO from IMAGENES) as IMG on USR.ID = IMG.ID_USER
+left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO, LATITUD, LONGITUD from direcciones) as DIR on DIR.ID_USER = USR.ID
+where categoria.NOMBRE_CATEGORIA LIKE ?`
+
+queries.buscarBySector = `select sectores.ID, USR.ID, USR.NOMBRE, USR.EMAIL, USR.TLF, USR.URL, USR.DESCRIPCION, categoria.NOMBRE_CATEGORIA, IMG.IMG_NOMBRE, DIR.LATITUD, DIR.LONGITUD,
+IMG.p, IMG.IMG_NOMBRE, IMG.TIPO from SECTORES left join categoria on categoria.ID_SECTOR  = sectores.id
+left join OFERTANTE on ofertante.ID_CATEGORIA = categoria.id 
+left join (select ID, NOMBRE, EMAIL, TLF, URL, DESCRIPCION from users where ESTADO = 1) as USR on ofertante.ID_USER = USR.ID
+left join (select ID_USER, PATH as p,IMG_NOMBRE, TIPO from IMAGENES where TIPO = 1) as IMG on USR.ID = IMG.ID_USER
+left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO, LATITUD, LONGITUD from direcciones) as DIR on DIR.ID_USER = USR.ID
+where sectores.NOMBRE_SECTOR LIKE ?`
 
 module.exports = queries;

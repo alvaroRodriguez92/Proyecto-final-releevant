@@ -1,4 +1,5 @@
 const dao = require("../service/dao/imgDao")
+const mv = require("mv");
 
 const imgController = {}
 
@@ -37,7 +38,7 @@ imgController.addImg = async (req, res) => {
   };
 
 
-
+  
 imgController.deleteimg = async (req,res) => {
     const { ID } = req.body;
     try {

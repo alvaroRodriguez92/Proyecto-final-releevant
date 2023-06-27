@@ -1,5 +1,6 @@
 import "./App.css";
 import UserContextProvider from "./context/UserContext";
+import CardContextProvider from "./context/CardContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import RegistroView from "./views/RegistroView/RegistroView";
 import Home from "./views/Home/Home";
@@ -12,6 +13,7 @@ import { theme } from "./theme/theme"
 function App() {
   return (
     <BrowserRouter>
+      <CardContextProvider>
       <UserContextProvider>
         <ThemeProvider theme={theme}>
           <Routes>
@@ -22,6 +24,7 @@ function App() {
           </Routes>
         </ThemeProvider>
       </UserContextProvider>
+      </CardContextProvider>
     </BrowserRouter>
   );
 }

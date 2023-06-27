@@ -11,11 +11,13 @@ const chatboxRoutes = require("./routes/chatboxRoutes")
 const addressRoutes = require("./routes/addressRoutes")
 const imgRoutes = require("./routes/imgRoutes")
 const perfilRoutes = require("./routes/perfilRoutes")
+const buscarRoutes = require("./routes/buscarRoutes")
 
 const expressFileUpload = require("express-fileupload");
 const cors = require("cors");
 
-const valorRoutes = require("./routes/valorRoute");
+
+
 
 
 dotenv.config();
@@ -45,6 +47,7 @@ app.use("/chatbox",chatboxRoutes)
 app.use("/address",addressRoutes)
 app.use("/img", imgRoutes)
 app.use("/perfil",perfilRoutes)
+app.use("/buscar",buscarRoutes)
 
 
 app.use("/product", productRouter);

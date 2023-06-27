@@ -20,7 +20,7 @@ export default function NavMain() {
                     <Grid item xs={2} sx={{display:"flex", alignItems:"center", justifyContent: "space-around"}}>
                     <ModalLogin />
                     <Grid sx={{pl:"0.5rem"}}>
-                        {!user && <ToggleButtons />}
+                        {user && <ToggleButtons />}
                         </Grid>
                     </Grid>
                 </Grid>
