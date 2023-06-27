@@ -12,42 +12,26 @@ import { Formik } from "formik";
 import { initialValues } from "./utils/initialValuesDatos";
 import { schema } from "./utils/schemaDatos";
 import EditIcon from "@mui/icons-material/Edit";
-import DatosBloqueados from "./utils/DatosBloqueados";
-import DatosEditables from "./utils/DatosEditables";
+import DatosBloqueados from "./utils/ComponentesEditDatos/DatosBloqueados";
+import DatosEditables from "./utils/ComponentesEditDatos/DatosEditables";
 
 import { useState, useEffect } from "react";
 
+//Pasar el INFOUSER AL HIJO CON EL SETTER, Y DESPUÉS SETEAR EN EL PATCH EL NEW USER AL INFO USER Y 
+//IMPRIMIRLO EN LA PARTE DE BLOQUEOS
+
 export default function IntroduccionDatos({ user }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [usuario, setUsuario] = useState(null);
+  const [usuarioFormik, setUsuarioFormik] = useState([]);
 
-    async function setearUsuario() {
-      user?.map((item) => {
-        setUsuario({
-          NOMBRE: item.NOMBRE,
-          EMAIL: item.EMAIL,
-          TLF: item.TLF,
-          URL: item.URL,
-          DESCRIPCION: item.DESCRIPCION,
-        });
-      })
+
+  useEffect(()=>{
+    async function seteoUsuarioParaFormulario(){
+     await setUsuarioFormik(user)
     }
-    
-    useEffect(()=>{
-      setearUsuario();
-
-    },[])
-    
-
-  function editarDatos() {
-
-      setIsEditing(true);
-    
-  }
-
-  function cancelarEdit() {
-    setIsEditing(false);
-  }
+     seteoUsuarioParaFormulario();
+    console.log(usuarioFormik,"seteo usuario una sola vez")
+  }, [user])
 
   async function onSubmit(values) {
     const response = await fetch("http://localhost:3000/user/update/14", {
@@ -57,49 +41,22 @@ export default function IntroduccionDatos({ user }) {
     });
     if (response.status === 200) {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      alert("Actualizacion realizado con éxito");
+      setUsuarioFormik(await response.json())
+      // setUsuarioFormik(await response.json(), "QUE COJONEEESSDSÑJLDFSAKJDFS")
+      
       setIsEditing(false);
     }
   }
 
   return (
-    // <Formik
-    //   validationSchema={schema}
-    //   initialValues={{NOMBRE: item.NOMBRE,
-    //     EMAIL: item.EMAIL,
-    //     TLF: item.TLF,
-    //     URL: item.URL,
-    //     DESCRIPCION: item.DESCRIPCION}}
-    //   onSubmit={onSubmit}
-    // >
-    //   {(props) => (
         <>
           {isEditing ? (
-            <>
-              <DatosEditables user={user} onSubmit={onSubmit} />
-              <Button
-                variant="contained"
-                component="label"
-                onClick={cancelarEdit}
-              >
-                Cancelar
-              </Button>
-            </>
+              <DatosEditables user={usuarioFormik} onSubmit={onSubmit} isEditing={isEditing} setIsEditing={setIsEditing} />
+              
           ) : (
-            <>
-              <DatosBloqueados user={user} />
-              <Button
-                sx={{ ml: "80%", mt: "25%" }}
-                variant="contained"
-                component="label"
-                onClick={editarDatos}
-              >
-                <EditIcon />
-              </Button>
-            </>
+              <DatosBloqueados usuarioFormik={usuarioFormik} isEditing={isEditing} setIsEditing={setIsEditing} />
+              
           )}
         </>
-    //   )}
-    // </Formik>
   );
 }

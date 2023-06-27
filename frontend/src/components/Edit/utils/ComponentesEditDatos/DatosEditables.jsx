@@ -9,12 +9,15 @@ import {
   Button,
 } from "@mui/material";
 import { Formik } from "formik";
-import { schema } from "./schemaDatos";
+import { schema } from "../schemaDatos";
 
 import EditIcon from "@mui/icons-material/Edit";
 
-export default function DatosEditables({ user, onSubmit }) {
+export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing }) {
 
+  function cancelarEdit() {
+    setIsEditing(false);
+  }
     
   return (
     <>
@@ -165,13 +168,13 @@ export default function DatosEditables({ user, onSubmit }) {
                       </Button>
                     </Grid>
                     <Grid item xs={2} sx={{ mt: "10%", ml: 2 }}>
-                      {/* <Button
+                      <Button
                             variant="contained"
                             component="label"
                             onClick={cancelarEdit}
                           >
                             Cancelar
-                          </Button> */}
+                          </Button>
                     </Grid>
                   </Grid>
                 </Box>
