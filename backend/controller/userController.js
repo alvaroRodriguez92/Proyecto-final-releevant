@@ -366,7 +366,7 @@ userController.updateUser = async (req, res) => {
     const updateUser = await dao.updateUser(req.params.id, req.body);
     if (updateUser){
       const newUser = await dao.getUserById(req.params.id)
-      return res.send(newUser[0]);
+      return res.send(newUser);
     }
     return res.send(`Usuario con id ${req.params.id} modificado`);
   } catch (e) {

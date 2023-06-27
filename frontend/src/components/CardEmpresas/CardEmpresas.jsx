@@ -14,13 +14,13 @@ import { useCardContext } from "../../context/CardContext";
 export default function CardEmpresas() {
   
   const { tipoServicio,setPerfilCompleto, currentCords } = useUserContext();
-  const { datosEmpresa, empresas, raton, ratonOver, ratonOut } = useCardContext();
+  const { datosEmpresa, empresas, ratonOver } = useCardContext();
 
   useEffect(() => {
    
     datosEmpresa(tipoServicio);
     
-    
+    console.log(empresas)
   }, [tipoServicio]);
 
   function distancia(userPos,empPos){
@@ -36,7 +36,9 @@ export default function CardEmpresas() {
           Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) *
           Math.sin(distLng/2) * Math.sin(distLng/2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
-    return R * c
+    const d = R * c
+    const distancia = d.toFixed(2) 
+    return distancia
   }
   function handleClick(id){
     console.log(id);
@@ -50,7 +52,7 @@ export default function CardEmpresas() {
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6} >
             <Card className="contenedorHover" 
               sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#ffee8c" }} 
-              onMouseOver={ratonOver} onMouseOut={ratonOut}>
+              onMouseOver={() => ratonOver(i)} onMouseOut={() => ratonOver(i)}>
               <Box className="imagenCardContainer">
                 <img className="imagenCard"  src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
                 </Box>
@@ -62,7 +64,7 @@ export default function CardEmpresas() {
                   {item.DESCRIPCION}
                 </Typography>
                 <Typography gutterBottom variant="h5" component="div">
-                  {distancia(currentCords,item)}
+                  {distancia(currentCords,item)} KM
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
@@ -81,74 +83,3 @@ export default function CardEmpresas() {
   );
 }
 
-{
-  /* <Card className="contenedorHover"
-     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
-       <CardMedia
-         sx={{ height: 180,".title": {  textAlign: "center" } }}
-         image="../../src/assets/logonuevamente.png"
-         title="nuevamente psicologos"
-       />
-       <CardContent className="contenedorTitle">
-         <Typography gutterBottom variant="h5" component="div">
-           nuevamente psicólogos
-         </Typography>
-         <Typography variant="body2" color="text.secondary">
-           Lizards are a widespread group of squamate reptiles, with over 6,000
-           species, ranging across all continents except Antarctica
-         </Typography>
-       </CardContent>
-       <CardActions sx={{justifyContent:"end"}}>
-         <Button size="small">Ver mas</Button>
-       </CardActions>
-      </Card>
-      </Grid>
-
-      <Grid item xs={6}>
-
-      <Card className="contenedorHover"
-     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
-       <CardMedia
-         sx={{ height: 180,".title": {  textAlign: "center" } }}
-         image="../../src/assets/logonuevamente.png"
-         title="nuevamente psicologos"
-       />
-       <CardContent className="contenedorTitle">
-         <Typography gutterBottom variant="h5" component="div">
-           nuevamente psicólogos
-         </Typography>
-         <Typography variant="body2" color="text.secondary">
-           Lizards are a widespread group of squamate reptiles, with over 6,000
-           species, ranging across all continents except Antarctica
-         </Typography>
-       </CardContent>
-       <CardActions sx={{justifyContent:"end"}}>
-         <Button size="small">Ver mas</Button>
-       </CardActions>
-      </Card>
-    </Grid>
-    
-    <Grid item xs={6}>
-      <Card className="contenedorHover"
-     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
-       <CardMedia
-         sx={{ height: 180,".title": {  textAlign: "center" } }}
-         image="../../src/assets/logonuevamente.png"
-         title="nuevamente psicologos"
-       />
-       <CardContent className="contenedorTitle">
-         <Typography gutterBottom variant="h5" component="div">
-           nuevamente psicólogos
-         </Typography>
-         <Typography variant="body2" color="text.secondary">
-           Lizards are a widespread group of squamate reptiles, with over 6,000
-           species, ranging across all continents except Antarctica
-         </Typography>
-       </CardContent>
-       <CardActions sx={{justifyContent:"end"}}>
-         <Button size="small">Ver mas</Button>
-       </CardActions>
-      </Card>
-      </Grid>
-      </Grid>  */
-}
