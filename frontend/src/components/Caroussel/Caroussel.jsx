@@ -1,3 +1,4 @@
+import { useUserContext } from '../../context/UserContext';
 import React, { Component } from 'react';
 import {
   Carousel,
@@ -10,27 +11,34 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-const items = [
-  {
-    src: '../../src/assets/foto1.jpg',
-    altText: 'imagen1',
-    caption: 'mente'
-  },
-  {
-    src: '../../src/assets/foto1.jpg',
-    altText: 'imagen1',
-    caption: 'mente'
-  },
-  {
-    src: '../../src/assets/foto1.jpg',
-    altText: 'imagen1',
-    caption: 'mente'
-  },
- 
-];
+// useEffect(() => {
+//   fetchPerfil()
+// },[imagenCarrusel])
+
+
+// const items = [
+//   {
+//     src={`http://localhost:3000/imagenes/${imagenCarrusel[1].IMG_NOMBRE}`},
+//     altText: 'imagen1',
+//     caption: 'mente'
+//   },
+//   {
+//     src={`http://localhost:3000/imagenes/${imagenCarrusel[2].IMG_NOMBRE}`},
+//     altText: 'imagen1',
+//     caption: 'mente'
+//   },
+//   {
+//     src={`http://localhost:3000/imagenes/${imagenCarrusel[3].IMG_NOMBRE}`},
+//     altText: 'imagen1',
+//     caption: 'mente'
+//   },
+
+// ];
 
 class Caroussel extends Component {
   constructor(props) {
+    const [imagenCarrusel] = useUserContext();
+    console.log(imagenCarrusel,"imagenCarrusel");
     super(props);
     this.state = { activeIndex: 0 };
     this.next = this.next.bind(this);
@@ -40,6 +48,8 @@ class Caroussel extends Component {
     this.onExited = this.onExited.bind(this);
   }
 
+  
+  
   onExiting() {
     this.animating = true;
   }
@@ -47,16 +57,15 @@ class Caroussel extends Component {
   onExited() {
     this.animating = false;
   }
-
   next() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
+    const nextIndex = this.state.activeIndex === this.props.imagenCarrusel.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
   previous() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
+    const nextIndex = this.state.activeIndex === 0 ? this.props.imagenCarrusel.length - 1 : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
 
@@ -66,33 +75,38 @@ class Caroussel extends Component {
   }
 
   render() {
-  
+
     const { activeIndex } = this.state;
 
-    const slides = items.map((item, i) => {
-      console.log(item)
-      return (
-        <CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-          key={i}
-        >
-          <img width="100%" src={item.src} alt={item.altText} />
-          <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-        </CarouselItem>
-      );
-    });
-
-    return (
+    const slides = this.props.imagenCarrusel.map((item, i) => {
+     
+      
+      if (i !== 0) {
+        return (
+       
+          <CarouselItem
+            onExiting={this.onExiting}
+            onExited={this.onExited}
+            key={i}
+          >
+            <img width="100%" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} alt={item.IMG_NOMBRE} />
+            <CarouselCaption captionText={"mente"} captionHeader={"mente"} />
+            </CarouselItem>
+          
+        );
+      }
+      });
+      console.log(imagenCarrusel,"imagenCarrusel");
+  return(
       <Carousel
-        activeIndex={activeIndex}
-        next={this.next}
-        previous={this.previous}
+        activeIndex = { activeIndex }
+        next = { this.next }
+        previous = { this.previous }
       >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-        {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+        { slides }
+        <CarouselControl direction = "prev" directionText = "Previous" onClickHandler = { this.previous } />
+      <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
       </Carousel>
     );
   }
