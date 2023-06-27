@@ -168,6 +168,9 @@ form label {
 .contenedorHover {
   height: 100%;
   padding: 1rem;
+  /* width: 33%; */
+  /* max-width: 33%; */
+ 
 }
 
 .contenedorHover:hover {
@@ -175,10 +178,13 @@ form label {
   box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.6);
 }
 .imagenCardContainer {
-  height: 35% !important;
+  height: 100% !important;
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+
+
 }
 .imagenCard {
  max-width: 100%;
@@ -188,11 +194,15 @@ form label {
 .contenedorTitle {
   font-weight: bolder;
   font-size: 1.4em;
-  height: 45%;
-  margin-top: 1rem;
+  height: 100%;
+  padding:0;
+ 
 }
 .buttonAction {
-  height: 20%;
+  height: 100%;
+  display: flex !important;
+  align-content: flex-end !important;
+
 }
 .headerImageView {
   width: 100%;

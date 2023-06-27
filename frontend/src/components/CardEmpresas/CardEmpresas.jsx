@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
 import { useCardContext } from "../../context/CardContext";
 
+
 export default function CardEmpresas() {
   
   const { tipoServicio,setPerfilCompleto, currentCords } = useUserContext();
@@ -22,6 +23,7 @@ export default function CardEmpresas() {
     
     
   }, [tipoServicio]);
+
 
   function distancia(userPos,empPos){
     console.log(userPos, empPos)
@@ -48,8 +50,11 @@ export default function CardEmpresas() {
       <Grid container spacing={3}>
         {empresas.map((item, i) => (
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6} >
+
             <Card className="contenedorHover" 
               sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#ffee8c" }} 
+
+    
               onMouseOver={ratonOver} onMouseOut={ratonOut}>
               <Box className="imagenCardContainer">
                 <img className="imagenCard"  src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
@@ -79,76 +84,4 @@ export default function CardEmpresas() {
       </Grid>
     </Box>
   );
-}
-
-{
-  /* <Card className="contenedorHover"
-     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
-       <CardMedia
-         sx={{ height: 180,".title": {  textAlign: "center" } }}
-         image="../../src/assets/logonuevamente.png"
-         title="nuevamente psicologos"
-       />
-       <CardContent className="contenedorTitle">
-         <Typography gutterBottom variant="h5" component="div">
-           nuevamente psicólogos
-         </Typography>
-         <Typography variant="body2" color="text.secondary">
-           Lizards are a widespread group of squamate reptiles, with over 6,000
-           species, ranging across all continents except Antarctica
-         </Typography>
-       </CardContent>
-       <CardActions sx={{justifyContent:"end"}}>
-         <Button size="small">Ver mas</Button>
-       </CardActions>
-      </Card>
-      </Grid>
-
-      <Grid item xs={6}>
-
-      <Card className="contenedorHover"
-     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
-       <CardMedia
-         sx={{ height: 180,".title": {  textAlign: "center" } }}
-         image="../../src/assets/logonuevamente.png"
-         title="nuevamente psicologos"
-       />
-       <CardContent className="contenedorTitle">
-         <Typography gutterBottom variant="h5" component="div">
-           nuevamente psicólogos
-         </Typography>
-         <Typography variant="body2" color="text.secondary">
-           Lizards are a widespread group of squamate reptiles, with over 6,000
-           species, ranging across all continents except Antarctica
-         </Typography>
-       </CardContent>
-       <CardActions sx={{justifyContent:"end"}}>
-         <Button size="small">Ver mas</Button>
-       </CardActions>
-      </Card>
-    </Grid>
-    
-    <Grid item xs={6}>
-      <Card className="contenedorHover"
-     sx={{ maxWidth: 345,border:"1px solid black", borderRadius:"20px", borderStyle: "groove", boxShadow:"5px 5px"}}>
-       <CardMedia
-         sx={{ height: 180,".title": {  textAlign: "center" } }}
-         image="../../src/assets/logonuevamente.png"
-         title="nuevamente psicologos"
-       />
-       <CardContent className="contenedorTitle">
-         <Typography gutterBottom variant="h5" component="div">
-           nuevamente psicólogos
-         </Typography>
-         <Typography variant="body2" color="text.secondary">
-           Lizards are a widespread group of squamate reptiles, with over 6,000
-           species, ranging across all continents except Antarctica
-         </Typography>
-       </CardContent>
-       <CardActions sx={{justifyContent:"end"}}>
-         <Button size="small">Ver mas</Button>
-       </CardActions>
-      </Card>
-      </Grid>
-      </Grid>  */
 }
