@@ -1,58 +1,27 @@
 import Markers from "../../components/Markers/Markers";
-import Layout from "../../components/Layout/Layout";
+import { useCardContext } from "../../context/CardContext";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useState, useEffect } from "react";
+import { useUserContext } from "../../context/UserContext";
 import "leaflet/dist/leaflet.css";
-//import { c } from "../../common/api";
 
 export default function Map() {
-  const [coordenadas, setCoordenadas] = useState([]);
-  const [currentCords, setCurentCords] = useState([]);
+  const { empresas } = useCardContext();
+  const { currentPosition, currentCords, raton } = useUserContext();
+  
   useEffect(() => {
-    async function getLocations() {
-      const api = await fetch(`http://127.0.0.1:3000/user/sector/8`);
-      setCoordenadas(await api.json());
-    }
-    getLocations();
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setCurentCords([pos.coords.latitude, pos.coords.longitude]);
-      },
-      (err) => {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-      }
-    );
+  
+    currentPosition()
+    
   }, []);
-  // const options = {
-  //   enableHighAccuracy: true,
-  //   timeout: 5000,
-  //   maximumAge: 0,
-  // };
-
-  // function success(pos) {
-  //   const crd = pos.coords;
-
-  //   console.log("Your current position is:");
-  //   console.log(`Latitude : ${crd.latitude}`);
-  //   console.log(`Longitude: ${crd.longitude}`);
-  //   console.log(`More or less ${crd.accuracy} meters.`);
-  // }
-
-  // function error(err) {
-  //   console.warn(`ERROR(${err.code}): ${err.message}`);
-  // }
-
-  // const currentPosition = navigator.geolocation.getCurrentPosition((pos) => {
-  //   return pos.coords;
-  // });
-
-  const currentPosition = [36.7272624, -4.4437597];
-  const polo = [36.6993032, -4.4391806];
-  function convertir(coordenada) {
+  
+  const cPosition = [36.7272624, -4.4437597];
+  
+  function convertir(empresa) {
     const numCoordenada = {
-      id: coordenada.ID_USER,
-      lat: Number(coordenada.LATITUD),
-      lng: Number(coordenada.LONGITUD),
+      id: empresa.ID,
+      lat: Number(empresa.LATITUD),
+      lng: Number(empresa.LONGITUD),
     };
     return numCoordenada;
   }
@@ -71,14 +40,14 @@ export default function Map() {
       {currentCords.length > 0 && (
         <Marker position={currentCords} />
       )}
-      {currentPosition ? (
-        <Markers coordenadas={currentPosition} />
+      {cPosition ? (
+        <Markers coordenadas={cPosition} />
       ) : (
         alert("No esta activa o no hay permisos para acceder a su localizacion")
       )}
-      <Markers coordenadas={polo} />
-      {coordenadas.map((coordenada) => (
-        <Markers coordenadas={convertir(coordenada)} key={coordenada} />
+      
+      {empresas.map((empresa) => (
+        <Markers coordenadas={convertir(empresa)} key={empresa.ID}/>
       ))}
       {/* <Marker position={polo} icon={miIco}>
             <Popup>

@@ -357,15 +357,17 @@ userController.deleteUser = async (req, res) => {
 
 
 userController.updateUser = async (req, res) => {
- 
+  
   try {
     
     if (Object.entries(req.body).length === 0)
       return res.status(400).send("Error al recibir el body");
     
     const updateUser = await dao.updateUser(req.params.id, req.body);
-    if (updateUser) return res.send(`usuario ${req.params.id} actualizado`);
-    
+    if (updateUser){
+      const newUser = await dao.getUserById(req.params.id)
+      return res.send(newUser[0]);
+    }
     return res.send(`Usuario con id ${req.params.id} modificado`);
   } catch (e) {
     console.log(e.message);
