@@ -54,7 +54,7 @@ export default function CardEmpresas() {
               sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#ffee8c" }} 
               onMouseOver={() => ratonOver(i)} onMouseOut={() => ratonOver(i)}>
               <Box className="imagenCardContainer">
-                <img className="imagenCard"  src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
+                <img className="imagenCard" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
                 </Box>
               <CardContent className="contenedorTitle">
                 <Typography gutterBottom variant="h5" component="div">
@@ -63,8 +63,11 @@ export default function CardEmpresas() {
                 <Typography sx={{ p: { height: "6rem", overflowY: "auto" } }} variant="body2" color="text.secondary">
                   {item.DESCRIPCION}
                 </Typography>
-                <Typography gutterBottom variant="h5" component="div">
-                  {distancia(currentCords,item)} KM
+
+
+                <Typography gutterBottom variant="h6" component="div" sx={{ pt: "1.5rem"}}>
+                  {distancia(currentCords,item)} Km de distancia
+
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
@@ -81,5 +84,7 @@ export default function CardEmpresas() {
       </Grid>
     </Box>
   );
+
 }
+
 

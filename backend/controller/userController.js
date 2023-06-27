@@ -369,6 +369,7 @@ userController.updateUser = async (req, res) => {
       return res.send(newUser);
     }
     return res.send(`Usuario con id ${req.params.id} modificado`);
+
   } catch (e) {
     console.log(e.message);
   }

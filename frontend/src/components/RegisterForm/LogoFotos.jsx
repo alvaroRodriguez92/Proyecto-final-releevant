@@ -1,33 +1,9 @@
 import { Button, Box } from "@mui/material";
 import { MuiFileInput } from "mui-file-input";
-import { useState } from "react";
 
 //PARA ENVIARLO AL BACKEND HACER UN FORDATA "FOR DATA.APPEND"
 
 export default function LogoFotos({formik}) {
-  // const [file, setFile] = useState(null);
-  // const [multifile, setMultifile] = useState(null);
-
-  // const handleLogo = (newFile) => {
-  //   setFile(newFile);
-  //   console.log(file);
-  // };
-
-  // const handleImages = (newImage) => {
-  //   setMultifile(newImage);
-  //   console.log(multifile);
-  // };
-
-// const validFileExtensions = { image: ['jpg', 'gif', 'png', 'jpeg', 'svg', 'webp'] };
-
-// function isValidFileType(fileName, fileType) {
-//   return fileName && validFileExtensions[fileType].indexOf(fileName.split('.').pop()) > -1;
-// }
-
-// function getAllowedExt(type) {
-//   return validFileExtensions[type].map((e) => `.${e}`).toString()
-// } 
-
 
   return (
     <Box container width="80%" sx={{display: "flex",justifyContent:"center"}}>

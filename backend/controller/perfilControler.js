@@ -12,12 +12,11 @@ perfilController.getPerfil = async (req,res) => {
         const user = await userDao.getUserById(id)
         const address = await addressDao.getAllAddress(id)
         const images = await imgDao.getImdByUser(id)
-        //data.push(user,address,images)
+        
         data.user = user
         data.address = address
         data.images = images
-        console.log(data)
-        return res.status(200).send(data)
+        return res.status(200).json(data)
     } catch (e) {
         throw new Error(e.message);
     }
