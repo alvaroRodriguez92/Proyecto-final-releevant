@@ -19,21 +19,22 @@ addressController.getAllAddress = async (req,res) => {
 
 //controlador para añadir una dirección de un usuario
 addressController.addAddress = async (req,res) => {
-const {
-    ID_USER,
-    LONGITUD,
-    LATITUD,
-    TIPO_VIA,
-    NOMBRE_VIA,
-    NUMERO,
-    URBANIZACION,
-    BLOQUE,
-    PISO,
-    PUERTA,
-    CP,
-    LOCALIDAD,
-    PROVINCIA,
-    PAIS
+  
+  const {
+      ID_USER,
+      LONGITUD,
+      LATITUD,
+      TIPO_VIA,
+      NOMBRE_VIA,
+      NUMERO,
+      URBANIZACION,
+      BLOQUE,
+      PISO,
+      PUERTA,
+      CP,
+      LOCALIDAD,
+      PROVINCIA,
+      PAIS
   } = req.body;
   const newItem = {
     ID_USER: ID_USER,
@@ -96,7 +97,6 @@ addressController.editAddress = async (req,res) => {
       PAIS: PAIS
     };
     const updateAddress = await dao.editAddress(ID, newData);
-    console.log(updateAddress)
     if (updateAddress) return res.status(200).send(`Dirección Actualizada`);
     
   } catch (e) {

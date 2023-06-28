@@ -25,11 +25,9 @@ export default function Markers({ coordenadas, raton }) {
     popupAnchor: [0, -40], // punto relativo al marcador desde donde se deberá abrir el popup
   });
   function selectIcon(){
-    console.log(raton,'raton')
     if(raton) return miIco2
     else return miIco1
   }
-  console.log(empresas,'empresas')
   if (!id) {
     return (
       <Marker position={coordenadas} icon={miIco1}>
