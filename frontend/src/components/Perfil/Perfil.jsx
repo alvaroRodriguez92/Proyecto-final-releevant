@@ -8,8 +8,8 @@ import Footer from '../Footer/Footer'
 
 export default function Perfil() {
   const { perfil,imagenCarrusel } = useUserContext();
-  const { user={} } = perfil
-console.log(imagenCarrusel);
+  const { user = {} } = perfil
+  
   if (!Object.keys(perfil).length) return <></>
 
   return (

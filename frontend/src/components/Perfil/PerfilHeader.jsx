@@ -20,7 +20,7 @@ export default function PerfilHeader() {
 
         <Grid container sx={{ padding: "2rem" }}>
             <Grid item xs={3}>
-                <Box sx={{ maxWidth: "100%", p: "2rem", img: { borderRadius: "10px" } }}>
+                <Box sx={{heigth:"100%", maxWidth: "100%", p: "2rem", img: { borderRadius: "10px" } }}>
                     <img src={`http://localhost:3000/imagenes/${images[0].IMG_NOMBRE}`} />
                 </Box>
             </Grid>

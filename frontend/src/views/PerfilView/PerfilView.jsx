@@ -4,6 +4,7 @@ import Perfil from "../../components/Perfil/Perfil";
 import ChatBot from "../../components/ChatBot/ChatBot";
 import PerfilHeader from "../../components/Perfil/PerfilHeader";
 import PerfilValoraciones from "../../components/Perfil/PerfilValoraciones";
+
 export default function PerfilView() {
   return (
     <>
