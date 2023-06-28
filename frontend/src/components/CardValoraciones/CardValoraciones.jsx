@@ -9,7 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import StarBorderIcon  from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import { useUserContext } from '../../context/UserContext';
-
+import Grid from '@mui/material/Grid';
 
 export default function CardValoraciones({item}) {
   const stars = ["star1", "star2", "star3", "star4", "star5"]
@@ -26,10 +26,11 @@ export default function CardValoraciones({item}) {
       
       
     return (
+      <Grid item xs={3}>
+      <Box sx={{ display: "flex", width: "100%",height:"70%", p: "2rem"}}>
       
-            <Box sx={{ display: "flex", p: "1rem", width: "50%",m:"1rem"}}>
           <Card sx={{ minWidth: 275 }}>
-            <CardContent>
+          <CardContent sx={{stars: {color:"#ffc526"} }}>
               <Typography sx={{ fontSize: 14 }}  gutterBottom>
               <Avatar>H</Avatar>
               </Typography>
@@ -39,22 +40,23 @@ export default function CardValoraciones({item}) {
               <Typography sx={{ mb: 1.5 }} >
                 {item.COMENTARIO}
               </Typography>
-            </CardContent>
+          </CardContent>
+     
           <CardActions>
-            {stars.map((star, i) => {
+              {stars.map((star, i) => {
+           
               if (rate === 0) {
                 return <StarBorderIcon></StarBorderIcon>
               }
               if (i <= rate-1) {
                 return <StarIcon></StarIcon>
               } 
-              
+             
             })}
-                   
-                    
             </CardActions>
-            </Card>
+        
+              </Card>
             </Box>
-    
+      </Grid>
         );
 }

@@ -2,7 +2,7 @@ import { Typography, Box } from '@mui/material';
 import CardValoraciones from '../CardValoraciones/CardValoraciones';
 import { useUserContext } from '../../context/UserContext';
 import { useEffect } from 'react';
-
+import Grid from '@mui/material/Grid';
 export default function PerfilValoraciones() {
     const { valoraciones,setValoraciones, perfil } = useUserContext();
 
@@ -25,8 +25,10 @@ export default function PerfilValoraciones() {
             <Box xs={6}>
                 <Typography sx={{ p: "2rem" }}>
                     Valoraciones clientes
-                </Typography>
-                {valoraciones.map((item,i)=><CardValoraciones item={item} />)}
+            </Typography>
+            <Grid container spacing={2}>
+                {valoraciones.map((item, i) => <CardValoraciones item={item} />)}
+                </Grid>
             </Box>
         
     )
