@@ -168,6 +168,9 @@ form label {
 .contenedorHover {
   height: 100%;
   padding: 1rem;
+  /* width: 33%; */
+  /* max-width: 33%; */
+ 
 }
 
 .contenedorHover:hover {
@@ -188,11 +191,14 @@ form label {
 .contenedorTitle {
   font-weight: bolder;
   font-size: 1.4em;
-  height: 45%;
-  margin-top: 1rem;
+  height: 50%;
+  /* margin-top: 0.5rem; */
+ 
 }
 .buttonAction {
   height: 20%;
+  
+
 }
 .headerImageView {
   width: 100%;
@@ -292,4 +298,7 @@ main {
   margin: 0 auto;
   z-index: 10;
   background-color: #efefef;
+}
+.css-hhnrze-MuiTypography-root {
+  font-family: 'Times New Roman', Times, serif !important;
 }

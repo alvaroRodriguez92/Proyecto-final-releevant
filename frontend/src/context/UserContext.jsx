@@ -12,13 +12,15 @@ const UserContext = createContext({
   setSection: () => { },
   tipoServicio: 8,
   setTipoServicio: () => { },
-  perfil: "",
+  perfil: {},
   setPerfil: () => {},
+
   perfilCompleto: null,
   setPerfilCompleto: ()=>{},
   currentPosition: ()=>{},
   currentCords: [],
   setCurrentCords: ()=>{}
+
 });
 
 export default function UserContextProvider({ children }) {
@@ -31,7 +33,7 @@ export default function UserContextProvider({ children }) {
     "NOMBRE_SECTOR": "SALUD"
   });
   const [tipoServicio, setTipoServicio] = useState(8)
-  const [perfil, setPerfil] = useState([])
+  const [perfil, setPerfil] = useState({})
   const [perfilCompleto, setPerfilCompleto] = useState(null)
   const [currentCords, setCurrentCords] = useState([]);
 
