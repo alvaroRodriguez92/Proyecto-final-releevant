@@ -43,7 +43,7 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
                     //   border:"1px solid black",
                     borderRadius: 2,
                     alignItems: "center",
-                    width: "80%",
+                    width: "90%",
                     p: 5,
                     margin: "0 auto",
                     mt: 8,

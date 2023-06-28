@@ -8,9 +8,6 @@ import EditImagenes from "./EditImagenes";
 
 import {useState, useEffect} from "react";
 
-//Pasar el INFOUSER AL HIJO CON EL SETTER, Y DESPUÉS SETEAR EN EL PATCH EL NEW USER AL INFO USER Y 
-//IMPRIMIRLO EN LA PARTE DE BLOQUEOS
-
 export default function Edit() {
 
   const [infoUser, setInfoUser] = useState([])
@@ -26,8 +23,6 @@ export default function Edit() {
     fetchUser();
     //  console.log(infoUser.images[0].IMG_NOMBRE,"COSITAASSS")
   }, [])
-
-
 
   return (
     <Grid container sx={{height:"100vh"}}>

@@ -1,7 +1,5 @@
 import { TextField, Box, Button, Grid } from "@mui/material";
 import { FieldArray } from "formik";
-import ControlPointIcon from '@mui/icons-material/ControlPoint';
-import AddBoxIcon from '@mui/icons-material/AddBox';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 
 export default function Localizacion({ formik }) {
