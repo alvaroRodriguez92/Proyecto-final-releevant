@@ -5,13 +5,13 @@ const queries = require("../consultasSQL/consultasSQL")
 const buscarQueries = {}
 
 buscarQueries.getUsersBySector = async(texto) => {
-  
+    const txt = `%${texto}%`
     let conn = null;
     try {
       conn = await db.createConnection();
       return await db.query(
         queries.buscarBySector,
-        `%${texto}%`,
+        txt,
         "select",
         conn
       );
@@ -23,12 +23,13 @@ buscarQueries.getUsersBySector = async(texto) => {
   }
 
   buscarQueries.getUsersByCategoria = async(texto) => {
+    const txt = `%${texto}%`
     let conn = null;
     try {
       conn = await db.createConnection();
       return await db.query(
         queries.buscarByCategoria,
-        `%${texto}%`,
+        txt,
         "select",
         conn
       );
@@ -40,12 +41,13 @@ buscarQueries.getUsersBySector = async(texto) => {
   }
 
   buscarQueries.getUsersByNombre = async(texto) => {
+    const txt = `%${texto}%`
     let conn = null;
     try {
       conn = await db.createConnection();
       return await db.query(
         queries.buscarByNombre,
-        `%${texto}%`,
+        txt,
         "select",
         conn
       );

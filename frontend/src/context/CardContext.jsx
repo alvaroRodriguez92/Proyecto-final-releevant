@@ -9,34 +9,37 @@ const CardContext = createContext({
  ratonOver: () => {},
  ratonOut: () => {},
  indice: 0,
- setIndice: () =>{}
+ setIndice: () =>{},
+ buscarEmpresas: () => {},
+ buscar:'',
+ setBuscar: () => {}
 });
 
 export default function CardContextProvider({ children }) {
-    const [empresas,setEmpresas] = useState([])
+    const [ empresas,setEmpresas ] = useState([])
     const [ raton, setRaton ] = useState(false)
-    const [indice,setIndice] = useState(0)
+    const [ indice,setIndice ] = useState(0)
+    const [ buscar, setBuscar ] = useState('')
  
     async function datosEmpresa(categoria) {
         let datos = []
         const response = await fetch(`http://127.0.0.1:3000/user/categoria/${categoria}`);
         const data = await response.json();
         setEmpresas(data)
-        
         data.map((d)=> {
-            
             datos.push({...d,hover:false})
         })
         setEmpresas(datos)
-    
-        //setEmpresas({...data,hover:false});
-        
     }
 
-    async function buscador(text){
-        const response = await fetch(`http://127.0.0.1:3000/buscar/${text}`)
+    async function buscarEmpresas(){
+        let datos = []
+        const response = await fetch(`http://127.0.0.1:3000/buscar/${buscar}`)
         const data = await response.json();
-        setEmpresas(data)
+        data.map((d)=> {
+            datos.push({...d,hover:false})
+        })
+        setEmpresas(datos)
     }
 
     function ratonOver(index){
@@ -59,7 +62,10 @@ export default function CardContextProvider({ children }) {
         ratonOver,
         ratonOut,
         indice,
-        setIndice
+        setIndice,
+        buscarEmpresas,
+        buscar,
+        setBuscar
     };
 
     return <CardContext.Provider value={value}>{children}</CardContext.Provider>;

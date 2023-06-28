@@ -3,7 +3,7 @@ const valorController = require('../controller/valorControler')
 
 const valorRoutes = express.Router()
 
-valorRoutes.get("/coment", valorController.getValorByUser)
+valorRoutes.get("/coment/:id", valorController.getValorByUser)
 valorRoutes.post("/coment",valorController.addValor)
 // valorRoutes.get("/respuesta/:id",valorController)
 valorRoutes.post("/respuesta",valorController.addRes)
