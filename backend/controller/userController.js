@@ -107,8 +107,6 @@ userController.addUser = async (req, res) => {
           }
       }
       if(LOGO){
-        console.log(LOGO)
-        console.log(LOGO)
         //await utils.addimagen(LOGO, addUser, 1)
         let uploadPath = path.join(
           __dirname,

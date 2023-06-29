@@ -37,12 +37,12 @@ imgController.addImg = async (req, res) => {
   };
  
 imgController.deleteimg = async (req,res) => {
-    const { ID } = req.body;
+    const { ID, ID_USER } = req.body;
     try {
       const item = await dao.deleteImg(ID);
-      if (!item)
-        return res.status(409).send("No se ha borrado la imagen"); 
-      return res.status(200).send("Imagen borrada");
+      if (!item) return res.status(409).send("No se ha borrado la imagen"); 
+      const i = await dao.getImdByUser(ID_USER)
+      return res.status(200).send(i);
     } catch (e) {
       throw new Error(e.message);
     }
