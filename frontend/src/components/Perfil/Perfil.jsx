@@ -1,25 +1,27 @@
 import * as React from 'react';
 import { useUserContext } from "../../context/UserContext";
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import {Button, Typography, Grid, Card, Box,CardActions,CardContent} from '@mui/material';
-// import Caroussel from '../Caroussel/Caroussel';
 import CardValoraciones from '../CardValoraciones/CardValoraciones';
 import PerfilHeader from './PerfilHeader';
 import Footer from '../Footer/Footer'
 
 export default function Perfil() {
-  const { perfil,imagenCarrusel } = useUserContext();
+  const { perfil } = useUserContext();
   const { user = {} } = perfil
-  
-  if (!Object.keys(perfil).length) return <></>
-
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!Object.keys(perfil).length) navigate("/")
+    
+  },[perfil])
   return (
 
     <Grid container>
       <Grid item xs={6}>
-      <Typography sx={{display:"flex", justifyContent:"flex-start", p:"4rem" }} >
+      <Typography variant="h4" sx={{display:"flex", justifyContent:"flex-start", p:"4rem" }} >
         {user[0]?.DESCRIPCION}
         </Typography>
-        {/* <Caroussel imagenCarrusel={imagenCarrusel} /> */}
         </Grid>
     </Grid>
   );

@@ -302,3 +302,7 @@ main {
 .css-hhnrze-MuiTypography-root {
   font-family: 'Times New Roman', Times, serif !important;
 }
+.splide__slide img {
+  width: 100%;
+  height: auto;
+}

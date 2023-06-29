@@ -1,18 +1,34 @@
-<section id="image-carousel" class="splide" aria-label="Beautiful Images">
-  <div class="splide__track">
-		<ul class="splide__list">
-			<li class="splide__slide">
-				<img src="image01.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="image02.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="image03.jpg" alt="">
-			</li>
-		</ul>
-  </div>
-</section>
+import { useUserContext } from '../../context/UserContext';
+import { useEffect } from 'react';
+import {Box} from '@mui/material'
+
+export default function Caroussel() {
+  const { imagenCarrusel,user,fetchPerfil } = useUserContext();
+
+  useEffect(() => {
+  fetchPerfil()
+  }, [user])
+
+
+  return (
+    <>
+    {
+      imagenCarrusel.map((item, i) => {
+       return(
+        <Box key={i}>
+          <ul>
+          <img width="100%" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
+            {/* <li>{item.IMG_NOMBRE}</li>
+            <li>{item.IMG_NOMBRE}</li>
+            <li>{item.IMG_NOMBRE}</li> */}
+          </ul>
+          </Box>
+       )
+      })
+    }
+      </>
+  )
+}
 
 
 
@@ -54,7 +70,6 @@
 
 
 
-// import { useUserContext } from '../../context/UserContext';
 // import React, { Component } from 'react';
 // import {
 //   Carousel,
@@ -67,9 +82,7 @@
 
 
 
-// useEffect(() => {
-//   fetchPerfil()
-// },[imagenCarrusel])
+
 
 
 // const items = [
@@ -93,7 +106,6 @@
 
 // class Caroussel extends Component {
 //   constructor(props) {
-//     const [imagenCarrusel] = useUserContext();
 //     console.log(imagenCarrusel,"imagenCarrusel");
 //     super(props);
 //     this.state = { activeIndex: 0 };
@@ -145,7 +157,6 @@
 //             onExited={this.onExited}
 //             key={i}
 //           >
-//             <img width="100%" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} alt={item.IMG_NOMBRE} />
 //             <CarouselCaption captionText={"mente"} captionHeader={"mente"} />
 //             </CarouselItem>
           

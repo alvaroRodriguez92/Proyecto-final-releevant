@@ -24,7 +24,6 @@ export default function CardEmpresas() {
   }, [tipoServicio]);
 
   function distancia(userPos,empPos){
-    console.log(userPos, empPos)
     const R = 6371; //Radio de la tierra en KM
     const lat1 = userPos[0]
     const lng1 = userPos[1]
@@ -41,7 +40,6 @@ export default function CardEmpresas() {
     return distancia
   }
   function handleClick(id){
-    console.log(id);
     setPerfilCompleto(id)
   }
   if (!empresas.length) return <></>;

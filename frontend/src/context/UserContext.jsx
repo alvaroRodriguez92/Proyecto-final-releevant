@@ -23,7 +23,8 @@ const UserContext = createContext({
   imagenCarrusel: [],
   setImagenCarrusel: () => { },
   valoraciones: {},
-  setValoraciones: ()=>{}
+  setValoraciones: () => { },
+  fetchPerfil:() =>{}
 });
 
 export default function UserContextProvider({ children }) {
@@ -48,7 +49,6 @@ export default function UserContextProvider({ children }) {
     setPerfil(data)
     setImagenCarrusel(data.images)
   }
-  
   function currentPosition() {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
@@ -108,7 +108,8 @@ export default function UserContextProvider({ children }) {
     imagenCarrusel,
     setImagenCarrusel,
     valoraciones,
-    setValoraciones
+    setValoraciones,
+    fetchPerfil
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
