@@ -43,7 +43,7 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
                     //   border:"1px solid black",
                     borderRadius: 2,
                     alignItems: "center",
-                    width: "80%",
+                    width: "90%",
                     p: 5,
                     margin: "0 auto",
                     mt: 8,
@@ -54,7 +54,7 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
                     position: "relative",
                   }}
                 >
-                  <h3 className="titulos-form">Datos de usuario</h3>
+                  <h3 className="titulos-form-datos">Datos de usuario</h3>
                   <Grid
                     container
                     spacing={15}

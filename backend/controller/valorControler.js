@@ -4,6 +4,9 @@ const valorController = {}
 
 valorController.getValorByUser = async (req, res) => {
     const { id } = req.params;
+
+    let valorRes =[]
+
     try {
       const valoraciones = await dao.getValorByUser(id);
       if (valoraciones.length <= 0)
