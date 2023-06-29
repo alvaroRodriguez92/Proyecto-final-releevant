@@ -97,7 +97,7 @@ addressController.editAddress = async (req,res) => {
     };
     const updateAddress = await dao.editAddress(ID, newData);
     if (updateAddress){
-      const newAddress = await dao.getAddressById(ID)
+      const newAddress = await dao.getAllAddress(ID_USER)
       return res.send(newAddress);
     }
     
