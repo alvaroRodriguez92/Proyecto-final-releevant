@@ -30,10 +30,24 @@ export default function CardValoraciones({item}) {
       <Box sx={{ display: "flex", width: "100%",height:"70%", p: "2rem"}}>
       
           <Card sx={{ minWidth: 275 }}>
-          <CardContent sx={{stars: {color:"#ffc526"} }}>
+            <CardContent sx={{ svg: { color: "#ffc526" } }}>
+              <Box sx={{display:"flex", justifyContent:"space-between"}}>
               <Typography sx={{ fontSize: 14 }}  gutterBottom>
               <Avatar>H</Avatar>
               </Typography>
+              <CardActions>
+              {stars.map((star, i) => {
+           
+              if (rate === 0 || i>rate-1) {
+                return <StarBorderIcon></StarBorderIcon>
+              }
+              if (i <= rate-1) {
+                return <StarIcon></StarIcon>
+              } 
+             
+            })}
+                </CardActions>
+                </Box>
               <Typography variant="h5" component="div">
                {item.ID_COMENTADOR}
               </Typography>
@@ -42,18 +56,7 @@ export default function CardValoraciones({item}) {
               </Typography>
           </CardContent>
      
-          <CardActions>
-              {stars.map((star, i) => {
-           
-              if (rate === 0) {
-                return <StarBorderIcon></StarBorderIcon>
-              }
-              if (i <= rate-1) {
-                return <StarIcon></StarIcon>
-              } 
-             
-            })}
-            </CardActions>
+          
         
               </Card>
             </Box>

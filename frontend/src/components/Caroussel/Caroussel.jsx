@@ -1,6 +1,9 @@
 import { useUserContext } from '../../context/UserContext';
 import { useEffect } from 'react';
 import {Box} from '@mui/material'
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+import academiaNuevaMalaga from '../../../../backend/public/imagenes/academia nueva malaga.png';
 
 export default function Caroussel() {
   const { imagenCarrusel,user,fetchPerfil } = useUserContext();
@@ -12,172 +15,33 @@ export default function Caroussel() {
 
   return (
     <>
+      <Splide
+       options={{
+         type: "loop",
+        drag: "free",
+        focus: "center",
+        gap: 1,
+        perPage: 1,
+        pagination: true,
+        arrows: true,
+        autoplay: true,
+        snap: true,
+       }}
+      >
     {
-      imagenCarrusel.map((item, i) => {
-       return(
-        <Box key={i}>
-          <ul>
-          <img width="100%" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
-            {/* <li>{item.IMG_NOMBRE}</li>
-            <li>{item.IMG_NOMBRE}</li>
-            <li>{item.IMG_NOMBRE}</li> */}
-          </ul>
-          </Box>
-       )
-      })
-    }
-      </>
+      imagenCarrusel.map((item, i) => 
+       (
+          <SplideSlide >
+           <img width="100%" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
+        </SplideSlide>
+          
+        )
+        )}
+        
+             </Splide>
+       </>
+    
   )
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { Component } from 'react';
-// import {
-//   Carousel,
-//   CarouselItem,
-//   CarouselControl,
-//   CarouselIndicators,
-//   CarouselCaption
-// } from 'reactstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-
-
-
-
-// const items = [
-//   {
-//     src={`http://localhost:3000/imagenes/${imagenCarrusel[1].IMG_NOMBRE}`},
-//     altText: 'imagen1',
-//     caption: 'mente'
-//   },
-//   {
-//     src={`http://localhost:3000/imagenes/${imagenCarrusel[2].IMG_NOMBRE}`},
-//     altText: 'imagen1',
-//     caption: 'mente'
-//   },
-//   {
-//     src={`http://localhost:3000/imagenes/${imagenCarrusel[3].IMG_NOMBRE}`},
-//     altText: 'imagen1',
-//     caption: 'mente'
-//   },
-
-// ];
-
-// class Caroussel extends Component {
-//   constructor(props) {
-//     console.log(imagenCarrusel,"imagenCarrusel");
-//     super(props);
-//     this.state = { activeIndex: 0 };
-//     this.next = this.next.bind(this);
-//     this.previous = this.previous.bind(this);
-//     this.goToIndex = this.goToIndex.bind(this);
-//     this.onExiting = this.onExiting.bind(this);
-//     this.onExited = this.onExited.bind(this);
-//   }
-
-  
-  
-//   onExiting() {
-//     this.animating = true;
-//   }
-
-//   onExited() {
-//     this.animating = false;
-//   }
-//   next() {
-//     if (this.animating) return;
-//     const nextIndex = this.state.activeIndex === this.props.imagenCarrusel.length - 1 ? 0 : this.state.activeIndex + 1;
-//     this.setState({ activeIndex: nextIndex });
-//   }
-
-//   previous() {
-//     if (this.animating) return;
-//     const nextIndex = this.state.activeIndex === 0 ? this.props.imagenCarrusel.length - 1 : this.state.activeIndex - 1;
-//     this.setState({ activeIndex: nextIndex });
-//   }
-
-//   goToIndex(newIndex) {
-//     if (this.animating) return;
-//     this.setState({ activeIndex: newIndex });
-//   }
-
-//   render() {
-
-//     const { activeIndex } = this.state;
-
-//     const slides = this.props.imagenCarrusel.map((item, i) => {
-     
-      
-//       if (i !== 0) {
-//         return (
-       
-//           <CarouselItem
-//             onExiting={this.onExiting}
-//             onExited={this.onExited}
-//             key={i}
-//           >
-//             <CarouselCaption captionText={"mente"} captionHeader={"mente"} />
-//             </CarouselItem>
-          
-//         );
-//       }
-//       });
-//       console.log(imagenCarrusel,"imagenCarrusel");
-//   return(
-//       <Carousel
-//         activeIndex = { activeIndex }
-//         next = { this.next }
-//         previous = { this.previous }
-//       >
-//       <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-//         { slides }
-//         <CarouselControl direction = "prev" directionText = "Previous" onClickHandler = { this.previous } />
-//       <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-//       </Carousel>
-//     );
-//   }
-// }
-
-
-// export default Caroussel;

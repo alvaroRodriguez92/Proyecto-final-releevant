@@ -11,10 +11,10 @@ export default function Perfil() {
   const { perfil } = useUserContext();
   const { user = {} } = perfil
   const navigate = useNavigate()
-  useEffect(() => {
-    if (!Object.keys(perfil).length) navigate("/")
+
+    if (!Object.keys(perfil).length)return <></>
     
-  },[perfil])
+  
   return (
 
     <Grid container>
