@@ -11,11 +11,12 @@ export default function PerfilValoraciones() {
     
     useEffect(() => {
         async function fetchPerfilValoraciones() {
-            const id = await perfil.address[0]?.ID_USER || ""
+            const id = perfil?.address[0]?.ID_USER || ""
             
             const response = await fetch(`http://127.0.0.1:3000/valoraciones/coment/${id}`)
+            debugger
             const data = await response.json();
-    
+            console.log(data,"data");
             setValoraciones(data)
         }
         fetchPerfilValoraciones()
@@ -25,11 +26,11 @@ export default function PerfilValoraciones() {
 
     return (
         
-            <Box sx={{p:"2rem"}}>
-                <Typography variant="h5" sx={{ p: "2rem" }}>
+            <Box >
+                <Typography variant="h5" sx={{ p: "4rem" }}>
                     Valoraciones clientes
             </Typography>
-            <Grid container spacing={2}>
+            <Grid container className="valoraciones" spacing={2}>
                 {valoraciones.length?valoraciones.map((item, i) => <CardValoraciones item={item} />):<h5>No hay valoraciones en este momento</h5>}
                 </Grid>
             </Box>

@@ -69,7 +69,7 @@ export default function ChatBot() {
         </div>
       </div>
 
-    <div id="chatContainer" className="container border overflow-auto" style={{height:"300px"}}>
+    <div id="chatContainer" className="container border overflow-auto" style={{height:"500px"}}>
     <h6 className="bienvenida-bot">Bienvenido a nuestro ChatBot! ¿En que podemos ayudarte?</h6>
     <br></br>
     {preguntaChat.map((item, index)=>{

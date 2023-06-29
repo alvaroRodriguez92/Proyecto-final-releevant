@@ -304,7 +304,7 @@ main {
 }
 .splide__slide img {
   width: 100%;
-  height: auto;
+  height: 30rem;
 }
 div.splide__track{
   width: 95%;
@@ -313,5 +313,7 @@ div.splide__track{
   width: 100%;
   display: flex;
   justify-content: flex-end;
-
+}
+.valoraciones{
+  padding: 4rem;
 }
