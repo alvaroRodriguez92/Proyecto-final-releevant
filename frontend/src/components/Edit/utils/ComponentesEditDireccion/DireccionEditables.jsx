@@ -15,13 +15,26 @@ import { schemaDireccion } from "../schemaDireccion";
 export default function DireccionEditables({
   setIsEditing,
   initialValues,
-  address,
+  addressBloqueo,
   onSubmit,
+  editExitoso,
+  borrarDireccion,
+  setEditExitoso
 }) {
   function cancelarEdit() {
     setIsEditing(false);
+    setEditExitoso([false])
   }
 
+  // const texto =[]
+
+  // async function cambioExitoso(array, indice){
+  //   const aux= [...array];
+  //       aux[indice] = false
+  //       console.log(aux, "AUUX")
+  //       setEditExitoso(aux)
+  // } 
+  console.log(addressBloqueo, "ADDRESS BLOQUEOO")
   return (
     <>
       <Formik
@@ -49,11 +62,11 @@ export default function DireccionEditables({
                 position: "relative",
               }}
             >
-              <h3 className="titulos-form">Direcciones </h3>
+              <h3 className="titulos-form-direccion">Direcciones </h3>
               <FieldArray name="DIRECCIONES">
                 {({ push, remove }) => (
                   <>
-                    {formik.values.DIRECCIONES?.map((_, index) => (
+                  {addressBloqueo?(addressBloqueo?.map((_, index) => (
                       <>
                         <Grid
                           container
@@ -313,29 +326,36 @@ export default function DireccionEditables({
                             <Button
                               sx={{ mt: 3, ml: 1, width: "15%" }}
                               variant="contained"
-                              onClick={() => remove(index)}
+                              onClick={() =>{
+                                borrarDireccion(formik.values.DIRECCIONES[index])
+                                remove(index)
+                              }
+                              }
                             >
                               Borrar
                             </Button>
 
                             <Button
-                            sx={{ mt: 3, ml: 1, width: "15%" }}
+                            sx={{ mt: 3, ml: 1,mr:5, width: "15%" }}
                               variant="contained"
                               component="label"
-                              onClick={()=>onSubmit(formik.values.DIRECCIONES[index])}
+                              onClick={()=>onSubmit(formik.values.DIRECCIONES[index],index)}
                             >
                               Guardar
                             </Button>
+
+                            {editExitoso[index]?(<Box container sx={{mt:3, ml:1}}><span className="texto-exito">Cambios realizados con éxito</span></Box>):("")}
                           </Grid>
 
                           <Grid item xs={2}></Grid>
                         </Grid>
                       </>
-                    ))}
+                    ))):(null)}
+                    
                     <Button
                       sx={{ ml: "63%", width: "24%" }}
                       variant="contained"
-                      onClick={() =>
+                      onClick={() =>{
                         push({
                           TIPO_VIA: "",
                           NOMBRE_VIA: "",
@@ -350,6 +370,7 @@ export default function DireccionEditables({
                           LONGITUD: "",
                           LATITUD: "",
                         })
+                        editExitoso.push(false)}
                       }
                     >
                       Añadir dirección{" "}
@@ -365,15 +386,16 @@ export default function DireccionEditables({
                   </>
                 )}
               </FieldArray>
+              <Button sx={{ ml: "77%", width: "10%", mt:3 }} variant="contained" component="label" onClick={cancelarEdit}>
+        Cancelar
+      </Button>
             </Box>
 
             <pre>{JSON.stringify(formik.values, null, 1)}</pre>
           </form>
         )}
       </Formik>
-      <Button variant="contained" component="label" onClick={cancelarEdit}>
-        Cancelar
-      </Button>
+      
     </>
   );
 }

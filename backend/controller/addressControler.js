@@ -97,18 +97,23 @@ addressController.editAddress = async (req,res) => {
     };
     const updateAddress = await dao.editAddress(ID, newData);
     console.log(updateAddress)
-    if (updateAddress) return res.status(200).send(`Dirección Actualizada`);
+    if (updateAddress) return res.status(200).send(updateAddress);
     
   } catch (e) {
     console.log(e.message);
   }
 }
 
+// if (updateUser){
+//   const newUser = await dao.getUserById(req.params.id)
+//   return res.send(newUser);
+// }
+
 //controlador para eliminar una direccion de un usuario
 addressController.deleteAddress = async (req,res) => {
   const { ID } = req.body;
     try {
-      const item = await dao.deleteAdd2ress(ID);
+      const item = await dao.deleteAddress(ID);
       if (!item)
         return res.status(409).send("No se ha podido borrar la direccion"); 
       return res.status(200).send("Direccion borrada");
