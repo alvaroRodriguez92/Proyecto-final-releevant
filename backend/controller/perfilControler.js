@@ -2,7 +2,6 @@ const addressDao = require("../service/dao/addressDao")
 const imgDao = require("../service/dao/imgDao")
 const userDao = require("../service/dao/userDao")
 
-
 const perfilController = {}
 
 perfilController.getPerfil = async (req,res) => {
@@ -22,7 +21,5 @@ perfilController.getPerfil = async (req,res) => {
     }
 
 }
-
-
 
 module.exports = perfilController

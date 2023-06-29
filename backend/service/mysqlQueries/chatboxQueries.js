@@ -21,6 +21,40 @@ chatboxQueries.getPreguntas = async (id) => {
     }
   };
 
+  chatboxQueries.getPreguntasInicio = async (id) => {
+    let conn = null;
+    try {
+      conn = await db.createConnection();
+      return await db.query(
+        queries.getPreguntasInicio,
+        id,
+        "select",
+        conn
+      );
+    } catch (e) {
+      throw new Error(e);
+    } finally {
+      conn && (await conn.end());
+    }
+  };
+
+  chatboxQueries.getPRHijas = async (id) => {
+    let conn = null;
+    try {
+      conn = await db.createConnection();
+      return await db.query(
+        queries.getPRHijas,
+        id,
+        "select",
+        conn
+      );
+    } catch (e) {
+      throw new Error(e);
+    } finally {
+      conn && (await conn.end());
+    }
+  };
+
 chatboxQueries.getRespuesta = async (id) => {
     try {
         conn = await db.createConnection();

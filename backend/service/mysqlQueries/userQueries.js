@@ -9,7 +9,6 @@ const userQueries = {};
 userQueries.getUserByEmail = async (email) => {
   let conn = null;
   try {
-    console.log(email)
     conn = await db.createConnection();
     return await db.query(
       "SELECT * FROM USERS WHERE EMAIL = ?",
@@ -64,7 +63,6 @@ userQueries.addUser = async (newUser) => {
 //Query para agregar direccion de usuario
 userQueries.addAddress = async (newAddress) => {
   let conn = null;
-  console.log(newAddress);
   let addressObj = {
     ID_USER: newAddress.ID_USER,
     LONGITUD: newAddress.LONGITUD,
@@ -83,8 +81,6 @@ userQueries.addAddress = async (newAddress) => {
   };
   try {
     conn = await db.createConnection();
-
-    console.log(addressObj);
     return await db.query(
       "INSERT INTO DIRECCIONES SET ?",
       addressObj,
@@ -168,7 +164,6 @@ userQueries.getUsersByCategoria = async (id) => {
 };
 userQueries.getUsersBySector = async (id) => {
   let conn = null;
-  console.log(id)
   try {
     conn = await db.createConnection();
     return await db.query(
