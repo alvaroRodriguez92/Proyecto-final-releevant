@@ -24,7 +24,7 @@ export default function PerfilHeader() {
   return (
     <Grid container sx={{ pt: "2rem", borderTop: "0.1rem solid black", borderBottom: "0.1rem solid black" }}>
       <Grid item xs={12}>
-        <Box sx={{ display: "flex", justifyContent: "center", width: "100%", m: "0.2rem" }}>
+        <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
           <Typography variant="h2" component="div">
             {user[0]?.NOMBRE}
           </Typography>

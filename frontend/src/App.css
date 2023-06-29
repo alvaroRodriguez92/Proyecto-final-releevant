@@ -306,3 +306,12 @@ main {
   width: 100%;
   height: auto;
 }
+div.splide__track{
+  width: 95%;
+}
+.carruselContainer{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+}

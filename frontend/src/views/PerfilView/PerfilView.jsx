@@ -16,15 +16,15 @@ export default function PerfilView() {
       <Grid item xs={12}>
       <PerfilHeader />
       </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={7}>
           <Box  sx={{width:"100%"}}>
             <Perfil />
           </Box>
           <Caroussel/>
-          <PerfilValoraciones/>
+           <PerfilValoraciones/> 
         </Grid>
-        <Grid item xs={3}>
-          <ChatBot />
+        <Grid item xs={5}>
+          <ChatBot /> 
         </Grid>
       </Grid>
       <Footer />

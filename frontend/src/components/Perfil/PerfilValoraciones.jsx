@@ -21,14 +21,16 @@ export default function PerfilValoraciones() {
         fetchPerfilValoraciones()
     }, [perfil])
 
+
+
     return (
         
-            <Box xs={6}>
+            <Box sx={{p:"2rem"}}>
                 <Typography variant="h5" sx={{ p: "2rem" }}>
                     Valoraciones clientes
             </Typography>
             <Grid container spacing={2}>
-                {valoraciones.map((item, i) => <CardValoraciones item={item} />)}
+                {valoraciones.length?valoraciones.map((item, i) => <CardValoraciones item={item} />):<h5>No hay valoraciones en este momento</h5>}
                 </Grid>
             </Box>
         

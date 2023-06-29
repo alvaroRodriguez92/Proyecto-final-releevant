@@ -17,13 +17,13 @@ export default function Perfil() {
   
   return (
 
-    <Grid container>
-      <Grid item xs={6}>
+ 
+      <Grid item xs={12}>
       <Typography variant="h4" sx={{display:"flex", justifyContent:"flex-start", p:"4rem" }} >
         {user[0]?.DESCRIPCION}
         </Typography>
         </Grid>
-    </Grid>
+  
   );
 }
 
