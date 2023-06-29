@@ -37,7 +37,7 @@ export default function CardEmpresas() {
     return distancia
   }
   function handleClick(id){
-    console.log(id);
+
     setPerfilCompleto(id)
   }
   if (!empresas.length) return <></>;

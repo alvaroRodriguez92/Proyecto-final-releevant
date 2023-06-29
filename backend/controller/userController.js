@@ -107,7 +107,6 @@ userController.addUser = async (req, res) => {
           }
       }
       if(LOGO){
-
         //await utils.addimagen(LOGO, addUser, 1)
         let uploadPath = path.join(
           __dirname,
@@ -125,14 +124,15 @@ userController.addUser = async (req, res) => {
       }
 
       if(IMAGEN){
+        console.log(IMAGEN)
         if(IMAGEN.length){
           IMAGEN.map(async(i)=>{
-            // await utils.addimagen(i,addUser,0)
+            console.log(i)
             let uploadPath = path.join(
               __dirname,
               "../public/imagenes/" + i.name
             );
-            LOGO.mv(uploadPath, (err) => {
+            i.mv(uploadPath, (err) => {
               if (err) return res.status(500).send(err);
             });
             await dao.addImagen({

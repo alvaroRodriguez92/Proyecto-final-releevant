@@ -1,8 +1,8 @@
 import { useContext, useState, createContext } from "react";
 
 const UserContext = createContext({
-  login: () => {},
-  logout: () => {},
+  login: () => { },
+  logout: () => { },
   user: null,
   errorMessage: "",
   section: {
@@ -13,14 +13,18 @@ const UserContext = createContext({
   tipoServicio: 8,
   setTipoServicio: () => { },
   perfil: {},
-  setPerfil: () => {},
+  setPerfil: () => { },
 
   perfilCompleto: null,
-  setPerfilCompleto: ()=>{},
-  currentPosition: ()=>{},
+  setPerfilCompleto: () => { },
+  currentPosition: () => { },
   currentCords: [],
-  setCurrentCords: ()=>{}
-
+  setCurrentCords: () => { },
+  imagenCarrusel: [],
+  setImagenCarrusel: () => { },
+  valoraciones: {},
+  setValoraciones: () => { },
+  fetchPerfil:() =>{}
 });
 
 export default function UserContextProvider({ children }) {
@@ -36,8 +40,16 @@ export default function UserContextProvider({ children }) {
   const [perfil, setPerfil] = useState({})
   const [perfilCompleto, setPerfilCompleto] = useState(null)
   const [currentCords, setCurrentCords] = useState([]);
+  const [imagenCarrusel, setImagenCarrusel] = useState([])
+  const [valoraciones, setValoraciones] = useState ([])
 
-  function currentPosition(){
+  async function fetchPerfil() {
+    const response = await fetch(`http://localhost:3000/perfil/${perfilCompleto}`)
+    const data = await response.json()
+    setPerfil(data)
+    setImagenCarrusel(data.images)
+  }
+  function currentPosition() {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setCurrentCords([pos.coords.latitude, pos.coords.longitude]);
@@ -60,7 +72,7 @@ export default function UserContextProvider({ children }) {
       // }
     });
     const data = await response.json();
-    
+
     if (response.ok) {
       localStorage.setItem("user", JSON.stringify({ ...data }));
       setUser({ ...data });
@@ -73,7 +85,7 @@ export default function UserContextProvider({ children }) {
   function logout() {
     localStorage.removeItem(user);
     setUser(null);
-    
+
   }
 
   const value = {
@@ -84,14 +96,20 @@ export default function UserContextProvider({ children }) {
     section,
     setSection,
     tipoServicio,
-    setTipoServicio, 
+    setTipoServicio,
     perfil,
     setPerfil,
     perfilCompleto,
     setPerfilCompleto,
     currentPosition,
     currentCords,
-    setCurrentCords
+    setCurrentCords,
+    fetchPerfil,
+    imagenCarrusel,
+    setImagenCarrusel,
+    valoraciones,
+    setValoraciones,
+    fetchPerfil
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
