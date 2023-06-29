@@ -285,7 +285,7 @@ main {
 
 }
 
-.titulos-form{
+.titulos-form-datos{
   display: inline-block;
   font-size: 24px;
   text-transform: uppercase;
@@ -299,6 +299,57 @@ main {
   z-index: 10;
   background-color: #efefef;
 }
+
+.titulos-form-datos{
+  display: inline-block;
+  font-size: 24px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  transform: translate3d(-50%,0,0);
+  padding: 0 40px;
+  margin: 0 auto;
+  z-index: 10;
+  background-color: #efefef;
+}
+
+.titulos-form-direccion{
+  display: inline-block;
+  font-size: 24px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  position: absolute;
+  top: -3%;
+  left: 50%;
+  transform: translate3d(-50%,0,0);
+  padding: 0 40px;
+  margin: 0 auto;
+  z-index: 10;
+  background-color: #efefef;
+}
 .css-hhnrze-MuiTypography-root {
   font-family: 'Times New Roman', Times, serif !important;
+}
+
+/* .link-sin{
+  text-decoration: none;
+} */
+.direccion{
+  display: flex;
+  margin-right: 82%;
+  margin-bottom: 16px;
+
+}
+
+.texto-exito{
+  color:green;
+  /* margin-top: 32px; */
+}
+
+.edit-imagen{
+  border: 1px solid grey;
+  border-radius: 20px;
+  position: relative;
 }

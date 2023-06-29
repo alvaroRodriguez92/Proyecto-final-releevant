@@ -1,8 +1,9 @@
-import { Button, Box } from "@mui/material";
+import { Button, Box, Grid } from "@mui/material";
 import { MuiFileInput } from "mui-file-input";
 
-export default function EditImagenes(){
+export default function EditImagenes({images}){
 
+  console.log(images)
     return (
         <Box
       sx={{
@@ -23,7 +24,7 @@ export default function EditImagenes(){
         position: "relative",
       }}
     >
-      <h3 className="titulos-form">Imagenes </h3>
+      <h3 className="titulos-form-imagenes">Imagenes </h3>
     
         <MuiFileInput
         multiple 
@@ -40,6 +41,17 @@ export default function EditImagenes(){
         //   }}      
         //   onBlur={formik.handleBlur}
         />
+        <Grid container spacing={1} sx={{mt:3,ml:9, mr:9}}>
+        {images?.map((item)=>{
+          if(item.TIPO==0){
+            return(
+              <Grid item xs={3}>
+           <img className="edit-imagen" width="248px" height="248px" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`}/> 
+          </Grid>
+            )
+          }
+        })}
+      </Grid>
         </Box>
       );
     }

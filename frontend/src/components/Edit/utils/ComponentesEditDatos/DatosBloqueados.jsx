@@ -31,7 +31,7 @@ export default function DatosBloqueados({
                   flexDirection: "column",
                   borderRadius: 2,
                   alignItems: "center",
-                  width: "80%",
+                  width: "90%",
                   p: 5,
                   margin: "0 auto",
                   mt: 8,
@@ -42,7 +42,7 @@ export default function DatosBloqueados({
                   position: "relative",
                 }}
               >
-                <h3 className="titulos-form">Datos de usuario</h3>
+                <h3 className="titulos-form-datos">Datos de usuario</h3>
                 <Grid
                   container
                   spacing={15}
@@ -140,7 +140,7 @@ export default function DatosBloqueados({
                   </Grid>
                   <Grid item xs={6}>
                     <Button
-                      sx={{ ml: "80%", mt: "25%" }}
+                      sx={{ ml: "81%", mt: "25%" }}
                       variant="contained"
                       component="label"
                       onClick={editarDatos}

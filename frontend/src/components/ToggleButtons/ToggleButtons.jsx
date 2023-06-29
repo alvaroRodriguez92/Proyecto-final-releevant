@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import {Link} from "react-router-dom"
 
 
 export default function ToggleButtons() {
@@ -76,7 +77,7 @@ export default function ToggleButtons() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> Perfil
+          <Avatar /> <Link  to="/perfil/edit" style={{textDecoration:"none", color:"rgba(0, 0, 0, 0.87)"}}>Perfil</Link>
         </MenuItem>
         <Divider />
         <MenuItem onClick={logout}>
