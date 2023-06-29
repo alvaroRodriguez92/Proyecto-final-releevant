@@ -8,17 +8,12 @@ import "leaflet/dist/leaflet.css";
 export default function Map() {
   const { empresas } = useCardContext();
   const { currentPosition, currentCords, raton } = useUserContext();
-  let emp = []
   
   useEffect(() => {
-  
     currentPosition()
-    
   }, []);
-  
- 
 
-  const cPosition = [36.7272624, -4.4437597];
+  //const cPosition = [36.7272624, -4.4437597];
   
   function convertir(empresa) {
     const numCoordenada = {
@@ -43,11 +38,11 @@ export default function Map() {
       {currentCords.length > 0 && (
         <Marker position={currentCords} />
       )}
-      {cPosition ? (
+      {/* {cPosition ? (
         <Markers coordenadas={cPosition} />
       ) : (
         alert("No esta activa o no hay permisos para acceder a su localizacion")
-      )}
+      )} */}
       
       {empresas.map((empresa) => (
         <Markers coordenadas={convertir(empresa)} key={empresa.ID} raton={empresa.hover}/>

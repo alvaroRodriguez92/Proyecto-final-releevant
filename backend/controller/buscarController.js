@@ -31,7 +31,6 @@ buscarController.buscarUser = async (req,res) => {
     if(!resultado){
         return res.status(405).send("No hay resultado en la busqueda")
     }
-    console.log(resultado)
     return res.status(200).send(resultado)
 }
 

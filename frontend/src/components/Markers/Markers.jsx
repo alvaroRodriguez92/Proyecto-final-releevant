@@ -3,12 +3,12 @@ import Popups from "../Popups/Popups";
 import L from "leaflet";
 import localizadores from "../../assets/locations.png";
 import pointsucces from "../../assets/pointsucces.png";
-import { useCardContext } from "../../context/CardContext";
+//import { useCardContext } from "../../context/CardContext";
 
 // eslint-disable-next-line react/prop-types
 export default function Markers({ coordenadas, raton }) {
 
-  const { empresas, indice } = useCardContext()
+  //const { empresas, indice } = useCardContext()
   const { id, lat, lng } = coordenadas;
   const miIco1 = new L.Icon({
     iconUrl: localizadores,

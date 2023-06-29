@@ -9,8 +9,8 @@ import { useUserContext } from "../../context/UserContext";
 //const sectores = [{ nombre: "Dentista" }, { nombre: "Psicologo" }, { nombre: "Fisioterapeuta" }, { nombre: "Podologo" }, { nombre: "Podologo" }, { nombre: "Podologo" }, { nombre: "Podologo" }, { nombre: "Podologo" }, { nombre: "Podologo" }, { nombre: "Podologo" }]
 
 export default function Buscador() {
-    const { buscar, setBuscar, setEmpresas, empresas } = useCardContext()
-    const { tipoServicio, setTipoServicio } = useUserContext()
+    const { buscar, setBuscar, setEmpresas } = useCardContext()
+    const { setTipoServicio } = useUserContext()
 
 
   function handleBuscar(e){
