@@ -101,4 +101,21 @@ addressQueries.deleteAddress = async(id) => {
   }
 }
 
+addressQueries.getAddressById = async (id) => {
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM DIRECCIONES WHERE ID = ?",
+      id,
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+
 module.exports = addressQueries

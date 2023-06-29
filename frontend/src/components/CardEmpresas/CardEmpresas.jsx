@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
 import { useCardContext } from "../../context/CardContext";
 
@@ -17,14 +17,10 @@ export default function CardEmpresas() {
   const { datosEmpresa, empresas, ratonOver } = useCardContext();
 
   useEffect(() => {
-   
-    datosEmpresa(tipoServicio);
-    
-    console.log(empresas)
+    if (tipoServicio !== 0) datosEmpresa(tipoServicio);
   }, [tipoServicio]);
 
   function distancia(userPos,empPos){
-    console.log(userPos, empPos)
     const R = 6371; //Radio de la tierra en KM
     const lat1 = userPos[0]
     const lng1 = userPos[1]

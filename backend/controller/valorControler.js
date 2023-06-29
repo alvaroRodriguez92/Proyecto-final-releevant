@@ -3,10 +3,9 @@ const dao = require("../service/dao/valorDao");
 const valorController = {}
 
 valorController.getValorByUser = async (req, res) => {
-    const { ID_COMENTADO } = req.body;
-    let valorRes =[]
+    const { id } = req.params;
     try {
-      const valoraciones = await dao.getValorByUser(ID_COMENTADO);
+      const valoraciones = await dao.getValorByUser(id);
       if (valoraciones.length <= 0)
         return res.status(409).send("No hay comentarios de clientes"); 
       return res.status(200).send(valoraciones);

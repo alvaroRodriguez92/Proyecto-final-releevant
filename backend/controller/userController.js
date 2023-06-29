@@ -9,9 +9,7 @@ const userController = {};
 
 //controlador de registro de usuario
 userController.addUser = async (req, res) => {
-  console.log(req.body)
-  const { LOGO, IMAGEN } = req.files
-  
+  const { LOGO, IMAGEN } = req.files 
   const {
     NOMBRE,
     EMAIL,
@@ -33,7 +31,6 @@ userController.addUser = async (req, res) => {
     PROVINCIA,
     PAIS,
   } = req.body;
- 
   const newUser = {
     NOMBRE: NOMBRE,
     EMAIL: EMAIL,
@@ -216,7 +213,6 @@ userController.getUsersBySector = async (req, res) => {
     const users = await dao.getUserBySector(req.params.id);
     if (users.length <= 0)
       return res.status(409).send("No hay Categorias que mostrar");
-    console.log(users)
     return res.status(200).send(users);
   } catch (e) {
     throw new Error(e.message);
@@ -253,12 +249,10 @@ userController.addImagen = async (req, res) => {
     if (!req.files || req.files === null) {
       return res.status(400).send("No se ha cargado ningun archivo");
     }
-    console.log("estamos aqui")
     const imagenes = !req.files.imagen.length
       ? [req.files.imagen]
       : req.files.imagen;
     imagenes.forEach(async (imagen) => {
-      console.log(imagen.name);
       let uploadPath = path.join(
         __dirname,
         "../public/imagenes/" + imagen.name
@@ -354,7 +348,6 @@ userController.deleteUser = async (req, res) => {
     console.log(e.message);
   }
 };
-
 
 userController.updateUser = async (req, res) => {
   

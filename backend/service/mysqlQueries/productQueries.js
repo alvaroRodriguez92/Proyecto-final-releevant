@@ -67,7 +67,6 @@ productQueries.getProductByReference = async (reference) => {
   let conn = null;
   try {
     conn = await db.createConnection();
-    console.log(reference);
     return await db.query(
       "SELECT * FROM products WHERE reference = ?",
       reference,
