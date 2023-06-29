@@ -42,7 +42,6 @@ export default function IntroduccionDatos({ user }) {
     if (response.status === 200) {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setUsuarioFormik(await response.json())
-      // setUsuarioFormik(await response.json(), "QUE COJONEEESSDSÑJLDFSAKJDFS")
       
       setIsEditing(false);
     }

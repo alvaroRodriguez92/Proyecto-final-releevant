@@ -5,7 +5,6 @@ const productController = {};
 
 productController.uploadImage = async (req, res) => {
   try {
-    //if(req.files === null) return;
     if (
       !req.files ||
       req.files === null ||
@@ -13,7 +12,6 @@ productController.uploadImage = async (req, res) => {
     ) {
       return res.status(400).send("No se ha cargado ningun archivo");
     }
-
     const images = !req.files.imagen.length
       ? [req.files.imagen]
       : req.files.imagen;
@@ -39,7 +37,6 @@ productController.getImage = async (req, res) => {
       return res.status(400).send("No se encuentra la imagen");
     //console.log(image[0].path);
     res.status(200).send(image[0].path);
-    console.log(`Imagen encontrada en ${image[0].path}`);
   } catch (e) {
     throw new Error(e);
   }
@@ -52,7 +49,7 @@ productController.addProduct = async (req, res) => {
     return res.status(400).send("Error al recibir el body");
   // Buscamos el usuario en la base de datos
   const existProduct = dao.getProductByReference(reference);
-  console.log(existProduct);
+
   if (!existProduct.length == 0)
     return res.status(400).send("Producto existente");
   try {

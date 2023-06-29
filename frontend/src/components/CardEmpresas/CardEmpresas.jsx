@@ -7,20 +7,17 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
 import { useCardContext } from "../../context/CardContext";
 
 export default function CardEmpresas() {
   
   const { tipoServicio,setPerfilCompleto, currentCords } = useUserContext();
-  const { datosEmpresa, empresas, raton, ratonOver, ratonOut } = useCardContext();
+  const { datosEmpresa, empresas, ratonOver } = useCardContext();
 
   useEffect(() => {
-   
-    datosEmpresa(tipoServicio);
-    
-    
+    if (tipoServicio !== 0) datosEmpresa(tipoServicio);
   }, [tipoServicio]);
 
   function distancia(userPos,empPos){
@@ -51,7 +48,7 @@ export default function CardEmpresas() {
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6} >
             <Card className="contenedorHover" 
               sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px", backgroundColor:"#ffee8c" }} 
-              onMouseOver={ratonOver} onMouseOut={ratonOut}>
+              onMouseOver={() => ratonOver(i)} onMouseOut={() => ratonOver(i)}>
               <Box className="imagenCardContainer">
                 <img className="imagenCard" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
                 </Box>
@@ -62,8 +59,11 @@ export default function CardEmpresas() {
                 <Typography sx={{ p: { height: "6rem", overflowY: "auto" } }} variant="body2" color="text.secondary">
                   {item.DESCRIPCION}
                 </Typography>
+
+
                 <Typography gutterBottom variant="h6" component="div" sx={{ pt: "1.5rem"}}>
                   {distancia(currentCords,item)} Km de distancia
+
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
@@ -80,4 +80,7 @@ export default function CardEmpresas() {
       </Grid>
     </Box>
   );
+
 }
+
+

@@ -8,7 +8,6 @@ imgController.addImg = async (req, res) => {
       if (!req.files || req.files === null) {
         return res.status(400).send("No se ha cargado ningun archivo");
       }
-      console.log("estamos aqui")
       const imagenes = !req.files.imagen.length
         ? [req.files.imagen]
         : req.files.imagen;
@@ -36,9 +35,7 @@ imgController.addImg = async (req, res) => {
       return res.status(400).send(e.message);
     }
   };
-
-
-  
+ 
 imgController.deleteimg = async (req,res) => {
     const { ID } = req.body;
     try {
@@ -50,7 +47,5 @@ imgController.deleteimg = async (req,res) => {
       throw new Error(e.message);
     }
 }
-
-
 
 module.exports = imgController

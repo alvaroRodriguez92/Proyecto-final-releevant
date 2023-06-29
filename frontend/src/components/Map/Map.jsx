@@ -10,12 +10,10 @@ export default function Map() {
   const { currentPosition, currentCords, raton } = useUserContext();
   
   useEffect(() => {
-  
     currentPosition()
-    
   }, []);
-  
-  const cPosition = [36.7272624, -4.4437597];
+
+  //const cPosition = [36.7272624, -4.4437597];
   
   function convertir(empresa) {
     const numCoordenada = {
@@ -40,27 +38,15 @@ export default function Map() {
       {currentCords.length > 0 && (
         <Marker position={currentCords} />
       )}
-      {cPosition ? (
+      {/* {cPosition ? (
         <Markers coordenadas={cPosition} />
       ) : (
         alert("No esta activa o no hay permisos para acceder a su localizacion")
-      )}
+      )} */}
       
       {empresas.map((empresa) => (
-        <Markers coordenadas={convertir(empresa)} key={empresa.ID}/>
+        <Markers coordenadas={convertir(empresa)} key={empresa.ID} raton={empresa.hover}/>
       ))}
-      {/* <Marker position={polo} icon={miIco}>
-            <Popup>
-              <Tooltip direction="top" opacity={1}>
-                <span> Polo Digital Málaga</span>
-              </Tooltip>
-              Wellcome to
-              <br /> Polo Digital <br /> MALAGA
-            </Popup>
-          </Marker> */}
-      {/* {coordenadas.map((coordenada) => {
-        <Markers coordenadas={convertir(coordenada)} />;
-      })} */}
     </MapContainer>
   );
 }

@@ -48,8 +48,12 @@ queries.addRes = `INSERT INTO RESPUESTAS SET ?`
 //CONSULTAS DE CHATBOX//
 ////////////////////////
 
-//Consulta para obtener todas las preguntas y respuestasde chatbox de un usuario
-queries.getPreguntas = `select ID, PREGUNTA, RESPUESTA from CHATBOX where ID_USER = ?`
+//Consulta para optener todas las preguntas y respuestas de un usuario
+queries.getPreguntas = `select ID, PREGUNTA, RESPUESTA, PADRE from CHATBOX where ID_USER = ?`
+//Consulta para optener todas las preguntas y respuestasde chatbox de un usuario
+queries.getPreguntasInicio = `select ID, PREGUNTA, RESPUESTA, PADRE from CHATBOX where ID_USER = ? AND PADRE = 0`
+//Consulta para obtener las preguntas y respuestas hijas
+queries.getPRHijas = `select ID, PREGUNTA, RESPUESTA, PADRE from CHATBOX where PADRE = ?`
 //Consulta para obtener la respuesta correspondiente a una pregunta
 queries.getRespuesta = `SELECT RESPUESTA FROM CHATBOX WHERE ID = ?`
 //Query de insercion en chatbox

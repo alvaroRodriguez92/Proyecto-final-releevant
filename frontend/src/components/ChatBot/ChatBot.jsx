@@ -24,7 +24,7 @@ export default function ChatBot() {
 
     useEffect(()=>{
       async function fetchChatbot(){
-        const response = await fetch("http://localhost:3000/chatbox/preguntas/"+ID_PREGUNTA)
+        const response = await fetch("http://localhost:3000/chatbox/preguntas/inicio/"+ID_PREGUNTA)
         const data = await response.json()
         setResultFetchPregunta(data)
       }
