@@ -6,11 +6,15 @@ const imgController = {}
 
 imgController.addImg = async (req, res) => {
   const {ID_USER, TIPO} = req.body
+
     try {
       if (!req.files || req.files === null) {
         return res.status(400).send("No se ha cargado ningun archivo");
       }
+<<<<<<< HEAD
      
+=======
+>>>>>>> f96bd6f8b26f82c62a86f90390aafbc83d71fbd7
       const imagenes = !req.files.imagen.length
         ? [req.files.imagen]
         : req.files.imagen;
@@ -54,5 +58,18 @@ imgController.deleteimg = async (req,res) => {
       throw new Error(e.message);
     }
 }
+
+imgController.getlogoByUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const logo = await dao.getlogoByUser(id);
+    if (logo.length <= 0)
+      return res.status(409).send("No hay comentarios de clientes"); 
+    return res.status(200).send(logo);
+  } catch (e) {
+    throw new Error(e.message);
+  }
+};
 
 module.exports = imgController
