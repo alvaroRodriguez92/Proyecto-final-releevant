@@ -34,7 +34,6 @@ export default function DireccionEditables({
   //       console.log(aux, "AUUX")
   //       setEditExitoso(aux)
   // } 
-  console.log(addressBloqueo, "ADDRESS BLOQUEOO")
   return (
     <>
       <Formik
@@ -66,7 +65,7 @@ export default function DireccionEditables({
               <FieldArray name="DIRECCIONES">
                 {({ push, remove }) => (
                   <>
-                  {addressBloqueo?(addressBloqueo?.map((_, index) => (
+                  {formik.values.DIRECCIONES?.map((_, index) => (
                       <>
                         <Grid
                           container
@@ -350,7 +349,7 @@ export default function DireccionEditables({
                           <Grid item xs={2}></Grid>
                         </Grid>
                       </>
-                    ))):(null)}
+                    ))}
                     
                     <Button
                       sx={{ ml: "63%", width: "24%" }}

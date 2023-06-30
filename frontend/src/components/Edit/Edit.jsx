@@ -7,16 +7,18 @@ import EditDireccion from "./EditDireccion";
 import EditImagenes from "./EditImagenes";
 
 import {useState, useEffect} from "react";
+import { useUserContext } from "../../context/UserContext";
 
 export default function Edit() {
 
   const [infoUser, setInfoUser] = useState([])
+  const {user} = useUserContext()
 
-  const ID=14;
+  console.log(user)
 
   useEffect(()=>{
     async function fetchUser(){
-      const response = await fetch("http://localhost:3000/perfil/"+ID)
+      const response = await fetch("http://localhost:3000/perfil/"+user.ID)
       const data = await response.json()
       setInfoUser(data)
     }

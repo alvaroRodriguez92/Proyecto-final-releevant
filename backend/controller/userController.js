@@ -132,7 +132,7 @@ userController.addUser = async (req, res) => {
               __dirname,
               "../public/imagenes/" + i.name
             );
-            LOGO.mv(uploadPath, (err) => {
+            i.mv(uploadPath, (err) => {
               if (err) return res.status(500).send(err);
             });
             await dao.addImagen({
