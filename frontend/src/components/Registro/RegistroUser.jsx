@@ -11,7 +11,7 @@ export default function RegistroUser() {
 
 
     async function onSubmit(values, actions) {
-        console.log("submiteandooooo")
+        console.log("submiteandooooo", values)
         const formData= new FormData();
         formData.append("NOMBRE", values.NOMBRE)
         formData.append("EMAIL", values.EMAIL)

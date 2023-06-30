@@ -36,7 +36,13 @@ export default function EditImagenes({ images }) {
   }
 
   async function subirImagenes() {
-    const ID_USER = images[0].ID_USER;
+    let ID_USER = ""
+    if (!images.length) {
+      ID_USER = images.ID_USER
+    } else {
+      
+       ID_USER = images[0].ID_USER;
+    }
     console.log("SUBIENDO IMAGENEES");
     const formData = new FormData();
     formData.append("ID_USER", ID_USER);
