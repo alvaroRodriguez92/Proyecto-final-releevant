@@ -5,6 +5,7 @@ const path = require("path")
 const imgController = {}
 
 imgController.addImg = async (req, res) => {
+
   const {ID_USER, TIPO} = req.body
 
     try {
@@ -66,5 +67,40 @@ imgController.getlogoByUser = async (req, res) => {
     throw new Error(e.message);
   }
 };
+
+imgController.editLogo = async (req,res) => {
+  const { ID, ID_USER, TIPO } = req.body;
+    try {
+      if (!req.files || req.files === null) {
+        return res.status(400).send("No se ha cargado ningun archivo");
+      }
+      const imagenes = !req.files.imagen.length
+        ? [req.files.imagen]
+        : req.files.imagen;
+      imagenes.forEach(async (imagen) => {
+        let uploadPath = path.join(
+          __dirname,
+          "../public/imagenes/" + imagen.name
+        );
+  
+        imagen.mv(uploadPath, (err) => {
+          if (err) return res.status(500).send(err);
+        });
+        
+        await dao.addImagen({
+          ID_USER: imagen.ID_USER,
+          PATH: uploadPath,
+          NOMBRE: imagen.name,
+          ESTADO: imagen.TIPO,
+        });
+      });
+      const item = await dao.deleteImg(ID);
+      if (!item) return res.status(409).send("No se ha borrado la imagen"); 
+      const i = await dao.getImdByUser(ID_USER)
+      return res.status(200).send(i);
+    } catch (e) {
+      throw new Error(e.message);
+    }
+}
 
 module.exports = imgController
