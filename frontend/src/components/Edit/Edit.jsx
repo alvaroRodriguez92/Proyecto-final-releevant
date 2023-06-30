@@ -7,17 +7,20 @@ import EditDireccion from "./EditDireccion";
 import EditImagenes from "./EditImagenes";
 
 import {useState, useEffect} from "react";
+import { useUserContext } from "../../context/UserContext";
 
 export default function Edit() {
 
   const [infoUser, setInfoUser] = useState([])
+  const {user} = useUserContext()
 
-  const ID=14;
+  console.log(user)
 
   useEffect(()=>{
     async function fetchUser(){
-      const response = await fetch("http://localhost:3000/perfil/"+ID)
+      const response = await fetch("http://localhost:3000/perfil/"+user.ID)
       const data = await response.json()
+      console.log(data.images,"data");
       setInfoUser(data)
     }
     fetchUser();
@@ -29,7 +32,7 @@ export default function Edit() {
     <Grid container sx={{height:"100vh"}}>
         <Grid item xs={3}>
     <Box container sx={{ display:"flex" ,alignItems: "flex-end", m: 5 }}>
-      {infoUser.images ? (
+      {(infoUser.images>0) ? (
         <img
           className="edit-logo"
           width="70%"

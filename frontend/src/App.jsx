@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/registro" element={<RegistroView />} />
             <Route path="/perfil" element={<PerfilView />} />
-            <Route path="/perfil/edit" element={<EditView />} />
+            <Route path="/perfil/edit/:id" element={<EditView />} />
           </Routes>
         </ThemeProvider>
       </CardContextProvider>

@@ -1,14 +1,17 @@
 const dao = require("../service/dao/imgDao")
 const mv = require("mv");
+const path = require("path")
 
 const imgController = {}
 
 imgController.addImg = async (req, res) => {
+
+  const {ID_USER, TIPO} = req.body
+
     try {
       if (!req.files || req.files === null) {
         return res.status(400).send("No se ha cargado ningun archivo");
       }
-      console.log(req.files.imagen)
       const imagenes = !req.files.imagen.length
         ? [req.files.imagen]
         : req.files.imagen;
@@ -24,13 +27,15 @@ imgController.addImg = async (req, res) => {
         });
         
         await dao.addImg({
-          ID_USER: imagen.ID_USER,
+          ID_USER: ID_USER,
           PATH: uploadPath,
           NOMBRE: imagen.name,
-          ESTADO: imagen.TIPO,
+          TIPO: TIPO,
         });
       });
-      res.send("Imagen subida");
+      const i = await dao.getImdByUser(ID_USER)
+      console.log(i)
+      return res.status(200).send(i)  
     } catch (e) {
       console.log(e.error);
       return res.status(400).send(e.message);
@@ -41,7 +46,8 @@ imgController.deleteimg = async (req,res) => {
     const { ID, ID_USER } = req.body;
     try {
       const item = await dao.deleteImg(ID);
-      if (!item) return res.status(409).send("No se ha borrado la imagen"); 
+      if (!item)
+        return res.status(409).send("No se ha borrado la imagen"); 
       const i = await dao.getImdByUser(ID_USER)
       return res.status(200).send(i);
     } catch (e) {
