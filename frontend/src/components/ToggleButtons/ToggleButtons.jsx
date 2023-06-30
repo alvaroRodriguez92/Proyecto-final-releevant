@@ -14,7 +14,8 @@ import {Link} from "react-router-dom"
 
 export default function ToggleButtons() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { logout } = useUserContext();
+  
+  const { logout, user } = useUserContext();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -77,7 +78,7 @@ export default function ToggleButtons() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> <Link  to="/perfil/edit" style={{textDecoration:"none", color:"rgba(0, 0, 0, 0.87)"}}>Perfil</Link>
+          <Avatar /> <Link  to={`/perfil/edit/${user.ID}`} style={{textDecoration:"none", color:"rgba(0, 0, 0, 0.87)"}}>Perfil</Link>
         </MenuItem>
         <Divider />
         <MenuItem onClick={logout}>

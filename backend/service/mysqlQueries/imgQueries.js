@@ -28,7 +28,7 @@ imgQueries.deleteImg = async(id) => {
         ID: null,
         ID_USER: data.ID_USER,
         PATH: data.PATH,
-        NOMBRE: data.NOMBRE,
+        IMG_NOMBRE: data.NOMBRE,
         TIPO: data.TIPO,
       };
       return await db.query(
