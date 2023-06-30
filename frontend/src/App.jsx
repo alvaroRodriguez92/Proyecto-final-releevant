@@ -13,8 +13,8 @@ import { theme } from "./theme/theme"
 function App() {
   return (
     <BrowserRouter>
-      <CardContextProvider>
       <UserContextProvider>
+      <CardContextProvider>
         <ThemeProvider theme={theme}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -23,8 +23,8 @@ function App() {
             <Route path="/perfil/edit/:id" element={<EditView />} />
           </Routes>
         </ThemeProvider>
-      </UserContextProvider>
       </CardContextProvider>
+      </UserContextProvider>
     </BrowserRouter>
   );
 }

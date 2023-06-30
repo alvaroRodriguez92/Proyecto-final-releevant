@@ -12,6 +12,7 @@ productController.uploadImage = async (req, res) => {
     ) {
       return res.status(400).send("No se ha cargado ningun archivo");
     }
+    console.log(req.files)
     const images = !req.files.imagen.length
       ? [req.files.imagen]
       : req.files.imagen;
