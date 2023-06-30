@@ -11,14 +11,10 @@ imgController.addImg = async (req, res) => {
       if (!req.files || req.files === null) {
         return res.status(400).send("No se ha cargado ningun archivo");
       }
-<<<<<<< HEAD
-     
-=======
->>>>>>> f96bd6f8b26f82c62a86f90390aafbc83d71fbd7
       const imagenes = !req.files.imagen.length
         ? [req.files.imagen]
         : req.files.imagen;
-      imagenes.forEach(async (imagen) => {
+      for(const imagen of imagenes)  {
         console.log(imagen.name);
         let uploadPath = path.join(
           __dirname,
@@ -35,10 +31,9 @@ imgController.addImg = async (req, res) => {
           NOMBRE: imagen.name,
           TIPO: TIPO,
         });
-      });
+      };
       const i = await dao.getImdByUser(ID_USER)
-
-      console.log( await i)
+      
       return res.status(200).send(i)  
     } catch (e) {
       console.log(e.error);
@@ -71,5 +66,44 @@ imgController.getlogoByUser = async (req, res) => {
     throw new Error(e.message);
   }
 };
+
+imgController.editLogo = async (req,res) => {
+  const { ID, ID_USER, TIPO } = req.body;
+  console.log(req.files)
+  console.log(req.body)
+    try {
+      if (!req.files || req.files === null) {
+        return res.status(400).send("No se ha cargado ningun archivo");
+      }
+      
+      const imagenes = !req.files.imagen.length
+        ? [req.files.imagen]
+        : req.files.imagen;
+      imagenes.forEach(async (imagen) => {
+        let uploadPath = path.join(
+          __dirname,
+          "../public/imagenes/" + imagen.name
+        );
+  
+        imagen.mv(uploadPath, (err) => {
+          if (err) return res.status(500).send(err);
+        });
+        
+        await dao.addImg({
+          ID_USER: ID_USER,
+          PATH: uploadPath,
+          NOMBRE: imagen.name,
+          TIPO: TIPO,
+        });
+      });
+      const item = await dao.deleteImg(ID);
+      const i = await dao.getlogoByUser(ID_USER)
+      console.log(i,"IIIIIIIIIIIIIIIII")
+      
+      return res.status(200).send(i);
+    } catch (e) {
+      throw new Error(e.message);
+    }
+}
 
 module.exports = imgController
