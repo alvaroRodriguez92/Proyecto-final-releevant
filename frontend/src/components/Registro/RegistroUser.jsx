@@ -18,7 +18,7 @@ export default function RegistroUser() {
         formData.append("TLF", values.TLF)
         formData.append("PASSWORD", values.PASSWORD)
 
-        const response = await fetch("http://127.0.0.1:3000/user/", {
+        const response = await fetch("http://127.0.0.1:3000/user/usernormal", {
           method: "POST",
           body: formData
         });

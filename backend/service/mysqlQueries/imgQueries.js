@@ -28,7 +28,7 @@ imgQueries.deleteImg = async(id) => {
         ID: null,
         ID_USER: data.ID_USER,
         PATH: data.PATH,
-        NOMBRE: data.NOMBRE,
+        IMG_NOMBRE: data.NOMBRE,
         TIPO: data.TIPO,
       };
       return await db.query(
@@ -50,6 +50,23 @@ imgQueries.deleteImg = async(id) => {
       conn = await db.createConnection();
       return await db.query(
         "SELECT * FROM IMAGENES WHERE ID_USER = ?",
+        id,
+        "select",
+        conn
+      );
+    } catch (e) {
+      throw new Error(e);
+    } finally {
+      conn && (await conn.end());
+    }
+  };
+
+  imgQueries.getLogoByUser = async (id) => {
+    let conn = null;
+    try {
+      conn = await db.createConnection();
+      return await db.query(
+        "SELECT * FROM IMAGENES WHERE TIPO = 1 AND ID_USER = ?",
         id,
         "select",
         conn

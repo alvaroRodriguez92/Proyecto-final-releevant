@@ -118,12 +118,13 @@ addressController.editAddress = async (req,res) => {
 
 //controlador para eliminar una direccion de un usuario
 addressController.deleteAddress = async (req,res) => {
-  const { ID } = req.body;
+  const { ID, ID_USER } = req.body;
     try {
       const item = await dao.deleteAddress(ID);
       if (!item)
         return res.status(409).send("No se ha podido borrar la direccion"); 
-      return res.status(200).send("Direccion borrada");
+      const newAddress = await dao.getAllAddress(ID_USER)
+      return res.status(200).send(newAddress);
     } catch (e) {
       throw new Error(e.message);
     }

@@ -29,6 +29,9 @@ export default function EditDireccion({address}) {
         if (response.status === 200) {
           await new Promise((resolve) => setTimeout(resolve, 2000));
           await cambioExitoso(editExitoso, index);
+          const data = await response.json()
+          console.log(data,"RESPUESTA DEL INSERT")
+          setAddressBloqueo(data)
           
           alert("Insert realizado con éxito")
           
@@ -43,9 +46,8 @@ export default function EditDireccion({address}) {
     if (response.status === 200) {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       await cambioExitoso(editExitoso, index);
-      console.log(await response.json(),"RESPONSEEE DE JSOON")
-      // setAddressBloqueo(await response.json())
-      console.log(addressBloqueo)
+      // console.log(await response.json(),"RESPONSEEE DE JSOON")
+      setAddressBloqueo(await response.json())
       alert("UPDATE realizado con éxito")
     }
     }
@@ -73,16 +75,19 @@ export default function EditDireccion({address}) {
     const response = await fetch("http://127.0.0.1:3000/address/", {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ID:values.ID}),
+            body: JSON.stringify({ID:values.ID, ID_USER:values.ID_USER}),
           });
           if (response.status === 200) {
-            // await new Promise((resolve) => setTimeout(resolve, 2000));
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+            const data = await response.json()
+            console.log(data)
+            setAddressBloqueo(data)
             alert("DELETE realizado con éxito")
           }      
     
   }
 
-const initialValues = {DIRECCIONES:address}
+const initialValues = {DIRECCIONES:addressBloqueo}
   
   console.log(initialValues)
   return (

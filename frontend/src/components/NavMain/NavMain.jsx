@@ -7,6 +7,7 @@ import { useUserContext } from "../../context/UserContext";
 
 export default function NavMain() {
     const { user } = useUserContext();
+    console.log(user)
     return (
        
             <Box>
@@ -18,7 +19,7 @@ export default function NavMain() {
                         <Buscador />
                     </Grid>
                     <Grid item xs={2} sx={{display:"flex", alignItems:"center", justifyContent: "space-around"}}>
-                    <ModalLogin />
+                    {user?(null):(<ModalLogin />)}
                     <Grid sx={{pl:"0.5rem"}}>
                         {user && <ToggleButtons />}
                         </Grid>

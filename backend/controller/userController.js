@@ -8,6 +8,28 @@ const utils = require("../utils/utils")
 const userController = {};
 
 //controlador de registro de usuario
+
+userController.addUserNormal = async (req,res) => {
+  const { NOMBRE, EMAIL, TLF, PASSWORD} = req.body
+  const newUser = {
+    NOMBRE: NOMBRE,
+    EMAIL: EMAIL,
+    TLF: TLF,
+    PASSWORD: PASSWORD,
+  };
+  try{
+    const user = await dao.getUserByEmail(EMAIL);
+    if (user.length > 0) return res.status(409).send("usuario ya registrado");
+    const addUser = await dao.addUser(newUser);
+    if (!addUser) return res.status(400).send("No se ha podido registrar") 
+    return res.status(201).send(`Usuario ${NOMBRE} con id: ${addUser} registrado`);
+
+
+  }catch (e){
+    throw new Error(e.message);   
+  }
+}
+
 userController.addUser = async (req, res) => {
   const { LOGO, IMAGEN } = req.files 
   const {

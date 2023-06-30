@@ -45,7 +45,7 @@ export default function Map() {
       )} */}
       
       {empresas.map((empresa) => (
-        <Markers coordenadas={convertir(empresa)} key={empresa.ID} raton={empresa.hover}/>
+        <Markers coordenadas={convertir(empresa)} key={empresa.ID} raton={empresa.hover} ID={empresa.ID}/>
       ))}
     </MapContainer>
   );
