@@ -15,6 +15,7 @@ export default function Edit() {
   const {user} = useUserContext()
 
   console.log(user)
+  console.log(infoUser)
 
   useEffect(()=>{
     async function fetchUser(){
@@ -23,8 +24,34 @@ export default function Edit() {
       setInfoUser(data)
     }
     fetchUser();
-    //  console.log(infoUser.images[0].IMG_NOMBRE,"COSITAASSS")
   }, [])
+
+  async function cambiarFoto(){
+    const formData = new FormData();
+
+    formData.append("ID_USER", user.ID);
+    formData.append("TIPO", 1);
+
+    infoUser.map((item) => {
+      if(item.TIPO==1){
+      formData.append("ID", item.ID)
+      }
+    });
+    const response = await fetch("http://127.0.0.1:3000/", {
+      method: "POST",
+      body: formData,
+    });
+    if (response.status === 200) {
+      // const data = await response.json();
+      console.log(data, "DATAAA DE LOGO");
+      // setImagenesMap(data);
+      // await new Promise((resolve) => setTimeout(resolve, 2000));
+      alert("Logo cambiado con éxito");
+  
+  }
+}
+
+  
 
   console.log(infoUser)
   return (
@@ -41,7 +68,7 @@ export default function Edit() {
         />
 
       ): null}
-      <Button variant="contained" component="label">
+      <Button onclick={cambiarFoto} variant="contained" component="label">
         <input type="file" hidden />
         <EditIcon />
       </Button>

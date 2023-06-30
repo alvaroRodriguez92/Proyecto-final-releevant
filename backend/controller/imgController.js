@@ -10,8 +10,7 @@ imgController.addImg = async (req, res) => {
       if (!req.files || req.files === null) {
         return res.status(400).send("No se ha cargado ningun archivo");
       }
-      console.log(req.body,"REQ BODY")
-      console.log(req.files, "REQ FILES")
+     
       const imagenes = !req.files.imagen.length
         ? [req.files.imagen]
         : req.files.imagen;
@@ -34,7 +33,8 @@ imgController.addImg = async (req, res) => {
         });
       });
       const i = await dao.getImdByUser(ID_USER)
-      console.log(i)
+
+      console.log( await i)
       return res.status(200).send(i)  
     } catch (e) {
       console.log(e.error);
