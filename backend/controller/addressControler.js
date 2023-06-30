@@ -54,7 +54,8 @@ addressController.addAddress = async (req,res) => {
 
   const valor = await dao.addAddress(newItem);
   if(!valor) return res.status(400).send("No se ha podido registrar la Item de ChatBox")
-  return res.status(200).send("Item registrado")
+  const newAddress = await dao.getAllAddress(ID_USER)
+  return res.status(200).send(newAddress)
 }
 
 //controlador para editar una direccion de un usuario
