@@ -2,13 +2,11 @@ import { Marker, Popup } from "react-leaflet";
 import Popups from "../Popups/Popups";
 import L from "leaflet";
 import localizadores from "../../assets/locations.png";
-import pointsucces from "../../assets/pointsucces.png";
-//import { useCardContext } from "../../context/CardContext";
 
 // eslint-disable-next-line react/prop-types
-export default function Markers({ coordenadas, raton }) {
+export default function Markers({ coordenadas, raton, ID }) {
+ 
 
-  //const { empresas, indice } = useCardContext()
   const { id, lat, lng } = coordenadas;
   const miIco1 = new L.Icon({
     iconUrl: localizadores,
@@ -18,10 +16,10 @@ export default function Markers({ coordenadas, raton }) {
     popupAnchor: [0, -40], // punto relativo al marcador desde donde se deberá abrir el popup
   });
   const miIco2 = new L.Icon({
-    iconUrl: pointsucces,
-    iconSize: [40, 45], // tamaño del icono
+    iconUrl: localizadores,
+    iconSize: [60, 65], // tamaño del icono
     shadowSize: [50, 64], // tamaño de la sombra
-    iconAnchor: [20, 40], // punto del icono que corresponde a la posición del marcador
+    iconAnchor: [40, 60], // punto del icono que corresponde a la posición del marcador
     popupAnchor: [0, -40], // punto relativo al marcador desde donde se deberá abrir el popup
   });
   function selectIcon(){

@@ -104,7 +104,6 @@ export default function UserContextProvider({ children }) {
     currentPosition,
     currentCords,
     setCurrentCords,
-    fetchPerfil,
     imagenCarrusel,
     setImagenCarrusel,
     valoraciones,

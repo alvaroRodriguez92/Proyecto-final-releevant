@@ -61,5 +61,22 @@ imgQueries.deleteImg = async(id) => {
     }
   };
 
+  imgQueries.getLogoByUser = async (id) => {
+    let conn = null;
+    try {
+      conn = await db.createConnection();
+      return await db.query(
+        "SELECT * FROM IMAGENES WHERE TIPO = 1 AND ID_USER = ?",
+        id,
+        "select",
+        conn
+      );
+    } catch (e) {
+      throw new Error(e);
+    } finally {
+      conn && (await conn.end());
+    }
+  };
+
 
 module.exports = imgQueries
