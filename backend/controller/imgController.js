@@ -5,6 +5,7 @@ const path = require("path")
 const imgController = {}
 
 imgController.addImg = async (req, res) => {
+
   const {ID_USER, TIPO} = req.body
 
     try {
@@ -69,8 +70,7 @@ imgController.getlogoByUser = async (req, res) => {
 
 imgController.editLogo = async (req,res) => {
   const { ID, ID_USER, TIPO } = req.body;
-  console.log(req.files)
-  console.log(req.body)
+
     try {
       if (!req.files || req.files === null) {
         return res.status(400).send("No se ha cargado ningun archivo");
@@ -100,6 +100,7 @@ imgController.editLogo = async (req,res) => {
       const i = await dao.getlogoByUser(ID_USER)
       console.log(i,"IIIIIIIIIIIIIIIII")
       
+
       return res.status(200).send(i);
     } catch (e) {
       throw new Error(e.message);
