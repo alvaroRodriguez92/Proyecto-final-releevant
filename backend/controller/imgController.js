@@ -15,7 +15,7 @@ imgController.addImg = async (req, res) => {
       const imagenes = !req.files.imagen.length
         ? [req.files.imagen]
         : req.files.imagen;
-      imagenes.forEach(async (imagen) => {
+      for(const imagen of imagenes)  {
         console.log(imagen.name);
         let uploadPath = path.join(
           __dirname,
@@ -32,9 +32,9 @@ imgController.addImg = async (req, res) => {
           NOMBRE: imagen.name,
           TIPO: TIPO,
         });
-      });
+      };
       const i = await dao.getImdByUser(ID_USER)
-      console.log(i)
+      
       return res.status(200).send(i)  
     } catch (e) {
       console.log(e.error);
@@ -70,10 +70,12 @@ imgController.getlogoByUser = async (req, res) => {
 
 imgController.editLogo = async (req,res) => {
   const { ID, ID_USER, TIPO } = req.body;
+
     try {
       if (!req.files || req.files === null) {
         return res.status(400).send("No se ha cargado ningun archivo");
       }
+      
       const imagenes = !req.files.imagen.length
         ? [req.files.imagen]
         : req.files.imagen;
@@ -87,16 +89,18 @@ imgController.editLogo = async (req,res) => {
           if (err) return res.status(500).send(err);
         });
         
-        await dao.addImagen({
-          ID_USER: imagen.ID_USER,
+        await dao.addImg({
+          ID_USER: ID_USER,
           PATH: uploadPath,
           NOMBRE: imagen.name,
-          ESTADO: imagen.TIPO,
+          TIPO: TIPO,
         });
       });
       const item = await dao.deleteImg(ID);
-      if (!item) return res.status(409).send("No se ha borrado la imagen"); 
-      const i = await dao.getImdByUser(ID_USER)
+      const i = await dao.getlogoByUser(ID_USER)
+      console.log(i,"IIIIIIIIIIIIIIIII")
+      
+
       return res.status(200).send(i);
     } catch (e) {
       throw new Error(e.message);
