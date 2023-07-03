@@ -111,6 +111,7 @@ chatboxQueries.updatePreguntaRespuessta = async(id, chatData) => {
       ID_USER: chatData.ID_USER,
       PREGUNTA: chatData.PREGUNTA,
       RESPUESTA: chatData.RESPUESTA,
+      PADRE: chatData.PADRE,
     };
     // Eliminamos los campos que no se van a modificar (no llegan por el body)
     userObj = await utils.removeUndefinedKeys(chatObj);

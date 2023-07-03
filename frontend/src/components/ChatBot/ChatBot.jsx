@@ -18,25 +18,36 @@ export default function ChatBot() {
     const [resultFetchPregunta, setResultFetchPregunta] = useState([])
     const mensajeFinal = useRef(null)
 
-    const ID_PREGUNTA=14;
+    const ID_PERFIL=14;
     // http://localhost:3000/chatbox/respuestas/1
 
 
     useEffect(()=>{
-      async function fetchChatbot(){
-        const response = await fetch("http://localhost:3000/chatbox/preguntas/inicio/"+ID_PREGUNTA)
-        const data = await response.json()
-        setResultFetchPregunta(data)
-      }
+      
       fetchChatbot();
     }, [])
-
 
     useEffect(()=>{
       mensajeFinal.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }, [preguntaChat])
 
-   
+    async function fetchChatbot(){
+      const response = await fetch("http://localhost:3000/chatbox/preguntas/inicio/"+ID_PERFIL)
+      const data = await response.json()
+      setResultFetchPregunta(data)
+    }
+
+    async function preguntasHijas(){
+      const response = await fetch("http://localhost:3000/chatbox/preguntas/ph/"+pregunta.ID)
+      if(response.status !== 200) {
+        fetchChatbot()
+      }else{
+        const data = await response.json()
+        console.log(data,"esto es data chat")
+        setResultFetchPregunta(data)
+      }
+    }
+
     // const arrayPreguntas = [{pregunta:"¿Cuanto cuesta una consulta?", respuesta:"yo k se tio xd"}, {pregunta: "¿Que tipo de terapias ofrecéis?", respuesta:"Muchas"}, {pregunta:"¿Que tipo de pago aceptáis?", respuesta:"Criptomonedas solo"}]
     
 
@@ -50,10 +61,11 @@ export default function ChatBot() {
         auxPregunta.push(newPreguntaChat)
         setPreguntaChat(auxPregunta)
         setPregunta("")
-        console.log(preguntaChat)
+        preguntasHijas();
     }
 
      function handlePregunta(e){
+          //console.log(e.target.value,"jkgfgf")
          setPregunta(e.target.value)
     }
 
