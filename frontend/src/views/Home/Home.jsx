@@ -15,7 +15,7 @@ export default function Home() {
       </header>
       <main>
         <NavSectores />
-        <Grid container>
+        <Grid container >
           <Grid item xs={5}>
             <CardEmpresas />
           </Grid>
