@@ -80,7 +80,7 @@ export default function EditImagenes({ images }) {
         p: 5,
         margin: "0 auto",
         alignItems: "center",
-        mt: 20,
+        mt: 8,
         mb: 20,
         borderLeft: "2px solid #000",
         borderRight: " 2px solid #000",
