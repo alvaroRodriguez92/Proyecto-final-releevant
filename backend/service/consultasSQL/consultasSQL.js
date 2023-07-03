@@ -1,3 +1,5 @@
+const moment = require("moment")
+
 const queries = {};
 
 /////////////////////////
@@ -108,5 +110,20 @@ left join (select ID, NOMBRE, EMAIL, TLF, URL, DESCRIPCION from users where ESTA
 left join (select ID_USER, PATH as p,IMG_NOMBRE, TIPO from IMAGENES where TIPO = 1) as IMG on USR.ID = IMG.ID_USER
 left join (select ID_USER, TIPO_VIA, NOMBRE_VIA, NUMERO, LATITUD, LONGITUD from direcciones) as DIR on DIR.ID_USER = USR.ID
 where sectores.NOMBRE_SECTOR LIKE ?`
+
+////////////////////////
+//CONSULTAS DE VISITAS//
+////////////////////////
+
+//Query de insercion en visitas
+queries.addVisita = `INSERT INTO visitas SET ?`
+//Query para extraer total visistas por usuario
+queries.totalVisitas = `SELECT COUNT(DISTINCT FECHA_VISITA) FROM visitas WHERE ID_USER = ?`
+//Query para extraer visistas ultima semana por usuario
+queries.semanaVisitas = `SELECT COUNT(DISTINCT FECHA_VISITA)FROM visitas WHERE ID_USER = ? and FECHA_VISITA  >= CURDATE() - INTERVAL 1 WEEK`
+//Query para extraer visistas ultimo mes por usuario
+queries.mesVisitas = `SELECT COUNT(DISTINCT FECHA_VISITA)FROM visitas WHERE ID_USER = ? and FECHA_VISITA >= CURDATE() - INTERVAL 1 month`
+//Query para extraer visistas ultimo año por usuario
+queries.anualVisitas = `SELECT COUNT(DISTINCT FECHA_VISITA) FROM visitas WHERE ID_USER = ? and FECHA_VISITA >= CURDATE() - INTERVAL 1 year ORDER BY MONTH(FECHA_VISITA)`
 
 module.exports = queries;

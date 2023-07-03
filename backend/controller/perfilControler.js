@@ -1,6 +1,7 @@
 const addressDao = require("../service/dao/addressDao")
 const imgDao = require("../service/dao/imgDao")
 const userDao = require("../service/dao/userDao")
+const visitaDao = require("../service/dao/visitaDao")
 
 const perfilController = {}
 
@@ -11,6 +12,7 @@ perfilController.getPerfil = async (req,res) => {
         const user = await userDao.getUserById(id)
         const address = await addressDao.getAllAddress(id)
         const images = await imgDao.getImdByUser(id)
+        await visitaDao.addVisita(id)
         
         data.user = user
         data.address = address
