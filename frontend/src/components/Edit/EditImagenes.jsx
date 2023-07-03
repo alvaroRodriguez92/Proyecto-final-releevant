@@ -20,6 +20,7 @@ export default function EditImagenes({ images }) {
   console.log(imagenUser, "IMAGEN USER");
   console.log(imagenesMap, "IMAGENES MAP AL INICIO");
 
+  
   async function borrarFoto(ID, ID_USER) {
     const response = await fetch("http://127.0.0.1:3000/img/delete", {
       method: "DELETE",
