@@ -386,6 +386,12 @@ div.splide__track{
 
 }
 
+.map-move{
+  position: "fixed"; 
+  top:0;
+  zIndex:"100";
+}
+
 .MuiTypography-root::-webkit-scrollbar {
   width: 12px;               /* width of the entire scrollbar */
 }
