@@ -1,13 +1,15 @@
 import Markers from "../../components/Markers/Markers";
 import { useCardContext } from "../../context/CardContext";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useUserContext } from "../../context/UserContext";
 import "leaflet/dist/leaflet.css";
 
 export default function Map() {
   const { empresas } = useCardContext();
   const { currentPosition, currentCords, raton } = useUserContext();
+
+  
   
   useEffect(() => {
     currentPosition()
@@ -26,7 +28,7 @@ export default function Map() {
 
   return (
     <MapContainer
-      
+      style={{marginBottom: "20px",marginTop: "4.2rem", position:"sticky",top:0}}
       classname="leaflet-container"
       center={[36.726643, -4.442089]}
       zoom={14}
