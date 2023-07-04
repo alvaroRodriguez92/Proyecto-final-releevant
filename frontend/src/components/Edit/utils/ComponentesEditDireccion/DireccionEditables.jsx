@@ -53,7 +53,7 @@ export default function DireccionEditables({
                 p: 5,
                 alignItems: "center",
                 margin: "0 auto",
-                mt: 20,
+                mt: 8,
                 borderLeft: "2px solid #000",
                 borderRight: " 2px solid #000",
                 borderBottom: " 2px solid #000",

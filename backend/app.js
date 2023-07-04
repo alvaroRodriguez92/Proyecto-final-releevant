@@ -12,7 +12,7 @@ const addressRoutes = require("./routes/addressRoutes")
 const imgRoutes = require("./routes/imgRoutes")
 const perfilRoutes = require("./routes/perfilRoutes")
 const buscarRoutes = require("./routes/buscarRoutes")
-
+const visitaRoutes = require("./routes/visitaRoute")
 const expressFileUpload = require("express-fileupload");
 const cors = require("cors");
 
@@ -48,7 +48,7 @@ app.use("/address",addressRoutes)
 app.use("/img", imgRoutes)
 app.use("/perfil",perfilRoutes)
 app.use("/buscar",buscarRoutes)
-
+app.use("/visita", visitaRoutes)
 
 app.use("/product", productRouter);
 
