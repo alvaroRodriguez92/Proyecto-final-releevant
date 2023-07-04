@@ -61,20 +61,24 @@ visitaController.visitaAnual = async (req,res) => {
     let fecha
     let mes
     let visitas
-    const resulAno = [];
+    let resulAno = [];
+    let resultadoTotal = {}
     try {
-      for(i = 1; i <= 12; i++){
-        if(i<10) fecha = `${ano}-0${i}`
-        else fecha = `${ano}-${i}`
-        visitas = await dao.visitaAnual(id,fecha);
-        meses = [...visitas]
-        console.log(meses,"mes")
-        resulAno.push(meses[0].mes)
-      }
-      console.log(resulAno)
+      for(j = 2022; j <= new Date().getFullYear(); j++){
+        for(i = 1; i <= 12; i++){
+          if(i<10) fecha = `${j}-0${i}`
+          else fecha = `${j}-${i}`
+          visitas = await dao.visitaAnual(id,fecha);
+          meses = [...visitas]
+          resulAno.push(meses[0].mes)
+        }
+      resultadoTotal = {...resultadoTotal, [j]: resulAno}
+      resulAno = []
+    }
+      console.log(resultadoTotal)
       if (!visitas)
         return res.status(409).send("No hay visitantes aún"); 
-      return res.status(200).send(resulAno);
+      return res.status(200).send(resultadoTotal);
     } catch (e) {
       throw new Error(e.message);
     }
