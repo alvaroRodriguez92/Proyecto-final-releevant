@@ -3,14 +3,14 @@ import { useCardContext } from "../../context/CardContext";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useState, useEffect, useRef } from "react";
 import { useUserContext } from "../../context/UserContext";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 import "leaflet/dist/leaflet.css";
 
 export default function Map() {
   const { empresas } = useCardContext();
-  const { currentPosition, currentCords, raton } = useUserContext();
+  const { currentPosition, currentCords} = useUserContext();
+  
 
-  
-  
   useEffect(() => {
     currentPosition()
   }, []);
@@ -46,9 +46,10 @@ export default function Map() {
         alert("No esta activa o no hay permisos para acceder a su localizacion")
       )} */}
       
-      {empresas.map((empresa) => (
-        <Markers coordenadas={convertir(empresa)} key={empresa.ID} raton={empresa.hover} ID={empresa.ID}/>
-      ))}
+        {empresas.map((empresa) => (
+          <Markers coordenadas={convertir(empresa)} key={empresa.ID} raton={empresa.hover} ID={empresa.ID}/>
+        ))}
+   
     </MapContainer>
   );
 }
