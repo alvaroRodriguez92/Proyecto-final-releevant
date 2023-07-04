@@ -10,7 +10,7 @@ db.createConnection = async () => {
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
-        dateString: true,
+        //dateString: true,
       });
       mysqlConnection.connect(async function (err) {
         if (err) {
@@ -25,6 +25,7 @@ db.createConnection = async () => {
 };
 
 db.query = async (sqlQuery, params, type, conn) => {
+  console.log(sqlQuery)
   return new Promise((resolve, reject) => {
     try {
       conn.query(sqlQuery, params, async (err, result) => {
