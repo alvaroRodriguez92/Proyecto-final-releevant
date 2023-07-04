@@ -14,7 +14,6 @@ const UserContext = createContext({
   setTipoServicio: () => { },
   perfil: {},
   setPerfil: () => { },
-
   perfilCompleto: null,
   setPerfilCompleto: () => { },
   currentPosition: () => { },

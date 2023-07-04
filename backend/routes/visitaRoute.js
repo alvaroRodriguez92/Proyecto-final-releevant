@@ -3,7 +3,6 @@ const visitaController = require('../controller/visitaController')
 
 const visitaRouter = express.Router()
 
-visitaRouter.post("/",visitaController.addVisita)
 visitaRouter.get("/:id",visitaController.visitaTotal)
 visitaRouter.get("/mes/:id",visitaController.visitaMes)
 visitaRouter.get("/semana/:id",visitaController.visitaSemana)
