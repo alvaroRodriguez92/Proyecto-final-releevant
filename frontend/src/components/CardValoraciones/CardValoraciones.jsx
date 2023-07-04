@@ -15,41 +15,36 @@ export default function CardValoraciones({ item }) {
   const stars = ["star1", "star2", "star3", "star4", "star5"];
   const rate = Number(item.PUNTUACION);
 
-  const bull = (
-    <Box component="span" sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}>
-      •
-    </Box>
-  );
+  // const bull = (
+  //   <Box component="span" sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)"}}>
+  //     •
+  //   </Box>
+  // );
 
   return (
-    // <Grid item xs={3}>
-      <Box sx={{ width: "100%", height: "100%", svg: { color: "#ffc526" }, pl:"4rem",m:"1.5rem"}}>
-        {/* <Card sx={{ minWidth: 275 }}> */}
-          {/* <CardContent sx={{ svg: { color: "#ffc526" } }}> */}
-          
-              <Typography sx={{ fontSize: 18 }} gutterBottom>
-                <Avatar>H</Avatar>
-              </Typography>
-              {/* <CardActions> */}
-                {stars.map((star, i) => {
-                  if (rate === 0 || i > rate - 1) {
-                    return <StarBorderIcon></StarBorderIcon>;
-                  }
-                  if (i <= rate - 1) {
-                    return <StarIcon></StarIcon>;
-                  }
-                })}
-              {/* </CardActions> */}
-            {/* <Typography variant="h5" component="div">
-              {item.ID_COMENTADOR}
-            </Typography> */}
-            <Typography variant="h5" sx={{ mb: 1.5 }}>{item.COMENTARIO}</Typography>
-            <Typography  variant="h5"sx={{ml:"3rem",fontWeight:"bold",mt:"2rem"}}>Respuesta de Nueva Mente</Typography>
-            <Typography  variant="h5" sx={{ mb: 1.5,ml:"3rem" }}>{item.RESPUESTA}</Typography>
-          {/* </CardContent> */}
-        {/* </Card> */}
-            
-      </Box>
-    // </Grid>
+    <Box sx={{ width: "100%", height: "100%", svg: { color: "#ffc526" }, pl: "4rem", m: "1.5rem",border:"1px solid black", p:"1px"  }}>
+      <Typography sx={{ fontSize: 18 }} gutterBottom>
+        <Avatar>H</Avatar>
+      </Typography>
+      {stars.map((star, i) => {
+        if (rate === 0 || i > rate - 1) {
+          return <StarBorderIcon></StarBorderIcon>;
+        }
+        if (i <= rate - 1) {
+          return <StarIcon></StarIcon>;
+        }
+      })}
+      
+      {item.ID_COMENTADOR}
+      <Typography variant="h5" sx={{ mb: 1.5 }}>
+        {item.COMENTARIO}
+      </Typography>
+      <Typography variant="h5" sx={{ ml: "3rem", fontWeight: "bold", mt: "2rem" }}>
+        Respuesta del propietario
+      </Typography>
+      <Typography variant="h5" sx={{ mb: 1.5, ml: "3rem" }}>
+        {item.RESPUESTA}
+      </Typography>
+    </Box>
   );
 }
