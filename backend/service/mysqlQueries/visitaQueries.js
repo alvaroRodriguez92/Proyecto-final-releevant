@@ -21,13 +21,29 @@ visitaQueries.addVisita = async(id) => {
     }
   };
 
+  visitaQueries.addRamdon = async(fecha) => {
+    let conn = null;
+    try {
+      conn = await db.createConnection();
+      let valorObj = {
+        ID_USER: 42,
+        FECHA_VISITA: fecha 
+      };
+      return await db.query(queries.addVisita, valorObj, "insert", conn);
+    } catch (e) {
+      throw new Error(e);
+    } finally {
+      conn && (await conn.end());
+    }
+  };
+
 
 visitaQueries.visitaTotal = async (id) => {
     let conn = null;
     try {
       conn = await db.createConnection();
       return await db.query(
-        queries.visitaTotal,
+        queries.totalVisitas,
         id,
         "select",
         conn
@@ -73,12 +89,13 @@ visitaQueries.visitaMes = async (id) => {
     }
 }
 
-visitaQueries.visitaAnual = async (id) => {
+visitaQueries.visitaAnual = async (id,ano) => {
   let conn = null;
+    console.log(id, ano)
     try {
       conn = await db.createConnection();
       return await db.query(
-        queries.anualVisitas,
+        `SELECT count(DISTINCT FECHA_VISITA) as mes FROM visitas WHERE ID_USER = ? and FECHA_VISITA LIKE "%${ano}%"`,
         id,
         "select",
         conn

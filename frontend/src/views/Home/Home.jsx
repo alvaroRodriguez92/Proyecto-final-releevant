@@ -9,7 +9,7 @@ import { Grid, Box, Avatar } from "@mui/material";
 
 export default function Home() {
   return (
-    <Box sx={{ height: "100vh", header:{position:"sticky", top:0, zIndex:"100"}}}>
+    <Box sx={{ height: "100vh", header:{position:"static", top:0, zIndex:"100"}}}>
       <header>
         <NavMain />
       </header>

@@ -124,6 +124,6 @@ queries.semanaVisitas = `SELECT COUNT(DISTINCT FECHA_VISITA)FROM visitas WHERE I
 //Query para extraer visistas ultimo mes por usuario
 queries.mesVisitas = `SELECT COUNT(DISTINCT FECHA_VISITA)FROM visitas WHERE ID_USER = ? and FECHA_VISITA >= CURDATE() - INTERVAL 1 month`
 //Query para extraer visistas ultimo año por usuario
-queries.anualVisitas = `SELECT COUNT(DISTINCT FECHA_VISITA) FROM visitas WHERE ID_USER = ? and FECHA_VISITA >= CURDATE() - INTERVAL 1 year ORDER BY MONTH(FECHA_VISITA)`
+//queries.anualVisitas = `SELECT count(DISTINCT FECHA_VISITA) FROM visitas WHERE ID_USER = ? and FECHA_VISITA LIKE "% ? %"`
 
 module.exports = queries;
