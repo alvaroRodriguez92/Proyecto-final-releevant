@@ -8,7 +8,7 @@ export default function NavMain() {
     const { user } = useUserContext();
     return (
        
-            <Box>
+            <Box className="navmain">
                 <Grid container spacing={2} sx={{borderBottom:"0.1rem solid rgba(0,0,0,0.2) ",backgroundColor:"#efefef", boxShadow:"0 0 1px 0 black" }}>
                     <Grid item xs={2} sx={{ img: { width: "80%",p:"2rem" } }} >
                         <img src="../../src/assets/solventumsinfondo.png" />

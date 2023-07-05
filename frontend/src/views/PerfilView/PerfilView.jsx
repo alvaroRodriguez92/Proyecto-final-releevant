@@ -10,10 +10,10 @@ import Nav from "../../components/Nav/Nav"
 export default function PerfilView() {
   return (
     <>
-     <Grid>
+      <header>
         <Nav/>
-        </Grid>
-      <Box sx={{ display: "flex" }}></Box>
+        </header>
+        <main className="mainWrap">
       <Grid container >
         <Grid item xs={12}>
           <PerfilHeader />
@@ -27,8 +27,9 @@ export default function PerfilView() {
         </Grid>
         <Grid item xs={4}>
           <ChatBot />
-        </Grid>
+        </Grid> 
       </Grid>
+      </main>
       <Footer />
     </>
   );

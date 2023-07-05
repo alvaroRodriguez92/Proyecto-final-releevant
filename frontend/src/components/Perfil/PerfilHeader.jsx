@@ -22,7 +22,7 @@ export default function PerfilHeader() {
   if (!Object.keys(perfil).length) return <></>;
   const { user, address, images } = perfil;
   return (
-    <Grid container sx={{ pt: "2rem", borderTop: "0.1rem solid black" }}>
+    <Grid container sx={{ pt: "2rem" }}>
       <Grid item xs={12}>
         <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
           <Typography variant="h2" component="div">
@@ -31,7 +31,7 @@ export default function PerfilHeader() {
         </Box>
       </Grid>
       <Grid item xs={3}>
-        <Box sx={{ heigth: "50px", maxWidth: "100%", maxHeight: "13rem !important", p: "2rem", img: { maxHeight: "9rem !important", borderRadius: "10px", width: "100%" } }}>
+        <Box sx={{ heigth: "50px", maxWidth: "100%", maxHeight: "13rem !important", pt: "2rem",pr:"2rem",pb:"2rem", img: { maxHeight: "9rem !important", borderRadius: "10px", width: "100%" } }}>
           {images[0].IMG_NOMBRE ? (<img src={`http://localhost:3000/imagenes/${images[0].IMG_NOMBRE}`} />): null}
         </Box>
       </Grid>

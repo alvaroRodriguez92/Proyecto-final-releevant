@@ -12,9 +12,9 @@ export default function Home() {
     <Box sx={{ height: "100vh", header:{position:"static", top:0, zIndex:"100"}}}>
       <header>
         <NavMain />
-      </header>
-      <main>
         <NavSectores />
+      </header>
+      <main className="mainWrap">
         <Grid container >
           <Grid item xs={5}>
             <CardEmpresas />

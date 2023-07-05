@@ -16,27 +16,27 @@ export default function CardValoraciones({ item }) {
   const rate = Number(item.PUNTUACION);
 
   return (
-    <Box sx={{ width: "100%", height: "100%", svg: { color: "#ffc526" }, pl: "5rem" }}>
-      <Typography sx={{ fontSize: 18, textDecoration:"none" }} gutterBottom>
+    <Box sx={{ width: "100%", height: "100%" }}>
+      <Typography sx={{ fontSize: 18 }} gutterBottom>
         <Avatar></Avatar>
       </Typography>
       {stars.map((star, i) => {
         if (rate === 0 || i > rate - 1) {
-          return <StarBorderIcon></StarBorderIcon>;
+          return <StarBorderIcon sx={{ color: "#ffc526" }}></StarBorderIcon>;
         }
         if (i <= rate - 1) {
-          return <StarIcon></StarIcon>;
+          return <StarIcon sx={{ color: "#ffc526" }}></StarIcon>;
         }
       })}
 
       {item.ID_COMENTADOR}
-      <Typography variant="h5" sx={{ mb: "1rem" }}>
+      <Typography variant="h5" sx={{ mb: "1rem", mt:"1rem" }}>
         {item.COMENTARIO}
       </Typography>
       <Typography variant="h5" sx={{ ml: "3rem", fontWeight: "bold", mt: "3rem" }}>
         Respuesta del propietario
       </Typography>
-      <Typography variant="h5" sx={{ mb: 1, ml: "4rem" }}>
+      <Typography variant="h5" sx={{ mb: "4rem", ml: "3rem", mt:"1rem" }}>
         {item.RESPUESTA}
       </Typography>
     </Box>
