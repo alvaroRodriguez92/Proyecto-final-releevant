@@ -67,7 +67,7 @@ export default function CardEmpresas() {
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
-                <Link to="/perfil">
+                <Link to={`/perfil/${item.ID}`}>
                   {" "}
                   <Button onClick={()=>handleClick(item.ID)} sx={{ borderRadius: "10px", mr: 1 }} variant="contained" size="small">
                     Ver mas

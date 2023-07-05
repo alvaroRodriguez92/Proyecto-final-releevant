@@ -14,7 +14,6 @@ export default function PerfilValoraciones() {
             const id = perfil?.address[0]?.ID_USER || ""
             const response = await fetch(`http://127.0.0.1:3000/valoraciones/coment/${id}`)
             const data = await response.json();
-            console.log(data,"data");
             setValoraciones(data)
         }
         fetchPerfilValoraciones()
@@ -25,7 +24,7 @@ export default function PerfilValoraciones() {
     return (
         
             <Box >
-                <Typography variant="h5" sx={{ p: "4rem" }}>
+                <Typography variant="h5" sx={{ p: "3rem", m:"2rem" }}>
                     Valoraciones clientes
             </Typography>
             <Grid container className="valoraciones" spacing={2}>

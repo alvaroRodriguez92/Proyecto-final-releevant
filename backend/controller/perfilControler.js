@@ -9,13 +9,14 @@ perfilController.getPerfil = async (req,res) => {
     const id = req.params.id
     let data = {}
     try{
+        if(!id) return res.status(400).send("No hay id de usuario")
         const user = await userDao.getUserById(id)
         const address = await addressDao.getAllAddress(id)
         const images = await imgDao.getImdByUser(id)
         await visitaDao.addVisita(id)
         
         data.user = user
-        data.address = address
+        data.address = address 
         data.images = images
         return res.status(200).json(data)
     } catch (e) {

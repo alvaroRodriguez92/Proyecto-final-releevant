@@ -1,5 +1,4 @@
 import Buscador from '../../components/Buscador/Buscador'
-
 import {Grid,Box} from '@mui/material'
 import ToggleButtons from '../ToggleButtons/ToggleButtons'
 import ModalLogin from '../ModalLogin/ModalLogin'

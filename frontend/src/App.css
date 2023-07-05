@@ -359,6 +359,7 @@ div.splide__track{
   width: 80%;
   display: flex;
   justify-content: flex-end;
+  margin: 4rem;
 }
 .valoraciones{
   padding: 4rem;
