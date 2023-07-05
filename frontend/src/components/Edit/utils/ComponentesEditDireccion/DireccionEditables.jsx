@@ -2,10 +2,6 @@ import {
   TextField,
   Box,
   Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
   Button,
 } from "@mui/material";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
@@ -15,7 +11,6 @@ import { schemaDireccion } from "../schemaDireccion";
 export default function DireccionEditables({
   setIsEditing,
   initialValues,
-  addressBloqueo,
   onSubmit,
   editExitoso,
   borrarDireccion,
@@ -26,14 +21,6 @@ export default function DireccionEditables({
     setEditExitoso([false])
   }
 
-  // const texto =[]
-
-  // async function cambioExitoso(array, indice){
-  //   const aux= [...array];
-  //       aux[indice] = false
-  //       console.log(aux, "AUUX")
-  //       setEditExitoso(aux)
-  // } 
   return (
     <>
       <Formik
@@ -47,7 +34,6 @@ export default function DireccionEditables({
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                //   border:"1px solid black",
                 borderRadius: 2,
                 width: "90%",
                 p: 5,
@@ -66,8 +52,9 @@ export default function DireccionEditables({
                 {({ push, remove }) => (
                   <>
                   {formik.values.DIRECCIONES?.map((_, index) => (
-                      <>
+                      <Box key={index}>
                         <Grid
+                        key={index}
                           container
                           spacing={12}
                           width="100%"
@@ -348,7 +335,7 @@ export default function DireccionEditables({
 
                           <Grid item xs={2}></Grid>
                         </Grid>
-                      </>
+                      </Box>
                     ))}
                     
                     <Button
@@ -389,8 +376,6 @@ export default function DireccionEditables({
         Cancelar
       </Button>
             </Box>
-
-            <pre>{JSON.stringify(formik.values, null, 1)}</pre>
           </form>
         )}
       </Formik>

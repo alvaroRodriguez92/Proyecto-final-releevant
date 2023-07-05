@@ -15,7 +15,6 @@ export default function DireccionBloqueados({setIsEditing, addressBloqueo }) {
     setIsEditing(true);
   }
 
-  console.log(addressBloqueo);
   return (
       <Box
         sx={{
@@ -40,7 +39,7 @@ export default function DireccionBloqueados({setIsEditing, addressBloqueo }) {
         {addressBloqueo?.map((item, index) => {
           
           return(
-            <>
+            <Box key={index}>
             <h5 className="direccion">Direccion {index+1}</h5>
           <Grid container spacing={12} width="100%" sx={{ width: "100%" }}>
             <Grid item xs={6}>
@@ -79,14 +78,7 @@ export default function DireccionBloqueados({setIsEditing, addressBloqueo }) {
               <Grid container spacing={3} width="100%" sx={{ width: "100%" }}>
                 <Grid item xs={4}>
                   <TextField
-                    // id={`DIRECCIONES[${index}].NUMERO`}
-                    // error={formik.errors.direcciones[index].numero && formik.touched.direcciones[index].numero}
                     type="number"
-                    // name={`DIRECCIONES[${index}].NUMERO`}
-                    // onChange={formik.handleChange}
-                    // onBlur={formik.handleBlur}
-                    // value={formik.values.DIRECCIONES[index].NUMERO}
-                    // helperText={formik.errors.direcciones[index].numero}
                     disabled
                     value={item.NUMERO}
                     size="small"
@@ -95,14 +87,7 @@ export default function DireccionBloqueados({setIsEditing, addressBloqueo }) {
                 </Grid>
                 <Grid item xs={4}>
                   <TextField
-                    // id={`DIRECCIONES[${index}].PISO`}
                     type="number"
-                    // error={formik.errors.direcciones[index].piso && formik.touched.direcciones[index].piso}
-                    // name={`DIRECCIONES[${index}].PISO`}
-                    // onChange={formik.handleChange}
-                    // onBlur={formik.handleBlur}
-                    // value={formik.values.DIRECCIONES[index].PISO}
-                    // helperText={formik.errors.direcciones[index].piso}
                     disabled
                     value={item.PISO}
                     size="small"
@@ -111,13 +96,6 @@ export default function DireccionBloqueados({setIsEditing, addressBloqueo }) {
                 </Grid>
                 <Grid item xs={4}>
                   <TextField
-                    // id={`DIRECCIONES[${index}].PUERTA`}
-                    // error={formik.errors.direcciones[index].puerta && formik.touched.direcciones[index].puerta}
-                    // name={`DIRECCIONES[${index}].PUERTA`}
-                    // onChange={formik.handleChange}
-                    // onBlur={formik.handleBlur}
-                    // value={formik.values.DIRECCIONES[index].PUERTA}
-                    // helperText={formik.errors.direcciones[index].puerta}
                     disabled
                     value={"puerta"}
                     size="small"
@@ -202,7 +180,7 @@ export default function DireccionBloqueados({setIsEditing, addressBloqueo }) {
               </Grid>
             </Grid>
           </Grid>
-          </>)
+          </Box>)
         })}
         
 

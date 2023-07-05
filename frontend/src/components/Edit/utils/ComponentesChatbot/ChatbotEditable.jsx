@@ -7,23 +7,18 @@ import {
   FormControl,
   InputLabel,
   Button,
-  Typography,
 } from "@mui/material";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import { Formik, FieldArray } from "formik";
-import { schemaDireccion } from "../schemaDireccion";
 import { schemaChatbot } from "../schemaChatbot";
-import { useState } from "react";
 
-export default function ChatbotEditable({onSubmit, borrarPregunta, setIsEditing, preguntasUser, initialValues}) {
+export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, borrarPregunta, setIsEditing, preguntasUser, initialValues}) {
 
-    console.log(preguntasUser)
 
   function cancelarEdit() {
     setIsEditing(false);
+    setEditExitoso([false])
   }
-
-  
 
   return (
     <>
@@ -38,7 +33,6 @@ export default function ChatbotEditable({onSubmit, borrarPregunta, setIsEditing,
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                //   border:"1px solid black",
                 borderRadius: 2,
                 width: "90%",
                 p: 5,
@@ -59,7 +53,7 @@ export default function ChatbotEditable({onSubmit, borrarPregunta, setIsEditing,
                 {({ push, remove }) => (
                   <>
                     {formik.values.CHATBOT?.map((item, index) => (
-                      <>
+                      <Box key={index} sx={{width:"100%"}}>
                         <Grid
                           container
                           spacing={12}
@@ -130,7 +124,7 @@ export default function ChatbotEditable({onSubmit, borrarPregunta, setIsEditing,
                                       </MenuItem>
                                 {preguntasUser.map((item, index)=>{
                                     return(
-                                    <MenuItem value={item.ID}>
+                                    <MenuItem key={index} value={item.ID}>
                                         {item.PREGUNTA}
                                       </MenuItem>)
                                     
@@ -159,15 +153,15 @@ export default function ChatbotEditable({onSubmit, borrarPregunta, setIsEditing,
                               variant="contained"
                               component="label"
                               // onClick={()=>onSubmit(formik.values.DIRECCIONES[index],index)}
-                              onClick={()=>onSubmit(item)}
+                              onClick={()=>onSubmit(item, index)}
                             >
                               Guardar
                             </Button>
 
-                            {/* {editExitoso[index]?(<Box container sx={{mt:3, ml:1}}><span className="texto-exito">Cambios realizados con éxito</span></Box>):("")} */}
+                            {editExitoso[index]?(<Box container sx={{mt:3, ml:1}}><span className="texto-exito">Cambios realizados con éxito</span></Box>):("")}
                           </Grid>
                         </Grid>
-                      </>
+                      </Box>
                     ))}
 
                     <Button
@@ -179,7 +173,6 @@ export default function ChatbotEditable({onSubmit, borrarPregunta, setIsEditing,
                           RESPUESTA: "",
                           PADRE:""
                         });
-                        //   editExitoso.push(false)
                       }}
                     >
                       Añadir preguntas{" "}
@@ -204,8 +197,6 @@ export default function ChatbotEditable({onSubmit, borrarPregunta, setIsEditing,
                 Cancelar
               </Button>
             </Box>
-
-            <pre>{JSON.stringify(formik.values, null, 1)}</pre>
           </form>
         )}
       </Formik>

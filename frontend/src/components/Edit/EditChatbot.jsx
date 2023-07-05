@@ -7,6 +7,8 @@ export default function EditChatbot(){
 const [isEditing, setIsEditing] = useState(false)
 const {user} = useUserContext()
 const [preguntasUser, setPreguntasUser] = useState(null)
+const [editExitoso, setEditExitoso] = useState([false]);
+
 
 
 useEffect(() => {
@@ -29,10 +31,10 @@ useEffect(() => {
       });
       if (response.status === 200) {
         await new Promise((resolve) => setTimeout(resolve, 2000));
-        // const data = await response.json()
+        const data = await response.json()
         // console.log(data,"RESPUESTA DEL INSERT")
-        // setAddressBloqueo(data)
-        
+        setPreguntasUser(data)       
+        await cambioExitoso(editExitoso, index);
         alert("Insert realizado con éxito")
         
         
@@ -41,12 +43,14 @@ useEffect(() => {
     const response = await fetch("http://localhost:3000/chatbox//updatepreguntarespuesta", {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(values),
+    body: JSON.stringify({ID_USER: user.ID,...values}),
   });
   if (response.status === 200) {
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    // console.log(await response.json(),"RESPONSEEE DE JSOON")
-    // setAddressBloqueo(await response.json())
+    const data = await response.json()
+    console.log(data,"DATA DEL UPDATE A VER QUE HAY AQUI")
+    setPreguntasUser(data)
+    await cambioExitoso(editExitoso, index)
     alert("UPDATE realizado con éxito")
   }
   }
@@ -66,13 +70,18 @@ async function borrarPregunta(values){
           setPreguntasUser(data)
           alert("DELETE realizado con éxito")
         }   
-  }    
-  
+  }      
 }
+
+async function cambioExitoso(array, indice){
+  const aux= [...array];
+      aux[indice] = true
+      setEditExitoso(aux)
+} 
 
 return(
     <>
-    {isEditing?<ChatbotEditable borrarPregunta={borrarPregunta} onSubmit={onSubmit} initialValues={initialValues} setIsEditing={setIsEditing} preguntasUser={preguntasUser}/>:<ChatbotBloqueado preguntasUser={preguntasUser} setIsEditing={setIsEditing}/>}
+    {isEditing?<ChatbotEditable setEditExitoso={setEditExitoso} editExitoso={editExitoso} borrarPregunta={borrarPregunta} onSubmit={onSubmit} initialValues={initialValues} setIsEditing={setIsEditing} preguntasUser={preguntasUser}/>:<ChatbotBloqueado preguntasUser={preguntasUser} setIsEditing={setIsEditing}/>}
     </>    
 )
 }

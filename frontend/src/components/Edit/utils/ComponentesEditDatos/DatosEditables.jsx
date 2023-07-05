@@ -21,9 +21,10 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
     
   return (
     <>
-      {user?.map((item) => {
+      {user?.map((item, index) => {
         return (
           <Formik
+          key={index}
             validationSchema={schema}
             initialValues={{
               NOMBRE: item.NOMBRE,
