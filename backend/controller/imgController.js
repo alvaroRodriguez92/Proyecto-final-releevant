@@ -98,9 +98,7 @@ imgController.editLogo = async (req,res) => {
       });
       const item = await dao.deleteImg(ID);
       const i = await dao.getlogoByUser(ID_USER)
-      console.log(i,"IIIIIIIIIIIIIIIII")
-      
-
+     
       return res.status(200).send(i);
     } catch (e) {
       throw new Error(e.message);

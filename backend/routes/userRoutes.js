@@ -4,6 +4,7 @@ const userController = require("../controller/userController");
 const userRuoter = express.Router();
 userRuoter.get("/:id", userController.getLocationsBySector); //Ruta para opteer las geolocalizaciones de todos los usuarios
 userRuoter.get("/email/email",userController.getUserByEmail) //ruta para sacar usuario por email
+userRuoter.post("/id",userController.getUserById)
 userRuoter.post("/", userController.addUser); //Ruta para registro de usuarios
 userRuoter.post("/usernormal", userController.addUserNormal)
 userRuoter.post("/addlogo", userController.addImagen);//Ruta para insertar logo
