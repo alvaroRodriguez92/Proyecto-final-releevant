@@ -1,10 +1,7 @@
 import { Button, Box, Grid } from "@mui/material";
 import { MuiFileInput } from "mui-file-input";
 import { useState, useEffect } from "react";
-import DeleteSweepIcon from "@mui/icons-material/DeleteSweep";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import ClearIcon from "@mui/icons-material/Clear";
 
 export default function EditImagenes({ images }) {
   const [imagenUser, setImagenUser] = useState([]);
@@ -16,9 +13,6 @@ export default function EditImagenes({ images }) {
     }
     setearImagenesMap();
   }, [images]);
-
-  console.log(imagenUser, "IMAGEN USER");
-  console.log(imagenesMap, "IMAGENES MAP AL INICIO");
 
   
   async function borrarFoto(ID, ID_USER, PATH) {
@@ -43,7 +37,6 @@ export default function EditImagenes({ images }) {
       
        ID_USER = images[0].ID_USER;
     }
-    console.log("SUBIENDO IMAGENEES");
     const formData = new FormData();
     formData.append("ID_USER", ID_USER);
     formData.append("TIPO", 0);
@@ -52,29 +45,24 @@ export default function EditImagenes({ images }) {
       formData.append("imagen", item);
     });
 
-    console.log(formData, "FORM DATA");
     const response = await fetch("http://127.0.0.1:3000/img/add", {
       method: "POST",
       body: formData,
     });
     if (response.status === 200) {
-      const data = await response.json();
-      console.log(data, "DATAAA");
-      setImagenesMap(data);
-      // await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log(imagenesMap, "IMAGENES MAP AL FINAL");
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      alert("Imagenes subidas con éxito");
+      const data = await response.json();
+      setImagenesMap(data);
+
     }
   }
 
-  console.log(images);
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-        //   border:"1px solid black",
         borderRadius: 2,
         width: "90%",
         p: 5,
@@ -119,10 +107,10 @@ export default function EditImagenes({ images }) {
 
       <Grid container spacing={1} sx={{ mt: 3, ml: 9, mr: 9 }}>
         {imagenesMap
-          ? imagenesMap?.map((item) => {
+          ? imagenesMap?.map((item, index) => {
               if (item.TIPO == 0) {
                 return (
-                  <Grid item xs={3}>
+                  <Grid key={index} item xs={3}>
                     <img
                       className="edit-imagen"
                       width="248px"

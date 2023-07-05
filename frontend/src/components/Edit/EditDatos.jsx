@@ -1,24 +1,7 @@
-import {
-  TextField,
-  Box,
-  Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Button,
-} from "@mui/material";
-import { Formik } from "formik";
-import { initialValues } from "./utils/initialValuesDatos";
-import { schema } from "./utils/schemaDatos";
-import EditIcon from "@mui/icons-material/Edit";
 import DatosBloqueados from "./utils/ComponentesEditDatos/DatosBloqueados";
 import DatosEditables from "./utils/ComponentesEditDatos/DatosEditables";
 
 import { useState, useEffect } from "react";
-
-//Pasar el INFOUSER AL HIJO CON EL SETTER, Y DESPUÉS SETEAR EN EL PATCH EL NEW USER AL INFO USER Y 
-//IMPRIMIRLO EN LA PARTE DE BLOQUEOS
 
 export default function IntroduccionDatos({ user }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -27,10 +10,9 @@ export default function IntroduccionDatos({ user }) {
 
   useEffect(()=>{
     async function seteoUsuarioParaFormulario(){
-     await setUsuarioFormik(user)
+     setUsuarioFormik(user)
     }
      seteoUsuarioParaFormulario();
-    console.log(usuarioFormik,"seteo usuario una sola vez")
   }, [user])
 
   async function onSubmit(values) {

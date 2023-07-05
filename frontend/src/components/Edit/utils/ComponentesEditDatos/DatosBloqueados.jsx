@@ -23,9 +23,10 @@ export default function DatosBloqueados({
     <>
       {usuarioFormik ? (
         <>
-          {usuarioFormik.map((item) => {
+          {usuarioFormik.map((item, index) => {
             return (
               <Box
+              key={index}
                 sx={{
                   display: "flex",
                   flexDirection: "column",
