@@ -7,7 +7,6 @@ import { useUserContext } from "../../context/UserContext";
 
 export default function NavMain() {
     const { user } = useUserContext();
-    console.log(user)
     return (
        
             <Box>
