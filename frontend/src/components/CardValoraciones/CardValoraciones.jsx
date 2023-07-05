@@ -15,34 +15,28 @@ export default function CardValoraciones({ item }) {
   const stars = ["star1", "star2", "star3", "star4", "star5"];
   const rate = Number(item.PUNTUACION);
 
-  // const bull = (
-  //   <Box component="span" sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)"}}>
-  //     •
-  //   </Box>
-  // );
-
   return (
-    <Box sx={{ width: "100%", height: "100%", svg: { color: "#ffc526" }, pl: "4rem", m: "1.5rem",border:"1px solid black", p:"1px"  }}>
+    <Box sx={{ width: "100%", height: "100%" }}>
       <Typography sx={{ fontSize: 18 }} gutterBottom>
-        <Avatar>H</Avatar>
+        <Avatar></Avatar>
       </Typography>
       {stars.map((star, i) => {
         if (rate === 0 || i > rate - 1) {
-          return <StarBorderIcon></StarBorderIcon>;
+          return <StarBorderIcon sx={{ color: "#ffc526" }}></StarBorderIcon>;
         }
         if (i <= rate - 1) {
-          return <StarIcon></StarIcon>;
+          return <StarIcon sx={{ color: "#ffc526" }}></StarIcon>;
         }
       })}
-      
+
       {item.ID_COMENTADOR}
-      <Typography variant="h5" sx={{ mb: 1.5 }}>
+      <Typography variant="h5" sx={{ mb: "1rem", mt: "1rem" }}>
         {item.COMENTARIO}
       </Typography>
-      <Typography variant="h5" sx={{ ml: "3rem", fontWeight: "bold", mt: "2rem" }}>
+      <Typography variant="h5" sx={{ ml: "3rem", fontWeight: "bold", mt: "3rem" }}>
         Respuesta del propietario
       </Typography>
-      <Typography variant="h5" sx={{ mb: 1.5, ml: "3rem" }}>
+      <Typography variant="h5" sx={{ mb: "4rem", ml: "3rem", mt: "1rem" }}>
         {item.RESPUESTA}
       </Typography>
     </Box>

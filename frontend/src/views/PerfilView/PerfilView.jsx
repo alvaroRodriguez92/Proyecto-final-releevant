@@ -5,28 +5,31 @@ import ChatBot from "../../components/ChatBot/ChatBot";
 import PerfilHeader from "../../components/Perfil/PerfilHeader";
 import PerfilValoraciones from "../../components/Perfil/PerfilValoraciones";
 import Caroussel from "../../components/Caroussel/Caroussel";
+import Nav from "../../components/Nav/Nav"
 
 export default function PerfilView() {
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        
-      </Box>
+      <header>
+        <Nav/>
+        </header>
+        <main className="mainWrap">
       <Grid container >
-      <Grid item xs={12}>
-      <PerfilHeader />
-      </Grid>
+        <Grid item xs={12}>
+          <PerfilHeader />
+        </Grid>
         <Grid item xs={8}>
-          <Box  sx={{width:"100%"}}>
+          <Box sx={{ width: "100%" }}>
             <Perfil />
           </Box>
-          <Caroussel/>
-           <PerfilValoraciones/> 
+          <Caroussel />
+          <PerfilValoraciones />
         </Grid>
         <Grid item xs={4}>
-          <ChatBot /> 
-        </Grid>
+          <ChatBot />
+        </Grid> 
       </Grid>
+      </main>
       <Footer />
     </>
   );

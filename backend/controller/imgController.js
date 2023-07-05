@@ -22,16 +22,26 @@ imgController.addImg = async (req, res) => {
           __dirname,
           "../public/imagenes/" + imagen.name
         );
+
+  
+       
+       
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
         
         imagen.mv(uploadPath, (err) => {
           if (err) return res.status(500).send(err);
         });
         
+
         await dao.addImg({
           ID_USER: ID_USER,
           PATH: uploadPath,
           NOMBRE: imagen.name,
           TIPO: TIPO,
+        });
+        imagen.mv(uploadPath, (err) => {
+          if (err) return res.status(500).send(err);
         });
       };
       const i = await dao.getImdByUser(ID_USER)
