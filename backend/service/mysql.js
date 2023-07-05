@@ -10,7 +10,7 @@ db.createConnection = async () => {
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
-        //dateString: true,
+        dateString: true,
       });
       mysqlConnection.connect(async function (err) {
         if (err) {
