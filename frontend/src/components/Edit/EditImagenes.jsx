@@ -21,11 +21,11 @@ export default function EditImagenes({ images }) {
   console.log(imagenesMap, "IMAGENES MAP AL INICIO");
 
   
-  async function borrarFoto(ID, ID_USER) {
+  async function borrarFoto(ID, ID_USER, PATH) {
     const response = await fetch("http://127.0.0.1:3000/img/delete", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ID: ID, ID_USER: ID_USER }),
+      body: JSON.stringify({ ID: ID, ID_USER: ID_USER, PATH: PATH }),
     });
     if (response.status === 200) {
       // await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -136,7 +136,7 @@ export default function EditImagenes({ images }) {
                         zIndex: "100",
                         left: "66%",
                       }}
-                      onClick={() => borrarFoto(item.ID, item.ID_USER)}
+                      onClick={() => borrarFoto(item.ID, item.ID_USER, item.PATH)}
                     >
                       <HighlightOffIcon
                         sx={{

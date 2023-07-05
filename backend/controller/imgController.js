@@ -1,6 +1,7 @@
 const dao = require("../service/dao/imgDao")
 const mv = require("mv");
 const path = require("path")
+const fs = require('fs')
 
 const imgController = {}
 
@@ -21,7 +22,7 @@ imgController.addImg = async (req, res) => {
           __dirname,
           "../public/imagenes/" + imagen.name
         );
-  
+        
         imagen.mv(uploadPath, (err) => {
           if (err) return res.status(500).send(err);
         });
@@ -43,11 +44,16 @@ imgController.addImg = async (req, res) => {
   };
  
 imgController.deleteimg = async (req,res) => {
-    const { ID, ID_USER } = req.body;
+    const { ID, ID_USER, PATH } = req.body;
     try {
       const item = await dao.deleteImg(ID);
       if (!item)
         return res.status(409).send("No se ha borrado la imagen"); 
+     
+      fs.unlink(PATH,function(err){
+        if(err) throw err
+        console.log("Archivo borrado")
+      })
       const i = await dao.getImdByUser(ID_USER)
       return res.status(200).send(i);
     } catch (e) {
