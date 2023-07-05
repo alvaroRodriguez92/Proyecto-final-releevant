@@ -69,12 +69,12 @@ chatboxController.addPreguntaRespuesta = async (req,res) => {
 
 }
 chatboxController.deletePreguntaRespuesta = async (req,res) => {
-    const { ID } = req.body;
+    const { ID, ID_USER } = req.body;
     try {
       const item = await dao.deletePreguntaRespuesta(ID);
       if (!item)
         return res.status(409).send("Registro no se ha borrado correctamente"); 
-        const respuesta = await dao.getPreguntas(ID);
+        const respuesta = await dao.getPreguntas(ID_USER);
       return res.status(200).send(respuesta);
     } catch (e) {
       throw new Error(e.message);
