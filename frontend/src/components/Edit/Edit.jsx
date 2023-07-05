@@ -6,6 +6,7 @@ import EditDatos from "./EditDatos";
 import EditDireccion from "./EditDireccion";
 import EditImagenes from "./EditImagenes";
 import EditChatbot from "./EditChatbot";
+import ChartBar from "../ChartBar/ChartBar";
 import { MuiFileInput } from "mui-file-input";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
@@ -25,7 +26,7 @@ function TabPanel(props) {
       >
         {value === index && (
           <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
+            <Box>{children}</Box>
           </Box>
         )}
       </div>
@@ -54,20 +55,14 @@ export default function Edit() {
   const [value, setValue] = useState(0);
   const { user } = useUserContext();
 
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  console.log(user);
-  console.log(infoUser);
-  console.log(logo);
 
   useEffect(() => {
     async function fetchUser() {
       const response = await fetch("http://localhost:3000/perfil/" + user.ID);
       const data = await response.json();
-      console.log(data.images, "data");
       setInfoUser(data);
     }
     fetchUser();
@@ -88,14 +83,13 @@ export default function Edit() {
 
   useEffect(() => {
     async function cambiarFoto() {
-      console.log("SE EJECUTA EL CAMBIO DE FOTOOOOOOOOOOOOOOOOOOOOOOOOO");
       const formData = new FormData();
 
       formData.append("ID_USER", user.ID);
       formData.append("TIPO", 1);
       formData.append("imagen", logo);
 
-      infoUser.images.map((item) => {
+      infoUser.images?.map((item) => {
         if (item.TIPO == 1) {
           formData.append("ID", item.ID);
         }
@@ -106,10 +100,7 @@ export default function Edit() {
       });
       if (response.status === 200) {
         const data = await response.json();
-        console.log(data, "RESPUESTA DE LOGOOO");
         setNombreLogo(data[0].IMG_NOMBRE);
-        // await new Promise((resolve) => setTimeout(resolve, 2000));
-        alert("Logo cambiado con éxito");
       }
     }
     cambiarFoto();
@@ -118,7 +109,7 @@ export default function Edit() {
   return (
     <Grid container sx={{ height: "100vh", mt:8 }}>
       <Grid item xs={3}>
-        <Box container sx={{ display: "flex", alignItems: "flex-end", m: 5 }}>
+        <Box  sx={{ display: "flex", alignItems: "flex-end", m: 5 }}>
           {nombreLogo ? (
             <img
               className="edit-logo"
@@ -143,15 +134,9 @@ export default function Edit() {
         </Box>
       </Grid>
       <Grid item xs={1}>
-        <div class="linea-v"></div>
+        <div className="linea-v"></div>
       </Grid>
       <Grid item xs={8}>
-        {/* <Box container sx={{ display: "flex", flexDirection: "column" }}> */}
-        {/* <EditDatos user={infoUser.user} />
-          <EditDireccion address={infoUser.address} />
-          <EditImagenes images={infoUser.images} /> */}
-
-        {/* </Box> */}
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             value={value}
@@ -162,7 +147,7 @@ export default function Edit() {
             <Tab label="Direcciones" {...a11yProps(1)} />
             <Tab label="Imagenes" {...a11yProps(2)} />
             <Tab label="Configuracion de Chatbot" {...a11yProps(3)} />
-            <Tab label="Información de visitas" {...a11yProps(4)} />
+            <Tab label="Visualizaciones de perfil" {...a11yProps(4)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
@@ -178,28 +163,9 @@ export default function Edit() {
         <EditChatbot/>
         </TabPanel>
         <TabPanel value={value} index={4}>
-        <h1>Informacion de visitas</h1>
+        <ChartBar/>
         </TabPanel>
       </Grid>
     </Grid>
   );
-}
-
-{
-  /* <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-  <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-    <Tab label="Item One" {...a11yProps(0)} />
-    <Tab label="Item Two" {...a11yProps(1)} />
-    <Tab label="Item Three" {...a11yProps(2)} />
-  </Tabs>
-</Box>
-<TabPanel value={value} index={0}>
-  Item One
-</TabPanel>
-<TabPanel value={value} index={1}>
-  Item Two
-</TabPanel>
-<TabPanel value={value} index={2}>
-  Item Three
-</TabPanel> */
 }

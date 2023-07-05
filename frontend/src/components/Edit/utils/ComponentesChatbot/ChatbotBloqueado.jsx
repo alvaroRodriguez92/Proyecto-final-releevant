@@ -8,15 +8,9 @@ import {
   InputLabel,
   Button,
 } from "@mui/material";
-import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import EditIcon from "@mui/icons-material/Edit";
-import { Formik, FieldArray } from "formik";
-import { schemaDireccion } from "../schemaDireccion";
-import { schemaChatbot } from "../schemaChatbot";
 
 export default function ChatbotBloqueado({setIsEditing, preguntasUser}) {
-
-    console.log(preguntasUser)
 
   function editarDatos() {
     setIsEditing(true);
@@ -28,7 +22,6 @@ export default function ChatbotBloqueado({setIsEditing, preguntasUser}) {
         sx={{
           display: "flex",
           flexDirection: "column",
-          //   border:"1px solid black",
           borderRadius: 2,
           width: "90%",
           p: 5,
@@ -45,6 +38,9 @@ export default function ChatbotBloqueado({setIsEditing, preguntasUser}) {
         <h3 className="titulos-form-direccion">PREGUNTAS Y RESPUESTAS </h3>
         {preguntasUser?.map((item, index) => {
           return (
+            <Box key={index} sx={{width:"100%"}}>
+            <h5 className="direccion">Pregunta {index+1}</h5>
+
             <Grid
               container
               spacing={12}
@@ -93,14 +89,17 @@ export default function ChatbotBloqueado({setIsEditing, preguntasUser}) {
                     label="Pregunta relacionada"
                     fullWidth
                     disabled
+                    defaultValue=""
                   >
                     {preguntasUser?.map((item, index) => {
-                      <MenuItem value={index}>{item.PREGUNTAS}</MenuItem>;
+                      return(
+                      <MenuItem key={index} value={index}>{item.PREGUNTA}</MenuItem>)
                     })}
                   </Select>
                 </FormControl>{" "}
               </Grid>
             </Grid>
+            </Box>
           );
         })}
         <Button

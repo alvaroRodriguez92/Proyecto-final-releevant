@@ -419,3 +419,8 @@ div::-webkit-scrollbar-thumb {
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 3px solid #efefef;  /* creates padding around scroll thumb */
 }
+
+.chart-container{
+  margin-right: 10%;
+  margin-top: 5%;
+}
