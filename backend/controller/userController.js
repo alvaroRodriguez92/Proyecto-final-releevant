@@ -213,6 +213,19 @@ userController.getUserByEmail = async (req,res) => {
   }
 }
 
+//controlador para obtener user por id
+userController.getUserById = async (req,res) => {
+  const { id } = req.body
+  
+  try {
+    const user = await dao.getUserById(id)
+    if(!user) return res.status(410).send("Usuario no registrado");
+    return res.status(200).send(user)
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
+
 //controlador para obtener las localizaciones de todos los usuarios
 //PROBADO EN POSTMAN
 userController.getLocationsBySector = async (req, res) => {
@@ -389,3 +402,5 @@ userController.updateUser = async (req, res) => {
   }
 };
 module.exports = userController;
+
+
