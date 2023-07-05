@@ -30,13 +30,13 @@ export default function CardValoraciones({ item }) {
       })}
 
       {item.ID_COMENTADOR}
-      <Typography variant="h5" sx={{ mb: "1rem", mt:"1rem" }}>
+      <Typography variant="h5" sx={{ mb: "1rem", mt: "1rem" }}>
         {item.COMENTARIO}
       </Typography>
       <Typography variant="h5" sx={{ ml: "3rem", fontWeight: "bold", mt: "3rem" }}>
         Respuesta del propietario
       </Typography>
-      <Typography variant="h5" sx={{ mb: "4rem", ml: "3rem", mt:"1rem" }}>
+      <Typography variant="h5" sx={{ mb: "4rem", ml: "3rem", mt: "1rem" }}>
         {item.RESPUESTA}
       </Typography>
     </Box>
