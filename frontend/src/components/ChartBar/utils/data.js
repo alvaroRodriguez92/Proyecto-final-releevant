@@ -13,31 +13,24 @@ async function fetchVisitas() {
     const data = await response.json();
     return data;
   }
-}
 
-const labels = [
-  { Mes: "Enero" },
-  { Mes: "Febrero" },
-  { Mes: "Marzo" },
-  { Mes: "Abril" },
-  { Mes: "Mayo" },
-  { Mes: "Junio" },
-  { Mes: "Julio" },
-  { Mes: "Agosto" },
-  { Mes: "Septiembre" },
-  { Mes: "Octubre" },
-  { Mes: "Noviembre" },
-  { Mes: "Diciembre" },
-];
+  const dataFetch = await fetchVisitas()
+  const labels = [{Mes:"Enero"}, {Mes:"Febrero"},{Mes:"Marzo"},{Mes:"Abril"},{Mes:"Mayo"},{Mes:"Junio"},{Mes:"Julio"},{Mes:"Agosto"},{Mes:"Septiembre"},{Mes:"Octubre"},{Mes:"Noviembre"},{Mes:"Diciembre"}]
 
-export const data = {
-  labels: labels.map((item) => {
-    return item.Mes;
-  }),
-  datasets: [
-    {
-      label: "Visitas en 2022",
-      data: await fetchVisitas(),
+  function prueba(){
+    let arrayVacio = []
+    console.log(dataFetch, "DATAFEETCH")
+    for(let item in dataFetch){
+      console.log(item,"item de response de datafetch")
+      arrayVacio=[...arrayVacio,{labels: labels.map((i)=>{
+        return(
+            i.Mes
+        )
+    }),
+    datasets: [{
+      label: `Visitas en ${item}`,
+      data: dataFetch[item],
+
       backgroundColor: [
         "rgba(255, 99, 132, 0.2)",
         "rgba(255, 159, 64, 0.2)",
@@ -62,8 +55,45 @@ export const data = {
         "rgba(153, 102, 255, 0.2)",
         "rgba(201, 203, 207, 0.2)",
       ],
-      borderColor: ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
-      borderWidth: 1,
-    },
-  ],
-};
+
+      borderWidth: 1
+    }]
+    }]
+    }
+    return arrayVacio
+  }
+
+  // function prueba2(datasets,){
+  //   const dataPrueba = {labels: labels.map((i)=>{
+  //           return(
+  //               i.Mes
+  //           )
+  //       }),
+  //       datasets: [{
+  //         label: `Visitas en ${item}`,
+  //         data: dataFetch[item],
+  //         backgroundColor: [
+  //           'rgba(255, 99, 132, 0.2)',
+  //           'rgba(255, 159, 64, 0.2)',
+  //           'rgba(255, 205, 86, 0.2)',
+  //           'rgba(75, 192, 192, 0.2)',
+  //           'rgba(54, 162, 235, 0.2)',
+  //           'rgba(153, 102, 255, 0.2)',
+  //           'rgba(201, 203, 207, 0.2)'
+  //         ],
+  //         borderColor: [
+  //           'rgb(255, 99, 132)',
+  //           'rgb(255, 159, 64)',
+  //           'rgb(255, 205, 86)',
+  //           'rgb(75, 192, 192)',
+  //           'rgb(54, 162, 235)',
+  //           'rgb(153, 102, 255)',
+  //           'rgb(201, 203, 207)'
+  //         ],
+  //         borderWidth: 1
+  //       }]
+  //       }
+  // }
+
+  export const data = prueba()
+

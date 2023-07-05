@@ -11,6 +11,7 @@ dao.getUsersByCategoria = async (id) =>
   await userQueries.getUsersByCategoria(id);
 // Buscar un usuario por el email
 dao.getUserByEmail = async (email) => await userQueries.getUserByEmail(email);
+dao.getUserById = async (id) => await userQueries.getUserById(id);
 // Añadir un nuevo usuario
 dao.addUser = async (newUser) => await userQueries.addUser(newUser);
 dao.addAddress = async (newAddress) => await userQueries.addAddress(newAddress);
@@ -26,7 +27,7 @@ dao.getImageById = async (id) => await productQueries.getImageById(id);
 //pendientes
 
 // Buscar un usuario por el id
-dao.getUserById = async (id) => await userQueries.getUserById(id);
+
 // Eliminar un usuario
 dao.deleteUser = async (id,user) => await userQueries.deleteUser(id,user);
 //dao.deleteUser = async (id) => await userQueries.deleteUser(id);
