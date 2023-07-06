@@ -60,9 +60,6 @@ addressController.addAddress = async (req,res) => {
     const newAddress = await dao.getAllAddress(ID_USER)
     return res.status(200).send(newAddress);
   }
-
-
-
 //controlador para editar una direccion de un usuario
 addressController.editAddress = async (req,res) => {
   try {
@@ -115,11 +112,6 @@ addressController.editAddress = async (req,res) => {
     console.log(e.message);
   }
 }
-
-// if (updateUser){
-//   const newUser = await dao.getUserById(req.params.id)
-//   return res.send(newUser);
-// }
 
 //controlador para eliminar una direccion de un usuario
 addressController.deleteAddress = async (req,res) => {

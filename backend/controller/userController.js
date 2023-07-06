@@ -134,7 +134,7 @@ userController.addUser = async (req, res) => {
           __dirname,
           "../public/imagenes/" + LOGO.name
         );
-        LOGO.mv(uploadPath, (err) => {
+        await LOGO.mv(uploadPath, (err) => {
           if (err) return res.status(500).send(err);
         });
         await dao.addImagen({
@@ -154,7 +154,7 @@ userController.addUser = async (req, res) => {
               __dirname,
               "../public/imagenes/" + i.name
             );
-            i.mv(uploadPath, (err) => {
+            await i.mv(uploadPath, (err) => {
               if (err) return res.status(500).send(err);
             });
             await dao.addImagen({
@@ -381,13 +381,12 @@ userController.deleteUser = async (req, res) => {
     return res.send(`Usuario con id ${req.params.id} eliminado`);
   } catch (e) {
     console.log(e.message);
+    return res.status(400).send(e.message);
   }
 };
 
 userController.updateUser = async (req, res) => {
-  
-  try {
-    
+  try { 
     if (Object.entries(req.body).length === 0)
       return res.status(400).send("Error al recibir el body");
     const updateUser = await dao.updateUser(req.params.id, req.body);
@@ -399,6 +398,7 @@ userController.updateUser = async (req, res) => {
 
   } catch (e) {
     console.log(e.message);
+    return res.status(400).send(e.message);
   }
 };
 module.exports = userController;
