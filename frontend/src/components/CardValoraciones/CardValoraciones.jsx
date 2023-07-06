@@ -27,7 +27,7 @@ export default function CardValoraciones({ item }) {
         {/* <Card sx={{ minWidth: 275 }}> */}
           {/* <CardContent sx={{ svg: { color: "#ffc526" } }}> */}
           
-              <Typography sx={{ fontSize: 18 }} gutterBottom>
+              <Typography sx={{ fontSize: 18 }} variant="h6" gutterBottom>
                 <Avatar>H</Avatar>
               </Typography>
               {/* <CardActions> */}
