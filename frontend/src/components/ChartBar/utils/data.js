@@ -1,4 +1,3 @@
-// let visitas;
 
 async function fetchVisitas() {
   const response = await fetch("http://127.0.0.1:3000/visita/anual", {
@@ -14,22 +13,6 @@ async function fetchVisitas() {
 
   }
 }
-<<<<<<< HEAD:frontend/src/components/ChartBar/utils/data.jsx
-  const dataFetch = await fetchVisitas()
-  const labels = [{Mes:"Enero"}, {Mes:"Febrero"},{Mes:"Marzo"},{Mes:"Abril"},{Mes:"Mayo"},{Mes:"Junio"},{Mes:"Julio"},{Mes:"Agosto"},{Mes:"Septiembre"},{Mes:"Octubre"},{Mes:"Noviembre"},{Mes:"Diciembre"}]
-
-  function prueba(){
-    let arrayVacio = []
-    for(let item in dataFetch){
-      arrayVacio=[...arrayVacio,{labels: labels.map((i)=>{
-        return(
-            i.Mes
-        )
-    }),
-    datasets: [{
-      label: `Visitas en ${item}`,
-      data: dataFetch[item],
-=======
 
 const dataFetch = await fetchVisitas();
 
@@ -47,9 +30,6 @@ const labels = [
   { Mes: "Noviembre" },
   { Mes: "Diciembre" },
 ];
->>>>>>> e7ba10bbb462517f4b57b50f66370b1e55fe3aeb:frontend/src/components/ChartBar/utils/data.js
-
-
 
 function elegirColor(){
   

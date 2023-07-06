@@ -9,11 +9,11 @@ export default function NavMain() {
     return (
        
             <Box className="navmain">
-                <Grid container spacing={2} sx={{borderBottom:"0.1rem solid rgba(0,0,0,0.2) ",backgroundColor:"#efefef", boxShadow:"0 0 1px 0 black" }}>
-                    <Grid item xs={2} sx={{ img: { width: "80%",p:"2rem" } }} >
-                        <img src="../../src/assets/solventumsinfondo.png" />
+                <Grid container spacing={2} sx={{pl:"7%",pr:"5%",borderBottom:"0.1rem solid rgba(0,0,0,0.2) ",backgroundColor:"#whiteSmoke", boxShadow:"0 0 1px 0 black" }}>
+                    <Grid item xs={3} sx={{ img: { width: "70%",p:"1rem" } }} >
+                        <img src="../../src/assets/logo2serviprosinfondo.png" />
                     </Grid>
-                    <Grid item xs={8} sx={{ display: "flex", alignItems: "center",justifyContent:"center" }}>
+                    <Grid item xs={7} sx={{ display: "flex", alignItems: "center",justifyContent:"center" }}>
                         <Buscador />
                     </Grid>
                     <Grid item xs={2} sx={{display:"flex", alignItems:"center", justifyContent: "space-around"}}>
