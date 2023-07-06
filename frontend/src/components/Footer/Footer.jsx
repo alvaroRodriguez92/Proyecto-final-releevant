@@ -10,7 +10,7 @@ export default function Footer() {
           <Privacidad size={28} />
         </Grid>
         <Grid item xs={6} sx={{ pl: 28, pt: 10, pb: 10 }}>
-          <Newsletter size={52} color={"black"} />
+          <Newsletter  />
         </Grid>
       </Grid>
     );

@@ -97,7 +97,10 @@ export default function ChatBot() {
     <div className="input-group" >
 
 <FormControl fullWidth>
+
+
     <Grid container>
+
         <Grid item xs={10}>
   <InputLabel id="demo-simple-select-label">Preguntas</InputLabel>
   <Select

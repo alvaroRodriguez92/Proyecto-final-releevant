@@ -20,7 +20,7 @@ export default function Newsletter({ color }) {
             Suscríbete a la Newsletter
           </Typography>
           <TextField
-            sx={{ backgroundColor: "whitesmoke", m: 2 }}
+            sx={{ backgroundColor: "white", m: 2 }}
             hiddenLabel
             id="filled-hidden-label-small"
             placeholder="Suscríbete a la Newsletter"
@@ -30,7 +30,7 @@ export default function Newsletter({ color }) {
           <Button
             variant="contained"
             size="large"
-            sx={{ backgroundColor: "#4c4d4e", mt: 2, mb: 2 }}
+            sx={{ backgroundColor: "white", mt: 2, mb: 2 }}
           >
             Suscríbete
           </Button>

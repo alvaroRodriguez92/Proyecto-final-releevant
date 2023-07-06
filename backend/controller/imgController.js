@@ -8,7 +8,6 @@ const imgController = {}
 imgController.addImg = async (req, res) => {
 
   const {ID_USER, TIPO} = req.body
-
     try {
       if (!req.files || req.files === null) {
         return res.status(400).send("No se ha cargado ningun archivo");
@@ -22,18 +21,10 @@ imgController.addImg = async (req, res) => {
           __dirname,
           "../public/imagenes/" + imagen.name
         );
-
-  
-       
-       
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-
-        
+        //await new Promise((resolve) => setTimeout(resolve, 2000));
         await imagen.mv(uploadPath, (err) => {
           if (err) return res.status(500).send(err);
         });
-        
-
         await dao.addImg({
           ID_USER: ID_USER,
           PATH: uploadPath,
@@ -59,10 +50,8 @@ imgController.deleteimg = async (req,res) => {
       const item = await dao.deleteImg(ID);
       if (!item)
         return res.status(409).send("No se ha borrado la imagen"); 
-     
       fs.unlink(PATH,function(err){
         if(err) throw err
-        console.log("Archivo borrado")
       })
       const i = await dao.getImdByUser(ID_USER)
       return res.status(200).send(i);
@@ -73,7 +62,6 @@ imgController.deleteimg = async (req,res) => {
 
 imgController.getlogoByUser = async (req, res) => {
   const { id } = req.params;
-
   try {
     const logo = await dao.getlogoByUser(id);
     if (logo.length <= 0)
@@ -86,12 +74,10 @@ imgController.getlogoByUser = async (req, res) => {
 
 imgController.editLogo = async (req,res) => {
   const { ID, ID_USER, TIPO } = req.body;
-
     try {
       if (!req.files || req.files === null) {
         return res.status(400).send("No se ha cargado ningun archivo");
       }
-      
       const imagenes = !req.files.imagen.length
         ? [req.files.imagen]
         : req.files.imagen;
@@ -99,12 +85,10 @@ imgController.editLogo = async (req,res) => {
         let uploadPath = path.join(
           __dirname,
           "../public/imagenes/" + imagen.name
-        );
-  
-        imagen.mv(uploadPath, (err) => {
+        ); 
+        await imagen.mv(uploadPath, (err) => {
           if (err) return res.status(500).send(err);
         });
-        
         await dao.addImg({
           ID_USER: ID_USER,
           PATH: uploadPath,
@@ -114,7 +98,6 @@ imgController.editLogo = async (req,res) => {
       });
       const item = await dao.deleteImg(ID);
       const i = await dao.getlogoByUser(ID_USER)
-     
       return res.status(200).send(i);
     } catch (e) {
       throw new Error(e.message);
