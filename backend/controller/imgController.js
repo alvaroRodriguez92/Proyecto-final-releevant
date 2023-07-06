@@ -23,7 +23,7 @@ imgController.addImg = async (req, res) => {
           "../public/imagenes/" + imagen.name
         );
         
-        imagen.mv(uploadPath, (err) => {
+        await imagen.mv(uploadPath, (err) => {
           if (err) return res.status(500).send(err);
         });
         
