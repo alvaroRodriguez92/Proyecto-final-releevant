@@ -10,7 +10,7 @@ export default function PerfilValoraciones() {
 
   useEffect(() => {
     async function fetchPerfilValoraciones() {
-      const id = perfil?.address[0]?.ID_USER ;
+      const id = perfil.address[0].ID_USER 
       const response = await fetch(`http://127.0.0.1:3000/valoraciones/coment/${id}`);
       const data = await response.json();
       setValoraciones(data);
@@ -24,7 +24,7 @@ export default function PerfilValoraciones() {
         Valoraciones clientes
       </Typography>
       <Grid container className="valoraciones" spacing={2}>
-        {valoraciones.length ? valoraciones.map((item, i) => <CardValoraciones item={item} />) : <h5>No hay valoraciones en este momento</h5>}
+        {valoraciones.length ? valoraciones.map((item, i) => <CardValoraciones key={i} item={item} />) : <h5>No hay valoraciones en este momento</h5>}
       </Grid>
     </Box>
   );

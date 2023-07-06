@@ -16,11 +16,11 @@ export default function Newsletter({ color }) {
     <>
       <Grid>
         <Grid>
-          <Typography variant="h6" sx={{ color: "#262422", mt: 2, mb: 2, ml: 2 }}>
+          <Typography variant="h6" sx={{ color: "white", mt: 2, mb: 2, ml: 2 }}>
             Suscríbete a la Newsletter
           </Typography>
           <TextField
-            sx={{ backgroundColor: "whitesmoke", m: 2 }}
+            sx={{ backgroundColor: "white", m: 2 }}
             hiddenLabel
             id="filled-hidden-label-small"
             placeholder="Suscríbete a la Newsletter"
@@ -30,26 +30,26 @@ export default function Newsletter({ color }) {
           <Button
             variant="contained"
             size="large"
-            sx={{ backgroundColor: "#4c4d4e", mt: 2, mb: 2 }}
+            sx={{ backgroundColor: "white", mt: 2, mb: 2 }}
           >
             Suscríbete
           </Button>
         </Grid>
       </Grid>
-      <FormGroup sx={{ color: "#262422", m: 2 }}>
+      <FormGroup sx={{ color: "white", m: 2 }}>
         <FormControlLabel
           control={
             <Checkbox
-              sx={{ "& .MuiSvgIcon-root": { fontSize: 28, color: "#262422" } }}
+              sx={{ "& .MuiSvgIcon-root": { fontSize: 28, color: "white" } }}
             />
           }
           label="Acepto política de privacidad"
         />
       </FormGroup>
-      <FacebookIcon fontSize="large" sx={{ color: "#262422", ml: 1.5 }} />
-      <TwitterIcon fontSize="large" sx={{ color: "#262422", ml: 2 }} />
-      <WhatsAppIcon fontSize="large" sx={{ color: "#262422", ml: 2 }} />
-      <InstagramIcon fontSize="large" sx={{ color: "#262422", ml: 2 }} />
+      <FacebookIcon fontSize="large" sx={{ color: "white", ml: 1.5 }} />
+      <TwitterIcon fontSize="large" sx={{ color: "white", ml: 2 }} />
+      <WhatsAppIcon fontSize="large" sx={{ color: "white", ml: 2 }} />
+      <InstagramIcon fontSize="large" sx={{ color: "white", ml: 2 }} />
     </>
   );
 }

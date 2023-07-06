@@ -30,7 +30,7 @@ export default function Caroussel() {
         {imagenCarrusel.map((item, i) => {
           if (item.TIPO == 0) {
             return (
-              <SplideSlide className="splide__slide">
+              <SplideSlide key={i} className="splide__slide">
                 <img width="100%" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
               </SplideSlide>
             );
