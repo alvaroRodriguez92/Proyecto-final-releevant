@@ -30,14 +30,14 @@ export default function Popups(id) {
           <Grid contained key={datos.NOMBRE}>
             <h3>{datos.NOMBRE}</h3>
             <Grid contained>
-              <Grid md={3} xs={12}>
+              <Grid item md={3} xs={12}>
                 <img
                   src={`http://localhost:3000/logo/${datos.FOTO}`}
                   alt={datos.NOMBRE}
                   width={200}
                 />
               </Grid>
-              <Grid md={9} xs={12}>
+              <Grid item md={9} xs={12}>
                 <Grid contained>
                   <Grid flexDirection={"column"} alignItems={"center"}>
                     <Grid>

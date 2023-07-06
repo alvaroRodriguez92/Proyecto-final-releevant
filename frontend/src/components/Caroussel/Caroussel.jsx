@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { Box } from "@mui/material";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import academiaNuevaMalaga from "../../../../backend/public/imagenes/academia nueva malaga.png";
 
 export default function Caroussel() {
   const { imagenCarrusel, user, fetchPerfil } = useUserContext();

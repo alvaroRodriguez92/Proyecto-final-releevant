@@ -1,15 +1,15 @@
 import Chart from "chart.js/auto";
 import { data } from "./utils/data";
 import { CategoryScale } from "chart.js";
+
 import { useState, useEffect } from "react";
+
 import { Bar } from "react-chartjs-2";
 
 Chart.register(CategoryScale);
 
 export default function ChartBar() {
   const [chartData, setChartData] = useState(data);
-  console.log(chartData, "CHARTDATAA")
-
 
   return (
     <>
@@ -29,5 +29,6 @@ export default function ChartBar() {
           />
     </div>):("")}
     </>
+
   );
 }
