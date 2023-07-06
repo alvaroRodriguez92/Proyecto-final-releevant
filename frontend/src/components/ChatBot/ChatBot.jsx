@@ -43,7 +43,6 @@ export default function ChatBot() {
         fetchChatbot()
       }else{
         const data = await response.json()
-        console.log(data,"esto es data chat")
         setResultFetchPregunta(data)
       }
     }

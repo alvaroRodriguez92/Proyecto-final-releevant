@@ -22,10 +22,9 @@ export default function CardValoraciones({ item }) {
       </Typography>
       {stars.map((star, i) => {
         if (rate === 0 || i > rate - 1) {
-          return <StarBorderIcon sx={{ color: "#ffc526" }}></StarBorderIcon>;
-        }
-        if (i <= rate - 1) {
-          return <StarIcon sx={{ color: "#ffc526" }}></StarIcon>;
+          return <StarBorderIcon key={i} sx={{ color: "#ffc526" }}></StarBorderIcon>;
+        } else if (i <= rate - 1) {
+          return <StarIcon key={i} sx={{ color: "#ffc526" }}></StarIcon>;
         }
       })}
 

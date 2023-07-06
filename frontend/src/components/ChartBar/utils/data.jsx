@@ -13,15 +13,13 @@ async function fetchVisitas() {
     const data = await response.json();
     return data;
   }
-
+}
   const dataFetch = await fetchVisitas()
   const labels = [{Mes:"Enero"}, {Mes:"Febrero"},{Mes:"Marzo"},{Mes:"Abril"},{Mes:"Mayo"},{Mes:"Junio"},{Mes:"Julio"},{Mes:"Agosto"},{Mes:"Septiembre"},{Mes:"Octubre"},{Mes:"Noviembre"},{Mes:"Diciembre"}]
 
   function prueba(){
     let arrayVacio = []
-    console.log(dataFetch, "DATAFEETCH")
     for(let item in dataFetch){
-      console.log(item,"item de response de datafetch")
       arrayVacio=[...arrayVacio,{labels: labels.map((i)=>{
         return(
             i.Mes
