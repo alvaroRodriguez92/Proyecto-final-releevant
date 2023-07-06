@@ -63,7 +63,6 @@ async function onSubmit(values, actions) {
   });
   if (response.status === 200) {
     // await new Promise((resolve) => setTimeout(resolve, 2000));
-    alert("Registro realizado con éxito")
     actions.resetForm();
   }
 }

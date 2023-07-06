@@ -17,7 +17,7 @@ export default function CardValoraciones({ item }) {
 
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
-      <Typography sx={{ fontSize: 18 }} gutterBottom>
+      <Typography sx={{ fontSize: 18 }} variant="h6" gutterBottom>
         <Avatar></Avatar>
       </Typography>
       {stars.map((star, i) => {
