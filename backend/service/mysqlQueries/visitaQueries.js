@@ -91,7 +91,6 @@ visitaQueries.visitaMes = async (id) => {
 
 visitaQueries.visitaAnual = async (id,ano) => {
   let conn = null;
-    console.log(id, ano)
     try {
       conn = await db.createConnection();
       return await db.query(

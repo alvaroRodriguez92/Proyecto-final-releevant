@@ -96,7 +96,7 @@ chatboxController.udatePreguntaRespuesta = async (req,res) => {
         if (updateChat) return res.send(respuesta);
         
       } catch (e) {
-        console.log(e.message);
+        throw new Error(e.message);
       }
 }
 

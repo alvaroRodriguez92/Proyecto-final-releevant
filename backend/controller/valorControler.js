@@ -29,9 +29,13 @@ valorController.addValor = async (req,res) => {
         COMENTARIO: COMENTARIO,
         ID_COMENTADOR: ID_COMENTADOR,
       };
-      const valor = await dao.addValor(newValor);
-      if(!valor) return res.status(400).send("No se ha podido registrar la valoracion")
-      return res.status(200).send("Valoracion registrada")
+      try{
+        const valor = await dao.addValor(newValor);
+        if(!valor) return res.status(400).send("No se ha podido registrar la valoracion")
+        return res.status(200).send("Valoracion registrada")
+      } catch (e) {
+        throw new Error(e.message);
+      }
 
       
 }
@@ -46,9 +50,13 @@ valorController.addRes = async (req,res) => {
         ID_COMENTADOR: ID_COMENTADOR,
         RESPUESTA: RESPUESTA,
       };
-      const respuesta = await dao.addRes(newRes);
-      if(!respuesta) return res.status(400).send("No se ha podido registrar la respuesta")
-      return res.status(200).send("Respuesta registrada")
+      try{
+        const respuesta = await dao.addRes(newRes);
+        if(!respuesta) return res.status(400).send("No se ha podido registrar la respuesta")
+        return res.status(200).send("Respuesta registrada")
+      } catch (e) {
+        throw new Error(e.message);
+      }
 
       
 }
