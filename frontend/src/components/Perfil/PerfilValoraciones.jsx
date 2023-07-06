@@ -10,7 +10,7 @@ export default function PerfilValoraciones() {
 
   useEffect(() => {
     async function fetchPerfilValoraciones() {
-      const id = perfil?.address[0]?.ID_USER || "";
+      const id = perfil?.address[0]?.ID_USER ;
       const response = await fetch(`http://127.0.0.1:3000/valoraciones/coment/${id}`);
       const data = await response.json();
       setValoraciones(data);
