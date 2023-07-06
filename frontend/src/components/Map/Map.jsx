@@ -28,7 +28,7 @@ export default function Map() {
 
   return (
     <MapContainer
-      style={{marginBottom: "20px",marginTop: "4.2rem", position:"sticky",top:0}}
+      style={{marginBottom: "20px", position:"sticky",top:0}}
       classname="leaflet-container"
       center={[36.726643, -4.442089]}
       zoom={14}

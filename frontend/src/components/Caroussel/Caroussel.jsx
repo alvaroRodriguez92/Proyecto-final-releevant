@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { Box } from "@mui/material";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-// import academiaNuevaMalaga from "../../../../backend/public/imagenes/academia nueva malaga.png";
 
 export default function Caroussel() {
   const { imagenCarrusel, user, fetchPerfil } = useUserContext();
@@ -32,7 +31,7 @@ export default function Caroussel() {
           if (item.TIPO == 0) {
             return (
               <SplideSlide className="splide__slide">
-                <img width="100%"src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
+                <img width="100%" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
               </SplideSlide>
             );
           }
