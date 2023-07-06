@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 
 export default function PerfilValoraciones() {
+
   const { valoraciones, setValoraciones, perfil } = useUserContext();
 
   useEffect(() => {

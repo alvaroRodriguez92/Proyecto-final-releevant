@@ -29,7 +29,7 @@ imgController.addImg = async (req, res) => {
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
         
-        imagen.mv(uploadPath, (err) => {
+        await imagen.mv(uploadPath, (err) => {
           if (err) return res.status(500).send(err);
         });
         

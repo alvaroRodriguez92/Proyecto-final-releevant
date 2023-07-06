@@ -13,7 +13,7 @@ import Avatar from '@mui/material/Avatar';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function ChatBot() {
-    const [pregunta, setPregunta] = useState({pregunta:"", respuesta:""})
+    const [pregunta, setPregunta] = useState("")
     const [preguntaChat, setPreguntaChat] = useState([])
     const [resultFetchPregunta, setResultFetchPregunta] = useState([])
     const mensajeFinal = useRef(null)
