@@ -25,7 +25,6 @@ export default function EditImagenes({ images }) {
       // await new Promise((resolve) => setTimeout(resolve, 2000));
       const data = await response.json();
       setImagenesMap(data);
-      alert("DELETE realizado con éxito");
     }
   }
 

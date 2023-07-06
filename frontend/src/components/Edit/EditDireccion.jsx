@@ -25,7 +25,6 @@ export default function EditDireccion({address}) {
           console.log(data,"RESPUESTA DEL INSERT")
           setAddressBloqueo(data)
           
-          alert("Insert realizado con éxito")
           
           
         }      
@@ -71,7 +70,6 @@ export default function EditDireccion({address}) {
             const data = await response.json()
             console.log(data)
             setAddressBloqueo(data)
-            alert("DELETE realizado con éxito")
           }      
         }
   }

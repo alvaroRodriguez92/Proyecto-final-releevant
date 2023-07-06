@@ -65,10 +65,7 @@ export default function UserContextProvider({ children }) {
       body: JSON.stringify(values),
       headers: {
         "Content-Type": "application/json",
-      },
-      // if(res.status === 200){
-      //   alert("login exitoso");
-      // }
+      }
     });
     const data = await response.json();
 
