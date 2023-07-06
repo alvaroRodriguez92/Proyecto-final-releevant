@@ -14,7 +14,7 @@ const Image = styled("img", {
 
 function ResponsiveImage({ alt, sx = [], src, fullWidth = false, centered }) {
   return (
-    <Image
+    <Image 
       alt={alt}
       src={src}
       title={alt}

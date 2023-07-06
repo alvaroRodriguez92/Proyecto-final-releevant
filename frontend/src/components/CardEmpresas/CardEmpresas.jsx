@@ -44,8 +44,10 @@ export default function CardEmpresas() {
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6}>
             <Card
               className="contenedorHover"
+
               sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px",   backgroundImage: "linear-gradient(180deg, #BBC6C7 0, #CAD3D4 25%, #DAE0E2 50%, #EAEEEF 75%, #FAFCFC 100%)"
             }}
+
               onMouseOver={() => ratonOver(i)}
               onMouseOut={() => ratonOver(i)}
             >

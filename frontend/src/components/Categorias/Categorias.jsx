@@ -27,7 +27,7 @@ export default function Categorias() {
   return (
     <>
       {resultCategorias.map((item, i) => (
-        <button onClick={() => handleClick(item.ID)} className="button" key={i}>
+        <button onClick={() => handleClick(item.ID)} className="button" key={i} >
           {item.NOMBRE_CATEGORIA.toLowerCase()}
         </button>
       ))}

@@ -8,10 +8,10 @@ export default function Nav() {
   const { user } = useUserContext();
   return (
     <Box>
-      <Grid container spacing={2} sx={{ borderBottom: "0.1rem solid rgba(0,0,0,0.2) ", backgroundColor: "#efefef", boxShadow: "0 0 1px 0 black",justifyContent:"space-between" }}>
-        <Grid item xs={2} sx={{ img: { width: "80%", p: "2rem" } }}>
+      <Grid container spacing={2} sx={{  backgroundColor: "#efefef", justifyContent:"space-between", pt:"1rem",pb:"1rem" }}>
+        <Grid item xs={2} sx={{ img: { width: "80%", pl: "2rem" } }}>
           <Link to="/">
-          <img src="../../src/assets/solventumsinfondo.png"/>
+          <img src="../../public/logo2sinfondo.png"/>
           </Link>
         </Grid>
         <Grid item xs={2} sx={{ display: "flex", alignItems: "center", justifyContent: "space-around" }}>
