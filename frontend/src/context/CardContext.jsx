@@ -47,7 +47,6 @@ export default function CardContextProvider({ children }) {
        const newEmpresas = [...empresas]
        newEmpresas[index].hover = !newEmpresas[index].hover
        setEmpresas(newEmpresas)
-        //setRaton(true)
     }
     function ratonOut(){
         setRaton(false)

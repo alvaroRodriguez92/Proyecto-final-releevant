@@ -1,3 +1,4 @@
+
 async function fetchVisitas() {
   const response = await fetch("http://127.0.0.1:3000/visita/anual", {
     method: "POST",
@@ -29,8 +30,11 @@ const labels = [
   { Mes: "Diciembre" },
 ];
 
-function elegirColor() {
-  const numeroAleatorio = Math.floor(Math.random() * 7);
+
+function elegirColor(){
+  
+  const numeroAleatorio = Math.floor(Math.random()*7)
+
 
   const coloresBar = [
     "rgba(255, 99, 132, 0.2)",
