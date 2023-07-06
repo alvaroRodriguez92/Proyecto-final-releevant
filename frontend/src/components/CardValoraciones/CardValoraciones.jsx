@@ -17,15 +17,14 @@ export default function CardValoraciones({ item }) {
 
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
-      <Typography sx={{ fontSize: 18 }} gutterBottom>
+      <Typography sx={{ fontSize: 18 }} variant="h6" gutterBottom>
         <Avatar></Avatar>
       </Typography>
       {stars.map((star, i) => {
         if (rate === 0 || i > rate - 1) {
-          return <StarBorderIcon sx={{ color: "#ffc526" }}></StarBorderIcon>;
-        }
-        if (i <= rate - 1) {
-          return <StarIcon sx={{ color: "#ffc526" }}></StarIcon>;
+          return <StarBorderIcon key={i} sx={{ color: "#ffc526" }}></StarBorderIcon>;
+        } else if (i <= rate - 1) {
+          return <StarIcon key={i} sx={{ color: "#ffc526" }}></StarIcon>;
         }
       })}
 

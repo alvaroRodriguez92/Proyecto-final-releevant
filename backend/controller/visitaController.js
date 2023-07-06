@@ -62,7 +62,7 @@ visitaController.visitaAnual = async (req,res) => {
     let mes
     let visitas
     let resulAno = [];
-    let resultadoTotal = {}
+    let resultadoTotal = []
     try {
       for(j = 2022; j <= new Date().getFullYear(); j++){
         for(i = 1; i <= 12; i++){
@@ -72,7 +72,9 @@ visitaController.visitaAnual = async (req,res) => {
           meses = [...visitas]
           resulAno.push(meses[0].mes)
         }
-      resultadoTotal = {...resultadoTotal, [j]: resulAno}
+      resultadoTotal.push({labels:["Enero", "Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
+      year:j,
+      data:resulAno})
       resulAno = []
     }
       console.log(resultadoTotal)

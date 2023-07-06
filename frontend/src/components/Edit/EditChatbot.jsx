@@ -35,7 +35,6 @@ useEffect(() => {
         // console.log(data,"RESPUESTA DEL INSERT")
         setPreguntasUser(data)       
         await cambioExitoso(editExitoso, index);
-        alert("Insert realizado con éxito")
         
         
       }      
@@ -68,7 +67,6 @@ async function borrarPregunta(values){
           const data = await response.json()
           console.log(data, "DATA DEL DELETE RESPONSE TATATA")
           setPreguntasUser(data)
-          alert("DELETE realizado con éxito")
         }   
   }      
 }
