@@ -239,11 +239,11 @@ form label {
   padding: 8px 19px !;
   font-size: 14px;
   cursor: pointer;
+  color: white;
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #4b4844;
-  background-color: #ffee8c;
+  background-color: #328B8E;
   border: none;
   border-radius: 14px;
   box-shadow: 0 9px black;
@@ -252,8 +252,8 @@ form label {
 }
 
 .button:active {
-  background-color: #ffee8c;
-  box-shadow: 0 5px #666;
+  background-color: #83D1DE;
+  box-shadow: 0 5px black;
   transform: translateY(4px);
 }
 

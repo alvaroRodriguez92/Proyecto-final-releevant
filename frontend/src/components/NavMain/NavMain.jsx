@@ -9,9 +9,9 @@ export default function NavMain() {
     return (
        
             <Box className="navmain">
-                <Grid container spacing={2} sx={{borderBottom:"0.1rem solid rgba(0,0,0,0.2) ",backgroundColor:"#efefef", boxShadow:"0 0 1px 0 black" }}>
-                    <Grid item xs={2} sx={{ img: { width: "80%",p:"2rem" } }} >
-                        <img src="../../src/assets/solventumsinfondo.png" />
+                <Grid container spacing={2} sx={{backgroundColor:"#efefef"}}>
+                    <Grid item xs={2} sx={{ img: { width: "80%", pl:"2rem",pb:"1rem",pt:"1rem" } }} >
+                        <img src="../../public/logo2sinfondo.png" />
                     </Grid>
                     <Grid item xs={8} sx={{ display: "flex", alignItems: "center",justifyContent:"center" }}>
                         <Buscador />
