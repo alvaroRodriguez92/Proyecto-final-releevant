@@ -19,8 +19,8 @@ useEffect(() => {
     }
     fetchUser();
   }, [user]);
-
-  const initialValues = {CHATBOT:preguntasUser}
+  
+  const initialValues = {CHATBOT:preguntasUser}||{PREGUNTA:"", RESPUESTA:"", PADRE:0}
 
   async function onSubmit(values, index){
     if(!values.ID){

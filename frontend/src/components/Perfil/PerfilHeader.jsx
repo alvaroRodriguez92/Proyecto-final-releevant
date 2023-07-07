@@ -22,49 +22,33 @@ export default function PerfilHeader() {
   if (!Object.keys(perfil).length) return <></>;
   const { user, address, images } = perfil;
   return (
-    <Grid container sx={{ pt: "2rem" }}>
-      <Grid item xs={12}>
-        <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
-          <Typography variant="h2" component="div">
-            {user[0]?.NOMBRE}
-          </Typography>
-        </Box>
-      </Grid>
-      <Grid item xs={3}>
-        <Box sx={{ heigth: "50px", maxWidth: "100%", maxHeight: "13rem !important", pt: "2rem",pr:"2rem",pb:"2rem", img: { maxHeight: "9rem !important", borderRadius: "10px", width: "100%" } }}>
+    <>
+    <Grid container sx={{mt:4,display:"flex", flexDirection:"row"}}>
+    <Grid item xs={4}>
+      <Grid container sx={{pb:5,borderRight:"2px solid grey",borderRadius:"20px", borderBottom:"2px solid grey",display:"flex", flexDirection:"column"}}>
+      
+      <Grid item xs={8} sx={{heigth: "100%", maxWidth: "100%", maxHeight: "10rem !important", pt: "2rem",pr:"2rem",pb:"2rem", img: { maxHeight: "7rem !important", borderRadius: "10px", width: "100%" } }}>
           {images[0].IMG_NOMBRE ? (<img src={`http://localhost:3000/imagenes/${images[0].IMG_NOMBRE}`} />): null}
-        </Box>
       </Grid>
-      <Grid item xs={7}>
-        <Grid container sx={{ p: "1rem", pt: "2rem" }}>
-          <Grid item xs={12} sx={{ fontSize: "x-large" }}>
-            <Grid container>
-              <Grid item xs={6} sx={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <Box>
-                  <CallIcon></CallIcon>
+      <Grid sx={{mt:3}} item xs={10}>
+                <Box sx={{mt:1}}>
+                  <CallIcon sx={{mr:1}}></CallIcon>
                   {user[0]?.TLF}
                 </Box>
-                <Box>
-                  <EmailIcon></EmailIcon>
+                <Box sx={{mt:1}}>
+                  <EmailIcon sx={{mr:1}}></EmailIcon>
                   {user[0]?.EMAIL}
                 </Box>
-              </Grid>
-              <Grid item xs={6}>
-                <Box>
-                  <HomeIcon></HomeIcon> {`${address[0].TIPO_VIA} ${address[0].NOMBRE_VIA} ${address[0].NUMERO}  ${address[0].CP} ${address[0].PROVINCIA}`}
+
+                <Box sx={{mt:1}}>
+                  <HomeIcon sx={{mr:0.5}}></HomeIcon> {`${address[0].TIPO_VIA} ${address[0].NOMBRE_VIA} ${address[0].NUMERO}  ${address[0].CP} ${address[0].PROVINCIA}`}
                 </Box>
-                <Box>
-                  <WebIcon></WebIcon>
+                <Box sx={{mt:1}}>
+                  <WebIcon sx={{mr:1}}></WebIcon>
                   {user[0]?.URL}
                 </Box>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item xs={2}>
-        <Box sx={{ display: "flex", flexDirection: "column", heigth: "100%", justifyContent: "center", p: "2rem", pl: "2rem", svg: { fontSize: "3rem" } }}>
-          <Typography variant="h5">Redes Sociales</Typography>
+                <Box sx={{ display: "flex", flexDirection: "column", heigth: "100%", justifyContent: "start",mt:3,svg: { fontSize: "2rem" } }}>
+          <Typography variant="h6">Redes Sociales</Typography>
           <Box>
             <FacebookIcon />
             <LinkedInIcon />
@@ -72,7 +56,24 @@ export default function PerfilHeader() {
             <InstagramIcon />
           </Box>
         </Box>
+            </Grid>
+            </Grid>
+            </Grid>
+            
+            <Grid item xs={7}>
+            <Grid item xs={12}>
+        <Box sx={{ ml:10,display: "flex", justifyContent: "start",mb:3, width: "100%" }}>
+          <Typography variant="h3" component="div">
+            {user[0]?.NOMBRE}
+          </Typography>
+        </Box>
       </Grid>
-    </Grid>
+      <Typography variant="h5" sx={{ ml:10,display: "flex", justifyContent: "flex-start", mt:2,pt: "2rem",pr:"5rem",pb:"5rem" }}>
+        {user[0]?.DESCRIPCION}
+      </Typography>
+            </Grid>
+            </Grid>
+
+            </>
   );
 }

@@ -15,10 +15,6 @@ export default function Perfil() {
   if (!Object.keys(perfil).length) return <></>;
 
   return (
-    <Grid item xs={12} >
-      <Typography variant="h4" sx={{ display: "flex", justifyContent: "flex-start", pt: "5rem",pr:"5rem",pb:"5rem" }}>
-        {user[0]?.DESCRIPCION}
-      </Typography>
-    </Grid>
+    <h1></h1>
   );
 }
