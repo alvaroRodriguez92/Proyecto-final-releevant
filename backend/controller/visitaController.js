@@ -57,9 +57,8 @@ visitaController.visitaMes = async (req,res) => {
 }
 
 visitaController.visitaAnual = async (req,res) => {
-    const { id, ano } = req.body;
+    const { id } = req.body;
     let fecha
-    let mes
     let visitas
     let resulAno = [];
     let resultadoTotal = []
@@ -77,7 +76,7 @@ visitaController.visitaAnual = async (req,res) => {
       data:resulAno})
       resulAno = []
     }
-      console.log(resultadoTotal)
+      
       if (!visitas)
         return res.status(409).send("No hay visitantes aún"); 
       return res.status(200).send(resultadoTotal);
