@@ -10,12 +10,12 @@ export default function NavMain() {
        
             <Box className="navmain">
 
-                <Grid container spacing={2} sx={{backgroundColor:"#efefef"}}>
+                <Grid container spacing={2} sx={{pl:"7%",backgroundColor:"white", pr:"4%"}}>
                     <Grid item xs={2} sx={{ img: { width: "80%", pl:"2rem",pb:"1rem",pt:"1rem" } }} >
-                        <img src="../../public/logo2sinfondo.png" />
+                        <img src="../../src/assets/logo3serviprosinfondo.png" />
 
                     </Grid>
-                    <Grid item xs={7} sx={{ display: "flex", alignItems: "center",justifyContent:"center" }}>
+                    <Grid item xs={8} sx={{ display: "flex", alignItems: "center",justifyContent:"center" }}>
                         <Buscador />
                     </Grid>
                     <Grid item xs={2} sx={{display:"flex", alignItems:"center", justifyContent: "space-around"}}>
