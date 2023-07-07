@@ -78,6 +78,7 @@ chatboxQueries.addPreguntaRespuessta = async(newItem) => {
         ID_USER: newItem.ID_USER,
         PREGUNTA: newItem.PREGUNTA,
         RESPUESTA: newItem.RESPUESTA,
+        PADRE: newItem.PADRE,
       };
       return await db.query(queries.addPreguntaRespuesta, itemObj, "insert", conn);
     } catch (e) {
