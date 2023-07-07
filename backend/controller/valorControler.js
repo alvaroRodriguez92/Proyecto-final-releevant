@@ -16,6 +16,22 @@ valorController.getValorByUser = async (req, res) => {
       throw new Error(e.message);
     }
   };
+
+valorController.getValorSinRespuesta = async (req,res) => {
+  const { id } = req.params;
+  console.log(id)
+    try {
+      const valoraciones = await dao.getValorSinRespuesta(id);
+      console.log(valoraciones)
+      if (valoraciones.length <= 0)
+        return res.status(409).send("No hay comentarios de clientes"); 
+      return res.status(200).send(valoraciones);
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  };
+
+
 valorController.addValor = async (req,res) => {
     const {
         ID_COMENTADO,
