@@ -1,6 +1,7 @@
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import {useState, useEffect, useRef} from "react";
+import { useUserContext } from "../../context/UserContext";
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -13,14 +14,11 @@ import Avatar from '@mui/material/Avatar';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function ChatBot() {
+    const { perfilCompleto } = useUserContext()
     const [pregunta, setPregunta] = useState("")
     const [preguntaChat, setPreguntaChat] = useState([])
     const [resultFetchPregunta, setResultFetchPregunta] = useState([])
     const mensajeFinal = useRef(null)
-
-    const ID_PERFIL=14;
-    // http://localhost:3000/chatbox/respuestas/1
-
 
     useEffect(()=>{
       
@@ -32,7 +30,7 @@ export default function ChatBot() {
     }, [preguntaChat])
 
     async function fetchChatbot(){
-      const response = await fetch("http://localhost:3000/chatbox/preguntas/inicio/"+ID_PERFIL)
+      const response = await fetch("http://localhost:3000/chatbox/preguntas/inicio/" + perfilCompleto)
       const data = await response.json()
       setResultFetchPregunta(data)
     }
@@ -70,7 +68,7 @@ export default function ChatBot() {
 
 
   return (
-    <div className="container" style={{marginBottom: "20px",marginTop: "4.2rem", width:"80%",position:"sticky",top:0}}>
+    <div className="container" style={{marginBottom: "20px",marginTop: "3.9rem", width:"100%",position:"sticky",top:0,pr:"2rem"}}>
       {/* <h4 className="text-center">ChatBot app</h4> */}
       <div className="media" style={{backgroundColor: "whitesmoke", height:"100px"}}>
         <img src="../../src/assets/chatboticon.png" style={{float:"left",margin: "10px"}} className="rounded-circle float-left img-thumbnail" width="72px" alt="..."/>

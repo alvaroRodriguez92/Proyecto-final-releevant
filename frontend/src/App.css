@@ -15,13 +15,13 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #ffee8c;    /* color of the scroll thumb */
+  background-color: #328B8E;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 3px solid #efefef;  /* creates padding around scroll thumb */
 }
 
 .mainWrap{
-max-width: 95%;
+max-width: 90%;
 margin:0 auto;
 padding-left: 5%;
 padding-right: 5%;
@@ -372,7 +372,9 @@ div.splide__track{
   width: 80%;
   display: flex;
   justify-content: flex-end;
-  margin: 4rem;
+  margin-left: -3rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
 }
 .valoraciones{
   padding-right: 4rem;
@@ -412,13 +414,14 @@ div.splide__track{
 }
 
 .MuiTypography-root::-webkit-scrollbar-track {
-  background: #ffee8c;        /* color of the tracking area */
+  background: #EAEEEF; 
+  border-radius: 20px;        /* color of the tracking area */
 }
 
 .MuiTypography-root::-webkit-scrollbar-thumb {
-  background-color: #efefef;    /* color of the scroll thumb */
+  background-color: #328B8E;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid #ffee8c;  /* creates padding around scroll thumb */
+  border: 3px solid #EAEEEF;  /* creates padding around scroll thumb */
 }
 
 div::-webkit-scrollbar {
