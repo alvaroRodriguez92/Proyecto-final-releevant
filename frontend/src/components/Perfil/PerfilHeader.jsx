@@ -3,17 +3,35 @@ import { useEffect, useState } from "react";
 import { Typography, Grid, Box } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import CallIcon from "@mui/icons-material/Call";
 import HomeIcon from "@mui/icons-material/Home";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import WebIcon from "@mui/icons-material/Web";
 import EmailIcon from "@mui/icons-material/Email";
 
 export default function PerfilHeader() {
+
   const { perfil, setPerfil, perfilCompleto, fetchPerfil } = useUserContext();
+  const [logoPerfil, setLogoPerfil] = useState(null)
+
+  const getLastItem = thePath => thePath.substring(thePath.lastIndexOf('/') + 1)
+
+  const currentUrl = window.location.href;
+
+const idPerfil = getLastItem(currentUrl)
+
+  useEffect(()=>{
+    async function fetchLogo() {
+      const response = await fetch("http://localhost:3000/img/logo/" + idPerfil);
+      const data = await response.json();
+      setLogoPerfil(data[0].IMG_NOMBRE);
+    }
+    fetchLogo();
+  }, []);
+
+  
+
 
   useEffect(() => {
     fetchPerfil();
@@ -27,8 +45,10 @@ export default function PerfilHeader() {
     <Grid item xs={4}>
       <Grid container sx={{pb:5,borderRight:"2px solid grey",borderRadius:"20px", borderBottom:"2px solid grey",display:"flex", flexDirection:"column"}}>
       
-      <Grid item xs={8} sx={{heigth: "100%", maxWidth: "100%", maxHeight: "10rem !important", pt: "2rem",pr:"2rem",pb:"2rem", img: { maxHeight: "7rem !important", borderRadius: "10px", width: "100%" } }}>
+
+      <Grid item xs={8} sx={{heigth: "100%", maxWidth: "100%", maxHeight: "8rem !important", pt: "2rem",pr:"2rem",pb:"2rem", img: { maxHeight: "7rem !important", borderRadius: "10px", width: "60%" } }}>
           {images[0].IMG_NOMBRE ? (<img src={`http://localhost:3000/imagenes/${images[0].IMG_NOMBRE}`} />): null}
+
       </Grid>
       <Grid sx={{mt:3}} item xs={10}>
                 <Box sx={{mt:1}}>
@@ -61,16 +81,16 @@ export default function PerfilHeader() {
             </Grid>
             
             <Grid item xs={7}>
-            <Grid item xs={12}>
-        <Box sx={{ ml:10,display: "flex", justifyContent: "start",mb:3, width: "100%" }}>
+        <Box sx={{ ml:10,display: "flex", justifyContent: "center", width: "100%" }}>
           <Typography variant="h3" component="div">
             {user[0]?.NOMBRE}
           </Typography>
-        </Box>
-      </Grid>
-      <Typography variant="h5" sx={{ ml:10,display: "flex", justifyContent: "flex-start", mt:2,pt: "2rem",pr:"5rem",pb:"5rem" }}>
+          </Box>
+          <Box sx={{ ml:17.5,display: "flex", justifyContent: "center", pt:"2rem", width: "100%" }}>
+      <Typography variant="h5" >
         {user[0]?.DESCRIPCION}
-      </Typography>
+            </Typography>
+            </Box>
             </Grid>
             </Grid>
 

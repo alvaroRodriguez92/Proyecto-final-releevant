@@ -21,13 +21,14 @@ body::-webkit-scrollbar-thumb {
 }
 
 .mainWrap{
-max-width: 95%;
+max-width: 90%;
 margin:0 auto;
 padding-left: 5%;
 padding-right: 5%;
 }
 .navSectores{
-max-width: 95%;
+  padding-top: 24px;
+max-width: 91.5%;
 margin:0 auto;
 padding-left: 5%;
 padding-right: 5%;
@@ -262,9 +263,8 @@ form label {
 
 .active {
   /* background-color: rgb(201, 199, 199); */
-  border: 0.1rem solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.5rem;
-  box-shadow: 0 0 1px 0 black;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 0px 0 #328B8E;
 }
 
 main {
@@ -372,7 +372,9 @@ div.splide__track{
   width: 80%;
   display: flex;
   justify-content: flex-end;
-  margin: 4rem;
+  margin-left: -3rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
 }
 .valoraciones{
   padding-right: 4rem;
