@@ -3,7 +3,7 @@ body {
   /* background-image: linear-gradient(180deg, #F2FBFF 0, #D3F3FE 25%, #AEE7F5 50%, #83D1DE 75%, #83D1DE 100%);
   background-repeat: no-repeat;
     background-attachment: fixed;  */
-  font-family: "Alice", serif !important;
+  font-family: "ubuntu", serif !important;
 }
 
 body::-webkit-scrollbar {
@@ -34,7 +34,7 @@ padding-left: 5%;
 padding-right: 5%;
 }
 .MuiTypography-root {
-  font-family: "Alice", serif !important;
+  font-family: "Ubuntu", serif !important;
 }
 
 #chatContainer {
@@ -194,14 +194,15 @@ form label {
 .contenedorHover {
   height: 100%;
   padding: 1rem;
+
   /* width: 33%; */
   /* max-width: 33%; */
  
 }
 
 .contenedorHover:hover {
-  transform: translateY(-3px);
-  box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.6);
+  transform: translateY(-4px);
+  /* box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.6); */
 }
 .imagenCardContainer {
   height: 35% !important;
@@ -250,17 +251,41 @@ form label {
   background-color: #328B8E;
   border: none;
   border-radius: 14px;
-  box-shadow: 0 9px black;
+  box-shadow: 7px 7px black;
   padding: 1rem;
   text-transform: capitalize;
 }
 
 .button:active {
   background-color: #83D1DE;
-  box-shadow: 0 5px black;
+  box-shadow: 4 5px black;
   transform: translateY(4px);
 }
-
+.buttonCard{
+  min-width: 64px;
+  
+  display: inline-block;
+  padding: 8px;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background-color: #328B8E;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 5px 5px black;
+  text-transform: capitalize;
+}
+.buttonCard:active{
+  background-color: #83D1DE;
+  box-shadow: 4 5px black;
+  transform: translateY(4px);
+}
 .active {
   /* background-color: rgb(201, 199, 199); */
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
@@ -353,7 +378,7 @@ main {
   background-color: #efefef;
 }
 .css-hhnrze-MuiTypography-root {
-  font-family: 'Times New Roman', Times, serif !important;
+  font-family: 'Ubuntu', Times, serif !important;
 }
 
 .splide__slide img {

@@ -44,8 +44,7 @@ export default function CardEmpresas() {
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6}>
             <Card
               className="contenedorHover"
-
-              sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "5px 5px",   backgroundImage: "linear-gradient(180deg, #BBC6C7 0, #CAD3D4 25%, #DAE0E2 50%, #EAEEEF 75%, #FAFCFC 100%)"
+              sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "9px 9px black",  transition: "all 0.3s",   backgroundImage: "linear-gradient(180deg, #BBC6C7 0, #CAD3D4 25%, #DAE0E2 50%, #EAEEEF 75%, #FAFCFC 100%)"
             }}
 
               onMouseOver={() => ratonOver(i)}
@@ -69,8 +68,9 @@ export default function CardEmpresas() {
                 <Link to={`/perfil/${item.ID}`}>
                   {" "}
                   <Button className="button-material-hover" onClick={() => handleClick(item.ID)} sx={{ pointerEvents:"none",boxShadow:"4px 4px black",borderRadius: "10px", mr: 1 }} variant="contained" size="small">
+
                     Ver mas
-                  </Button>
+                  </button>
                 </Link>
               </CardActions>
             </Card>
