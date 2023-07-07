@@ -1,6 +1,7 @@
 import Buscador from '../../components/Buscador/Buscador'
 import {Grid,Box} from '@mui/material'
 import ToggleButtons from '../ToggleButtons/ToggleButtons'
+import ToggleButton2 from "../ToggleButtons/ToggleButtons2"
 import ModalLogin from '../ModalLogin/ModalLogin'
 import { useUserContext } from "../../context/UserContext";
 
@@ -21,7 +22,7 @@ export default function NavMain() {
                     <Grid item xs={2} sx={{display:"flex", alignItems:"center", justifyContent: "space-around"}}>
                     {user?(null):(<ModalLogin />)}
                     <Grid sx={{pl:"0.5rem"}}>
-                        {user && <ToggleButtons />}
+                        {user && <ToggleButton2 />}
                         </Grid>
                     </Grid>
                 </Grid>
