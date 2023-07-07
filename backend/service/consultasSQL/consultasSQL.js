@@ -41,6 +41,9 @@ AS CAT ON OFER.ID_CATEGORIA = CAT.ID;`
 queries.getValorByUser = `SELECT * FROM VALORACIONES LEFT JOIN (SELECT ID_VALORACION, RESPUESTA FROM RESPUESTAS) 
 AS R ON VALORACIONES.ID = R.ID_VALORACION 
 WHERE ID_COMENTADO = ?`
+queries.getValorSinRespuestas = `select valoraciones.ID, valoraciones.ID_COMENTADO, PUNTUACION, valoraciones.ID_COMENTADOR, COMENTARIO, respuestas.RESPUESTA
+from valoracionesleft join respuestas on respuestas.ID_VALORACION = valoraciones.ID
+where ID_COMENTADO = ? and isnull(respuestas.RESPUESTA) `
 //Query para registrar valoraciones
 queries.addValor = `INSERT INTO VALORACIONES SET ?`
 //Query para registrar respuesta a valoraciones
