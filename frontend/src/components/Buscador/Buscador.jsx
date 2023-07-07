@@ -48,7 +48,7 @@ export default function Buscador() {
                     setTipoServicio(0);
                   }}
                 >
-                  <SearchIcon sx={{ m: "0 auto", color: "black", borderRadius: "60px", backgroundColor: "#ba2b1ecc", p: "-0.5rem" }} />
+                  <SearchIcon sx={{ m: "0 auto", color: "black", borderRadius: "60px",  p: "-0.5rem" }} />
                 </Button>
               </InputAdornment>
             ),
