@@ -67,7 +67,8 @@ export default function CardEmpresas() {
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
                 <Link to={`/perfil/${item.ID}`}>
                   {" "}
-                  <button onClick={() => handleClick(item.ID)} className="buttonCard" >
+                  <Button className="button-material-hover" onClick={() => handleClick(item.ID)} sx={{ pointerEvents:"none",boxShadow:"4px 4px black",borderRadius: "10px", mr: 1 }} variant="contained" size="small">
+
                     Ver mas
                   </button>
                 </Link>
