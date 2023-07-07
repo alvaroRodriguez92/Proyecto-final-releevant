@@ -43,10 +43,10 @@ const idPerfil = getLastItem(currentUrl)
     <>
     <Grid container sx={{mt:4,display:"flex", flexDirection:"row"}}>
     <Grid item xs={4}>
-      <Grid container sx={{pb:5,borderRight:"2px solid grey",borderRadius:"20px", borderBottom:"2px solid grey",display:"flex", flexDirection:"column"}}>
+      <Grid container sx={{p:1,pb:4,border:"1px solid black",boxShadow:"5px 5px",alignItems:"center", borderRadius:"20px",display:"flex", flexDirection:"column"}}>
       
 
-      <Grid item xs={8} sx={{heigth: "100%", maxWidth: "100%", maxHeight: "8rem !important", pt: "2rem",pr:"2rem",pb:"2rem", img: { maxHeight: "7rem !important", borderRadius: "10px", width: "60%" } }}>
+      <Grid item xs={8} sx={{m:"0 auto",minWidth:"350px",heigth: "100%", maxWidth: "100%", maxHeight: "8rem !important", pt: "2rem",pr:"2rem",pb:"2rem", img: { maxHeight: "7rem !important", borderRadius: "10px", width: "60%" } }}>
           {images[0].IMG_NOMBRE ? (<img src={`http://localhost:3000/imagenes/${images[0].IMG_NOMBRE}`} />): null}
 
       </Grid>
@@ -81,12 +81,12 @@ const idPerfil = getLastItem(currentUrl)
             </Grid>
             
             <Grid item xs={7}>
-        <Box sx={{ ml:10,display: "flex", justifyContent: "center", width: "100%" }}>
+        <Box sx={{ ml:10,display: "flex", justifyContent: "start", width: "100%" }}>
           <Typography variant="h3" component="div">
             {user[0]?.NOMBRE}
           </Typography>
           </Box>
-          <Box sx={{ ml:17.5,display: "flex", justifyContent: "center", pt:"2rem", width: "100%" }}>
+          <Box sx={{ml:10,display: "flex", justifyContent: "start", pt:"2rem", width: "100%" }}>
       <Typography variant="h5" >
         {user[0]?.DESCRIPCION}
             </Typography>

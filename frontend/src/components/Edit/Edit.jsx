@@ -107,7 +107,7 @@ export default function Edit() {
   }, [logo]);
 
   return (
-    <Grid container sx={{ height: "80vh", mt:8,mb:8 }}>
+    <Grid container sx={{height: "auto", mt:8,mb:8 }}>
       <Grid item xs={3}>
         <Box  sx={{ display: "flex", alignItems: "flex-end", m: 5 }}>
           {nombreLogo ? (

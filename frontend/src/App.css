@@ -277,19 +277,17 @@ main {
 
 .pregunta-bot {
   margin-left: 8px;
-  border: 1px solid grey;
-  padding: 8px;
+  padding: 16px;
   border-radius: 10px;
-  background-color: #00bb2d;
+  background-color: #CBF3FD;
   display: inline-block;
 }
 
 .respuesta-bot {
   margin-left: 8px;
-  border: 1px solid grey;
-  padding: 8px;
+  padding: 16px;
   border-radius: 10px;
-  background-color: #c1eaba;
+  background-color: #D1FEBE;
   display: inline;
   justify-content: end;
   align-items: end;
@@ -441,4 +439,10 @@ div::-webkit-scrollbar-thumb {
 .chart-container{
   margin-right: 10%;
   margin-top: 5%;
+}
+
+.button-material-hover:active{
+  background-color: #83D1DE;
+  box-shadow: 4 5px black;
+  transform: translateY(4px);
 }
