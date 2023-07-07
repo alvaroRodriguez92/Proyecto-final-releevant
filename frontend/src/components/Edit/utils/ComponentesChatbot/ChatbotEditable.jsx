@@ -122,7 +122,7 @@ export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, b
                                 <MenuItem value={0}>
                                         Sin pregunta relacionada
                                       </MenuItem>
-                                {preguntasUser.map((item, index)=>{
+                                {preguntasUser?.map((item, index)=>{
                                     return(
                                     <MenuItem key={index} value={item.ID}>
                                         {item.PREGUNTA}
