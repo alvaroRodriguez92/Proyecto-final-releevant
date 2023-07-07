@@ -73,4 +73,21 @@ valorQueries.getValorByUser = async (comentado) => {
     }
   };
 
+  valorQueries.getValorSinRespuesta = async (id) => {
+    let conn = null;
+    try {
+      conn = await db.createConnection();
+      return await db.query(
+        queries.getValorSinRespuestas,
+        id,
+        "select",
+        conn
+      );
+    } catch (e) {
+      throw new Error(e);
+    } finally {
+      conn && (await conn.end());
+    }
+  };
+
 module.exports = valorQueries
