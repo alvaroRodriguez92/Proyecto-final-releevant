@@ -14,6 +14,24 @@ import EmailIcon from "@mui/icons-material/Email";
 
 export default function PerfilHeader() {
   const { perfil, setPerfil, perfilCompleto, fetchPerfil } = useUserContext();
+  const [logoPerfil, setLogoPerfil] = useState(null)
+
+  const getLastItem = thePath => thePath.substring(thePath.lastIndexOf('/') + 1)
+
+  const currentUrl = window.location.href;
+
+const idPerfil = getLastItem(currentUrl)
+
+  useEffect(()=>{
+    async function fetchLogo() {
+      const response = await fetch("http://localhost:3000/img/logo/" + idPerfil);
+      const data = await response.json();
+      setLogoPerfil(data[0].IMG_NOMBRE);
+    }
+    fetchLogo();
+  }, []);
+
+  console.log(logoPerfil)
 
   useEffect(() => {
     fetchPerfil();
@@ -28,7 +46,7 @@ export default function PerfilHeader() {
       <Grid container sx={{pb:5,borderRight:"2px solid grey",borderRadius:"20px", borderBottom:"2px solid grey",display:"flex", flexDirection:"column"}}>
       
       <Grid item xs={8} sx={{heigth: "100%", maxWidth: "100%", maxHeight: "10rem !important", pt: "2rem",pr:"2rem",pb:"2rem", img: { maxHeight: "7rem !important", borderRadius: "10px", width: "100%" } }}>
-          {images[0].IMG_NOMBRE ? (<img src={`http://localhost:3000/imagenes/${images[0].IMG_NOMBRE}`} />): null}
+          {logoPerfil ? (<img src={`http://localhost:3000/imagenes/${logoPerfil}`} />): null}
       </Grid>
       <Grid sx={{mt:3}} item xs={10}>
                 <Box sx={{mt:1}}>

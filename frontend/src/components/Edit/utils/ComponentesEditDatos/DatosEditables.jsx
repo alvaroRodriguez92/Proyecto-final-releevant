@@ -180,7 +180,6 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
                   </Grid>
                 </Box>
 
-                <pre>{JSON.stringify(props.values, null, 1)}</pre>
               </form>
             )}
           </Formik>

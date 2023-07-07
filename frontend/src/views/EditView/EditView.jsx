@@ -4,9 +4,15 @@ import Footer from "../../components/Footer/Footer"
 export default function EditView(){
     return(
         <>
+        <header>
         <Nav/>
+        </header>
+        <main>
         <Edit/>
-       <Footer/> 
+        </main>
+        <footer>
+       <Footer/>
+       </footer> 
         </>
     )
 }
