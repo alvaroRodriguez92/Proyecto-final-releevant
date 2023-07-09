@@ -33,9 +33,13 @@ export default function CardEmpresas() {
     const distancia = d.toFixed(2);
     return distancia;
   }
-  function handleClick(id) {
-    setPerfilCompleto(id);
+  async function handleClick(id) {
+    console.log("ESTO SE EJECUTA O NOOOO??")
+    console.log(id,"PROBANDO ID")
+    await setPerfilCompleto(id);
   }
+console.log(empresas,"EMPRESAAS")
+
   if (!empresas.length) return <></>;
   return (
     <Box width="100%" sx={{ display: "flex", p: "1rem", m: "2rem" }}>
@@ -67,10 +71,10 @@ export default function CardEmpresas() {
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
                 <Link to={`/perfil/${item.ID}`}>
                   {" "}
-                  <Button className="button-material-hover" onClick={() => handleClick(item.ID)} sx={{ pointerEvents:"none",boxShadow:"4px 4px black",borderRadius: "10px", mr: 1 }} variant="contained" size="small">
+                  <Button className="button-material-hover" onClick={() => handleClick(item.ID)} sx={{ "&:hover": { backgroundColor: "#328B8E" },boxShadow:"4px 4px black",borderRadius: "10px", mr: 1 }} variant="contained" size="small">
 
                     Ver mas
-                  </button>
+                  </Button>
                 </Link>
               </CardActions>
             </Card>
