@@ -6,13 +6,6 @@ import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 
-// async function onSubmit(values, actions) {
-//   console.log(values,"valores");
-//   console.log(actions);
-//   await new Promise((resolve) => setTimeout(resolve, 2000));
-//   actions.resetForm();
-// }
-
 export default function BasicForm({closeModal=()=>{}}) {
   const { login, user } = useUserContext();
   const {
@@ -26,11 +19,7 @@ export default function BasicForm({closeModal=()=>{}}) {
   } = useFormik({
     initialValues,
     validationSchema: LoginFormSchema,
-    onSubmit: login, //function (values, actions) {
-    //   login(values);
-    //   actions.resetForm();
-    // }
-  
+    onSubmit: login,
   });
   return (
 

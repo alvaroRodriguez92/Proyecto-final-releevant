@@ -34,9 +34,7 @@ export default function ToggleButtons() {
       <MenuIcon sx={{color:"black"}} />
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Account settings">
-          <Avatar
-            
-          >
+          <Avatar>
           </Avatar>
         </Tooltip>
       </Box>
