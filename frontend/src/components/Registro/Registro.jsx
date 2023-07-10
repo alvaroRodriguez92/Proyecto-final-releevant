@@ -25,8 +25,7 @@ export default function Registro() {
 
   return (
     <>
-      <h1>Indique su perfil</h1>
-      <Box container sx={{ width: "30%", m: 5, ml: "12%" }}>
+      <Box container sx={{ width: "30%", my: 5 }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Perfil</InputLabel>
           <Select
@@ -43,12 +42,12 @@ export default function Registro() {
       </Box>
       {isOfertante ? (
         <>
-          <h1 className="titulo-registro">Registro de profesional</h1>
+          <h2>Registro profesional</h2>
           <RegistroProfesional />
         </>
       ) : (
         <>
-          <h1 className="titulo-registro">Registro de usuario</h1>
+          <h2>Registro usuario</h2>
           <RegistroUser />
         </>
       )}

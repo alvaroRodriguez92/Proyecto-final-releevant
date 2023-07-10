@@ -90,14 +90,16 @@ export default function PerfilHeader() {
           </Grid>
         </Grid>
 
-        <Grid item xs={7}>
+        <Grid item xs={7.5}>
           <Box sx={{ ml: 10, display: "flex", justifyContent: "start", width: "100%" }}>
             <Typography variant="h3" component="div">
               {user[0]?.NOMBRE}
             </Typography>
           </Box>
+
           <Box sx={{ ml: 10, display: "flex", justifyContent: "start", pt: "2rem", width: "100%" }}>
             <Typography variant="h5">{user[0]?.DESCRIPCION}</Typography>
+
           </Box>
         </Grid>
       </Grid>

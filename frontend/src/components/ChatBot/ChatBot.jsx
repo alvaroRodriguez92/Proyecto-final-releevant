@@ -74,12 +74,12 @@ export default function ChatBot() {
         <img src="../../src/assets/chatboticon.png" style={{float:"left",margin: "10px"}} className="rounded-circle float-left img-thumbnail" width="72px" alt="..."/>
         <div className="media-body" style={{float:"left"}}>
         <h5 style={{margin:"15px"}}>ChatBot</h5>
-        <span style={{marginLeft:"10px", color:"rgb(32,199,32)"}}>Online</span>
+        <span style={{marginLeft:"15px", color:"rgb(32,199,32)"}}>Online</span>
         </div>
       </div>
 
     <div id="chatContainer" className="container border overflow-auto" style={{height:"500px"}}>
-    <h6 className="bienvenida-bot">Bienvenido a nuestro ChatBot! ¿En que podemos ayudarte?</h6>
+    <h5 className="bienvenida-bot">Bienvenido a nuestro ChatBot! ¿En que podemos ayudarte?</h5>
     <br></br>
     {preguntaChat.map((item, index)=>{
         return(

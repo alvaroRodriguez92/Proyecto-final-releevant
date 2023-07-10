@@ -33,14 +33,19 @@ export default function CardEmpresas() {
     const distancia = d.toFixed(2);
     return distancia;
   }
-  function handleClick(id) {
-    setPerfilCompleto(id);
+  async function handleClick(id) {
+    console.log("ESTO SE EJECUTA O NOOOO??")
+    console.log(id,"PROBANDO ID")
+    await setPerfilCompleto(id);
   }
+console.log(empresas,"EMPRESAAS")
+
   if (!empresas.length) return <></>;
   return (
-    <Box width="100%" sx={{ display: "flex", p: "1rem", m: "2rem" }}>
+    <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
       <Grid container spacing={3}>
         {empresas.map((item, i) => (
+          
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6}>
             <Card
               className="contenedorHover"
@@ -71,18 +76,17 @@ export default function CardEmpresas() {
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
-                <Link to={`/perfil/${item.ID}`}>
-                  {" "}
-                  <Button
-                    className="button-material-hover"
-                    onClick={() => handleClick(item.ID)}
-                    sx={{ boxShadow: "4px 4px black", borderRadius: "10px", mr: 1 }}
-                    variant="contained"
-                    size="small"
-                  >
-                    Ver mas
-                  </Button>
-                </Link>
+
+                <div onClick={() => handleClick(item.ID)}>
+                  <Link to={`/perfil/${item.ID}`}>
+                    {" "}
+                    <Button className="button-material-hover" sx={{ pointerEvents:"none",boxShadow:"4px 4px black",borderRadius: "10px", mr: 1 }} variant="contained" size="small">
+
+                      Ver mas
+                    </Button>
+                  </Link>
+                </div>
+
               </CardActions>
             </Card>
           </Grid>

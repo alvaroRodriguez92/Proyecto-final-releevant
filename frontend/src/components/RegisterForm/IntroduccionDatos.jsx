@@ -42,8 +42,8 @@ export default function IntroduccionDatos({formik}) {
             display: "flex",
             flexDirection: "column",
             borderRadius: 2,
-            width: "80%",
-            p: 5,
+            width: "100%",
+            py: 5,
             margin: "0 auto",
           }}
         >
