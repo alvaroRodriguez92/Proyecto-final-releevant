@@ -42,7 +42,7 @@ console.log(empresas,"EMPRESAAS")
 
   if (!empresas.length) return <></>;
   return (
-    <Box width="100%" sx={{ display: "flex", p: "1rem", m: "2rem" }}>
+    <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
       <Grid container spacing={3}>
         {empresas.map((item, i) => (
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6}>

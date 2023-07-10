@@ -23,7 +23,7 @@ export default function ChatbotBloqueado({setIsEditing, preguntasUser}) {
           display: "flex",
           flexDirection: "column",
           borderRadius: 2,
-          width: "90%",
+          width: "100%",
           p: 5,
           alignItems: "center",
           margin: "0 auto",

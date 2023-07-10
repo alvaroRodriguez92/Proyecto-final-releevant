@@ -53,7 +53,7 @@ export default function NavSectores() {
     const handleClick = (sectorSelected) => { section.NOMBRE_SECTOR === sectorSelected.NOMBRE_SECTOR ? setSection("") : setSection(sectorSelected) }
     
     return (
-        <Box className="navSectores" sx={{width:"100%"}}>
+        <Box sx={{width:"100%"}}>
         <Box sx={{textTransform: "capitalize",display: "flex", columnGap: "1rem", width: "100%", justifyContent: "space-evenly", div: { ">p": { margin: "0 !important" } } }}>
                 {sectores.map((sector) => {
                    if (sector.NOMBRE_SECTOR !== "SIN SECTOR" ){

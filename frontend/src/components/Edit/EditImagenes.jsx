@@ -63,7 +63,7 @@ export default function EditImagenes({ images }) {
         display: "flex",
         flexDirection: "column",
         borderRadius: 2,
-        width: "90%",
+        width: "100%",
         p: 5,
         margin: "0 auto",
         alignItems: "center",
