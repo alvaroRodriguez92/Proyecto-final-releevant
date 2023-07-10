@@ -7,6 +7,7 @@ const perfilController = {}
 
 perfilController.getPerfil = async (req,res) => {
     const id = req.params.id
+    console.log(req.params,"req params del backend")
     let data = {}
     try{
         if(!id) return res.status(400).send("No hay id de usuario")

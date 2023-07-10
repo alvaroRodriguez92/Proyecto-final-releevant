@@ -22,7 +22,7 @@ export default function DireccionBloqueados({setIsEditing, addressBloqueo }) {
           flexDirection: "column",
           //   border:"1px solid black",
           borderRadius: 2,
-          width: "90%",
+          width: "100%",
           p: 5,
           alignItems: "center",
           margin: "0 auto",

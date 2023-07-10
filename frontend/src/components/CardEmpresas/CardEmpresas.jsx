@@ -33,21 +33,31 @@ export default function CardEmpresas() {
     const distancia = d.toFixed(2);
     return distancia;
   }
-  function handleClick(id) {
-    setPerfilCompleto(id);
+  async function handleClick(id) {
+    console.log("ESTO SE EJECUTA O NOOOO??")
+    console.log(id,"PROBANDO ID")
+    await setPerfilCompleto(id);
   }
+console.log(empresas,"EMPRESAAS")
+
   if (!empresas.length) return <></>;
   return (
-    <Box width="100%" sx={{ display: "flex", p: "1rem", m: "2rem" }}>
+    <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
       <Grid container spacing={3}>
         {empresas.map((item, i) => (
           
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6}>
             <Card
               className="contenedorHover"
-              sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "9px 9px black",  transition: "all 0.3s",   backgroundImage: "linear-gradient(180deg, #BBC6C7 0, #CAD3D4 25%, #DAE0E2 50%, #EAEEEF 75%, #FAFCFC 100%)"
-            }}
-
+              sx={{
+                maxWidth: 345,
+                border: "1px solid black",
+                borderRadius: "20px",
+                borderStyle: "groove",
+                boxShadow: "9px 9px black",
+                transition: "all 0.3s",
+                backgroundImage: "linear-gradient(180deg, #BBC6C7 0, #CAD3D4 25%, #DAE0E2 50%, #EAEEEF 75%, #FAFCFC 100%)",
+              }}
               onMouseOver={() => ratonOver(i)}
               onMouseOut={() => ratonOver(i)}
             >
@@ -66,6 +76,7 @@ export default function CardEmpresas() {
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
+
                 <div onClick={() => handleClick(item.ID)}>
                   <Link to={`/perfil/${item.ID}`}>
                     {" "}
@@ -75,6 +86,7 @@ export default function CardEmpresas() {
                     </Button>
                   </Link>
                 </div>
+
               </CardActions>
             </Card>
           </Grid>

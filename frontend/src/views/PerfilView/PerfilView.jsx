@@ -6,11 +6,16 @@ import PerfilHeader from "../../components/Perfil/PerfilHeader";
 import PerfilValoraciones from "../../components/Perfil/PerfilValoraciones";
 import Caroussel from "../../components/Caroussel/Caroussel";
 import Nav from "../../components/Nav/Nav"
+import ModalValoraciones from "../../components/ModalLogin/ModalValoraciones";
+
+
 
 export default function PerfilView() {
+ 
+  
   return (
     <>
-      <header>
+      <header className="mainWrap">
         <Nav/>
         </header>
         <main className="mainWrap">
@@ -23,7 +28,8 @@ export default function PerfilView() {
             <Perfil />
           </Box>
           <Caroussel />
-          <PerfilValoraciones />
+            <ModalValoraciones/>
+            <PerfilValoraciones />
         </Grid>
         <Grid item xs={4}>
           <ChatBot />

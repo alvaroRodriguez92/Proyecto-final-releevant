@@ -21,7 +21,7 @@ export default function Stepper({ steps, renderStep }) {
   }, [setActiveStep]);
 
   return (
-    <Box sx={{ width: "80%", margin: "0 auto" }}>
+    <Box sx={{ width: "100%", margin: "0 auto" }}>
       <StepperMUI sx={{mt:"32px"}} activeStep={activeStep}>
         {steps.map((label) => {
           return (

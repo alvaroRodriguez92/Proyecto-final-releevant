@@ -3,7 +3,7 @@ body {
   /* background-image: linear-gradient(180deg, #F2FBFF 0, #D3F3FE 25%, #AEE7F5 50%, #83D1DE 75%, #83D1DE 100%);
   background-repeat: no-repeat;
     background-attachment: fixed;  */
-  font-family: "ubuntu", serif !important;
+  font-family: "Ubuntu", serif !important;
 }
 
 body::-webkit-scrollbar {
@@ -18,6 +18,11 @@ body::-webkit-scrollbar-thumb {
   background-color: #328B8E;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 3px solid #efefef;  /* creates padding around scroll thumb */
+}
+
+.editWrap{
+max-width: 90%;
+margin:0 auto;
 }
 
 .mainWrap{
@@ -50,11 +55,11 @@ padding-right: 5%;
 .leaflet-container {
   /* width: 100vw;
   height: 100vh; */
-  height: 715px;
+  height: 880px;
   width: 100%;
   margin-top: 3rem;
-  margin-left: 5rem;
-  padding: 1rem;
+  margin-left: 4rem;
+  padding: 1rem 0 1rem 1rem;
   border: 2px solid black;
   border-radius: 20px;
 }
@@ -160,6 +165,7 @@ button:disabled {
 
 .form-register {
   max-width: 100%;
+  width: 100%;
 }
 
 form label {
@@ -345,7 +351,7 @@ main {
   padding: 0 40px;
   margin: 0 auto;
   z-index: 10;
-  background-color: #efefef;
+  background-color: white;
 }
 
 .titulos-form-imagenes{
@@ -356,11 +362,11 @@ main {
   position: absolute;
   top: -3%;
   left: 50%;
-  transform: translate3d(-50%,0,0);
+  transform: translate3d(-50%,25%,0);
   padding: 0 40px;
   margin: 0 auto;
   z-index: 10;
-  background-color: #efefef;
+  background-color: white;
 }
 
 .titulos-form-direccion{
@@ -375,7 +381,7 @@ main {
   padding: 0 40px;
   margin: 0 auto;
   z-index: 10;
-  background-color: #efefef;
+  background-color: white;
 }
 .css-hhnrze-MuiTypography-root {
   font-family: 'Ubuntu', Times, serif !important;
@@ -462,7 +468,7 @@ div::-webkit-scrollbar-thumb {
 }
 
 .chart-container{
-  margin-right: 10%;
+  
   margin-top: 5%;
 }
 
