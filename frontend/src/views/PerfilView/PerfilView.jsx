@@ -10,7 +10,7 @@ import Nav from "../../components/Nav/Nav"
 export default function PerfilView() {
   return (
     <>
-      <header>
+      <header className="mainWrap">
         <Nav/>
         </header>
         <main className="mainWrap">

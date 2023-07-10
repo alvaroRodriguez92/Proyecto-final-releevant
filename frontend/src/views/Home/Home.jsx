@@ -9,8 +9,8 @@ import { Grid, Box, Avatar } from "@mui/material";
 
 export default function Home() {
   return (
-    <Box sx={{ height: "100vh", header:{position:"static", top:0, zIndex:"100"}}}>
-      <header>
+    <Box  sx={{ height: "100vh", header:{position:"static", top:0, zIndex:"100"}}}>
+      <header className="mainWrap">
         <NavMain />
         <NavSectores />
       </header>
@@ -19,7 +19,7 @@ export default function Home() {
           <Grid item xs={5}>
             <CardEmpresas />
           </Grid>
-          <Grid item xs={6} sx={{zIndex:0}}>
+          <Grid item xs={6.5} sx={{zIndex:0}}>
             <Map />
           </Grid>
         </Grid>

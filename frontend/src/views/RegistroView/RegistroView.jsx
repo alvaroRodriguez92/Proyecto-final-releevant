@@ -1,19 +1,21 @@
-
 import Footer from "../../components/Footer/Footer";
-import { Grid, Box, Avatar } from "@mui/material";
+import { Box } from "@mui/material";
 import Registro from "../../components/Registro/Registro";
-
+import {Link} from "react-router-dom"
 
 
 export default function Home() {
   return (
     <Box sx={{ height: "100vh" }}>
-      <header>
+      <header className="mainWrap">
+        <Box sx={{ img: { width: "11%", pb: "1rem", pt: "1rem" } }}>
+          <Link to="/"><img src="../../src/assets/logo3serviprosinfondo.png" /></Link>
+        </Box>
       </header>
-      <main>
-        <Registro/>
+      <main className="mainWrap">
+        <Registro />
       </main>
-      <Box sx={{ marginTop: "auto" }} >
+      <Box sx={{ marginTop: "auto" }}>
         <Footer />
       </Box>
     </Box>

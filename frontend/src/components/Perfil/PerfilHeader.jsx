@@ -80,7 +80,7 @@ const idPerfil = getLastItem(currentUrl)
             </Grid>
             </Grid>
             
-            <Grid item xs={7}>
+            <Grid item xs={7.5}>
         <Box sx={{ ml:10,display: "flex", justifyContent: "start", width: "100%" }}>
           <Typography variant="h3" component="div">
             {user[0]?.NOMBRE}

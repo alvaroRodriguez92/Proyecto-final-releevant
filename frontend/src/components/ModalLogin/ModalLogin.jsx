@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import ToolsIcon from "../../assets/toolsicon.avif";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import LoginIcon from '@mui/icons-material/Login';
 
 
 const styleLogin = {
@@ -52,7 +53,8 @@ export default function ChildModal() {
 
     return (
         <React.Fragment>
-            <Button onClick={handleOpen}>Iniciar Sesion</Button>
+            <Button variant="outlined" sx={{ml:"70%",fontWeight: 700 }}
+onClick={handleOpen}><LoginIcon sx={{ mr: 1 }}/>Login</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
