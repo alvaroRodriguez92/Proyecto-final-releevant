@@ -11,17 +11,17 @@ export default function NavMain() {
        
             <Box className="navmain">
 
-                <Grid container spacing={2} sx={{pt:2,pl:"8.5%", pr:"5.5%",backgroundColor:"white"}}>
-                    <Grid item xs={2} sx={{ img: { width: "80%", pl:"2rem",pb:"1rem",pt:"1rem" } }} >
+                <Grid container spacing={2} sx={{pt:2,backgroundColor:"white"}}>
+                    <Grid item xs={2} sx={{ img: { width: "80%",pb:"1rem",pt:"1rem" } }} >
                         <img src="../../src/assets/logo3serviprosinfondo.png" />
 
                     </Grid>
-                    <Grid item xs={8} sx={{ display: "flex", alignItems: "center",justifyContent:"center" }}>
+                    <Grid item xs={7} sx={{ display: "flex", alignItems: "center",justifyContent:"center" }}>
                         <Buscador />
                     </Grid>
-                    <Grid item xs={2} sx={{display:"flex", alignItems:"center", justifyContent: "space-around"}}>
+                    <Grid item xs={3} sx={{display:"flex", alignItems:"center", justifyContent: "space-around"}}>
                     {user?(null):(<ModalLogin />)}
-                    <Grid sx={{pl:"0.5rem"}}>
+                    <Grid>
                         {user && <ToggleButton2 />}
                         </Grid>
                     </Grid>

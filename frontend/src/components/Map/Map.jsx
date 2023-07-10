@@ -1,21 +1,38 @@
 import Markers from "../../components/Markers/Markers";
 import { useCardContext } from "../../context/CardContext";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import { useState, useEffect, useRef } from "react";
 import { useUserContext } from "../../context/UserContext";
-import MarkerClusterGroup from 'react-leaflet-markercluster';
 import "leaflet/dist/leaflet.css";
+import L, { latLng } from 'leaflet'
+
 
 export default function Map() {
   const { empresas } = useCardContext();
   const { currentPosition, currentCords} = useUserContext();
   
-
+ 
   useEffect(() => {
     currentPosition()
+   
   }, []);
 
-  //const cPosition = [36.7272624, -4.4437597];
+
+
+  const FlyToButton = () => {
+    const map = useMap();
+
+    const handleFlyTo = () => {
+      const target = [36.726643, -4.442089]; // Coordenadas a las que quieres volar
+      const zoom = 14; // Nivel de zoom deseado
+
+      map.flyTo(target, zoom);
+    };
+
+    return (
+      <button onClick={handleFlyTo}>Hacer FlyTo</button>
+    );
+  };
   
   function convertir(empresa) {
     const numCoordenada = {
@@ -25,6 +42,8 @@ export default function Map() {
     };
     return numCoordenada;
   }
+  
+
 
   return (
     <MapContainer
@@ -32,6 +51,7 @@ export default function Map() {
       classname="leaflet-container"
       center={[36.726643, -4.442089]}
       zoom={14}
+      
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -40,16 +60,11 @@ export default function Map() {
       {currentCords.length > 0 && (
         <Marker position={currentCords} />
       )}
-      {/* {cPosition ? (
-        <Markers coordenadas={cPosition} />
-      ) : (
-        alert("No esta activa o no hay permisos para acceder a su localizacion")
-      )} */}
       
         {empresas.map((empresa) => (
           <Markers coordenadas={convertir(empresa)} key={empresa.ID} raton={empresa.hover} ID={empresa.ID}/>
         ))}
-   
+      <FlyToButton sx={{with: "100%"}}/>
     </MapContainer>
   );
 }
