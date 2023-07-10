@@ -45,6 +45,7 @@ console.log(empresas,"EMPRESAAS")
     <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
       <Grid container spacing={3}>
         {empresas.map((item, i) => (
+          
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6}>
             <Card
               className="contenedorHover"
@@ -69,13 +70,15 @@ console.log(empresas,"EMPRESAAS")
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
-                <Link to={`/perfil/${item.ID}`}>
-                  {" "}
-                  <Button className="button-material-hover" onClick={() => handleClick(item.ID)} sx={{ "&:hover": { backgroundColor: "#328B8E" },boxShadow:"4px 4px black",borderRadius: "10px", mr: 1 }} variant="contained" size="small">
+                <div onClick={() => handleClick(item.ID)}>
+                  <Link to={`/perfil/${item.ID}`}>
+                    {" "}
+                    <Button className="button-material-hover" sx={{ pointerEvents:"none",boxShadow:"4px 4px black",borderRadius: "10px", mr: 1 }} variant="contained" size="small">
 
-                    Ver mas
-                  </Button>
-                </Link>
+                      Ver mas
+                    </Button>
+                  </Link>
+                </div>
               </CardActions>
             </Card>
           </Grid>
