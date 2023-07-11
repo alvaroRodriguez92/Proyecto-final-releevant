@@ -15,7 +15,7 @@ export default function ToggleButtons2() {
           to={`/perfil/edit/${user.ID}`}
           style={{ textDecoration: "none", color: "rgba(0, 0, 0, 0.87)" }}
         >
-          <Button variant="outlined" sx={{ fontWeight: 700 }}>
+          <Button variant="outlined" sx={{ fontWeight: 700, p:"0.9rem 0.9rem" }}>
             <PersonIcon sx={{ mr: 1 }} /> Perfil
           </Button>
         </Link>
@@ -24,7 +24,7 @@ export default function ToggleButtons2() {
       <Button
         variant="outlined"
         onClick={logout}
-        sx={{ marginLeft: "2rem", fontWeight: 700 }}
+        sx={{ marginLeft: "2rem", fontWeight: 700,p:"0.9rem 0.9rem"}}
       >
         <LogoutIcon sx={{ mr: 1 }} />
         Logout

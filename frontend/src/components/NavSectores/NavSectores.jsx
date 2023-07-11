@@ -67,7 +67,7 @@ export default function NavSectores() {
             }
             )}
         </Box>
-        <Box sx={{ display: "flex", columnGap: "1rem", p: "1rem", minHeight:"86px" }}>
+        <Box sx={{ display: "flex", columnGap: "1rem", pr: "1rem",pt:"1rem" ,minHeight:"86px" }}>
                 <Categorias/>
             </Box>
             </Box>
