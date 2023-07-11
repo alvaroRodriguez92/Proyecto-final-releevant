@@ -1,15 +1,15 @@
 import Markers from "../../components/Markers/Markers";
 import { useCardContext } from "../../context/CardContext";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker,  } from "react-leaflet";
 import { useState, useEffect, useRef } from "react";
 import { useUserContext } from "../../context/UserContext";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
+
 import "leaflet/dist/leaflet.css";
 
 export default function Map() {
   const { empresas } = useCardContext();
   const { currentPosition, currentCords} = useUserContext();
-  
 
   useEffect(() => {
     currentPosition()
@@ -26,8 +26,10 @@ export default function Map() {
     return numCoordenada;
   }
 
+
   return (
     <MapContainer
+    
       style={{marginBottom: "20px", position:"sticky",top:0}}
       classname="leaflet-container"
       center={[36.726643, -4.442089]}
