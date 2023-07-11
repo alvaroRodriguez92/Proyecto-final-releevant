@@ -48,11 +48,11 @@ export default function ModalValoraciones() {
       
       <Grid container>
       <Grid item xs={6}>
-      <Typography variant="h4" sx={{ width:"100%", m:"0 auto"}}>
+      <Typography variant="h4" sx={{ width:"100%", m:"0 auto",pt:"3rem",pb:"1rem"}}>
         Valoraciones clientes
         </Typography>
         </Grid>
-        <Grid item xs={6} sx={{ textAlign:"end",pr:"4rem" }}>
+        <Grid item xs={6} sx={{ textAlign:"end",pr:"4rem",pt:"3rem",pb:"1rem" }}>
       <Button variant="contained" onClick={handleOpen}>
         Agregar valoraciones
           </Button>
