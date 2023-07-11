@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function Valoraciones({ onClose }) {
   const [starsSelected, setStarsSelected] = useState(0);
   const [comments, setCommments] = useState("");
-  const {perfilCompleto,setPerfilCompleto, user, setNuevaValoracion} = useUserContext()
+  const {perfilCompleto,setPerfilCompleto, user, setNuevaValoracion, setValoraciones} = useUserContext()
 
   const estrellas = [
     { nombre: "estrella1", valor: 1 },
@@ -18,10 +18,6 @@ export default function Valoraciones({ onClose }) {
     { nombre: "estrella5", valor: 5 },
   ];
 
-  
-  function handleChange(e) {
-    setCommments(e.target.value);
-  }
   async function enviarDatos() {
     const response = await fetch(`http://127.0.0.1:3000/valoraciones/coment`, {
       method: "POST",
@@ -35,12 +31,19 @@ export default function Valoraciones({ onClose }) {
         "Content-Type": "application/json",
       }
     });
+    
     const data = await response.json();
-    if(data) setNuevaValoracion(true)
+    setNuevaValoracion(true)
+    setValoraciones(data)
   }
+
   function handleSubmit() {
     enviarDatos()
     onClose();
+  }
+  
+  function handleChange(e) {
+    setCommments(e.target.value);
   }
   return (
     <>

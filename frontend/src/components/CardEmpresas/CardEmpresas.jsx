@@ -38,7 +38,7 @@ export default function CardEmpresas() {
     console.log(id,"PROBANDO ID")
     await setPerfilCompleto(id);
   }
-console.log(empresas,"EMPRESAAS")
+
 
   if (!empresas.length) return <></>;
   return (

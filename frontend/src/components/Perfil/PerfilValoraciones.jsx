@@ -23,7 +23,7 @@ export default function PerfilValoraciones() {
 
   return (
     <Box>
-      <Typography variant="h4" sx={{ pt: "1.5rem" }}>
+      <Typography variant="h4" sx={{ width:"100%", m:"0 auto"}}>
         Valoraciones clientes
       </Typography>
       <Grid container className="valoraciones" spacing={2}>

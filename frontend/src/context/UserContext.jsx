@@ -43,7 +43,9 @@ export default function UserContextProvider({ children }) {
   const [currentCords, setCurrentCords] = useState([]);
   const [imagenCarrusel, setImagenCarrusel] = useState([])
   const [valoraciones, setValoraciones] = useState ([])
-  const [nuevaValoracion, setNuevaValoracion] = useState(false)
+  const [nuevaValoracion, setNuevaValoracion] = useState(false);
+
+  
   async function fetchPerfil() {
     const response = await fetch(`http://localhost:3000/perfil/${perfilCompleto}`)
     const data = await response.json()
