@@ -16,7 +16,7 @@ import Categorias from '../Categorias/Categorias'
 import { Box } from '@mui/material';
 import { useUserContext } from "../../context/UserContext";
 
-const sectionContainer = { p:"1rem",display: "flex", flexDirection: "column", alignItems: "center",width:"8rem", svg: { height: "60px", fontSize: "2.5rem" } }
+const sectionContainer = {pb:"0.5rem",display: "flex", flexDirection: "column", alignItems: "center",width:"8rem", svg: { height: "60px", fontSize: "2.5rem" } }
 
 const ICONOS = {
 
@@ -54,7 +54,7 @@ export default function NavSectores() {
     
     return (
         <Box sx={{width:"100%"}}>
-        <Box sx={{textTransform: "capitalize",display: "flex", columnGap: "1rem", width: "100%", justifyContent: "space-evenly", div: { ">p": { margin: "0 !important" } } }}>
+        <Box sx={{textTransform: "capitalize",display: "flex", columnGap: "2.1rem", width: "100%", justifyContent: "space-evenly",pt:"1.5rem", div: { ">p": { margin: "0 !important" } } }}>
                 {sectores.map((sector) => {
                    if (sector.NOMBRE_SECTOR !== "SIN SECTOR" ){
                         return (
@@ -67,7 +67,7 @@ export default function NavSectores() {
             }
             )}
         </Box>
-        <Box sx={{ display: "flex", columnGap: "1rem", pr: "1rem",pt:"1rem" ,minHeight:"86px" }}>
+        <Box sx={{ display: "flex", columnGap: "1rem", pr: "1rem",pt:"2rem",minHeight:"86px" }}>
                 <Categorias/>
             </Box>
             </Box>

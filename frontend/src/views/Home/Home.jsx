@@ -12,7 +12,9 @@ export default function Home() {
     <Box  sx={{ height: "100vh", header:{position:"static", top:0, zIndex:"100"}}}>
       <header className="mainWrap">
         <NavMain />
-        <NavSectores />
+        <Grid sx={{pl:"0 auto"}}>
+          <NavSectores />
+          </Grid>
       </header>
       <main className="mainWrap">
         <Grid container >

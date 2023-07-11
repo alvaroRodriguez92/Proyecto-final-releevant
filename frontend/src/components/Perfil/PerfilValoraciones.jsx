@@ -22,10 +22,8 @@ export default function PerfilValoraciones() {
    
 
   return (
-    <Box>
-      <Typography variant="h4" sx={{ width:"100%", m:"0 auto"}}>
-        Valoraciones clientes
-      </Typography>
+    
+      
       <Grid container className="valoraciones" spacing={2}>
         {valoraciones.length ? (
           valoraciones.map((item, i) => (
@@ -35,6 +33,6 @@ export default function PerfilValoraciones() {
           <h5>No hay valoraciones en este momento</h5>
         )}
       </Grid>
-    </Box>
+    
   );
 }

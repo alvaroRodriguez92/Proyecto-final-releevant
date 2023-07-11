@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import ToolsIcon from "../../assets/toolsicon.avif";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import Valoraciones from "../Valoraciones/Valoraciones";
-import { Grid } from "@mui/material";
+import { Grid,Typography } from "@mui/material";
 
 const styleLogin = {
   position: "absolute",
@@ -45,11 +45,19 @@ export default function ModalValoraciones() {
 
   return (
     <>
-      <Box sx={{display:"flex", width:"90%", justifyContent:"flex-end", m:"0 auto"}}>
+      
+      <Grid container>
+      <Grid item xs={6}>
+      <Typography variant="h4" sx={{ width:"100%", m:"0 auto"}}>
+        Valoraciones clientes
+        </Typography>
+        </Grid>
+        <Grid item xs={6} sx={{ textAlign:"end",pr:"4rem" }}>
       <Button variant="contained" onClick={handleOpen}>
         Agregar valoraciones
-        </Button>
-        </Box>
+          </Button>
+          </Grid>
+        </Grid>
       <Modal open={open} onClose={handleClose} aria-labelledby="child-modal-title" aria-describedby="child-modal-description">
         <Box sx={{ display: "flex", width: "100%",height:"100%",justifyContent: "center",alignItems: "center"}}>
           <Valoraciones onClose={handleClose}/>
