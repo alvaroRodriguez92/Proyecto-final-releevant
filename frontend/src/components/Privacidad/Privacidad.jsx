@@ -5,20 +5,7 @@ export default function Privacidad() {
   return (
     <>
       <Grid container sx={{ m: 2 }}>
-        <SignLanguageIcon fontSize="medium"  />
-        <Typography
-          variant="h5"
-          sx={{
-            fontSize: "1.25rem",
-            fontWeight: "700",
-            letterSpacing: ".3rem",
-            fontFamily: "openSans",
-            color: "white",
-            textAlign: "center",
-          }}
-        >
-          Solventum
-        </Typography>
+        <img  width="30%" src="../../src/assets/download.svg"/>
       </Grid>
       <Grid container>
         <Grid item>

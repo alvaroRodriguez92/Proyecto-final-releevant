@@ -50,7 +50,7 @@ valorController.addValor = async (req,res) => {
       try{
         const valor = await dao.addValor(newValor);
         if(!valor) return res.status(400).send("No se ha podido registrar la valoracion")
-        const valoraciones = await dao.getValorSinRespuesta(ID_COMENTADO)
+        const valoraciones = await dao.getValorByUser(ID_COMENTADO)
         return res.status(200).send(valoraciones)
    
       } catch (e) {

@@ -43,7 +43,7 @@ export default function EditComentarios() {
         await new Promise((resolve) => setTimeout(resolve, 2000));
         const data = await response.json()
         console.log(data)
-        setComentarios(data,"dataso")
+        setComentarios(data)
         setButonDesabilitado(false);
         setRespuesta("")
         console.log("INSERT EXITOSO")

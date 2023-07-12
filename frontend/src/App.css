@@ -35,8 +35,8 @@ padding-right: 5%;
   padding-top: 24px;
 max-width: 91.5%;
 margin:0 auto;
-padding-left: 5%;
-padding-right: 5%;
+/* padding-left: 5%;
+padding-right: 5%; */
 }
 .MuiTypography-root {
   font-family: "Ubuntu", serif !important;
@@ -230,9 +230,8 @@ form label {
 }
 .buttonAction {
   height: 20%;
-  
-
 }
+
 .headerImageView {
   width: 100%;
   height: 20rem;
@@ -388,31 +387,38 @@ main {
 }
 
 .splide__slide img {
-  max-width: 866px;
-  max-height: 553px;
-  width: 100%;
+  max-width: 1566px;
+  max-height: 593px;
+  width: 97%;
   height: 100%;
+  
 }
 div.splide__track{
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
 }
 .carruselContainer{
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-left: -3rem;
+  margin-left: -1.5rem;
   margin-top: 4rem;
   margin-bottom: 2rem;
+  padding-left: 20px;
+ 
+}
+.splide__arrow--prev{
+  left: 2em !important;
+
+}
+.splide__arrow--next{
+  right: 3em !important;
 }
 .valoraciones{
   padding-right: 4rem;
   padding-top: 3rem;
 }
 
-/* .link-sin{
-  text-decoration: none;
-} */
 .direccion{
   display: flex;
   margin-right: 82%;
@@ -477,3 +483,10 @@ div::-webkit-scrollbar-thumb {
   box-shadow: 4 5px black;
   transform: translateY(4px);
 }
+
+
+.spanValoraciones{
+  width: 100%;
+  color: red;
+}
+
