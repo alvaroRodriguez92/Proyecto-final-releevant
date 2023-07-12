@@ -23,7 +23,9 @@ const UserContext = createContext({
   setImagenCarrusel: () => { },
   valoraciones: {},
   setValoraciones: () => { },
-  fetchPerfil:() =>{}
+  fetchPerfil: () => { },
+  nuevaValoracion: false,
+  setNuevaValoracion: ()=>{}
 });
 
 export default function UserContextProvider({ children }) {
@@ -41,7 +43,7 @@ export default function UserContextProvider({ children }) {
   const [currentCords, setCurrentCords] = useState([]);
   const [imagenCarrusel, setImagenCarrusel] = useState([])
   const [valoraciones, setValoraciones] = useState ([])
-
+  const [nuevaValoracion, setNuevaValoracion] = useState(false)
   async function fetchPerfil() {
     const response = await fetch(`http://localhost:3000/perfil/${perfilCompleto}`)
     const data = await response.json()
@@ -104,7 +106,9 @@ export default function UserContextProvider({ children }) {
     setImagenCarrusel,
     valoraciones,
     setValoraciones,
-    fetchPerfil
+    fetchPerfil,
+    nuevaValoracion,
+    setNuevaValoracion
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }

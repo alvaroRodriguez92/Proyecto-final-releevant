@@ -13,7 +13,7 @@ import { useCardContext } from "../../context/CardContext";
 
 export default function CardEmpresas() {
   const { tipoServicio, setPerfilCompleto, currentCords } = useUserContext();
-  const { datosEmpresa, empresas, ratonOver } = useCardContext();
+  const { datosEmpresa, empresas, ratonOver, empVistas } = useCardContext();
 
   useEffect(() => {
     if (tipoServicio !== 0) datosEmpresa(tipoServicio);
@@ -34,24 +34,27 @@ export default function CardEmpresas() {
     return distancia;
   }
   async function handleClick(id) {
-    console.log("ESTO SE EJECUTA O NOOOO??")
-    console.log(id,"PROBANDO ID")
     await setPerfilCompleto(id);
   }
-console.log(empresas,"EMPRESAAS")
 
-  if (!empresas.length) return <></>;
+  if (!empVistas.length) return <></>;
   return (
     <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
       <Grid container spacing={3}>
-        {empresas.map((item, i) => (
+        {empVistas.map((item, i) => (
           
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6}>
             <Card
               className="contenedorHover"
-              sx={{ maxWidth: 345, border: "1px solid black", borderRadius: "20px", borderStyle: "groove", boxShadow: "9px 9px black",  transition: "all 0.3s",   backgroundImage: "linear-gradient(180deg, #BBC6C7 0, #CAD3D4 25%, #DAE0E2 50%, #EAEEEF 75%, #FAFCFC 100%)"
-            }}
-
+              sx={{
+                maxWidth: 345,
+                border: "1px solid black",
+                borderRadius: "20px",
+                borderStyle: "groove",
+                boxShadow: "9px 9px black",
+                transition: "all 0.3s",
+                backgroundImage: "linear-gradient(180deg, #BBC6C7 0, #CAD3D4 25%, #DAE0E2 50%, #EAEEEF 75%, #FAFCFC 100%)",
+              }}
               onMouseOver={() => ratonOver(i)}
               onMouseOut={() => ratonOver(i)}
             >
@@ -70,6 +73,7 @@ console.log(empresas,"EMPRESAAS")
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
+
                 <div onClick={() => handleClick(item.ID)}>
                   <Link to={`/perfil/${item.ID}`}>
                     {" "}
@@ -79,6 +83,7 @@ console.log(empresas,"EMPRESAAS")
                     </Button>
                   </Link>
                 </div>
+
               </CardActions>
             </Card>
           </Grid>

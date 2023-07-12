@@ -8,8 +8,6 @@ const valorController = {}
 valorController.getValorByUser = async (req, res) => {
     const { id } = req.params;
 
-    let valorRes =[]
-
     try {
       const valoraciones = await dao.getValorByUser(id);
       if (valoraciones.length <= 0)
@@ -36,7 +34,7 @@ valorController.getValorSinRespuesta = async (req,res) => {
 
 
 valorController.addValor = async (req,res) => {
-  //let data = {}  
+ 
   const {
         ID_COMENTADO,
         PUNTUACION,
@@ -54,16 +52,7 @@ valorController.addValor = async (req,res) => {
         if(!valor) return res.status(400).send("No se ha podido registrar la valoracion")
         const valoraciones = await dao.getValorSinRespuesta(ID_COMENTADO)
         return res.status(200).send(valoraciones)
-        // const user = await userDao.getUserById(id)
-        // const address = await addressDao.getAllAddress(id)
-        // const images = await imgDao.getImdByUser(id)
-
-        // data.user = user
-        // data.address = address 
-        // data.images = images
-        // return res.status(200).json(data)
-
-        //return res.status(200).send("Valoracion registrada")
+   
       } catch (e) {
         throw new Error(e.message);
       }
@@ -85,7 +74,9 @@ valorController.addRes = async (req,res) => {
       try{
         const respuesta = await dao.addRes(newRes);
         if(!respuesta) return res.status(400).send("No se ha podido registrar la respuesta")
+
         const valoraciones = await dao.getValorSinRespuesta(id);
+
 
         return res.status(200).send(valoraciones)
       } catch (e) {

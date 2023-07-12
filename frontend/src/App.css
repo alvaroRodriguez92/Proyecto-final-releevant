@@ -3,7 +3,7 @@ body {
   /* background-image: linear-gradient(180deg, #F2FBFF 0, #D3F3FE 25%, #AEE7F5 50%, #83D1DE 75%, #83D1DE 100%);
   background-repeat: no-repeat;
     background-attachment: fixed;  */
-  font-family: "ubuntu", serif !important;
+  font-family: "Ubuntu", serif !important;
 }
 
 body::-webkit-scrollbar {
