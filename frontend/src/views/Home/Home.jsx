@@ -5,8 +5,6 @@ import Map from "../../components/Map/Map";
 import CardEmpresas from "../../components/CardEmpresas/CardEmpresas";
 import { Grid, Box, Avatar } from "@mui/material";
 
-
-
 export default function Home() {
   return (
     <Box  sx={{ height: "100vh", header:{position:"static", top:0, zIndex:"100"}}}>
