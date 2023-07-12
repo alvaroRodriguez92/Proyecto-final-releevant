@@ -75,17 +75,17 @@ export default function Valoraciones({ onClose }) {
                 ></StarBorderIcon>
               )
             )}
-            <Grid container sx={{ width: "100%", m: "2rem 0" }}>
+            <Grid container sx={{ display:"flex",flexDirection:"column", width: "100%", m: "2rem 0" }}>
               <Grid item xs={12}>
                 <h5>Escribe tu comentario</h5>
                 <TextField
                   id="DESCRIPCION"
                   multiline
+                  row={2}
                   name="DESCRIPCION"
                   onChange={handleChange}
                   value={comments}
                   label="Comentario"
-                  size="small"
                   sx={{ width: "100%" }}
                 />
               </Grid>

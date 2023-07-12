@@ -25,7 +25,8 @@ const UserContext = createContext({
   setValoraciones: () => { },
   fetchPerfil: () => { },
   nuevaValoracion: false,
-  setNuevaValoracion: ()=>{}
+  setNuevaValoracion: () => { },
+  
 });
 
 export default function UserContextProvider({ children }) {
@@ -85,8 +86,9 @@ export default function UserContextProvider({ children }) {
   function logout() {
     localStorage.removeItem(user);
     setUser(null);
-
   }
+
+ 
 
   const value = {
     user,
@@ -110,7 +112,8 @@ export default function UserContextProvider({ children }) {
     setValoraciones,
     fetchPerfil,
     nuevaValoracion,
-    setNuevaValoracion
+    setNuevaValoracion,
+   
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
