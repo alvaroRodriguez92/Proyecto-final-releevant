@@ -27,19 +27,26 @@ export default function EditComentarios() {
     setRespuesta(e.target.value);
   }
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e, ID_VALORACION, ID_COMENTADOR, index) {
     e.preventDefault()
-    const response = await fetch("http://127.0.0.1:3000/address/", {
+    const response = await fetch("http://127.0.0.1:3000/valoraciones/respuesta", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ID_USER:user.ID, ...values}),
+        body: JSON.stringify({
+          id:user.ID,
+          ID_VALORACION: ID_VALORACION,
+          ID_COMENTADOR:ID_COMENTADOR,
+          RESPUESTA:respuesta,
+        }),
       });
       if (response.status === 200) {
         await new Promise((resolve) => setTimeout(resolve, 2000));
-        await cambioExitoso(editExitoso, index);
         const data = await response.json()
-        console.log(data,"RESPUESTA DEL INSERT")
-        // setAddressBloqueo(data)  
+        console.log(data)
+        setComentarios(data,"dataso")
+        setButonDesabilitado(false);
+        setRespuesta("")
+        console.log("INSERT EXITOSO")
       }   
     }
 
@@ -70,7 +77,7 @@ export default function EditComentarios() {
   console.log(comentarios);
 
   return (
-    <form className="form-register" onSubmit={(e)=>handleSubmit(e)}>
+    <form className="form-register" >
       <Box
         sx={{
           display: "flex",
@@ -113,7 +120,7 @@ export default function EditComentarios() {
                       onChange={(e) => onChange(e, index)}
                       sx={{ m: 1, width: "91%", ml: "9%", mt: 3 }}
                     />
-                    <Button variant="contained" sx={{ ml: "79%", my: 1, mr: 2 }} type="submit">Enviar</Button>
+                    <Button variant="contained" sx={{ ml: "79%", my: 1, mr: 2 }} type="submit" onClick={(e)=>handleSubmit(e, comentarios[index].ID, comentarios[index].ID_COMENTADOR,index)}>Enviar</Button>
                     <Button variant="contained" sx={{my: 1}} onClick={()=>cancelarRespuesta(index)}>Cancelar</Button>
                   </>
                 ) : butonDesabilitado ? (
