@@ -37,6 +37,10 @@ export default function CardEmpresas() {
     await setPerfilCompleto(id);
   }
 
+
+
+
+
   if (!empVistas.length) return <></>;
   return (
     <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
@@ -73,12 +77,10 @@ export default function CardEmpresas() {
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
-
-                <div onClick={() => handleClick(item.ID)}>
+                <div onClick={() => handleClick(item.ID)} >
                   <Link to={`/perfil/${item.ID}`}>
                     {" "}
-                    <Button className="button-material-hover" sx={{ pointerEvents:"none",boxShadow:"4px 4px black",borderRadius: "10px", mr: 1 }} variant="contained" size="small">
-
+                    <Button className="button-material-hover" sx={{ pointerEvents:"none",boxShadow:"4px 4px black",borderRadius: "10px", mr: 1}} variant="contained" size="small">
                       Ver mas
                     </Button>
                   </Link>
