@@ -8,7 +8,7 @@ import {Link} from "react-router-dom"
 export default function Nav() {
   const { user } = useUserContext();
   return (
-    <Box className="navmain">
+    <Box className="aaaaaaaaaaaaaaa">
       <Grid container spacing={2} sx={{pt:2,backgroundColor:"white"}}>
         <Grid item xs={2} sx={{ img: { width: "80%",pb:"1rem",pt:"1rem" } }} >
           <Link to="/">
@@ -16,7 +16,6 @@ export default function Nav() {
           </Link>
         </Grid>
         <Grid item xs={7}>
-
         </Grid>
         <Grid item xs={3} sx={{display:"flex", alignItems:"center", justifyContent: "space-around"}}>
         <Grid sx={{ pl: "0.5rem" }}>{user && <ToggleButton2 />}</Grid>

@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 export default function Valoraciones({ onClose }) {
   const [starsSelected, setStarsSelected] = useState(0);
   const [comments, setCommments] = useState("");
-  const {perfilCompleto,setPerfilCompleto, user, setNuevaValoracion} = useUserContext()
+  const { perfilCompleto, setPerfilCompleto, user, setNuevaValoracion, setValoraciones } = useUserContext();
+  const [warning, setWarning] = useState(false);
 
   const estrellas = [
     { nombre: "estrella1", valor: 1 },
@@ -18,29 +19,35 @@ export default function Valoraciones({ onClose }) {
     { nombre: "estrella5", valor: 5 },
   ];
 
-  
+  async function enviarDatos() {
+    if (comments.length > 8) {
+      const response = await fetch(`http://127.0.0.1:3000/valoraciones/coment`, {
+        method: "POST",
+        body: JSON.stringify({
+          ID_COMENTADO: perfilCompleto,
+          PUNTUACION: starsSelected,
+          COMENTARIO: comments,
+          ID_COMENTADOR: user?.ID,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setNuevaValoracion(true);
+      setValoraciones(data);
+      onClose();
+    } else {
+      setWarning(true)
+    }
+  }
+
+  function handleSubmit() {
+    enviarDatos();
+  }
+
   function handleChange(e) {
     setCommments(e.target.value);
-  }
-  async function enviarDatos() {
-    const response = await fetch(`http://127.0.0.1:3000/valoraciones/coment`, {
-      method: "POST",
-      body: JSON.stringify({
-        ID_COMENTADO: perfilCompleto,
-        PUNTUACION: starsSelected,
-        COMENTARIO: comments,
-        ID_COMENTADOR: user?.ID ,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      }
-    });
-    const data = await response.json();
-    if(data) setNuevaValoracion(true)
-  }
-  function handleSubmit() {
-    enviarDatos()
-    onClose();
   }
   return (
     <>
@@ -72,19 +79,10 @@ export default function Valoraciones({ onClose }) {
                 ></StarBorderIcon>
               )
             )}
-            <Grid container sx={{ width: "100%", m: "2rem 0" }}>
+            <Grid container sx={{ display: "flex", flexDirection: "column", width: "100%", m: "2rem 0" }}>
               <Grid item xs={12}>
                 <h5>Escribe tu comentario</h5>
-                <TextField
-                  id="DESCRIPCION"
-                  multiline
-                  name="DESCRIPCION"
-                  onChange={handleChange}
-                  value={comments}
-                  label="Comentario"
-                  size="small"
-                  sx={{ width: "100%" }}
-                />
+                <TextField id="DESCRIPCION" multiline row={2} name="DESCRIPCION" onChange={handleChange} value={comments} label="Comentario" sx={{ width: "100%" }} />
               </Grid>
             </Grid>
             <Box sx={{ display: "flex", width: "100%", justifyContent: "center" }}>
@@ -92,6 +90,9 @@ export default function Valoraciones({ onClose }) {
                 Enviar
               </Button>
             </Box>
+              <Grid item xs={12} sx={{mt:"2rem"}}>
+                {warning ? (<span className="spanValoraciones">La valoración debe contener un mínimo de 9 carácteres</span>) : ("")}
+                </Grid>
           </Box>
         </Grid>
       </Grid>

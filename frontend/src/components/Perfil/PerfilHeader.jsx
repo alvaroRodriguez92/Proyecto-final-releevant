@@ -85,7 +85,6 @@ export default function PerfilHeader() {
 
           <Box sx={{ ml: 10, display: "flex", justifyContent: "start", pt: "2rem", width: "100%" }}>
             <Typography variant="h5">{user[0]?.DESCRIPCION}</Typography>
-
           </Box>
         </Grid>
       </Grid>
