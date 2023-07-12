@@ -14,7 +14,7 @@ import Grid from "@mui/material/Grid";
 export default function CardValoraciones({ item }) {
   const stars = ["star1", "star2", "star3", "star4", "star5"];
   const rate = Number(item.PUNTUACION);
-
+  console.log(item, "ITEM")
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
       <Typography sx={{ fontSize: 18 }} variant="h6" gutterBottom>
@@ -28,7 +28,6 @@ export default function CardValoraciones({ item }) {
         }
       })}
 
-      {item.ID_COMENTADOR}
       <Typography variant="h5" sx={{ mb: "1rem", mt: "1rem" }}>
         {item.COMENTARIO}
       </Typography>
