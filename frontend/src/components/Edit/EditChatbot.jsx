@@ -9,8 +9,6 @@ const {user} = useUserContext()
 const [preguntasUser, setPreguntasUser] = useState(null)
 const [editExitoso, setEditExitoso] = useState([false]);
 
-
-
 useEffect(() => {
     async function fetchUser() {
       const response = await fetch("http://localhost:3000/chatbox/preguntas/" + user.ID);

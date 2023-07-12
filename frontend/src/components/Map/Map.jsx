@@ -5,6 +5,7 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useUserContext } from "../../context/UserContext";
 import "leaflet/dist/leaflet.css";
 
+
 const center = [36.726643, -4.442089]
 const zoom = 14
 
@@ -70,6 +71,7 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
          {currentCords.length > 0 && (
+
         <Marker position={currentCords} />
       )}
         {empresas.map((empresa) => (

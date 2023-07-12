@@ -6,6 +6,7 @@ import EditDatos from "./EditDatos";
 import EditDireccion from "./EditDireccion";
 import EditImagenes from "./EditImagenes";
 import EditChatbot from "./EditChatbot";
+import EditComentarios from "./EditComentarios"
 import ChartBar from "../ChartBar/ChartBar";
 import { MuiFileInput } from "mui-file-input";
 import { useState, useEffect } from "react";
@@ -25,7 +26,7 @@ function TabPanel(props) {
         {...other}
       >
         {value === index && (
-          <Box sx={{ p: 3 }}>
+          <Box>
             <Box>{children}</Box>
           </Box>
         )}
@@ -147,8 +148,9 @@ export default function Edit() {
             <Tab label="Datos de usuario" {...a11yProps(0)} />
             <Tab label="Direcciones" {...a11yProps(1)} />
             <Tab label="Imagenes" {...a11yProps(2)} />
-            <Tab label="Configuracion de Chatbot" {...a11yProps(3)} />
-            <Tab label="Visualizaciones de perfil" {...a11yProps(4)} />
+            <Tab label="Configuracion Chatbot" {...a11yProps(3)} />
+            <Tab label="Comentarios sin respuesta" {...a11yProps(4)} />
+            <Tab label="Visualizaciones de perfil" {...a11yProps(5)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
@@ -164,6 +166,9 @@ export default function Edit() {
         <EditChatbot/>
         </TabPanel>
         <TabPanel value={value} index={4}>
+        <EditComentarios/>
+        </TabPanel>
+        <TabPanel value={value} index={5}>
         <ChartBar/>
         </TabPanel>
       </Grid>
