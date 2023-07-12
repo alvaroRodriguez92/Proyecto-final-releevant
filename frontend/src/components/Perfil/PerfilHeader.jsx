@@ -37,38 +37,24 @@ export default function PerfilHeader() {
   const { user, address, images } = perfil;
   return (
     <>
-      <Grid container sx={{ mt: 4, display: "flex", flexDirection: "row" }}>
-        <Grid item xs={4}>
-          <Grid
-            container
-            sx={{ p: 1, pb: 4, border: "1px solid black", boxShadow: "5px 5px", alignItems: "center", borderRadius: "20px", display: "flex", flexDirection: "column" }}
-          >
-            <Grid
-              item
-              xs={8}
-              sx={{
-                m: "0 auto",
-                minWidth: "350px",
-                heigth: "100%",
-                maxWidth: "100%",
-                maxHeight: "8rem !important",
-                pt: "2rem",
-                pr: "2rem",
-                pb: "2rem",
-                img: { maxHeight: "7rem !important", borderRadius: "10px", width: "60%" },
-              }}
-            >
-              {images[0].IMG_NOMBRE ? <img src={`http://localhost:3000/imagenes/${images[0].IMG_NOMBRE}`} /> : null}
-            </Grid>
-            <Grid sx={{ mt: 3 }} item xs={10}>
-              <Box sx={{ mt: 1 }}>
-                <CallIcon sx={{ mr: 1 }}></CallIcon>
-                {user[0]?.TLF}
-              </Box>
-              <Box sx={{ mt: 1 }}>
-                <EmailIcon sx={{ mr: 1 }}></EmailIcon>
-                {user[0]?.EMAIL}
-              </Box>
+    <Grid container sx={{mt:4,display:"flex", flexDirection:"row"}}>
+    <Grid item xs={4}>
+      <Grid container sx={{backgroundImage: "linear-gradient(180deg, #CAD3D4 0, #CAD3D4 25%, #DAE0E2 50%, #EAEEEF 75%, #FAFCFC 100%)",p:1,pb:4,border:"1px solid black",boxShadow:"5px 5px",alignItems:"center", borderRadius:"20px",display:"flex", flexDirection:"column"}}>
+      
+
+      <Grid item xs={8} sx={{m:"0 auto",minWidth:"350px",heigth: "100%", maxWidth: "100%", maxHeight: "8rem !important", pt: "2rem",pr:"2rem",pb:"2rem", img: { maxHeight: "7rem !important", borderRadius: "10px", width: "60%" } }}>
+          {images[0].IMG_NOMBRE ? (<img src={`http://localhost:3000/imagenes/${images[0].IMG_NOMBRE}`} />): null}
+
+      </Grid>
+      <Grid sx={{mt:3}} item xs={10}>
+                <Box sx={{mt:1}}>
+                  <CallIcon sx={{mr:1}}></CallIcon>
+                  {user[0]?.TLF}
+                </Box>
+                <Box sx={{mt:1}}>
+                  <EmailIcon sx={{mr:1}}></EmailIcon>
+                  {user[0]?.EMAIL}
+                </Box>
 
               <Box sx={{ mt: 1 }}>
                 <HomeIcon sx={{ mr: 0.5 }}></HomeIcon> {`${address[0].TIPO_VIA} ${address[0].NOMBRE_VIA} ${address[0].NUMERO}  ${address[0].CP} ${address[0].PROVINCIA}`}

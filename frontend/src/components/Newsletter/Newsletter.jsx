@@ -29,8 +29,8 @@ export default function Newsletter({ color }) {
           />
           <Button
             variant="contained"
-            size="large"
-            sx={{ backgroundColor: "white", mt: 2, mb: 2 }}
+            size="medium"
+            sx={{ mt: 2, mb: 2, boxShadow:"8px 8px black" }}
           >
             Suscríbete
           </Button>
