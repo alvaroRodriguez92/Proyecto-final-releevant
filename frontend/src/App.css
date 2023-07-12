@@ -483,3 +483,8 @@ div::-webkit-scrollbar-thumb {
   box-shadow: 4 5px black;
   transform: translateY(4px);
 }
+
+.spanValoraciones{
+  width: 100%;
+  color: red;
+}
