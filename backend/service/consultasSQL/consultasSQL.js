@@ -38,8 +38,8 @@ AS CAT ON OFER.ID_CATEGORIA = CAT.ID;`
 /////////////////////////////
 
 //Consulta para obtener todas las valoraciones de un usuario y las respuestas
-queries.getValorByUser = `SELECT * FROM VALORACIONES LEFT JOIN (SELECT ID_VALORACION, RESPUESTA FROM RESPUESTAS) 
-AS R ON VALORACIONES.ID = R.ID_VALORACION 
+queries.getValorByUser = `VALORACIONES LEFT JOIN (SELECT ID_VALORACION, RESPUESTA FROM RESPUESTAS) 
+AS R ON VALORACIONES.ID = R.ID_VALORACION left join (select ID, NOMBRE from users) as u on VALORACIONES.ID_COMENTADOR = u.ID
 WHERE ID_COMENTADO = ?`
 queries.getValorSinRespuestas = `select valoraciones.ID, valoraciones.ID_COMENTADO, PUNTUACION, valoraciones.ID_COMENTADOR, COMENTARIO, respuestas.RESPUESTA
 from valoraciones left join respuestas on respuestas.ID_VALORACION = valoraciones.ID
