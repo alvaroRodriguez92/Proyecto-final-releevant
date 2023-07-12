@@ -1,4 +1,7 @@
 const dao = require("../service/dao/valorDao");
+const addressDao = require("../service/dao/addressDao")
+const imgDao = require("../service/dao/imgDao")
+const userDao = require("../service/dao/userDao")
 
 const valorController = {}
 
@@ -22,7 +25,7 @@ valorController.getValorSinRespuesta = async (req,res) => {
   console.log(id)
     try {
       const valoraciones = await dao.getValorSinRespuesta(id);
-      console.log(valoraciones)
+      
       if (valoraciones.length <= 0)
         return res.status(409).send("No hay comentarios de clientes"); 
       return res.status(200).send(valoraciones);
@@ -33,7 +36,8 @@ valorController.getValorSinRespuesta = async (req,res) => {
 
 
 valorController.addValor = async (req,res) => {
-    const {
+  //let data = {}  
+  const {
         ID_COMENTADO,
         PUNTUACION,
         COMENTARIO,
@@ -48,7 +52,18 @@ valorController.addValor = async (req,res) => {
       try{
         const valor = await dao.addValor(newValor);
         if(!valor) return res.status(400).send("No se ha podido registrar la valoracion")
-        return res.status(200).send("Valoracion registrada")
+        const valoraciones = await dao.getValorSinRespuesta(ID_COMENTADO)
+        return res.status(200).send(valoraciones)
+        // const user = await userDao.getUserById(id)
+        // const address = await addressDao.getAllAddress(id)
+        // const images = await imgDao.getImdByUser(id)
+
+        // data.user = user
+        // data.address = address 
+        // data.images = images
+        // return res.status(200).json(data)
+
+        //return res.status(200).send("Valoracion registrada")
       } catch (e) {
         throw new Error(e.message);
       }
