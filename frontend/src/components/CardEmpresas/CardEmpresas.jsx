@@ -13,7 +13,7 @@ import { useCardContext } from "../../context/CardContext";
 
 export default function CardEmpresas() {
   const { tipoServicio, setPerfilCompleto, currentCords } = useUserContext();
-  const { datosEmpresa, empresas, ratonOver } = useCardContext();
+  const { datosEmpresa, empresas, ratonOver, empVistas } = useCardContext();
 
   useEffect(() => {
     if (tipoServicio !== 0) datosEmpresa(tipoServicio);
@@ -34,17 +34,18 @@ export default function CardEmpresas() {
     return distancia;
   }
   async function handleClick(id) {
-    console.log("ESTO SE EJECUTA O NOOOO??")
-    console.log(id,"PROBANDO ID")
     await setPerfilCompleto(id);
   }
 
 
-  if (!empresas.length) return <></>;
+
+
+
+  if (!empVistas.length) return <></>;
   return (
     <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
       <Grid container spacing={3}>
-        {empresas.map((item, i) => (
+        {empVistas.map((item, i) => (
           
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6}>
             <Card

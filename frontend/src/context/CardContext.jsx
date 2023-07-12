@@ -12,14 +12,20 @@ const CardContext = createContext({
  setIndice: () =>{},
  buscarEmpresas: () => {},
  buscar:'',
- setBuscar: () => {}
+ setBuscar: () => {},
+ setVisibles: ()=> {},
+ visibles: null,
+ setEmpVistas: ()=> {},
+ empVistas: null,
 });
 
 export default function CardContextProvider({ children }) {
+    const [ empVistas, setEmpVistas] = useState([])
     const [ empresas,setEmpresas ] = useState([])
     const [ raton, setRaton ] = useState(false)
     const [ indice,setIndice ] = useState(0)
     const [ buscar, setBuscar ] = useState('')
+    const [visibles, setVisibles] = useState([])
  
     async function datosEmpresa(categoria) {
         let datos = []
@@ -64,7 +70,11 @@ export default function CardContextProvider({ children }) {
         setIndice,
         buscarEmpresas,
         buscar,
-        setBuscar
+        setBuscar,
+        setVisibles,
+        visibles,
+        setEmpVistas,
+        empVistas,
     };
 
     return <CardContext.Provider value={value}>{children}</CardContext.Provider>;
