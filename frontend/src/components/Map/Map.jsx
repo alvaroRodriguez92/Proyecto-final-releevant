@@ -1,7 +1,7 @@
 import Markers from "../../components/Markers/Markers";
 import { useCardContext } from "../../context/CardContext";
-import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
-import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { MapContainer, TileLayer, Marker} from "react-leaflet";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useUserContext } from "../../context/UserContext";
 import "leaflet/dist/leaflet.css";
 

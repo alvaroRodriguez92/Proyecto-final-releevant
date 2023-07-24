@@ -14,9 +14,9 @@ import {Link} from "react-router-dom"
 
 export default function ToggleButtons() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  
   const { logout, user } = useUserContext();
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -39,7 +39,6 @@ export default function ToggleButtons() {
         </Tooltip>
       </Box>
       </Button>
-
       <Menu
         anchorEl={anchorEl}
         id="account-menu"

@@ -20,7 +20,6 @@ valorController.getValorByUser = async (req, res) => {
 
 valorController.getValorSinRespuesta = async (req,res) => {
   const { id } = req.params;
-  console.log(id)
     try {
       const valoraciones = await dao.getValorSinRespuesta(id);
       
