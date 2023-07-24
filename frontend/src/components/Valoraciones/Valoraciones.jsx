@@ -4,6 +4,8 @@ import StarIcon from "@mui/icons-material/Star";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
 
 export default function Valoraciones({ onClose }) {
   const [starsSelected, setStarsSelected] = useState(0);
@@ -38,7 +40,7 @@ export default function Valoraciones({ onClose }) {
       setValoraciones(data);
       onClose();
     } else {
-      setWarning(true)
+      setWarning(true);
     }
   }
 
@@ -52,14 +54,17 @@ export default function Valoraciones({ onClose }) {
   return (
     <>
       <Grid container spacing={2} sx={{ width: "40rem", backgroundColor: "white" }}>
+        <IconButton onClick={onClose}>
+          <CloseIcon> </CloseIcon>
+        </IconButton>
         <Grid item xs={12} sx={{ display: "flex", alignItems: "center", justifyContent: "space-around" }}>
           <Box
             sx={{
-              height: "30rem",
+              height: "32rem",
               p: "3rem 0.5rem",
             }}
           >
-            <h5>Selecciona tu valoración</h5>
+            <h2>Selecciona tu valoración</h2>
             {estrellas?.map((estrella, i) =>
               starsSelected >= estrella.valor ? (
                 <StarIcon
@@ -67,7 +72,7 @@ export default function Valoraciones({ onClose }) {
                     setStarsSelected(estrella.valor);
                   }}
                   key={i}
-                  sx={{ color: "#ffc526" }}
+                  sx={{ width: "2em", height: "2em", color: "#ffc526" }}
                 ></StarIcon>
               ) : (
                 <StarBorderIcon
@@ -75,24 +80,25 @@ export default function Valoraciones({ onClose }) {
                     setStarsSelected(estrella.valor);
                   }}
                   key={i}
-                  sx={{ color: "#ffc526" }}
+                  sx={{ width: "2em", height: "2em", color: "#ffc526" }}
                 ></StarBorderIcon>
               )
             )}
-            <Grid container sx={{ display: "flex", flexDirection: "column", width: "100%", m: "2rem 0" }}>
+
+            <Grid container sx={{ display: "flex", flexDirection: "column", width: "100%", m: "4rem 0" }}>
               <Grid item xs={12}>
-                <h5>Escribe tu comentario</h5>
-                <TextField id="DESCRIPCION" multiline row={2} name="DESCRIPCION" onChange={handleChange} value={comments} label="Comentario" sx={{ width: "100%" }} />
+                <h2>Escribe tu comentario</h2>
+                <TextField id="DESCRIPCION" multiline row={12} name="DESCRIPCION" onChange={handleChange} value={comments} label="Comentario" sx={{ width: "100%" }} />
               </Grid>
             </Grid>
             <Box sx={{ display: "flex", width: "100%", justifyContent: "center" }}>
-              <Button variant="contained" onClick={handleSubmit} fullWidth sx={{ height: "40px", width: "40px" }}>
+              <Button variant="contained" onClick={handleSubmit} fullWidth sx={{ height: "50px", width: "100px", boxShadow: "6px 6px black" }}>
                 Enviar
               </Button>
             </Box>
-              <Grid item xs={12} sx={{mt:"2rem"}}>
-                {warning ? (<span className="spanValoraciones">La valoración debe contener un mínimo de 9 carácteres</span>) : ("")}
-                </Grid>
+            <Grid item xs={12} sx={{ mt: "2rem",mb:"8rem" }}>
+              {warning ? <span className="spanValoraciones">La valoración debe contener un mínimo de 9 carácteres</span> : ""}
+            </Grid>
           </Box>
         </Grid>
       </Grid>

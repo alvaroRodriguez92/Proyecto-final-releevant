@@ -8,7 +8,7 @@ import {Link} from "react-router-dom"
 export default function Nav() {
   const { user } = useUserContext();
   return (
-    <Box className="aaaaaaaaaaaaaaa">
+    <Box >
       <Grid container spacing={2} sx={{pt:2,backgroundColor:"white"}}>
         <Grid item xs={2} sx={{ img: { width: "80%",pb:"1rem",pt:"1rem" } }} >
           <Link to="/">
