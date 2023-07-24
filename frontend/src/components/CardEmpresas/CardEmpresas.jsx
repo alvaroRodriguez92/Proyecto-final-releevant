@@ -2,7 +2,6 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box, Grid } from "@mui/material";
@@ -13,7 +12,7 @@ import { useCardContext } from "../../context/CardContext";
 
 export default function CardEmpresas() {
   const { tipoServicio, setPerfilCompleto, currentCords } = useUserContext();
-  const { datosEmpresa, empresas, ratonOver, empVistas } = useCardContext();
+  const { datosEmpresa, ratonOver, empVistas } = useCardContext();
 
   useEffect(() => {
     if (tipoServicio !== 0) datosEmpresa(tipoServicio);
@@ -36,17 +35,11 @@ export default function CardEmpresas() {
   async function handleClick(id) {
     await setPerfilCompleto(id);
   }
-
-
-
-
-
   if (!empVistas.length) return <></>;
   return (
     <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
       <Grid container spacing={3}>
         {empVistas.map((item, i) => (
-          
           <Grid sx={{ height: "30rem" }} key={item.ID} item xs={6}>
             <Card
               className="contenedorHover"
@@ -77,15 +70,19 @@ export default function CardEmpresas() {
                 </Typography>
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
-                <div onClick={() => handleClick(item.ID)} >
+                <div onClick={() => handleClick(item.ID)}>
                   <Link to={`/perfil/${item.ID}`}>
                     {" "}
-                    <Button className="button-material-hover" sx={{ pointerEvents:"none",boxShadow:"4px 4px black",borderRadius: "10px", mr: 1}} variant="contained" size="small">
+                    <Button
+                      className="button-material-hover"
+                      sx={{ pointerEvents: "none", boxShadow: "4px 4px black", borderRadius: "10px", mr: 1 }}
+                      variant="contained"
+                      size="small"
+                    >
                       Ver mas
                     </Button>
                   </Link>
                 </div>
-
               </CardActions>
             </Card>
           </Grid>

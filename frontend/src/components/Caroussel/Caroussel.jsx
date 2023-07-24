@@ -1,6 +1,5 @@
 import { useUserContext } from "../../context/UserContext";
 import { useEffect } from "react";
-import { Box } from "@mui/material";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
