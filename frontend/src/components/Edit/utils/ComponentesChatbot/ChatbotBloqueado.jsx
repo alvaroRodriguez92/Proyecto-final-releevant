@@ -76,8 +76,14 @@ export default function ChatbotBloqueado({ setIsEditing, preguntasUser }) {
             </Box>
           );
         })}
-        <Button sx={{ ml: "81%", mt: 5 }} variant="contained" component="label" onClick={editarDatos}>
-          <EditIcon />
+        <Button
+          sx={{ ml: "72%", mt: 5 }}
+          variant="contained"
+          component="label"
+          onClick={editarDatos}
+        >
+          <EditIcon sx={{mr:1}}/>Editar
+
         </Button>
       </Box>
     </>
