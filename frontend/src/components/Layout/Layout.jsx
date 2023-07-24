@@ -1,24 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
-//import { Outlet, useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
-import {
-  Box,
-  Toolbar,
-  List,
-  Typography,
-  IconButton,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Avatar,
-  Menu,
-  Tooltip,
-  MenuItem,
-  Link,
-  Modal,
-} from "@mui/material";
+import { Box, Toolbar, List, Typography, IconButton, ListItem, ListItemButton, ListItemIcon, ListItemText, Avatar, Menu, Tooltip, MenuItem, Link, Modal } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -31,10 +14,6 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import ToolsIcon from "../../assets/toolsicon.avif";
 import { DRAWER_WIDTH } from "../../const/drawerWidth";
 import LoginForm from "../../components/LoginForm/LoginForm";
-//import { userMenu } from "../../const/userMenu";
-//import Link from "../ui/Link";
-//import { styleModal } from "../../theme/theme";
-//import { useAuthContext } from "../../contexts/AuthContext";
 
 const styleLogin = {
   position: "absolute",
@@ -59,7 +38,6 @@ export default function MiniDrawer() {
   const [typeMenu, setTypeMenu] = useState(0);
   let logo = "";
 
-  //const handleOpenLogin = () => setOpenLogin(true);
   const handleCloseLogin = () => setOpenLogin(false);
 
   useEffect(() => {
@@ -78,8 +56,6 @@ export default function MiniDrawer() {
     setTitleModal(title);
     setTypeMenu(type);
   }
-  // const { logout } = useAuthContext();
-  // const location = useLocation();
 
   function handleDrawer() {
     setOpen((currentState) => !currentState);
@@ -92,22 +68,15 @@ export default function MiniDrawer() {
   function closeSession() {
     setAnchorElUser(null);
     logout();
-    //logout();
   }
 
   function handleOpenUserMenu(event) {
     setAnchorElUser(event.currentTarget);
   }
-  console.log(user);
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar
-        position="fixed"
-        open={open}
-        drawerWidth={DRAWER_WIDTH}
-        sx={{ color: "#000002", backgroundColor: "transparent" }}
-      >
+      <AppBar position="fixed" open={open} drawerWidth={DRAWER_WIDTH} sx={{ color: "#000002", backgroundColor: "transparent" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -148,41 +117,22 @@ export default function MiniDrawer() {
                 onClose={handleCloseUserMenu}
               >
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <IconButton
-                    disable={!activar}
-                    aria-label="Login"
-                    sx={{ color: "#000000" }}
-                    onClick={() => handleOpenLogin(true, "Inicia sesion", 0)}
-                  >
+                  <IconButton disable={!activar} aria-label="Login" sx={{ color: "#000000" }} onClick={() => handleOpenLogin(true, "Inicia sesion", 0)}>
                     <LoginIcon /> <span> Iniciar Sesion</span>
                   </IconButton>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <IconButton
-                    disable={!activar}
-                    aria-label="Login"
-                    sx={{ color: "#000000" }}
-                    onClick={() => handleOpenLogin(true, "Registro", 1)}
-                  >
+                  <IconButton disable={!activar} aria-label="Login" sx={{ color: "#000000" }} onClick={() => handleOpenLogin(true, "Registro", 1)}>
                     <HowToRegIcon /> <span> Registro</span>
                   </IconButton>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <IconButton
-                    disable={activar}
-                    aria-label="Perfil"
-                    sx={{ color: "#000000" }}
-                  >
+                  <IconButton disable={activar} aria-label="Perfil" sx={{ color: "#000000" }}>
                     <LoginIcon /> <span> Perfil</span>
                   </IconButton>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <IconButton
-                    disable={activar}
-                    aria-label="Logout"
-                    sx={{ color: "#000000" }}
-                    onClick={closeSession}
-                  >
+                  <IconButton disable={activar} aria-label="Logout" sx={{ color: "#000000" }} onClick={closeSession}>
                     <LoginIcon /> <span> Logout</span>
                   </IconButton>
                 </MenuItem>
@@ -193,13 +143,7 @@ export default function MiniDrawer() {
       </AppBar>
       <Drawer variant="permanent" open={open} drawerWidth={DRAWER_WIDTH}>
         <DrawerHeader theme={theme}>
-          <IconButton onClick={handleDrawer}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
+          <IconButton onClick={handleDrawer}>{theme.direction === "rtl" ? <ChevronRightIcon /> : <ChevronLeftIcon />}</IconButton>
         </DrawerHeader>
 
         <List disablePadding>
@@ -211,8 +155,7 @@ export default function MiniDrawer() {
                 disablePadding
                 sx={{
                   display: "block",
-                  backgroundColor:
-                    location.pathname === path ? "#11065a" : null,
+                  backgroundColor: location.pathname === path ? "#11065a" : null,
                 }}
                 onClick={open && handleDrawer}
               >
@@ -233,10 +176,7 @@ export default function MiniDrawer() {
                     >
                       <Icon />
                     </ListItemIcon>
-                    <ListItemText
-                      primary={label}
-                      sx={{ opacity: open ? 1 : 0, color: "#000000" }}
-                    />
+                    <ListItemText primary={label} sx={{ opacity: open ? 1 : 0, color: "#000000" }} />
                   </ListItemButton>
                 </Link>
               </ListItem>
@@ -244,29 +184,14 @@ export default function MiniDrawer() {
           })}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 7 }}>
-        {/* <Outlet /> */}
-      </Box>
-      <Modal
-        open={openLogin}
-        onClose={handleCloseLogin}
-        aria-labelledby="modal-login-title"
-        aria-describedby="modal-login-description"
-        aria-loquesea="modal-login-loquesea"
-      >
+      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 7 }}></Box>
+      <Modal open={openLogin} onClose={handleCloseLogin} aria-labelledby="modal-login-title" aria-describedby="modal-login-description" aria-loquesea="modal-login-loquesea">
         <Box sx={styleLogin}>
-          <Typography
-            id="modal-login-title"
-            variant="h6"
-            component="h2"
-            color="#000000"
-          >
+          <Typography id="modal-login-title" variant="h6" component="h2" color="#000000">
             {titleModal}
           </Typography>
 
-          <Box id="modal-login-description">
-            {typeMenu === 0 ? <LoginForm /> : <RegisterForm />}
-          </Box>
+          <Box id="modal-login-description">{typeMenu === 0 ? <LoginForm /> : <RegisterForm />}</Box>
         </Box>
       </Modal>
     </Box>

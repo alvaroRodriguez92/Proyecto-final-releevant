@@ -1,7 +1,6 @@
-import { InputAdornment, TextField } from "@mui/material";
+import { InputAdornment, TextField,Button  } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
 import { useCardContext } from "../../context/CardContext";
 import { useUserContext } from "../../context/UserContext";
 
@@ -32,6 +31,7 @@ export default function Buscador() {
           placeholder="Inicia tu busqueda..."
           color="white"
           variant="filled"
+          defaultValue="Small"
           size="small"
           onChange={handleBuscar}
           sx={{

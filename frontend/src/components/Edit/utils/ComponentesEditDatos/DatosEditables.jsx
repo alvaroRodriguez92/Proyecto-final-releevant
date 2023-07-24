@@ -1,30 +1,18 @@
-import {
-  TextField,
-  Box,
-  Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Button,
-} from "@mui/material";
+import { TextField, Box, Grid, Button } from "@mui/material";
 import { Formik } from "formik";
 import { schema } from "../schemaDatos";
 
-import EditIcon from "@mui/icons-material/Edit";
-
 export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing }) {
-
   function cancelarEdit() {
     setIsEditing(false);
   }
-    
+
   return (
     <>
       {user?.map((item, index) => {
         return (
           <Formik
-          key={index}
+            key={index}
             validationSchema={schema}
             initialValues={{
               NOMBRE: item.NOMBRE,
@@ -41,7 +29,6 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
                   sx={{
                     display: "flex",
                     flexDirection: "column",
-                    //   border:"1px solid black",
                     borderRadius: 2,
                     alignItems: "center",
                     width: "100%",
@@ -56,12 +43,7 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
                   }}
                 >
                   <h3 className="titulos-form-datos">Datos de usuario</h3>
-                  <Grid
-                    container
-                    spacing={15}
-                    width="100%"
-                    sx={{ width: "100%" }}
-                  >
+                  <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
                     <Grid item xs={6}>
                       <TextField
                         className="input-form-normal"
@@ -93,12 +75,7 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
                       />
                     </Grid>
                   </Grid>
-                  <Grid
-                    container
-                    spacing={15}
-                    width="100%"
-                    sx={{ width: "100%" }}
-                  >
+                  <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
                     <Grid item xs={6}>
                       <TextField
                         id="TLF"
@@ -131,22 +108,13 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
                       />
                     </Grid>
                   </Grid>
-
-                  <Grid
-                    container
-                    spacing={15}
-                    width="100%"
-                    sx={{ width: "100%" }}
-                  >
+                  <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
                     <Grid item xs={6}>
                       <TextField
                         id="DESCRIPCION"
                         multiline
                         rows={4}
-                        error={
-                          props.errors.DESCRIPCION &&
-                          props.touched.DESCRIPCION
-                        }
+                        error={props.errors.DESCRIPCION && props.touched.DESCRIPCION}
                         focused
                         name="DESCRIPCION"
                         onChange={props.handleChange}
@@ -159,27 +127,17 @@ export default function DatosEditables({ user, onSubmit, isEditing, setIsEditing
                       />
                     </Grid>
                     <Grid item xs={2} sx={{ mt: "10%", ml: 2 }}>
-                      <Button
-                        variant="contained"
-                        component="label"
-                        onClick={() => onSubmit(props.values)}
-                        // type="submit"
-                      >
+                      <Button variant="contained" component="label" onClick={() => onSubmit(props.values)}>
                         Guardar
                       </Button>
                     </Grid>
                     <Grid item xs={2} sx={{ mt: "10%", ml: 2 }}>
-                      <Button
-                            variant="contained"
-                            component="label"
-                            onClick={cancelarEdit}
-                          >
-                            Cancelar
-                          </Button>
+                      <Button variant="contained" component="label" onClick={cancelarEdit}>
+                        Cancelar
+                      </Button>
                     </Grid>
                   </Grid>
                 </Box>
-
               </form>
             )}
           </Formik>
