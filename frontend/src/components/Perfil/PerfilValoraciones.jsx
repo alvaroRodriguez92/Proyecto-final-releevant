@@ -33,8 +33,8 @@ export default function PerfilValoraciones() {
     <Grid container className="valoraciones" spacing={2}>
       {valoraciones.length ? valoracionesPaginas.map((item, i) => <CardValoraciones key={i} item={item} />) : <h5>No hay valoraciones en este momento</h5>}
       </Grid>
-      <Grid container sx={{ display: "flex", justifyContent: "center", p: "2rem" }}>
-          <Pagination onChange={handleChange} count={totalPaginas} variant="outlined" color="primary" />
+      <Grid container sx={{ display: "flex", justifyContent: "center", p: "2rem"}}>
+          <Pagination onChange={handleChange} count={totalPaginas} variant="outlined"/>
         </Grid>
     </>
   );
