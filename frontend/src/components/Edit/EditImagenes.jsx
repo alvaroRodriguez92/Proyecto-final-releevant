@@ -14,7 +14,6 @@ export default function EditImagenes({ images }) {
     setearImagenesMap();
   }, [images]);
 
-  
   async function borrarFoto(ID, ID_USER, PATH) {
     const response = await fetch("http://127.0.0.1:3000/img/delete", {
       method: "DELETE",
@@ -22,24 +21,21 @@ export default function EditImagenes({ images }) {
       body: JSON.stringify({ ID: ID, ID_USER: ID_USER, PATH: PATH }),
     });
     if (response.status === 200) {
-      // await new Promise((resolve) => setTimeout(resolve, 2000));
       const data = await response.json();
       setImagenesMap(data);
     }
   }
 
   async function subirImagenes() {
-    let ID_USER = ""
+    let ID_USER = "";
     if (!images.length) {
-      ID_USER = images.ID_USER
+      ID_USER = images.ID_USER;
     } else {
-      
-       ID_USER = images[0].ID_USER;
+      ID_USER = images[0].ID_USER;
     }
     const formData = new FormData();
     formData.append("ID_USER", ID_USER);
     formData.append("TIPO", 0);
-
     imagenUser.map((item) => {
       formData.append("imagen", item);
     });
@@ -49,11 +45,8 @@ export default function EditImagenes({ images }) {
       body: formData,
     });
     if (response.status === 200) {
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
-
       const data = await response.json();
       setImagenesMap(data);
-
     }
   }
 
@@ -94,28 +87,18 @@ export default function EditImagenes({ images }) {
           />
         </Grid>
         <Grid item xs={4} sx={{ mt: 8 }}>
-          <Button
-            onClick={subirImagenes}
-            sx={{ mr: "80%", width: "50%", mt: 1 }}
-            variant="contained"
-          >
+          <Button onClick={subirImagenes} sx={{ mr: "80%", width: "50%", mt: 1 }} variant="contained">
             Subir imagenes
           </Button>
         </Grid>
       </Grid>
-
       <Grid container spacing={1} sx={{ mt: 3, ml: 9, mr: 9 }}>
         {imagenesMap
           ? imagenesMap?.map((item, index) => {
               if (item.TIPO == 0) {
                 return (
                   <Grid key={index} item xs={3}>
-                    <img
-                      className="edit-imagen"
-                      width="248px"
-                      height="248px"
-                      src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`}
-                    />
+                    <img className="edit-imagen" width="248px" height="248px" src={`http://localhost:3000/imagenes/${item.IMG_NOMBRE}`} />
                     <Button
                       sx={{
                         position: "relative",

@@ -21,6 +21,7 @@ export default function ToggleButtons2() {
         </Link>
       </Grid>
       <Grid item xs={6}>
+      <Link to={'/'}>
       <Button
         variant="outlined"
         onClick={logout}
@@ -29,6 +30,7 @@ export default function ToggleButtons2() {
         <LogoutIcon sx={{ mr: 1 }} />
         Logout
       </Button>
+      </Link>
     </Grid>
     </Grid>
   );

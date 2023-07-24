@@ -1,32 +1,17 @@
-import {
-  TextField,
-  Box,
-  Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Button,
-} from "@mui/material";
+import { TextField, Box, Grid, Select, MenuItem, FormControl, InputLabel, Button } from "@mui/material";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import { Formik, FieldArray } from "formik";
 import { schemaChatbot } from "../schemaChatbot";
 
-export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, borrarPregunta, setIsEditing, preguntasUser, initialValues}) {
-
-
+export default function ChatbotEditable({ setEditExitoso, editExitoso, onSubmit, borrarPregunta, setIsEditing, preguntasUser, initialValues }) {
   function cancelarEdit() {
     setIsEditing(false);
-    setEditExitoso([false])
+    setEditExitoso([false]);
   }
 
   return (
     <>
-      <Formik
-        validationSchema={schemaChatbot}
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-      >
+      <Formik validationSchema={schemaChatbot} initialValues={initialValues} onSubmit={onSubmit}>
         {(formik) => (
           <form className="form-register" onSubmit={formik.handleSubmit}>
             <Box
@@ -46,14 +31,12 @@ export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, b
                 position: "relative",
               }}
             >
-              <h3 className="titulos-form-direccion">
-                PREGUNTAS Y RESPUESTAS{" "}
-              </h3>
+              <h3 className="titulos-form-direccion">PREGUNTAS Y RESPUESTAS </h3>
               <FieldArray name="CHATBOT">
                 {({ push, remove }) => (
                   <>
                     {formik.values.CHATBOT?.map((item, index) => (
-                      <Box key={index} sx={{width:"100%"}}>
+                      <Box key={index} sx={{ width: "100%" }}>
                         <Grid
                           container
                           spacing={12}
@@ -76,12 +59,10 @@ export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, b
                               <Grid item xs={12}>
                                 <TextField
                                   id={`CHATBOT[${index}].PREGUNTA`}
-                                  // error={formik.errors.direcciones[index].tipoVia && formik.touched.direcciones[index].tipoVia}
                                   name={`CHATBOT[${index}].PREGUNTA`}
                                   onChange={formik.handleChange}
                                   onBlur={formik.handleBlur}
                                   value={formik.values.CHATBOT[index].PREGUNTA}
-                                  // helperText={formik.errors.tipoVia}
                                   label="Pregunta"
                                   size="small"
                                   sx={{ m: 1, width: "100%" }}
@@ -90,12 +71,10 @@ export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, b
                               <Grid item xs={12}>
                                 <TextField
                                   id={`CHATBOT[${index}].RESPUESTA`}
-                                  // error={formik.errors.direcciones[index].nombreVia && formik.touched.direcciones[index].nombreVia}
                                   name={`CHATBOT[${index}].RESPUESTA`}
                                   onChange={formik.handleChange}
                                   onBlur={formik.handleBlur}
                                   value={formik.values.CHATBOT[index].RESPUESTA}
-                                  // helperText={formik.values.direcciones[index].nombreVia}
                                   label="Respuesta"
                                   size="small"
                                   sx={{ m: 1, width: "100%" }}
@@ -104,11 +83,8 @@ export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, b
                             </Grid>
                           </Grid>
                           <Grid item xs={4}>
-                            
                             <FormControl fullWidth>
-                              <InputLabel id="demo-select-small-label">
-                                Pregunta relacionada
-                              </InputLabel>
+                              <InputLabel id="demo-select-small-label">Pregunta relacionada</InputLabel>
                               <Select
                                 labelId="demo-select-small-label"
                                 id={`CHATBOT[${index}].PADRE`}
@@ -119,51 +95,49 @@ export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, b
                                 fullWidth
                                 defaultValue={formik.values.CHATBOT[index].PADRE}
                               >
-                                <MenuItem value={0}>
-                                        Sin pregunta relacionada
-                                      </MenuItem>
-                                {preguntasUser?.map((item, index)=>{
-                                    return(
+                                <MenuItem value={0}>Sin pregunta relacionada</MenuItem>
+                                {preguntasUser?.map((item, index) => {
+                                  return (
                                     <MenuItem key={index} value={item.ID}>
-                                        {item.PREGUNTA}
-                                      </MenuItem>)
-                                    
+                                      {item.PREGUNTA}
+                                    </MenuItem>
+                                  );
                                 })}
-                                
                               </Select>
                             </FormControl>{" "}
                           </Grid>
                         </Grid>
-
                         <Grid container>
                           <Grid item xs={8} sx={{ ml: 6, mb: 5 }}>
                             <Button
                               sx={{ mt: 3, ml: 1, width: "15%" }}
                               variant="contained"
                               onClick={() => {
-                                borrarPregunta(formik.values.CHATBOT[index])
+                                borrarPregunta(formik.values.CHATBOT[index]);
                                 remove(index);
                               }}
                             >
                               Borrar
                             </Button>
-
                             <Button
                               sx={{ mt: 3, ml: 1, mr: 5, width: "15%" }}
                               variant="contained"
                               component="label"
-                              // onClick={()=>onSubmit(formik.values.DIRECCIONES[index],index)}
-                              onClick={()=>onSubmit(item, index)}
+                              onClick={() => onSubmit(item, index)}
                             >
                               Guardar
                             </Button>
-
-                            {editExitoso[index]?(<Box container sx={{mt:3, ml:1}}><span className="texto-exito">Cambios realizados con éxito</span></Box>):("")}
+                            {editExitoso[index] ? (
+                              <Box container sx={{ mt: 3, ml: 1 }}>
+                                <span className="texto-exito">Cambios realizados con éxito</span>
+                              </Box>
+                            ) : (
+                              ""
+                            )}
                           </Grid>
                         </Grid>
                       </Box>
                     ))}
-
                     <Button
                       sx={{ ml: "63%", width: "24%" }}
                       variant="contained"
@@ -171,7 +145,7 @@ export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, b
                         push({
                           PREGUNTA: "",
                           RESPUESTA: "",
-                          PADRE:""
+                          PADRE: "",
                         });
                       }}
                     >
@@ -188,12 +162,7 @@ export default function ChatbotEditable({setEditExitoso, editExitoso,onSubmit, b
                   </>
                 )}
               </FieldArray>
-              <Button
-                sx={{ ml: "77%", width: "10%", mt: 3 }}
-                variant="contained"
-                component="label"
-                onClick={cancelarEdit}
-              >
+              <Button sx={{ ml: "77%", width: "10%", mt: 3 }} variant="contained" component="label" onClick={cancelarEdit}>
                 Cancelar
               </Button>
             </Box>

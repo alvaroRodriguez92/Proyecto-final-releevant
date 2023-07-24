@@ -1,4 +1,3 @@
-
 async function fetchVisitas() {
   const response = await fetch("http://127.0.0.1:3000/visita/anual", {
     method: "POST",
@@ -14,7 +13,6 @@ async function fetchVisitas() {
 }
 
 const dataFetch = await fetchVisitas();
-
 const labels = [
   { Mes: "Enero" },
   { Mes: "Febrero" },
@@ -30,12 +28,8 @@ const labels = [
   { Mes: "Diciembre" },
 ];
 
-
-function elegirColor(){
-  
-  const numeroAleatorio = Math.floor(Math.random()*7)
-
-
+function elegirColor() {
+  const numeroAleatorio = Math.floor(Math.random() * 7);
   const coloresBar = [
     "rgba(255, 99, 132, 0.2)",
     "rgba(255, 159, 64, 0.2)",
@@ -46,8 +40,8 @@ function elegirColor(){
     "rgba(201, 203, 207, 0.2)",
   ];
   const coloresBorder = ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"];
-
   const colorfinal = { interior: [coloresBar[numeroAleatorio]], borde: [coloresBorder[numeroAleatorio]] };
+  
   return colorfinal;
 }
 
