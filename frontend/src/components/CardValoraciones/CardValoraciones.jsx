@@ -17,9 +17,16 @@ export default function CardValoraciones({ item }) {
   
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
-      <Typography sx={{ fontSize: 18 }} variant="h6" gutterBottom>
-        <Avatar></Avatar>
+      <Grid container sx={{display:"flex", flexDirection:"row"}}>
+        <Grid item xs={0.7}>
+        <Avatar/>
+        </Grid>
+        <Grid>
+      <Typography sx={{ fontSize: 22, mt:"2px" }} variant="h6" gutterBottom>
+      {item.NOMBRE}
       </Typography>
+      </Grid>
+      </Grid>
       {stars.map((star, i) => {
         if (rate === 0 || i > rate - 1) {
           return <StarBorderIcon key={i} sx={{ color: "#ffc526" }}></StarBorderIcon>;
