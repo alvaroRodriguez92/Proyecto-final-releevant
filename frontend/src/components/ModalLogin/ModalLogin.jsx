@@ -51,8 +51,8 @@ export default function ChildModal() {
 
     return (
         <React.Fragment>
-            <Button variant="outlined" sx={{ml:"70%",fontWeight: 700 }}
-onClick={handleOpen}><LoginIcon sx={{ mr: 1 }}/>Login</Button>
+            <Button variant="outlined" sx={{ml:"70%",fontWeight: 700 , p:"0.9rem 0.9rem", borderRadius: "16px", boxShadow:"0 0.2rem 0.2rem" }}
+                onClick={handleOpen}><LoginIcon sx={{ mr: 1 }}/>Login</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
