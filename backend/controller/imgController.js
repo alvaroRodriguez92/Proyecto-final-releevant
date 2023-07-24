@@ -16,7 +16,6 @@ imgController.addImg = async (req, res) => {
         ? [req.files.imagen]
         : req.files.imagen;
       for(const imagen of imagenes)  {
-        console.log(imagen.name);
         let uploadPath = path.join(
           __dirname,
           "../public/imagenes/" + imagen.name

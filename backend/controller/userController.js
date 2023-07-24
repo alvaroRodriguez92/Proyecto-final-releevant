@@ -306,14 +306,12 @@ userController.addImagen = async (req, res) => {
     });
     res.send("Imagen subido");
   } catch (e) {
-    console.log(e.error);
     return res.status(400).send(e.message);
   }
 };
 //controlador de login de usuario
 
 userController.loginUser = async (req, res) => {
-  console.log(req.body)
   const { email, password } = req.body;
   
   if (!email || !password) {
@@ -349,7 +347,6 @@ userController.loginUser = async (req, res) => {
     }
     return res.json({ ID, NOMBRE, EMAIL, TIPO, jwt });
   } catch (e) {
-    console.log(e.message);
     return res.status(500).send(e.message);
   }
 };
@@ -380,7 +377,6 @@ userController.deleteUser = async (req, res) => {
     
     return res.send(`Usuario con id ${req.params.id} eliminado`);
   } catch (e) {
-    console.log(e.message);
     return res.status(400).send(e.message);
   }
 };
@@ -397,7 +393,6 @@ userController.updateUser = async (req, res) => {
     return res.send(`Usuario con id ${req.params.id} modificado`);
 
   } catch (e) {
-    console.log(e.message);
     return res.status(400).send(e.message);
   }
 };
