@@ -141,12 +141,12 @@ export default function DatosBloqueados({
                   </Grid>
                   <Grid item xs={6}>
                     <Button
-                      sx={{ ml: "81%", mt: "25%" }}
+                      sx={{ ml: "72%", mt: "25%" }}
                       variant="contained"
                       component="label"
                       onClick={editarDatos}
                     >
-                      <EditIcon />
+                      <EditIcon sx={{mr:1}}/> Editar
                     </Button>
                   </Grid>
                 </Grid>

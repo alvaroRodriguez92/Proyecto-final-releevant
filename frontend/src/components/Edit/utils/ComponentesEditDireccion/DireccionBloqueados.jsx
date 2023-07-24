@@ -185,12 +185,12 @@ export default function DireccionBloqueados({setIsEditing, addressBloqueo }) {
         
 
         <Button
-          sx={{ ml: "81%", mt: 5 }}
+          sx={{ ml: "67%", mt: 2 }}
           variant="contained"
           component="label"
           onClick={editarDatos}
         >
-          <EditIcon />
+          <EditIcon sx={{mr:1}}/> Editar
         </Button>
       </Box>
       
