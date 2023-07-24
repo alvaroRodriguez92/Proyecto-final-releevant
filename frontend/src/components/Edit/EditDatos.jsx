@@ -7,13 +7,12 @@ export default function IntroduccionDatos({ user }) {
   const [isEditing, setIsEditing] = useState(false);
   const [usuarioFormik, setUsuarioFormik] = useState([]);
 
-
-  useEffect(()=>{
-    async function seteoUsuarioParaFormulario(){
-     setUsuarioFormik(user)
+  useEffect(() => {
+    async function seteoUsuarioParaFormulario() {
+      setUsuarioFormik(user);
     }
-     seteoUsuarioParaFormulario();
-  }, [user])
+    seteoUsuarioParaFormulario();
+  }, [user]);
 
   async function onSubmit(values) {
     const response = await fetch("http://localhost:3000/user/update/14", {
@@ -23,21 +22,19 @@ export default function IntroduccionDatos({ user }) {
     });
     if (response.status === 200) {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      setUsuarioFormik(await response.json())
-      
+      setUsuarioFormik(await response.json());
+
       setIsEditing(false);
     }
   }
 
   return (
-        <>
-          {isEditing ? (
-              <DatosEditables user={usuarioFormik} onSubmit={onSubmit} isEditing={isEditing} setIsEditing={setIsEditing} />
-              
-          ) : (
-              <DatosBloqueados usuarioFormik={usuarioFormik} isEditing={isEditing} setIsEditing={setIsEditing} />
-              
-          )}
-        </>
+    <>
+      {isEditing ? (
+        <DatosEditables user={usuarioFormik} onSubmit={onSubmit} isEditing={isEditing} setIsEditing={setIsEditing} />
+      ) : (
+        <DatosBloqueados usuarioFormik={usuarioFormik} isEditing={isEditing} setIsEditing={setIsEditing} />
+      )}
+    </>
   );
 }

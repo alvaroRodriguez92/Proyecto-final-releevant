@@ -2,31 +2,29 @@ import { useUserContext } from "../../context/UserContext";
 import { useFormik } from "formik";
 import { LoginFormSchema } from "./LoginFormSchema";
 import { initialValues } from "./utils/form";
-import { Box, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
-
-export default function BasicForm({closeModal=()=>{}}) {
+export default function BasicForm({ closeModal = () => {} }) {
   const { login, user } = useUserContext();
-  const {
-    values,
-    touched,
-    errors,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    isSubmitting,
-  } = useFormik({
+  const { values, touched, errors, handleChange, handleBlur, handleSubmit, isSubmitting } = useFormik({
     initialValues,
     validationSchema: LoginFormSchema,
     onSubmit: login,
   });
   return (
-
-    <Box sx={{height:"30rem", p: "3rem 0.5rem", input: { borderColor: "black", borderRadius: "10px",  }, button: { borderColor: "black", borderRadius: "10px", mt: "1rem" ,":hover": { backgroundColor: "grey", color: "white" } }, ".label-contraseña": { mt: "1rem" } }}>
+    <Box
+      sx={{
+        height: "30rem",
+        p: "3rem 0.5rem",
+        input: { borderColor: "black", borderRadius: "10px" },
+        button: { borderColor: "black", borderRadius: "10px", mt: "1rem", ":hover": { backgroundColor: "grey", color: "white" } },
+        ".label-contraseña": { mt: "1rem" },
+      }}
+    >
       <form onSubmit={handleSubmit}>
         <Box sx={{ p: "0.5rem", display: "flex", justifyContent: "center" }}>
-          <h2 >Iniciar Sesion</h2>
+          <h2>Iniciar Sesion</h2>
         </Box>
         <Box sx={{ p: "0.5rem" }}>
           <label htmlFor="email">Email</label>
@@ -43,7 +41,9 @@ export default function BasicForm({closeModal=()=>{}}) {
           {errors.email && touched.email && <p className="error">{errors.email}</p>}
         </Box>
         <Box sx={{ p: "0.5rem" }}>
-          <label className="label-contraseña" htmlFor="password">Contraseña</label>
+          <label className="label-contraseña" htmlFor="password">
+            Contraseña
+          </label>
           <input
             id="password"
             name="password"
@@ -54,20 +54,19 @@ export default function BasicForm({closeModal=()=>{}}) {
             onBlur={handleBlur}
             className={errors.password && touched.password ? "input-error" : ""}
           />
-          {errors.password && touched.password && (
-            <p className="error">{errors.password}</p>
-          )}
+          {errors.password && touched.password && <p className="error">{errors.password}</p>}
         </Box>
         <Box sx={{ p: "0.5rem" }}>
           <Button variant="contained" disabled={isSubmitting} type="submit">
-          Login
+            Login
           </Button>
-          </Box>
+        </Box>
       </form>
-      <Box sx={{mt:"3rem", textAlign:"center"}}>
-        <span>Si aun no estás registrado pincha <Link to="/registro">aquí</Link></span>
+      <Box sx={{ mt: "3rem", textAlign: "center" }}>
+        <span>
+          Si aun no estás registrado pincha <Link to="/registro">aquí</Link>
+        </span>
       </Box>
     </Box>
-
   );
 }

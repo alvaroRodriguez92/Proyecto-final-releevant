@@ -1,17 +1,7 @@
-import {
-  TextField,
-  Box,
-  Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Button,
-} from "@mui/material";
+import { TextField, Box, Grid, Select, MenuItem, FormControl, InputLabel, Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
-export default function ChatbotBloqueado({setIsEditing, preguntasUser}) {
-
+export default function ChatbotBloqueado({ setIsEditing, preguntasUser }) {
   function editarDatos() {
     setIsEditing(true);
   }
@@ -38,76 +28,55 @@ export default function ChatbotBloqueado({setIsEditing, preguntasUser}) {
         <h3 className="titulos-form-direccion">PREGUNTAS Y RESPUESTAS </h3>
         {preguntasUser?.map((item, index) => {
           return (
-            <Box key={index} sx={{width:"100%"}}>
-            <h5 className="direccion">Pregunta {index+1}</h5>
-
-            <Grid
-              container
-              spacing={12}
-              width="100%"
-              sx={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "row",
-                mb:8
-              }}
-            >
-              <Grid item xs={8}>
-                <Grid
-                  container
-                  sx={{
-                    display: "flex",
-                    width: "100%",
-                    flexDirection: "column",
-                  }}
-                >
-                  <Grid item xs={12}>
-                    <TextField
-                      disabled
-                      label={item.PREGUNTA}
-                      size="small"
-                      sx={{ m: 1, width: "100%" }}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      disabled
-                      label={item.RESPUESTA}
-                      size="small"
-                      sx={{ m: 1, width: "100%" }}
-                    />
+            <Box key={index} sx={{ width: "100%" }}>
+              <h5 className="direccion">Pregunta {index + 1}</h5>
+              <Grid
+                container
+                spacing={12}
+                width="100%"
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "row",
+                  mb: 8,
+                }}
+              >
+                <Grid item xs={8}>
+                  <Grid
+                    container
+                    sx={{
+                      display: "flex",
+                      width: "100%",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Grid item xs={12}>
+                      <TextField disabled label={item.PREGUNTA} size="small" sx={{ m: 1, width: "100%" }} />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField disabled label={item.RESPUESTA} size="small" sx={{ m: 1, width: "100%" }} />
+                    </Grid>
                   </Grid>
                 </Grid>
+                <Grid item xs={4}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-select-small-label">Pregunta relacionada</InputLabel>
+                    <Select labelId="demo-select-small-label" label="Pregunta relacionada" fullWidth disabled defaultValue="">
+                      {preguntasUser?.map((item, index) => {
+                        return (
+                          <MenuItem key={index} value={index}>
+                            {item.PREGUNTA}
+                          </MenuItem>
+                        );
+                      })}
+                    </Select>
+                  </FormControl>{" "}
+                </Grid>
               </Grid>
-              <Grid item xs={4}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-select-small-label">
-                    Pregunta relacionada
-                  </InputLabel>
-                  <Select
-                    labelId="demo-select-small-label"
-                    label="Pregunta relacionada"
-                    fullWidth
-                    disabled
-                    defaultValue=""
-                  >
-                    {preguntasUser?.map((item, index) => {
-                      return(
-                      <MenuItem key={index} value={index}>{item.PREGUNTA}</MenuItem>)
-                    })}
-                  </Select>
-                </FormControl>{" "}
-              </Grid>
-            </Grid>
             </Box>
           );
         })}
-        <Button
-          sx={{ ml: "81%", mt: 5 }}
-          variant="contained"
-          component="label"
-          onClick={editarDatos}
-        >
+        <Button sx={{ ml: "81%", mt: 5 }} variant="contained" component="label" onClick={editarDatos}>
           <EditIcon />
         </Button>
       </Box>
