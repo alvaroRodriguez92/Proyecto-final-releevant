@@ -31,7 +31,6 @@ export default function Buscador() {
           placeholder="Inicia tu busqueda..."
           color="white"
           variant="filled"
-          defaultValue="Small"
           size="small"
           onChange={handleBuscar}
           sx={{
