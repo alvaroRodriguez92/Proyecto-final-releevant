@@ -8,7 +8,6 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
-import { useUserContext } from "../../context/UserContext";
 import Grid from "@mui/material/Grid";
 
 export default function CardValoraciones({ item }) {
