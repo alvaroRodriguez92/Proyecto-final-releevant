@@ -21,6 +21,10 @@ export default function PerfilHeader() {
   const idPerfil = getLastItem(currentUrl);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     async function fetchLogo() {
       const response = await fetch("http://localhost:3000/img/logo/" + idPerfil);
       const data = await response.json();

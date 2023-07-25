@@ -23,6 +23,7 @@ const UserContext = createContext({
   setImagenCarrusel: () => { },
   valoraciones: {},
   setValoraciones: () => { },
+  setErrorMessage: () => { },
   fetchPerfil: () => { },
   nuevaValoracion: false,
   setNuevaValoracion: () => { },
@@ -72,19 +73,21 @@ export default function UserContextProvider({ children }) {
         "Content-Type": "application/json",
       }
     });
-    const data = await response.json();
-
     if (response.ok) {
+      const data = await response.json();
       localStorage.setItem("user", JSON.stringify({ ...data }));
       setUser({ ...data });
       setErrorMessage(null);
       actions.resetForm();
-    }
-    setErrorMessage("Las credenciales no son correctas");
+    } 
+      setErrorMessage("Los datos introducidos no son correctos, por favor inténtelo de nuevo.");
+
+    
   }
 
   function logout() {
-    localStorage.removeItem(user);
+    localStorage.removeItem("user");
+    setErrorMessage(null)
     setUser(null);
   }
 
@@ -95,6 +98,7 @@ export default function UserContextProvider({ children }) {
     login,
     logout,
     errorMessage,
+    setErrorMessage,
     section,
     setSection,
     tipoServicio,
@@ -112,7 +116,7 @@ export default function UserContextProvider({ children }) {
     setValoraciones,
     fetchPerfil,
     nuevaValoracion,
-    setNuevaValoracion,
+    setNuevaValoracion
    
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

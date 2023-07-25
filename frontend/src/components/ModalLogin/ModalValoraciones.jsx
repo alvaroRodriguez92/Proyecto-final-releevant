@@ -49,11 +49,13 @@ export default function ModalValoraciones() {
             Valoraciones clientes
           </Typography>
         </Grid>
-        <Grid item xs={6} sx={{ textAlign: "end", pr: "4rem", pt: "3rem", pb: "1rem" }}>
+
+        {(user) ? (<Grid item xs={6} sx={{ textAlign:"end",pr:"4rem",pt:"3rem",pb:"1rem" }}>
           <Button variant="contained" onClick={handleOpen}>
             Agregar valoraciones
           </Button>
-        </Grid>
+          </Grid>) : (<></>)}
+
       </Grid>
       <Modal open={open} onClose={handleClose} aria-labelledby="child-modal-title" aria-describedby="child-modal-description">
         <Box sx={{ display: "flex", width: "100%", height: "100%", justifyContent: "center", alignItems: "center" }}>
