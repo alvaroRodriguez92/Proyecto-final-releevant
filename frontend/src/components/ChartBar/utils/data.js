@@ -1,4 +1,3 @@
-
 async function fetchVisitas() {
   const response = await fetch("http://127.0.0.1:3000/visita/anual", {
     method: "POST",
@@ -14,7 +13,6 @@ async function fetchVisitas() {
 }
 
 const dataFetch = await fetchVisitas();
-
 const labels = [
   { Mes: "Enero" },
   { Mes: "Febrero" },

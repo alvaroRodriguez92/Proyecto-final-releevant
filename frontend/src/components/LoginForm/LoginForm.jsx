@@ -21,7 +21,7 @@ export default function BasicForm({closeModal=()=>{}}) {
     validationSchema: LoginFormSchema,
     onSubmit: login,
   });
-  
+
   return (
 
     <Box sx={{height:"30rem", p: "3rem 0.5rem", input: { borderColor: "black", borderRadius: "10px",  }, button: { borderColor: "black", borderRadius: "10px", mt: "1rem" ,":hover": { backgroundColor: "grey", color: "white" } }, ".label-contraseña": { mt: "1rem" } }}>

@@ -3,10 +3,7 @@ import Popups from "../Popups/Popups";
 import L from "leaflet";
 import localizadores from "../../assets/locations.png";
 
-// eslint-disable-next-line react/prop-types
 export default function Markers({ coordenadas, raton, ID }) {
- 
-
   const { id, lat, lng } = coordenadas;
   const miIco1 = new L.Icon({
     iconUrl: localizadores,
@@ -22,9 +19,9 @@ export default function Markers({ coordenadas, raton, ID }) {
     iconAnchor: [40, 60], // punto del icono que corresponde a la posición del marcador
     popupAnchor: [0, -40], // punto relativo al marcador desde donde se deberá abrir el popup
   });
-  function selectIcon(){
-    if(raton) return miIco2
-    else return miIco1
+  function selectIcon() {
+    if (raton) return miIco2;
+    else return miIco1;
   }
   if (!id) {
     return (

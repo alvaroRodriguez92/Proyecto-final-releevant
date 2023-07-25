@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { useUserContext } from "../../context/UserContext";
 import { useState, useEffect } from 'react';
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
@@ -30,8 +30,6 @@ export default function ChildModal() {
     let logo = "";
 
 
-
-
     useEffect(() => {
         if (!user) {
             setActivar(false);
@@ -54,8 +52,8 @@ export default function ChildModal() {
 
     return (
         <React.Fragment>
-            <Button variant="outlined" sx={{ml:"70%",fontWeight: 700 }}
-onClick={handleOpen}><LoginIcon sx={{ mr: 1 }}/>Login</Button>
+            <Button variant="outlined" sx={{ml:"70%",fontWeight: 700 , p:"0.9rem 0.9rem", borderRadius: "16px", boxShadow:"0 0.2rem 0.2rem" }}
+                onClick={handleOpen}><LoginIcon sx={{ mr: 1 }}/>Login</Button>
             <Modal
                 open={open}
                 onClose={handleClose}

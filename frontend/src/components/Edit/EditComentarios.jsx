@@ -4,10 +4,6 @@ import {
   TextField,
   Box,
   Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
   Button,
 } from "@mui/material";
 
@@ -46,15 +42,12 @@ export default function EditComentarios() {
         setComentarios(data)
         setButonDesabilitado(false);
         setRespuesta("")
-        console.log("INSERT EXITOSO")
       }   
     }
 
   function cancelarRespuesta(index){
     seteoRespondiendo(respondiendo, index, false);
     setButonDesabilitado(false);
-
-
   }
 
   async function seteoRespondiendo(array, indice, boolean) {
@@ -73,8 +66,6 @@ export default function EditComentarios() {
     }
     fetchComentarios();
   }, []);
-
-  console.log(comentarios);
 
   return (
     <form className="form-register" >

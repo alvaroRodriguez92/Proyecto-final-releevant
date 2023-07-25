@@ -1,53 +1,41 @@
-import { Box, Button, Grid, Tab, Tabs,Typography } from "@mui/material";
-import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import { Box, Button, Grid, Tab, Tabs } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import EditDatos from "./EditDatos";
 import EditDireccion from "./EditDireccion";
 import EditImagenes from "./EditImagenes";
 import EditChatbot from "./EditChatbot";
-import EditComentarios from "./EditComentarios"
+import EditComentarios from "./EditComentarios";
 import ChartBar from "../ChartBar/ChartBar";
 import { MuiFileInput } from "mui-file-input";
 import { useState, useEffect } from "react";
 import { useUserContext } from "../../context/UserContext";
-import PropTypes from 'prop-types';
-
+import PropTypes from "prop-types";
 
 function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box>
-            <Box>{children}</Box>
-          </Box>
-        )}
-      </div>
-    );
-  }
+  const { children, value, index, ...other } = props;
 
-  
+  return (
+    <div role="tabpanel" hidden={value !== index} id={`simple-tabpanel-${index}`} aria-labelledby={`simple-tab-${index}`} {...other}>
+      {value === index && (
+        <Box>
+          <Box>{children}</Box>
+        </Box>
+      )}
+    </div>
+  );
+}
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
 
-  TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
-  
-  function a11yProps(index) {
-    return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
-    };
-  }
+}
 
 export default function Edit() {
   const [infoUser, setInfoUser] = useState([]);
@@ -80,8 +68,6 @@ export default function Edit() {
     adquirirLogo();
   }, [infoUser]);
 
-  
-
   useEffect(() => {
     async function cambiarFoto() {
       const formData = new FormData();
@@ -108,18 +94,10 @@ export default function Edit() {
   }, [logo]);
 
   return (
-    <Grid container sx={{height: "auto", mt:8,mb:8 }}>
-
+    <Grid container sx={{ height: "auto", mt: 8, mb: 8 }}>
       <Grid item xs={3}>
-        <Box  sx={{ display: "flex", alignItems: "flex-end" }}>
-          {nombreLogo ? (
-            <img
-              className="edit-logo"
-              width="70%"
-              height="70%"
-              src={`http://localhost:3000/imagenes/${nombreLogo}`}
-            />
-          ) : null}
+        <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+          {nombreLogo ? <img className="edit-logo" width="70%" height="70%" src={`http://localhost:3000/imagenes/${nombreLogo}`} /> : null}
           <Button variant="contained" component="label">
             <MuiFileInput
               hidden
@@ -140,11 +118,7 @@ export default function Edit() {
       </Grid>
       <Grid item xs={8}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
+          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Datos de usuario" {...a11yProps(0)} />
             <Tab label="Direcciones" {...a11yProps(1)} />
             <Tab label="Imagenes" {...a11yProps(2)} />
@@ -154,22 +128,22 @@ export default function Edit() {
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
-        <EditDatos user={infoUser.user} />
+          <EditDatos user={infoUser.user} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-        <EditDireccion address={infoUser.address}/>
+          <EditDireccion address={infoUser.address} />
         </TabPanel>
         <TabPanel value={value} index={2}>
-        <EditImagenes images={infoUser.images} />
+          <EditImagenes images={infoUser.images} />
         </TabPanel>
         <TabPanel value={value} index={3}>
-        <EditChatbot/>
+          <EditChatbot />
         </TabPanel>
         <TabPanel value={value} index={4}>
-        <EditComentarios/>
+          <EditComentarios />
         </TabPanel>
         <TabPanel value={value} index={5}>
-        <ChartBar/>
+          <ChartBar />
         </TabPanel>
       </Grid>
     </Grid>
