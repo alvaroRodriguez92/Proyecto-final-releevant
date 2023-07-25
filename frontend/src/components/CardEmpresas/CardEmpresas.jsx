@@ -35,6 +35,7 @@ export default function CardEmpresas() {
   async function handleClick(id) {
     await setPerfilCompleto(id);
   }
+  
   if (!empVistas.length) return <></>;
   return (
     <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
@@ -65,9 +66,12 @@ export default function CardEmpresas() {
                 <Typography sx={{ p: { height: "6rem", overflowY: "auto" } }} variant="body2" color="text.secondary">
                   {item.DESCRIPCION}
                 </Typography>
-                <Typography gutterBottom variant="h6" component="div" sx={{ pt: "1.5rem" }}>
+                {(currentCords.length < 2)?(<></>):(
+                  <Typography gutterBottom variant="h6" component="div" sx={{ pt: "1.5rem" }}>
                   {distancia(currentCords, item)} Km de distancia
                 </Typography>
+                )}
+                
               </CardContent>
               <CardActions className="buttonAction" sx={{ justifyContent: "end" }}>
                 <div onClick={() => handleClick(item.ID)}>
