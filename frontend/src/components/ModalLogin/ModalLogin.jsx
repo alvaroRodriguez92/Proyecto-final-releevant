@@ -25,7 +25,7 @@ const styleLogin = {
 
 export default function ChildModal() {
     const [open, setOpen] = React.useState(false);
-    const { user, logout } = useUserContext();
+    const { user, logout, setErrorMessage } = useUserContext();
     const [activar, setActivar] = useState();
     let logo = "";
 
@@ -49,6 +49,7 @@ export default function ChildModal() {
     };
     const handleClose = () => {
         setOpen(false);
+        setErrorMessage(null)
     };
 
     return (

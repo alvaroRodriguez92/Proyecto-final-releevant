@@ -30,38 +30,25 @@ const labels = [
   { Mes: "Diciembre" },
 ];
 
-
-function elegirColor(){
-  
-  const numeroAleatorio = Math.floor(Math.random()*7)
-
-
-  const coloresBar = [
-    "rgba(255, 99, 132, 0.2)",
-    "rgba(255, 159, 64, 0.2)",
-    "rgba(255, 205, 86, 0.2)",
-    "rgba(75, 192, 192, 0.2)",
-    "rgba(54, 162, 235, 0.2)",
-    "rgba(153, 102, 255, 0.2)",
-    "rgba(201, 203, 207, 0.2)",
-  ];
-  const coloresBorder = ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"];
-
-  const colorfinal = { interior: [coloresBar[numeroAleatorio]], borde: [coloresBorder[numeroAleatorio]] };
-  return colorfinal;
-}
+const coloresBar = [
+  "rgba(255, 205, 86, 0.2)",
+  "rgba(75, 192, 192, 0.2)",
+  "rgba(54, 162, 235, 0.2)",
+  "rgba(153, 102, 255, 0.2)",
+  "rgba(201, 203, 207, 0.2)",
+];
+const coloresBorder = [ "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"];
 
 export const data = {
   labels: labels.map((i) => {
     return i.Mes;
   }),
-  datasets: dataFetch.map((item) => {
-    const colorDefinitivo = elegirColor();
+  datasets: dataFetch.map((item, index) => {
     return {
       label: `Visitas en ${item.year}`,
       data: item.data,
-      backgroundColor: colorDefinitivo.interior,
-      borderColor: colorDefinitivo.borde,
+      backgroundColor: coloresBar[index],
+      borderColor: coloresBorder[index],
       borderWidth: 1,
     };
   }),

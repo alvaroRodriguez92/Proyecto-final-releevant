@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function BasicForm({closeModal=()=>{}}) {
-  const { login, user } = useUserContext();
+  const { login, user, errorMessage } = useUserContext();
   const {
     values,
     touched,
@@ -21,6 +21,7 @@ export default function BasicForm({closeModal=()=>{}}) {
     validationSchema: LoginFormSchema,
     onSubmit: login,
   });
+  
   return (
 
     <Box sx={{height:"30rem", p: "3rem 0.5rem", input: { borderColor: "black", borderRadius: "10px",  }, button: { borderColor: "black", borderRadius: "10px", mt: "1rem" ,":hover": { backgroundColor: "grey", color: "white" } }, ".label-contraseña": { mt: "1rem" } }}>
@@ -57,6 +58,7 @@ export default function BasicForm({closeModal=()=>{}}) {
           {errors.password && touched.password && (
             <p className="error">{errors.password}</p>
           )}
+          {errorMessage?(<span className="errorMessage">{errorMessage}</span>):(null)}
         </Box>
         <Box sx={{ p: "0.5rem" }}>
           <Button variant="contained" disabled={isSubmitting} type="submit">
