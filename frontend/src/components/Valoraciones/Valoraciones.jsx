@@ -10,7 +10,13 @@ import IconButton from "@mui/material/IconButton";
 export default function Valoraciones({ onClose }) {
   const [starsSelected, setStarsSelected] = useState(0);
   const [comments, setCommments] = useState("");
-  const { perfilCompleto, setPerfilCompleto, user, setNuevaValoracion, setValoraciones } = useUserContext();
+  const {
+    perfilCompleto,
+    setPerfilCompleto,
+    user,
+    setNuevaValoracion,
+    setValoraciones,
+  } = useUserContext();
   const [warning, setWarning] = useState(false);
 
   const estrellas = [
@@ -23,18 +29,21 @@ export default function Valoraciones({ onClose }) {
 
   async function enviarDatos() {
     if (comments.length > 8) {
-      const response = await fetch(`http://127.0.0.1:3000/valoraciones/coment`, {
-        method: "POST",
-        body: JSON.stringify({
-          ID_COMENTADO: perfilCompleto,
-          PUNTUACION: starsSelected,
-          COMENTARIO: comments,
-          ID_COMENTADOR: user?.ID,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `http://127.0.0.1:3000/valoraciones/coment`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            ID_COMENTADO: perfilCompleto,
+            PUNTUACION: starsSelected,
+            COMENTARIO: comments,
+            ID_COMENTADOR: user?.ID,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       setNuevaValoracion(true);
       setValoraciones(data);
@@ -53,14 +62,27 @@ export default function Valoraciones({ onClose }) {
   }
   return (
     <>
-      <Grid container spacing={2} sx={{ width: "40rem", backgroundColor: "white" }}>
+      <Grid
+        container
+        spacing={2}
+        sx={{ width: "50rem", backgroundColor: "white" }}
+      >
         <IconButton onClick={onClose}>
           <CloseIcon> </CloseIcon>
         </IconButton>
-        <Grid item xs={12} sx={{ display: "flex", alignItems: "center", justifyContent: "space-around" }}>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <Box
             sx={{
-              height: "32rem",
+              width: "28rem",
+              height: "38rem",
               p: "3rem 0.5rem",
             }}
           >
@@ -85,19 +107,55 @@ export default function Valoraciones({ onClose }) {
               )
             )}
 
-            <Grid container sx={{ display: "flex", flexDirection: "column", width: "100%", m: "4rem 0" }}>
+            <Grid
+              container
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+                m: "4rem 0",
+              }}
+            >
               <Grid item xs={12}>
                 <h2>Escribe tu comentario</h2>
-                <TextField id="DESCRIPCION" multiline row={12} name="DESCRIPCION" onChange={handleChange} value={comments} label="Comentario" sx={{ width: "100%" }} />
+              </Grid>
+              <Grid item xs={12} sx={{ mt: 2 }}>
+                <TextField
+                  id="DESCRIPCION"
+                  multiline
+                  rows={4}
+                  name="DESCRIPCION"
+                  onChange={handleChange}
+                  value={comments}
+                  label="Comentario"
+                  sx={{ width: "100%" }}
+                />
               </Grid>
             </Grid>
-            <Box sx={{ display: "flex", width: "100%", justifyContent: "center" }}>
-              <Button variant="contained" onClick={handleSubmit} fullWidth sx={{ height: "50px", width: "100px", boxShadow: "6px 6px black" }}>
+            <Box
+              sx={{ display: "flex", width: "100%", justifyContent: "start" }}
+            >
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+                fullWidth
+                sx={{
+                  height: "50px",
+                  width: "100px",
+                  boxShadow: "6px 6px black",
+                }}
+              >
                 Enviar
               </Button>
             </Box>
-            <Grid item xs={12} sx={{ mt: "2rem",mb:"8rem" }}>
-              {warning ? <span className="spanValoraciones">La valoración debe contener un mínimo de 9 carácteres</span> : ""}
+            <Grid item xs={12} sx={{ mt: "2rem", mb: "8rem" }}>
+              {warning ? (
+                <span className="spanValoraciones">
+                  La valoración debe contener un mínimo de 9 carácteres
+                </span>
+              ) : (
+                ""
+              )}
             </Grid>
           </Box>
         </Grid>

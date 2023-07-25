@@ -52,8 +52,14 @@ export default function DatosBloqueados({ usuarioFormik, isEditing, setIsEditing
                     <TextField id="DESCRIPCION" multiline rows={4} name="DESCRIPCION" disabled value={item.DESCRIPCION} size="small" sx={{ m: 1, width: "100%" }} />
                   </Grid>
                   <Grid item xs={6}>
-                    <Button sx={{ ml: "81%", mt: "25%" }} variant="contained" component="label" onClick={editarDatos}>
-                      <EditIcon />
+                    <Button
+                      sx={{ ml: "72%", mt: "25%" }}
+                      variant="contained"
+                      component="label"
+                      onClick={editarDatos}
+                    >
+                      <EditIcon sx={{mr:1}}/> Editar
+
                     </Button>
                   </Grid>
                 </Grid>
