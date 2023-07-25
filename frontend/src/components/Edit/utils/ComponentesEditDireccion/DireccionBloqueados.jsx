@@ -88,8 +88,8 @@ export default function DireccionBloqueados({ setIsEditing, addressBloqueo }) {
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          </Box>)
+        </Box>
+        )
         })}
         
 
