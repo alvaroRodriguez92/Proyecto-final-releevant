@@ -5,6 +5,10 @@ import Avatar from "@mui/material/Avatar";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 
+import Grid from "@mui/material/Grid";
+
+
+
 export default function CardValoraciones({ item }) {
   const stars = ["star1", "star2", "star3", "star4", "star5"];
   const rate = Number(item.PUNTUACION);
