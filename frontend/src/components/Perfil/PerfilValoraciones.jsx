@@ -1,4 +1,4 @@
-import { Typography, Box,Grid} from "@mui/material";
+import { Grid} from "@mui/material";
 import CardValoraciones from "../CardValoraciones/CardValoraciones";
 import { useUserContext } from "../../context/UserContext";
 import { useEffect, useState } from "react";

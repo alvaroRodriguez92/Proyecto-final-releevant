@@ -7,19 +7,6 @@ import IntroduccionDatos from "../RegisterForm/IntroduccionDatos";
 import Localizacion from "../RegisterForm/Localizacion";
 import LogoFotos from "../RegisterForm/LogoFotos";
 
-import {
-  TextField,
-  Box,
-  Button,
-  Typography,
-  Grid,
-  Link,
-  Select,
-  MenuItem,
-  FormControl, 
-  InputLabel
-} from "@mui/material";
-
 const steps = ["Introducción de datos", "Localización", "Logo/Fotos"];
 
 async function onSubmit(values, actions) {

@@ -1,5 +1,4 @@
 import PersonIcon from "@mui/icons-material/Person";
-//import SettingsIcon from "@mui/icons-material/Settings";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 
