@@ -4,9 +4,6 @@ import { Grid, Link } from "@mui/material";
 import HttpIcon from "@mui/icons-material/Http";
 import EmailIcon from "@mui/icons-material/Email";
 import HomeIcon from "@mui/icons-material/Home";
-//import Spinner from "../Spinner/Spinner";
-
-//import { alignProperty } from "@mui/material/styles/cssUtils";
 
 export default function Popups(id) {
   const [data, setData] = useState([]);
@@ -20,8 +17,6 @@ export default function Popups(id) {
     }
     getData();
   }, []);
-
-  //if (loading) return <Spinner />;
 
   return (
     <Popup width={"auto"}>

@@ -1,6 +1,5 @@
-import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
-import AdbIcon from "@mui/icons-material/Adb";
-import SignLanguageIcon from '@mui/icons-material/SignLanguage';
+import { Grid, List, ListItem, ListItemText } from "@mui/material";
+
 export default function Privacidad() {
   return (
     <>
