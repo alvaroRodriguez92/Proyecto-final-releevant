@@ -66,7 +66,7 @@ queries.addPreguntaRespuesta = `INSERT INTO chatbox SET ?`
 //Query de borrado de pregunta y respuesta en chatbox
 queries.deletePreguntaRespuesta = `DELETE FROM CHATBOX WHERE ID = ?`
 //Query de actualizado de preguntas y respuesta
-queries.updatePreguntaRespuesta = `UPDATE chatbox SET ? WHERE id = ?`
+queries.updatePreguntaRespuesta = `UPDATE CHATBOX SET ? WHERE id = ?`
 
 ////////////////////////////
 //CONSULTAS DE DIRECCIONES//
