@@ -1,6 +1,5 @@
 const db = require("../mysql");
-// const utils = require("../../utils/utils");
-// const queries = require("../consultasSQL/consultasSQL");
+
 
 const sectorQueries = {};
 
