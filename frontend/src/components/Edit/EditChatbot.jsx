@@ -57,7 +57,7 @@ export default function EditChatbot() {
       const response = await fetch("http://127.0.0.1:3000/chatbox//deletepreguntarespuesta", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ID: user.ID, ID_USER: user.ID }),
+        body: JSON.stringify({ ID: values.ID, ID_USER: user.ID }),
       });
       if (response.status === 200) {
         await new Promise((resolve) => setTimeout(resolve, 2000));

@@ -1,4 +1,5 @@
 import { useContext, useState, createContext } from "react";
+import Swal from "sweetalert2";
 
 const UserContext = createContext({
   login: () => { },
@@ -77,6 +78,13 @@ export default function UserContextProvider({ children }) {
       const data = await response.json();
       localStorage.setItem("user", JSON.stringify({ ...data }));
       setUser({ ...data });
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `Bienvenid@ ${data.NOMBRE}`,
+        showConfirmButton: false,
+        timer: 1500
+      })
       setErrorMessage(null);
       actions.resetForm();
     } 
