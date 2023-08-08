@@ -4,9 +4,7 @@ import { Grid, Link } from "@mui/material";
 import HttpIcon from "@mui/icons-material/Http";
 import EmailIcon from "@mui/icons-material/Email";
 import HomeIcon from "@mui/icons-material/Home";
-//import Spinner from "../Spinner/Spinner";
-
-//import { alignProperty } from "@mui/material/styles/cssUtils";
+import LinkIcon from '@mui/icons-material/Link';
 
 export default function Popups(id) {
   const [data, setData] = useState([]);
@@ -21,8 +19,6 @@ export default function Popups(id) {
     getData();
   }, []);
 
-  //if (loading) return <Spinner />;
-
   return (
     <Popup width={"auto"}>
       {data.map((datos) => {
@@ -30,33 +26,34 @@ export default function Popups(id) {
           <Grid contained key={datos.NOMBRE}>
             <h3>{datos.NOMBRE}</h3>
             <Grid contained>
-              <Grid item md={3} xs={12}>
+              <Grid sx={{p:3}} item md={3} xs={12}>
                 <img
-                  src={`http://localhost:3000/logo/${datos.FOTO}`}
+                  src={`http://localhost:3000/imagenes/${datos.FOTO}`}
                   alt={datos.NOMBRE}
                   width={200}
                 />
               </Grid>
-              <Grid item md={9} xs={12}>
-                <Grid contained>
+              <Grid sx={{width:"100%", maxWidth:"100%"}} item md={12} xs={12}>
+                <Grid sx={{width:"100%"}} contained>
                   <Grid flexDirection={"column"} alignItems={"center"}>
-                    <Grid>
+                    <Grid sx={{p:1}}>
                       <span>
-                        <HttpIcon />
+                        {/* <HttpIcon /> */}
+                        <LinkIcon sx={{mr:1}}/>
                         <Link to={datos.URL} underline="none">
                           <span> {datos.URL}</span>
                         </Link>
                       </span>
                     </Grid>
-                    <Grid alignItems={"center"}>
+                    <Grid sx={{p:1}} alignItems={"center"}>
                       <span>
-                        <EmailIcon />
+                        <EmailIcon sx={{mr:1}}/>
                         {datos.EMAIL}
                       </span>
                     </Grid>
-                    <Grid>
+                    <Grid width="100%" sx={{p:1}}>
                       <span>
-                        <HomeIcon /> {datos.TIPO_VIA} {datos.NOMBRE_VIA}{" "}
+                        <HomeIcon sx={{mr:0.5}}/> {datos.TIPO_VIA} {datos.NOMBRE_VIA}{" "}
                         {datos.NUMERO}
                       </span>
                     </Grid>

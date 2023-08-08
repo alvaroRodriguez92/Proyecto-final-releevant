@@ -11,7 +11,7 @@ import WebIcon from "@mui/icons-material/Web";
 import EmailIcon from "@mui/icons-material/Email";
 
 export default function PerfilHeader() {
-  const { perfil, setPerfil, perfilCompleto, fetchPerfil } = useUserContext();
+  const { perfil, perfilCompleto, fetchPerfil } = useUserContext();
   const [logoPerfil, setLogoPerfil] = useState(null);
 
   const getLastItem = (thePath) => thePath.substring(thePath.lastIndexOf("/") + 1);

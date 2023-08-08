@@ -40,7 +40,7 @@ AS CAT ON OFER.ID_CATEGORIA = CAT.ID;`
 //Consulta para obtener todas las valoraciones de un usuario y las respuestas
 queries.getValorByUser = `SELECT * FROM VALORACIONES LEFT JOIN (SELECT ID_VALORACION, RESPUESTA FROM RESPUESTAS) 
 AS R ON VALORACIONES.ID = R.ID_VALORACION left join (select ID, NOMBRE from users) as u on VALORACIONES.ID_COMENTADOR = u.ID
-WHERE ID_COMENTADO = ?`
+WHERE ID_COMENTADO = ? order by VALORACIONES.ID desc`
 queries.getValorSinRespuestas = `select valoraciones.ID, valoraciones.ID_COMENTADO, PUNTUACION, valoraciones.ID_COMENTADOR, COMENTARIO, respuestas.RESPUESTA
 from valoraciones left join respuestas on respuestas.ID_VALORACION = valoraciones.ID
 where ID_COMENTADO = ? and isnull(respuestas.RESPUESTA) `
@@ -66,7 +66,7 @@ queries.addPreguntaRespuesta = `INSERT INTO chatbox SET ?`
 //Query de borrado de pregunta y respuesta en chatbox
 queries.deletePreguntaRespuesta = `DELETE FROM CHATBOX WHERE ID = ?`
 //Query de actualizado de preguntas y respuesta
-queries.updatePreguntaRespuesta = `UPDATE chatbox SET ? WHERE id = ?`
+queries.updatePreguntaRespuesta = `UPDATE CHATBOX SET ? WHERE id = ?`
 
 ////////////////////////////
 //CONSULTAS DE DIRECCIONES//
