@@ -90,12 +90,14 @@ chatboxQueries.addPreguntaRespuessta = async(newItem) => {
 chatboxQueries.deletePreguntaRespuesta = async(id) => {
     try {
         conn = await db.createConnection();
+        
         return await db.query(
           queries.deletePreguntaRespuesta,
           id,
           "delete",
           conn
         );
+        
       } catch (e) {
         throw new Error(e);
       } finally {

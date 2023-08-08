@@ -1,15 +1,13 @@
 import Markers from "../../components/Markers/Markers";
 import { useCardContext } from "../../context/CardContext";
-
+import Swal from 'sweetalert2'
 import { MapContainer, TileLayer, Marker} from "react-leaflet";
-
-
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useUserContext } from "../../context/UserContext";
 import "leaflet/dist/leaflet.css";
 
 const center = [36.726643, -4.442089];
-const zoom = 14;
+const zoom = 11;
 
 function DisplayPosition({ map }) {
   const { empresas, setEmpVistas, setEmpresas } = useCardContext();
