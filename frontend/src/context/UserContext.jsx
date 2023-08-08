@@ -95,6 +95,13 @@ export default function UserContextProvider({ children }) {
 
   function logout() {
     localStorage.removeItem("user");
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: `Hasta pronto`,
+      showConfirmButton: false,
+      timer: 1500
+    })
     setErrorMessage(null)
     setUser(null);
   }

@@ -68,7 +68,7 @@ export default function CardEmpresas() {
                 </Typography>
                 {(currentCords.length < 2)?(<></>):(
                   <Typography gutterBottom variant="h6" component="div" sx={{ pt: "1.5rem" }}>
-                  {distancia(currentCords, item)} Km de distancia
+                  A menos de{Math.floor(distancia(currentCords, item)) + 1} Km
                 </Typography>
                 )}
                 
