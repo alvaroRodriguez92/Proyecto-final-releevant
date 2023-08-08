@@ -27,7 +27,7 @@ export default function Popups(id) {
             <Grid contained>
               <Grid item md={3} xs={12}>
                 <img
-                  src={`http://localhost:3000/logo/${datos.FOTO}`}
+                  src={`http://localhost:3000/imagenes/${datos.FOTO}`}
                   alt={datos.NOMBRE}
                   width={200}
                 />
