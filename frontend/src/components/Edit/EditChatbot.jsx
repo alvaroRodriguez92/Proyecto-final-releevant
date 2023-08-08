@@ -22,7 +22,6 @@ export default function EditChatbot() {
 
   async function onSubmit(values, index) {
     if (!values.ID) {
-      console.log(values);
       const response = await fetch("http://127.0.0.1:3000/chatbox/addpreguntarespuesta", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
