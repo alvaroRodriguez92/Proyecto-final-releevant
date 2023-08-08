@@ -9,6 +9,7 @@ export default function ChatbotEditable({ setEditExitoso, editExitoso, onSubmit,
     setEditExitoso([false]);
   }
 
+  
   return (
     <>
       <Formik validationSchema={schemaChatbot} initialValues={initialValues} onSubmit={onSubmit}>
@@ -145,7 +146,7 @@ export default function ChatbotEditable({ setEditExitoso, editExitoso, onSubmit,
                         push({
                           PREGUNTA: "",
                           RESPUESTA: "",
-                          PADRE: "",
+                          PADRE: 0,
                         });
                       }}
                     >
