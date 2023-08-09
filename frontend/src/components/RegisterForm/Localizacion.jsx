@@ -1,19 +1,28 @@
-import { TextField, Box, Button, Grid } from "@mui/material";
+import { TextField, Box, Button, Grid,Link } from "@mui/material";
 import { FieldArray } from "formik";
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+import Swal from "sweetalert2"
+import 'animate.css';
+
+
 
 export default function Localizacion({ formik }) {
-  //   async function register(values, actions) {
-  //     const response = await fetch("http://localhost:3001/user/", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(values),
-  //     });
-  //     if (response.status === 200) {
-  //       await new Promise((resolve) => setTimeout(resolve, 2000));
-  //       actions.resetForm();
-  //     }
-  //   }
+
+  function abrirTutorial(){
+    Swal.fire({
+      icon: 'info',
+      width:1000,
+      padding: '2em 4em 4em 4em',
+      title: "Como obtener la latitud y longitud",      
+      html:"1. Abre Google Maps en tu navegador. <br><br> 2. Haz clic con el botón derecho en el lugar o en el área del mapa y se abrirá una ventana emergente. Puedes encontrar tu latitud y longitud en formato decimal en la parte superior.<br><br> 3. Para copiar las coordenadas automáticamente, haz clic con el botón izquierdo en la latitud y la longitud.",
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutDown'
+      }
+    })
+  }
 
   return (
     <FieldArray name="DIRECCIONES">
@@ -36,6 +45,7 @@ export default function Localizacion({ formik }) {
                 <Grid item xs={6}>
                   <TextField
                     id={`DIRECCIONES[${index}].TIPO_VIA`}
+                    required
                     // error={formik.errors.direcciones[index].tipoVia && formik.touched.direcciones[index].tipoVia}
                     name={`DIRECCIONES[${index}].TIPO_VIA`}
                     onChange={formik.handleChange}
@@ -51,6 +61,7 @@ export default function Localizacion({ formik }) {
                 <Grid item xs={6}>
                   <TextField
                     id={`DIRECCIONES[${index}].NOMBRE_VIA`}
+                    required
                     // error={formik.errors.direcciones[index].nombreVia && formik.touched.direcciones[index].nombreVia}
                     name={`DIRECCIONES[${index}].NOMBRE_VIA`}
                     onChange={formik.handleChange}
@@ -77,6 +88,7 @@ export default function Localizacion({ formik }) {
                     <Grid item xs={4}>
                       <TextField
                         id={`DIRECCIONES[${index}].NUMERO`}
+                        required
                         // error={formik.errors.direcciones[index].numero && formik.touched.direcciones[index].numero}
                         type="number"
                         name={`DIRECCIONES[${index}].NUMERO`}
@@ -149,6 +161,7 @@ export default function Localizacion({ formik }) {
                         // error={formik.errors.direcciones[index].CP && formik.touched.direcciones[index].CP}
                         type="postal"
                         name={`DIRECCIONES[${index}].CP`}
+                        required
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.DIRECCIONES[index].CP}
@@ -161,6 +174,7 @@ export default function Localizacion({ formik }) {
                     <Grid item xs={6}>
                       <TextField
                         id={`DIRECCIONES[${index}].LOCALIDAD`}
+                        required
                         // error={formik.errors.direcciones[index].localidad && formik.touched.direcciones[index].localidad}
                         name={`DIRECCIONES[${index}].LOCALIDAD`}
                         onChange={formik.handleChange}
@@ -189,6 +203,7 @@ export default function Localizacion({ formik }) {
                     <Grid item xs={6}>
                       <TextField
                         id={`DIRECCIONES[${index}].LATITUD`}
+                        required
                         // error={formik.errors.direcciones[index].latitud && formik.touched.direcciones[index].latitud}
                         name={`DIRECCIONES[${index}].LATITUD`}
                         onChange={formik.handleChange}
@@ -203,6 +218,7 @@ export default function Localizacion({ formik }) {
                     <Grid item xs={6}>
                       <TextField
                         id={`DIRECCIONES[${index}].LONGITUD`}
+                        required
                         // error={formik.errors.direcciones[index].longitud && formik.touched.direcciones[index].longitud}
                         name={`DIRECCIONES[${index}].LONGITUD`}
                         onChange={formik.handleChange}
@@ -226,6 +242,7 @@ export default function Localizacion({ formik }) {
                     <Grid item xs={6}>
                       <TextField
                         id={`DIRECCIONES[${index}].PROVINCIA`}
+                        required
                         // error={formik.errors.direcciones[index].provincia && formik.touched.direcciones[index].provincia}
                         name={`DIRECCIONES[${index}].PROVINCIA`}
                         onChange={formik.handleChange}
@@ -241,6 +258,7 @@ export default function Localizacion({ formik }) {
                     <Grid item xs={6}>
                       <TextField
                         id={`DIRECCIONES[${index}].PAIS`}
+                        required
                         // error={formik.errors.direcciones[index].pais && formik.touched.direcciones[index].pais}
                         name={`DIRECCIONES[${index}].PAIS`}
                         onChange={formik.handleChange}
@@ -253,6 +271,11 @@ export default function Localizacion({ formik }) {
                       />
                     </Grid>
                   </Grid>
+                </Grid>
+                <Grid container spacing={12} width="100%" sx={{ width: "100%" }}>
+                <Grid sx={{ ml: 13, width: "100%" }} item xs={6}>
+              <span className="tutorial">Si no sabe obtener las coordenadas pinche <Link onClick={abrirTutorial} href="#">aquí</Link></span>
+                </Grid> 
                 </Grid>
               </Grid>
               <Grid container>

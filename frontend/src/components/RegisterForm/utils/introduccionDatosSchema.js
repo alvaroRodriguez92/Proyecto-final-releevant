@@ -12,54 +12,54 @@ function isValidFileType(fileName, fileType) {
 
 export const registroSchema = Yup.object().shape({
   NOMBRE: Yup.string()
-    .min(2, "Too short!")
-    .max(50, "Too long!")
-    .required("Required"),
-  EMAIL: Yup.string("Must be a string")
-    .email("Enter a valid email")
-    .min(2, "Too short!")
-    .max(50, "Too long!")
-    .required("Required"),
-  TLF: Yup.number("Must be a valid number")
-    .min(99999, "Too short!")
-    .max(999999999999, "Too long!")
-    .required("Required"),
-  URL: Yup.string().min(2, "Too short!").max(50, "Too long!"),
-  DESCRIPCION: Yup.string().max(1000, "Too long!"),
+    .min(2, "Demasiado corto!")
+    .max(50, "Demasiado largo!")
+    .required("Requerido"),
+  EMAIL: Yup.string("Debe ser un email válido")
+    .email("Debe ser un email válido")
+    .min(2, "Demasiado corto!")
+    .max(50, "Demasiado largo!")
+    .required("Requerido"),
+  TLF: Yup.number("Debe ser un número válido")
+    .min(99999, "Demasiado corto!")
+    .max(999999999999, "Demasiado largo!")
+    .required("Requerido"),
+  URL: Yup.string().min(2, "Demasiado corto!").max(50, "Demasiado largo!"),
+  DESCRIPCION: Yup.string().max(1000, "Demasiado largo!"),
   PASSWORD: Yup.string()
     .matches(passwordRules, {
       message:
-        "Must contain at least 5 characters, 1 uppercase, 1 lowercase and 1 number",
+      "Debe contener al menos 5 carácteres, 1 mayúsculas, 1 minúsculas y 1 número"
     })
     .required("Requerido"),
   repetirPassword: Yup.string()
-    .oneOf([Yup.ref("PASSWORD"), null], "The password must be the same")
-    .required("Required"),
-  sector: Yup.string().required("Required"),
-  CATEGORIA: Yup.string().required("Required"),
+    .oneOf([Yup.ref("PASSWORD"), null], "La contraseña debe ser la misma")
+    .required("Requerido"),
+  sector: Yup.string().required("Requerido"),
+  CATEGORIA: Yup.string().required("Requerido"),
   DIRECCIONES: Yup.array(
     Yup.object({
       TIPO_VIA: Yup.string()
-        .min(2, "Too short!")
-        .max(40, "Too long!")
-        .required("Required"),
+        .min(2, "Demasiado corto!")
+        .max(40, "Demasiado largo!")
+        .required("Requerido"),
       NOMBRE_VIA: Yup.string("Must be a string")
-        .min(2, "Too short!")
-        .max(50, "Too long!")
-        .required("Required"),
-      NUMERO: Yup.number("Must be a valid number").required("Required"),
-      PISO: Yup.number().max(999, "Too long!"),
-      PUERTA: Yup.string().max(10, "Too long!"),
-      BLOQUE: Yup.number().max(999, "Too long!"),
-      CP: Yup.number("Must be a valid postalcode")
-        .min(2, "Too short!")
-        .max(100000, "Too long!")
-        .required("Required"),
-      LOCALIDAD: Yup.string().max(100, "Too long!"),
-      PROVINCIA: Yup.string().max(100, "Too long!"),
-      PAIS: Yup.string().max(100, "Too long!"),
-      LONGITUD: Yup.number("Must be a valid postalcode").required("Required"),
-      LATITUD: Yup.number("Must be a valid postalcode").required("Required"),
+        .min(2, "Demasiado corto!")
+        .max(50, "Demasiado largo!")
+        .required("Requerido"),
+      NUMERO: Yup.number("Debe ser un número válido").required("Requerido"),
+      PISO: Yup.number().max(999, "Demasiado largo!"),
+      PUERTA: Yup.string().max(10, "Demasiado largo!"),
+      BLOQUE: Yup.number().max(999, "Demasiado largo!"),
+      CP: Yup.number("Debe ser un código postal válido")
+        .min(2, "Demasiado corto!")
+        .max(100000, "Demasiado largo!")
+        .required("Requerido"),
+      LOCALIDAD: Yup.string().max(100, "Demasiado largo!"),
+      PROVINCIA: Yup.string().max(100, "Demasiado largo!"),
+      PAIS: Yup.string().max(100, "Demasiado largo!"),
+      LONGITUD: Yup.number("").required("Requerido"),
+      LATITUD: Yup.number("").required("Requerido"),
       
         
     })
