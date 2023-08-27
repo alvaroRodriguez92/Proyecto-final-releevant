@@ -495,3 +495,22 @@ div::-webkit-scrollbar-thumb {
   font-size: 16px;
   margin-top:8px
 }
+
+.leaflet-popup-content-wrapper{
+ background-image: linear-gradient(180deg, #CAD3D4 0, #CAD3D4 25%, #DAE0E2 50%, #EAEEEF 75%, #FAFCFC 100%) !important;
+}
+
+.tutorial{
+  font-size: 14px;
+  color:grey;
+font-style: italic;
+}
+
+.swal2-title{
+  margin-bottom: 48px;
+}
+
+div:where(.swal2-container) .swal2-html-container {
+  text-align: start !important;
+
+}

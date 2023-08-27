@@ -52,6 +52,7 @@ export default function IntroduccionDatos({formik}) {
               <TextField
               className="input-form-normal"
                 id="NOMBRE"
+                required
                 error={formik.errors.NOMBRE && formik.touched.NOMBRE}
                 name="NOMBRE"
                 onChange={formik.handleChange}
@@ -66,6 +67,7 @@ export default function IntroduccionDatos({formik}) {
             </Grid>
             <Grid item xs={6}>
               <TextField
+                required
                 id="EMAIL"
                 error={formik.errors.EMAIL && formik.touched.EMAIL}
                 name="EMAIL"
@@ -82,6 +84,7 @@ export default function IntroduccionDatos({formik}) {
           <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
             <Grid item xs={6}>
               <TextField
+              required
                 id="TLF"
                 error={formik.errors.TLF && formik.touched.TLF}
                 type="tel"
@@ -113,6 +116,7 @@ export default function IntroduccionDatos({formik}) {
           <Grid container spacing={15} width="100%" sx={{ width: "100%" }}>
             <Grid item xs={6}>
               <TextField
+              required
                 id="PASSWORD"
                 type="password"
                 error={formik.errors.PASSWORD && formik.touched.PASSWORD}
@@ -128,6 +132,7 @@ export default function IntroduccionDatos({formik}) {
             </Grid>
             <Grid item xs={6}>
               <TextField
+              required
                 id="repetirPassword"
                 type="password"
                 error={formik.errors.repetirPassword && formik.touched.repetirPassword}
@@ -167,6 +172,7 @@ export default function IntroduccionDatos({formik}) {
               <FormControl fullWidth>
               <InputLabel id="demo-select-small-label">Sector</InputLabel>
                 <Select
+                required
                   labelId="demo-select-small-label"
                   id="sector"
                   name="sector"
@@ -194,6 +200,7 @@ export default function IntroduccionDatos({formik}) {
                 <FormControl fullWidth>
               <InputLabel id="demo-select-small-label">Categoría</InputLabel>
                 <Select
+                required
                   labelId="demo-select-small-label"
                   id="CATEGORIA"
                   name="CATEGORIA"

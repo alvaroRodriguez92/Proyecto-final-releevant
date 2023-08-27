@@ -5,12 +5,12 @@ export const schemaUser = Yup.object().shape({
   NOMBRE: Yup.string()
     .min(2, "Too short!")
     .max(50, "Too long!")
-    .required("Required"),
+    .required("Requerido"),
   EMAIL: Yup.string("Must be a string")
     .email("Enter a valid email")
     .min(2, "Too short!")
     .max(50, "Too long!")
-    .required("Required"),
+    .required("Requerido"),
   TLF: Yup.number("Must be a valid number")
     .min(99999, "Too short!")
     .max(999999999999, "Too long!"),
@@ -23,5 +23,5 @@ export const schemaUser = Yup.object().shape({
     .required("Requerido"),
   repetirPassword: Yup.string()
     .oneOf([Yup.ref("PASSWORD"), null], "The password must be the same")
-    .required("Required"),
+    .required("Requerido"),
 })

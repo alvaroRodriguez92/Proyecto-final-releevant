@@ -25,6 +25,7 @@ export default function IntroduccionDatosUser({formik}) {
             <Grid item xs={6}>
               <TextField
                 id="NOMBRE"
+                required
                 error={formik.errors.NOMBRE && formik.touched.NOMBRE}
                 name="NOMBRE"
                 onChange={formik.handleChange}
@@ -39,6 +40,7 @@ export default function IntroduccionDatosUser({formik}) {
             </Grid>
             <Grid item xs={6}>
               <TextField
+              required
                 id="EMAIL"
                 error={formik.errors.EMAIL && formik.touched.EMAIL}
                 name="EMAIL"
@@ -73,6 +75,7 @@ export default function IntroduccionDatosUser({formik}) {
             <Grid item xs={6}>
               <TextField
                 id="PASSWORD"
+                required
                 type="password"
                 error={formik.errors.PASSWORD && formik.touched.PASSWORD}
                 name="PASSWORD"
@@ -88,6 +91,7 @@ export default function IntroduccionDatosUser({formik}) {
             <Grid item xs={6}>
               <TextField
                 id="repetirPassword"
+                required
                 type="password"
                 error={formik.errors.repetirPassword && formik.touched.repetirPassword}
                 name="repetirPassword"
