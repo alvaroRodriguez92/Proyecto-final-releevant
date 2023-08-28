@@ -20,6 +20,7 @@ export default function Buscador() {
       datos.push({ ...d, hover: false });
     });
     setEmpresas(datos);
+    
   }
 
   return (
