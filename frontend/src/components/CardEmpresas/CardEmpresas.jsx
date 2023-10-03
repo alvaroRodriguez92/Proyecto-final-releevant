@@ -12,7 +12,7 @@ import { useCardContext } from "../../context/CardContext";
 
 export default function CardEmpresas() {
   const { tipoServicio, setPerfilCompleto, currentCords } = useUserContext();
-  const { datosEmpresa, ratonOver, empVistas } = useCardContext();
+  const { datosEmpresa, ratonOver, empVistas, empresas } = useCardContext();
 
   useEffect(() => {
     if (tipoServicio !== 0) datosEmpresa(tipoServicio);
@@ -36,8 +36,10 @@ export default function CardEmpresas() {
     await setPerfilCompleto(id);
   }
   
-  if (!empVistas.length) return <></>;
+  if (!empVistas.length) return <><h5 className="mt-4 text-center">{`En mapa: ${empVistas.length} de ${empresas.length}`}</h5></>;
   return (
+    <>
+    <h5 className="mt-4 text-center">{`En mapa: ${empVistas.length} de ${empresas.length}`}</h5>
     <Box width="100%" sx={{ display: "flex", py: "1rem", my: "2rem" }}>
       <Grid container spacing={3}>
         {empVistas.map((item, i) => (
@@ -93,5 +95,6 @@ export default function CardEmpresas() {
         ))}
       </Grid>
     </Box>
+    </>
   );
 }

@@ -36,9 +36,10 @@ function DisplayPosition({ map }) {
   }, [map, onMove, position, empresas]);
 }
 
+
 export default function Map() {
   const [map, setMap] = useState(null);
-  const { empresas } = useCardContext();
+  const { empresas, empVistas } = useCardContext();
   const { currentPosition, currentCords } = useUserContext();
 
   function convertir(empresa) {
@@ -72,6 +73,7 @@ export default function Map() {
 
   return (
     <div style={{ marginBottom: "20px", position: "sticky", top: 0 }}>
+      {/* <p className="text-center">{`Resultados: ${empVistas.length} de ${empresas.length}`}</p> */}
       {map ? <DisplayPosition map={map} /> : null}
       {displayMap}
     </div>
