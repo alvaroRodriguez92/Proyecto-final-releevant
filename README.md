@@ -4,5 +4,6 @@ This is the final project we did for Releevant. The idea was to make a directory
 
 1- First you need to import the BBDD to your mysql workbench or similar program.
 2- Second, go to the folder "backend" and make sure that the ".env" file has the correct credentials to make the connection to the BBDD.
-3- Third, in the folder backend add "npm run start" command and in the folder frontend "npm run dev" command.
-4- Last, just go to the localhost in your browser and enjoy our project! http://localhost:5173/
+3- Third, open the terminal in the folder backend, add "npm install" and then "npm run start" command to start the server. 
+4- Open another terminal in the folder frontend, add "npm install" as well for install the dependencies and then "npm run dev" command to init the proyect.
+5- Last, just go to the localhost in your browser and enjoy our project! http://localhost:5173/
