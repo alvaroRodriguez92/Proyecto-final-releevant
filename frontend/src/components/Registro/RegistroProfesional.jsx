@@ -10,7 +10,6 @@ import LogoFotos from "../RegisterForm/LogoFotos";
 const steps = ["Introducción de datos", "Localización", "Logo/Fotos"];
 
 async function onSubmit(values, actions) {
-  console.log("submiteandooooo")
   const formData= new FormData();
   formData.append("NOMBRE", values.NOMBRE)
   formData.append("EMAIL", values.EMAIL)
